@@ -47,3 +47,7 @@ node_modules
 package-lock.json
 
 /.idea/*
+
+gbee-nox-cache/
+
+*.zip
