@@ -12,7 +12,7 @@ set -o pipefail
 
 # match qt version prefix. E.g 5 --> 5.15.2, 5.12 --> 5.12.10
 export QT_VER_PREFIX="6"
-export LIBTORRENT_BRANCH="RC_1_2"
+export LIBTORRENT_BRANCH="RC_2_0"
 export LC_ALL="C.UTF-8"
 export DEBIAN_FRONTEND=noninteractive
 export PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig
@@ -195,8 +195,17 @@ prepare_ssl() {
 
 prepare_qt() {
   # install qt
-  qt_major_ver="$(retry curl -ksSL --compressed https://download.qt.io/official_releases/qt/ \| sed -nr "'s@.*href=\"([0-9]+(\.[0-9]+)*)/\".*@\1@p'" \| grep \"^${QT_VER_PREFIX}\" \| head -1)"
-  qt_ver="$(retry curl -ksSL --compressed https://download.qt.io/official_releases/qt/${qt_major_ver}/ \| sed -nr "'s@.*href=\"([0-9]+(\.[0-9]+)*)/\".*@\1@p'" \| grep \"^${QT_VER_PREFIX}\" \| head -1)"
+  mirror_base_url="https://download.qt.io/official_releases/qt"
+  if [ x"${USE_CHINA_MIRROR}" = x1 ]; then
+    mirror_base_url="https://mirrors.aliyun.com/qt/archive/qt"
+  fi
+  if [ -z "${qt_major_ver}" ]; then
+    qt_major_ver="$(retry curl -ksSL --compressed ${mirror_base_url}/ \| sed -nr "'s@.*href=\"([0-9]+(\.[0-9]+)*)/\".*@\1@p'" \| grep \"^${QT_VER_PREFIX}\" \| head -1)"
+  fi
+  if [ -z "${qt_ver}" ]; then
+    qt_ver="$(retry curl -ksSL --compressed ${mirror_base_url}/${qt_major_ver}/ \| sed -nr "'s@.*href=\"([0-9]+(\.[0-9]+)*)/\".*@\1@p'" \| grep \"^${QT_VER_PREFIX}\" \| head -1)"
+  fi
+
   echo "Using qt version: ${qt_ver}"
   mkdir -p "/usr/src/qtbase-${qt_ver}" \
     "/usr/src/qttools-${qt_ver}" \
@@ -225,7 +234,6 @@ prepare_qt() {
     -nomake tests
   echo "========================================================"
   echo "Qt configuration:"
-  cat config.summary
   cmake --build . --parallel
   cmake --install .
   export QT_BASE_DIR="$(ls -rd /usr/local/Qt-* | head -1)"
@@ -270,8 +278,10 @@ prepare_qt() {
 
 preapare_libboost() {
   # build latest boost
-  # boost_ver="$(retry curl -ksSfL --compressed https://www.boost.org/users/download/ \| grep "'>Version\s*'" \| sed -r "'s/.*Version\s*([^<]+).*/\1/'" \| head -1)"
-  boost_ver="1.86.0"
+  if [ -z "${boost_ver}" ]; then
+    boost_ver="$(retry curl -ksSL --compressed https://www.boost.org/users/download/ \| grep data-current-boost-version \| sed 's/"//g' \| sed 's/data-current-boost-version=//g')"
+  fi
+
   echo "boost version ${boost_ver}"
   mkdir -p "/usr/src/boost-${boost_ver}"
   if [ ! -f "/usr/src/boost-${boost_ver}/.unpack_ok" ]; then

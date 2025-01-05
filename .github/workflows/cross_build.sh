@@ -12,7 +12,23 @@ set -o pipefail
 
 # match qt version prefix. E.g 5 --> 5.15.2, 5.12 --> 5.12.10
 export QT_VER_PREFIX="6"
-export LIBTORRENT_BRANCH="RC_1_2"
+export LIBTORRENT_BRANCH="RC_2_0"
+export DEBIAN_FRONTEND=noninteractive
+# use zlib-ng instead of zlib by default
+export USE_ZLIB_NG=${USE_ZLIB_NG:-1}
+export PKG_CONFIG_PATH="${CROSS_PREFIX}/opt/qt/lib/pkgconfig:${CROSS_PREFIX}/lib/pkgconfig:${CROSS_PREFIX}/share/pkgconfig:${PKG_CONFIG_PATH}"
+export TARGET_ARCH="${CROSS_HOST%%-*}"
+export TARGET_HOST="${CROSS_HOST#*-}"
+export QT_BASE_DIR="${CROSS_PREFIX}/opt/qt"
+export LD_LIBRARY_PATH="${QT_BASE_DIR}/lib:${LD_LIBRARY_PATH}"
+export PATH="${QT_BASE_DIR}/bin:${PATH}"
+
+# strip all compiled files by default
+export CFLAGS='-s'
+export CXXFLAGS='-s'
+
+export SELF_DIR="$(dirname "$(readlink -f "${0}")")"
+mkdir -p "/usr/src"
 
 # Ubuntu mirror for local building
 if [ x"${USE_CHINA_MIRROR}" = x1 ]; then
@@ -36,15 +52,19 @@ EOF
   export PIP_INDEX_URL="https://repo.huaweicloud.com/repository/pypi/simple"
 fi
 
-export DEBIAN_FRONTEND=noninteractive
-
 # keep debs in container for store cache in docker volume
 rm -f /etc/apt/apt.conf.d/*
 echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' >/etc/apt/apt.conf.d/01keep-debs
 echo -e 'Acquire::https::Verify-Peer "false";\nAcquire::https::Verify-Host "false";' >/etc/apt/apt.conf.d/99-trust-https
 
+# Since cmake 3.23.0 CMAKE_INSTALL_LIBDIR will force set to lib/<multiarch-tuple> on Debian
+echo '/usr/local/lib/x86_64-linux-gnu' >/etc/ld.so.conf.d/x86_64-linux-gnu-local.conf
+echo '/usr/local/lib64' >/etc/ld.so.conf.d/lib64-local.conf
+
 apt update
 apt install -y \
+  software-properties-common \
+  apt-transport-https \
   jq \
   curl \
   git \
@@ -55,9 +75,6 @@ apt install -y \
   pkg-config \
   pipx \
   python3-pip
-
-# use zlib-ng instead of zlib by default
-USE_ZLIB_NG=${USE_ZLIB_NG:-1}
 
 # OPENSSL_COMPILER value is from openssl source: ./Configure LIST
 # QT_DEVICE and QT_DEVICE_OPTIONS value are from https://github.com/qt/qtbase/tree/dev/mkspecs/devices/
@@ -88,12 +105,6 @@ i686-*-mingw*)
   ;;
 esac
 
-# strip all compiled files by default
-export CFLAGS='-s'
-export CXXFLAGS='-s'
-
-TARGET_ARCH="${CROSS_HOST%%-*}"
-TARGET_HOST="${CROSS_HOST#*-}"
 case "${TARGET_HOST}" in
 *"mingw"*)
   TARGET_HOST=Windows
@@ -111,11 +122,6 @@ case "${TARGET_HOST}" in
   fi
   ;;
 esac
-
-export PKG_CONFIG_PATH="${CROSS_PREFIX}/opt/qt/lib/pkgconfig:${CROSS_PREFIX}/lib/pkgconfig:${CROSS_PREFIX}/share/pkgconfig:${PKG_CONFIG_PATH}"
-SELF_DIR="$(dirname "$(readlink -f "${0}")")"
-
-mkdir -p "/usr/src"
 
 retry() {
   # max retry 5 times
@@ -142,30 +148,40 @@ verlte() {
 
 prepare_cmake() {
   if ! which cmake &>/dev/null; then
-    cmake_latest_ver="$(retry curl -ksSL --compressed https://cmake.org/download/ \| grep "'Latest Release'" \| sed -r "'s/.*Latest Release\s*\((.+)\).*/\1/'" \| head -1)"
+    if [ -z "${cmake_latest_ver}" ]; then
+        cmake_latest_ver="$(retry curl -ksSL --compressed https://cmake.org/download/ \| grep "'Latest Release'" \| sed -r "'s/.*Latest Release\s*\((.+)\).*/\1/'" \| head -1)"
+    fi
     cmake_binary_url="https://github.com/Kitware/CMake/releases/download/v${cmake_latest_ver}/cmake-${cmake_latest_ver}-linux-x86_64.tar.gz"
     cmake_sha256_url="https://github.com/Kitware/CMake/releases/download/v${cmake_latest_ver}/cmake-${cmake_latest_ver}-SHA-256.txt"
     if [ x"${USE_CHINA_MIRROR}" = x1 ]; then
-      cmake_binary_url="https://ghp.ci/${cmake_binary_url}"
-      cmake_sha256_url="https://ghp.ci/${cmake_sha256_url}"
+        cmake_binary_url="https://ghp.ci/${cmake_binary_url}"
+        cmake_sha256_url="https://ghp.ci/${cmake_sha256_url}"
     fi
-    if [ -f "/usr/src/cmake-${cmake_latest_ver}-linux-x86_64.tar.gz" ]; then
-      cd /usr/src
-      if ! retry curl -ksSL --compressed "${cmake_sha256_url}" \| grep "cmake-${cmake_latest_ver}-linux-x86_64.tar.gz" \| sha256sum -c; then
-        rm -f "/usr/src/cmake-${cmake_latest_ver}-linux-x86_64.tar.gz"
-      fi
-    fi
-    if [ ! -f "/usr/src/cmake-${cmake_latest_ver}-linux-x86_64.tar.gz" ]; then
-      retry curl -kLo "/usr/src/cmake-${cmake_latest_ver}-linux-x86_64.tar.gz" "${cmake_binary_url}"
+    if [ ! -f "/usr/src/cmake-${cmake_latest_ver}-linux-x86_64.tar.gz.download_ok" ]; then
+        if [ -f "/usr/src/cmake-${cmake_latest_ver}-linux-x86_64.tar.gz" ]; then
+            cd /usr/src
+            if ! retry curl -ksSL --compressed "${cmake_sha256_url}" \| grep "cmake-${cmake_latest_ver}-linux-x86_64.tar.gz" \| sha256sum -c; then
+                rm -f "/usr/src/cmake-${cmake_latest_ver}-linux-x86_64.tar.gz"
+            fi
+        fi
+        if [ ! -f "/usr/src/cmake-${cmake_latest_ver}-linux-x86_64.tar.gz" ]; then
+            retry curl -kLo "/usr/src/cmake-${cmake_latest_ver}-linux-x86_64.tar.gz" "${cmake_binary_url}"
+            if retry curl -ksSL --compressed "${cmake_sha256_url}" \| grep "cmake-${cmake_latest_ver}-linux-x86_64.tar.gz" \| sha256sum -c; then
+                touch "/usr/src/cmake-${cmake_latest_ver}-linux-x86_64.tar.gz.download_ok"
+            fi
+        fi
     fi
     tar -zxf "/usr/src/cmake-${cmake_latest_ver}-linux-x86_64.tar.gz" -C /usr/local --strip-components 1
   fi
   cmake --version
+  echo "cmake-${cmake_latest_ver} done!"
 }
 
 prepare_ninja() {
   if ! which ninja &>/dev/null; then
-    ninja_ver="$(retry curl -ksSL --compressed https://ninja-build.org/ \| grep "'The last Ninja release is'" \| sed -r "'s@.*<b>(.+)</b>.*@\1@'" \| head -1)"
+    if [ -z "${ninja_ver}" ]; then
+        ninja_ver="$(retry curl -ksSL --compressed https://ninja-build.org/ \| grep "'The last Ninja release is'" \| sed -r "'s@.*<b>(.+)</b>.*@\1@'" \| head -1)"
+    fi
     ninja_binary_url="https://github.com/ninja-build/ninja/releases/download/${ninja_ver}/ninja-linux.zip"
     if [ x"${USE_CHINA_MIRROR}" = x1 ]; then
       ninja_binary_url="https://ghp.ci/${ninja_binary_url}"
@@ -177,7 +193,7 @@ prepare_ninja() {
     fi
     unzip -d /usr/local/bin "/usr/src/ninja-${ninja_ver}-linux.zip"
   fi
-  echo "Ninja version $(ninja --version)"
+  echo "Ninja version $(ninja --version) done!"
 }
 
 prepare_zlib() {
@@ -209,6 +225,7 @@ prepare_zlib() {
     cmake --install build
     # Fix mingw build sharedlibdir lost issue
     sed -i 's@^sharedlibdir=.*@sharedlibdir=${libdir}@' "${CROSS_PREFIX}/lib/pkgconfig/zlib.pc"
+    echo "zlib-ng version ${zlib_ng_latest_tag}"
   else
     zlib_ver="$(retry curl -ksSL --compressed https://zlib.net/ \| grep -i "'<FONT.*FONT>'" \| sed -r "'s/.*zlib\s*([^<]+).*/\1/'" \| head -1)"
     echo "zlib version ${zlib_ver}"
@@ -227,6 +244,7 @@ prepare_zlib() {
       make -j$(nproc)
       make install
     fi
+    echo "zlib version ${zlib_ver} done!"
   fi
 }
 
@@ -253,16 +271,20 @@ prepare_ssl() {
   if [ -f "${CROSS_PREFIX}/lib32/libssl.a" ]; then
     cp -rfv "${CROSS_PREFIX}"/lib32/. "${CROSS_PREFIX}/lib"
   fi
+  echo "OpenSSL version ${openssl_ver} done!"
 }
 
 prepare_boost() {
-  # boost_ver="$(retry curl -ksSL --compressed https://www.boost.org/users/download/ \| grep "'>Version\s*'" \| sed -r "'s/.*Version\s*([^<]+).*/\1/'" \| head -1)"
-  boost_ver="1.86.0"
+  if [ -z "${boost_ver}" ]; then
+    boost_ver="$(retry curl -ksSL --compressed https://www.boost.org/users/download/ \| grep data-current-boost-version \| sed 's/"//g' \| sed 's/data-current-boost-version=//g')"
+  fi
+
   echo "Boost version ${boost_ver}"
+  apt install -y bison
   if [ ! -f "/usr/src/boost-${boost_ver}/.unpack_ok" ]; then
-    boost_latest_url="https://sourceforge.net/projects/boost/files/boost/${boost_ver}/boost_${boost_ver//./_}.tar.bz2/download"
+    boost_latest_url="https://sourceforge.net/projects/boost/files/boost/${boost_ver}/boost_${boost_ver//./_}.tar.gz/download"
     mkdir -p "/usr/src/boost-${boost_ver}/"
-    retry curl -kL "${boost_latest_url}" \| tar -jxf - -C "/usr/src/boost-${boost_ver}/" --strip-components 1
+    retry curl -kL "${boost_latest_url}" \| tar -zxf - -C "/usr/src/boost-${boost_ver}/" --strip-components 1
     touch "/usr/src/boost-${boost_ver}/.unpack_ok"
   fi
   cd "/usr/src/boost-${boost_ver}/"
@@ -276,19 +298,30 @@ prepare_boost() {
     ./bootstrap.sh
   fi
   ./b2 -d0 -q install --prefix="${CROSS_ROOT}"
+
+  echo "Boost version ${boost_ver} done!"
 }
 
 prepare_qt() {
-  qt_major_ver="$(retry curl -ksSL --compressed https://download.qt.io/official_releases/qt/ \| sed -nr "'s@.*href=\"([0-9]+(\.[0-9]+)*)/\".*@\1@p'" \| grep \"^${QT_VER_PREFIX}\" \| head -1)"
-  qt_ver="$(retry curl -ksSL --compressed https://download.qt.io/official_releases/qt/${qt_major_ver}/ \| sed -nr "'s@.*href=\"([0-9]+(\.[0-9]+)*)/\".*@\1@p'" \| grep \"^${QT_VER_PREFIX}\" \| head -1)"
+  mirror_base_url="https://download.qt.io/official_releases/qt"
+  if [ x"${USE_CHINA_MIRROR}" = x1 ]; then
+    mirror_base_url="https://mirrors.aliyun.com/qt/archive/qt"
+  fi
+  if [ -z "${qt_major_ver}" ]; then
+    qt_major_ver="$(retry curl -ksSL --compressed ${mirror_base_url}/ \| sed -nr "'s@.*href=\"([0-9]+(\.[0-9]+)*)/\".*@\1@p'" \| grep \"^${QT_VER_PREFIX}\" \| head -1)"
+  fi
+  if [ -z "${qt_ver}" ]; then
+    qt_ver="$(retry curl -ksSL --compressed ${mirror_base_url}/${qt_major_ver}/ \| sed -nr "'s@.*href=\"([0-9]+(\.[0-9]+)*)/\".*@\1@p'" \| grep \"^${QT_VER_PREFIX}\" \| head -1)"
+  fi
+
   echo "Using qt version: ${qt_ver}"
   mkdir -p "/usr/src/qtbase-${qt_ver}" "/usr/src/qttools-${qt_ver}"
   if [ ! -f "/usr/src/qt-host/${qt_ver}/gcc_64/bin/qt.conf" ]; then
     pipx install aqtinstall
-    retry "${HOME}/.local/bin/aqt" install-qt -O /usr/src/qt-host linux desktop "${qt_ver}" --archives qtbase qttools icu
+    retry "${HOME}/.local/bin/aqt" install-qt -b ${mirror_base_url} -O /usr/src/qt-host linux desktop "${qt_ver}" --archives qtbase qttools icu
   fi
   if [ ! -f "/usr/src/qtbase-${qt_ver}/.unpack_ok" ]; then
-    qtbase_url="https://download.qt.io/official_releases/qt/${qt_major_ver}/${qt_ver}/submodules/qtbase-everywhere-src-${qt_ver}.tar.xz"
+    qtbase_url="${mirror_base_url}/${qt_major_ver}/${qt_ver}/submodules/qtbase-everywhere-src-${qt_ver}.tar.xz"
     retry curl -kL "${qtbase_url}" \| tar Jxf - -C "/usr/src/qtbase-${qt_ver}" --strip-components 1
     touch "/usr/src/qtbase-${qt_ver}/.unpack_ok"
   fi
@@ -325,13 +358,11 @@ prepare_qt() {
     -DCMAKE_CXX_COMPILER="${CROSS_HOST}-g++"
   echo "========================================================"
   echo "Qt configuration:"
-  cat config.summary
   cmake --build . --parallel
   cmake --install .
-  export QT_BASE_DIR="${CROSS_PREFIX}/opt/qt"
-  export LD_LIBRARY_PATH="${QT_BASE_DIR}/lib:${LD_LIBRARY_PATH}"
-  export PATH="${QT_BASE_DIR}/bin:${PATH}"
+  echo "qt version: ${qt_ver} done!"
 }
+
 
 prepare_libtorrent() {
   echo "libtorrent-rasterbar branch: ${LIBTORRENT_BRANCH}"
@@ -345,14 +376,16 @@ prepare_libtorrent() {
       "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
   fi
   cd "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
-  if ! git pull; then
-    # if pull failed, retry clone the repository.
-    cd /
-    rm -fr "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
-    retry git clone --depth 1 --recursive --shallow-submodules --branch "${LIBTORRENT_BRANCH}" \
-      "${libtorrent_git_url}" \
-      "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
-    cd "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
+  if [ x"${USE_CHINA_MIRROR}" != x1 ]; then
+    if ! git pull; then
+        # if pull failed, retry clone the repository.
+        cd /
+        rm -fr "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
+        retry git clone --depth 1 --recursive --shallow-submodules --branch "${LIBTORRENT_BRANCH}" \
+        "${libtorrent_git_url}" \
+        "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
+        cd "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
+    fi
   fi
   rm -fr build/CMakeCache.txt
   # TODO: solve mingw build
@@ -384,9 +417,11 @@ prepare_libtorrent() {
     -DCMAKE_CXX_COMPILER="${CROSS_HOST}-g++"
   cmake --build build
   cmake --install build
+  echo "libtorrent done!"
 }
 
 build_qbittorrent() {
+  echo "build qbittorrent"
   cd "${SELF_DIR}/../../"
   rm -fr build/CMakeCache.txt
   cmake \
