@@ -1,14 +1,14 @@
 #!/bin/bash -e
 
-. utils.sh
-. prepaare_boost.sh
-. prepare_ssl.sh
-. prepare_cmake.sh
-. prepare_ninja.sh
-. prepare_qt.sh
-. prepare_libtorrent.sh
-. build_qbittorrent.sh
-. prepare_source.sh
+. ./utils.sh
+. ./prepaare_boost.sh
+. ./prepare_ssl.sh
+. ./prepare_cmake.sh
+. ./prepare_ninja.sh
+. ./prepare_qt.sh
+. ./prepare_libtorrent.sh
+. ./build_qbittorrent.sh
+. ./prepare_source.sh
 
 
 # This script is for building AppImage
