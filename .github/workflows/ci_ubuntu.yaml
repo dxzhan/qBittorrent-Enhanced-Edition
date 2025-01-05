@@ -9,23 +9,20 @@ permissions:
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
   cancel-in-progress: ${{ github.head_ref != '' }}
-
+env:
+      boost_path: "${{ github.workspace }}/../boost"
+      harden_flags: "-D_FORTIFY_SOURCE=2 -D_GLIBCXX_ASSERTIONS"
+      libtorrent_path: "${{ github.workspace }}/../libtorrent"
 jobs:
   ci:
     name: Build
     runs-on: ubuntu-latest
-
     strategy:
       fail-fast: false
       matrix:
         libt_version: ["2.0.10"]
         qbt_gui: ["GUI=ON", "GUI=OFF"]
         qt_version: ["6.7.3"]
-
-    env:
-      boost_path: "${{ github.workspace }}/../boost"
-      harden_flags: "-D_FORTIFY_SOURCE=2 -D_GLIBCXX_ASSERTIONS"
-      libtorrent_path: "${{ github.workspace }}/../libtorrent"
 
     steps:
       - name: Checkout repository
@@ -38,8 +35,8 @@ jobs:
             build-essential cmake ninja-build \
             libssl-dev libxkbcommon-x11-dev libxcb-cursor-dev zlib1g-dev
 
-      - name: call_boost_workflow_job
-        uses: .github/workflows/workflow_boost.yml
+      - name: Install boost
+        uses: .github/workflows/action_boost.yml
         with:
           BOOST_MAJOR_VERSION: "1"
           BOOST_MINOR_VERSION: "87"
