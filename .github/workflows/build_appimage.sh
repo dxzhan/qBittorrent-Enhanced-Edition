@@ -279,7 +279,7 @@ prepare_qt() {
 preapare_libboost() {
   # build latest boost
   if [ -z "${boost_ver}" ]; then
-    boost_ver="$(retry curl -ksSL --compressed https://www.boost.org/users/download/ \| grep data-current-boost-version \| sed 's/\"//g' \| sed 's/data-current-boost-version=//g')"
+    boost_ver="$(retry curl -ksSL --compressed https://www.boost.org/users/download/ \| grep data-current-boost-version \| sed 's/\"//g' \| sed 's/data-current-boost-version=//g' \| sed 's/ //g')"
   fi
   if [ -z "${boost_ver}" ]; then
     boost_ver="1.87.0"
