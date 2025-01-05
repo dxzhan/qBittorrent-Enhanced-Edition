@@ -38,30 +38,37 @@ jobs:
             build-essential cmake ninja-build \
             libssl-dev libxkbcommon-x11-dev libxcb-cursor-dev zlib1g-dev
 
-      - name: Setup ccache
-        uses: Chocobo1/setup-ccache-action@v1
+      - name: call_boost_workflow_job
+        uses: .github/workflows/workflow_boost.yml
         with:
-          store_cache: ${{ github.ref == 'refs/heads/master' }}
-          update_packager_index: false
-          ccache_options: |
-            max_size=2G
-
-      - name: Install boost
-        env:
           BOOST_MAJOR_VERSION: "1"
           BOOST_MINOR_VERSION: "87"
           BOOST_PATCH_VERSION: "0"
-        run: |
-          boost_url="https://boostorg.jfrog.io/artifactory/main/release/${{ env.BOOST_MAJOR_VERSION }}.${{ env.BOOST_MINOR_VERSION }}.${{ env.BOOST_PATCH_VERSION }}/source/boost_${{ env.BOOST_MAJOR_VERSION }}_${{ env.BOOST_MINOR_VERSION }}_${{ env.BOOST_PATCH_VERSION }}.tar.gz"
-          boost_url2="https://sourceforge.net/projects/boost/files/boost/${{ env.BOOST_MAJOR_VERSION }}.${{ env.BOOST_MINOR_VERSION }}.${{ env.BOOST_PATCH_VERSION }}/boost_${{ env.BOOST_MAJOR_VERSION }}_${{ env.BOOST_MINOR_VERSION }}_${{ env.BOOST_PATCH_VERSION }}.tar.gz"
-          set +e
-          curl -L -o "${{ runner.temp }}/boost.tar.gz" "$boost_url"
-          tar -xf "${{ runner.temp }}/boost.tar.gz" -C "${{ github.workspace }}/.."; _exitCode="$?"
-          if [ "$_exitCode" -ne "0" ]; then
-            curl -L -o "${{ runner.temp }}/boost.tar.gz" "$boost_url2"
-            tar -xf "${{ runner.temp }}/boost.tar.gz" -C "${{ github.workspace }}/.."; _exitCode="$?"
-          fi
-          mv "${{ github.workspace }}/.."/boost_* "${{ env.boost_path }}"
+          boost_path: ${{ env.boost_path }}
+    #   - name: Setup ccache
+    #     uses: Chocobo1/setup-ccache-action@v1
+    #     with:
+    #       store_cache: ${{ github.ref == 'refs/heads/master' }}
+    #       update_packager_index: false
+    #       ccache_options: |
+    #         max_size=2G
+
+    #   - name: Install boost
+    #     env:
+    #       BOOST_MAJOR_VERSION: "1"
+    #       BOOST_MINOR_VERSION: "87"
+    #       BOOST_PATCH_VERSION: "0"
+    #     run: |
+    #       boost_url="https://boostorg.jfrog.io/artifactory/main/release/${{ env.BOOST_MAJOR_VERSION }}.${{ env.BOOST_MINOR_VERSION }}.${{ env.BOOST_PATCH_VERSION }}/source/boost_${{ env.BOOST_MAJOR_VERSION }}_${{ env.BOOST_MINOR_VERSION }}_${{ env.BOOST_PATCH_VERSION }}.tar.gz"
+    #       boost_url2="https://sourceforge.net/projects/boost/files/boost/${{ env.BOOST_MAJOR_VERSION }}.${{ env.BOOST_MINOR_VERSION }}.${{ env.BOOST_PATCH_VERSION }}/boost_${{ env.BOOST_MAJOR_VERSION }}_${{ env.BOOST_MINOR_VERSION }}_${{ env.BOOST_PATCH_VERSION }}.tar.gz"
+    #       set +e
+    #       curl -L -o "${{ runner.temp }}/boost.tar.gz" "$boost_url"
+    #       tar -xf "${{ runner.temp }}/boost.tar.gz" -C "${{ github.workspace }}/.."; _exitCode="$?"
+    #       if [ "$_exitCode" -ne "0" ]; then
+    #         curl -L -o "${{ runner.temp }}/boost.tar.gz" "$boost_url2"
+    #         tar -xf "${{ runner.temp }}/boost.tar.gz" -C "${{ github.workspace }}/.."; _exitCode="$?"
+    #       fi
+    #       mv "${{ github.workspace }}/.."/boost_* "${{ env.boost_path }}"
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v4

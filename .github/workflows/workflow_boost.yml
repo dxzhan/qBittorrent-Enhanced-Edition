@@ -1,0 +1,49 @@
+name: Reusable workflow boost
+
+on:
+  workflow_call:
+    inputs:
+      arch:
+        required: true
+        type: string
+      boost_path:
+        required: true
+        type: string
+      BOOST_MAJOR_VERSION:
+        required: true
+        type: string
+      BOOST_MINOR_VERSION:
+        required: true
+        type: string
+      BOOST_PATCH_VERSION:
+        required: true
+        type: string
+jobs:
+  boost_workflow_job:
+    name: Build Boost
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup ccache
+        uses: Chocobo1/setup-ccache-action@v1
+        with:
+          store_cache: ${{ github.ref == 'refs/heads/master' }}
+          update_packager_index: false
+          ccache_options: |
+            max_size=2G
+      - name: Install boost
+        env:
+          BOOST_MAJOR_VERSION: ${{ inputs.BOOST_MAJOR_VERSION }}
+          BOOST_MINOR_VERSION: ${{ inputs.BOOST_MINOR_VERSION }}
+          BOOST_PATCH_VERSION: ${{ inputs.BOOST_PATCH_VERSION }}
+          boost_path: ${{ inputs.boost_path }}
+        run: |
+          boost_url="https://boostorg.jfrog.io/artifactory/main/release/${{ env.BOOST_MAJOR_VERSION }}.${{ env.BOOST_MINOR_VERSION }}.${{ env.BOOST_PATCH_VERSION }}/source/boost_${{ env.BOOST_MAJOR_VERSION }}_${{ env.BOOST_MINOR_VERSION }}_${{ env.BOOST_PATCH_VERSION }}.tar.gz"
+          boost_url2="https://sourceforge.net/projects/boost/files/boost/${{ env.BOOST_MAJOR_VERSION }}.${{ env.BOOST_MINOR_VERSION }}.${{ env.BOOST_PATCH_VERSION }}/boost_${{ env.BOOST_MAJOR_VERSION }}_${{ env.BOOST_MINOR_VERSION }}_${{ env.BOOST_PATCH_VERSION }}.tar.gz"
+          set +e
+          curl -L -o "${{ runner.temp }}/boost.tar.gz" "$boost_url"
+          tar -xf "${{ runner.temp }}/boost.tar.gz" -C "${{ github.workspace }}/.."; _exitCode="$?"
+          if [ "$_exitCode" -ne "0" ]; then
+            curl -L -o "${{ runner.temp }}/boost.tar.gz" "$boost_url2"
+            tar -xf "${{ runner.temp }}/boost.tar.gz" -C "${{ github.workspace }}/.."; _exitCode="$?"
+          fi
+          mv "${{ github.workspace }}/.."/boost_* "${{ env.boost_path }}"
