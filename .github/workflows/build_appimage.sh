@@ -19,14 +19,14 @@ export PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig
 export SELF_DIR="$(dirname "$(readlink -f "${0}")")"
 
 . ${SELF_DIR}/utils.sh
-. ${SELF_DIR}/prepaare_boost.sh
+. ${SELF_DIR}/prepare_source.sh
+. ${SELF_DIR}/prepare_boost.sh
 . ${SELF_DIR}/prepare_ssl.sh
 . ${SELF_DIR}/prepare_cmake.sh
 . ${SELF_DIR}/prepare_ninja.sh
 . ${SELF_DIR}/prepare_qt.sh
 . ${SELF_DIR}/prepare_libtorrent.sh
 . ${SELF_DIR}/build_qbittorrent.sh
-. ${SELF_DIR}/prepare_source.sh
 
 
 
