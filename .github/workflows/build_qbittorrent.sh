@@ -25,7 +25,7 @@ build_qbittorrent() {
     cmake --build build
     cmake --install build
 
-    if [ x"${TARGET_HOST}" = x"Windows" ]; then
+    if [ "${TARGET_HOST}" = "Windows" ]; then
         cp -fv "src/release/qbittorrent-nox.exe" /tmp/
     else
         cp -fv "${CROSS_PREFIX}/bin/qbittorrent-nox" /tmp/

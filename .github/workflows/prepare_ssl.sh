@@ -8,7 +8,7 @@ prepare_ssl() {
   echo "OpenSSL version ${openssl_ver}"
   if [ ! -f "/usr/src/openssl-${openssl_ver}/.unpack_ok" ]; then
     openssl_latest_url="https://github.com/openssl/openssl/archive/refs/tags/${openssl_filename}"
-    if [ "${USE_CHINA_MIRROR}" = 1 ]; then
+    if [ "${USE_CHINA_MIRROR}" = "1" ]; then
       openssl_latest_url="https://ghp.ci/${openssl_latest_url}"
     fi
     retry curl -kSL "${openssl_latest_url}" \| tar -zxf - --strip-components=1 -C "/usr/src/openssl-${openssl_ver}/"

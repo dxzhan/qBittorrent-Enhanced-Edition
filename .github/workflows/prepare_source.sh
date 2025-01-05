@@ -3,7 +3,7 @@
 prepare_source() {
 rm -f /etc/apt/sources.list.d/*.list*
 # Ubuntu mirror for local building
-if [ x"${USE_CHINA_MIRROR}" = x1 ]; then
+if [ "${USE_CHINA_MIRROR}" = 1 ]; then
   source /etc/os-release
   if [ -f /etc/apt/sources.list.d/ubuntu.sources ]; then
     cat >/etc/apt/sources.list.d/ubuntu.sources <<EOF

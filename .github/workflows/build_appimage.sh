@@ -1,16 +1,5 @@
 #!/bin/bash -e
 
-. ./utils.sh
-. ./prepaare_boost.sh
-. ./prepare_ssl.sh
-. ./prepare_cmake.sh
-. ./prepare_ninja.sh
-. ./prepare_qt.sh
-. ./prepare_libtorrent.sh
-. ./build_qbittorrent.sh
-. ./prepare_source.sh
-
-
 # This script is for building AppImage
 # Please run this script in docker image: ubuntu:20.04
 # E.g: docker run --rm -v `git rev-parse --show-toplevel`:/build ubuntu:20.04 /build/.github/workflows/build_appimage.sh
@@ -29,6 +18,18 @@ export DEBIAN_FRONTEND=noninteractive
 export PKG_CONFIG_PATH=/usr/local/lib64/pkgconfig
 export SELF_DIR="$(dirname "$(readlink -f "${0}")")"
 
+. ${SELF_DIR}/utils.sh
+. ${SELF_DIR}/prepaare_boost.sh
+. ${SELF_DIR}/prepare_ssl.sh
+. ${SELF_DIR}/prepare_cmake.sh
+. ${SELF_DIR}/prepare_ninja.sh
+. ${SELF_DIR}/prepare_qt.sh
+. ${SELF_DIR}/prepare_libtorrent.sh
+. ${SELF_DIR}/build_qbittorrent.sh
+. ${SELF_DIR}/prepare_source.sh
+
+
+
 prepare_source
 
 prepare_baseenv() {
@@ -37,7 +38,7 @@ prepare_baseenv() {
   # retry apt-add-repository -yn ppa:savoury1/backports
   retry apt-add-repository -yn ppa:savoury1/gcc-11
 
-  if [ x"${USE_CHINA_MIRROR}" = x1 ]; then
+  if [ "${USE_CHINA_MIRROR}" = "1" ]; then
     sed -i 's@http://ppa.launchpad.net@https://launchpad.proxy.ustclug.org@' /etc/apt/sources.list.d/*.list
   fi
 

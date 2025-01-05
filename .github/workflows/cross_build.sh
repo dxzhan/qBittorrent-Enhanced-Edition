@@ -1,17 +1,5 @@
 #!/bin/bash -e
 
-. ./utils.sh
-. ./prepaare_boost.sh
-. ./prepare_ssl.sh
-. ./prepare_cmake.sh
-. ./prepare_ninja.sh
-. ./prepare_zlib.sh
-. ./prepare_qt.sh
-. ./prepare_libtorrent.sh
-. ./build_qbittorrent.sh
-. ./prepare_source.sh
-
-
 # This script is for static cross compiling
 # Please run this script in docker image: abcfy2/muslcc-toolchain-ubuntu:${CROSS_HOST}
 # E.g: docker run --rm -v `git rev-parse --show-toplevel`:/build abcfy2/muslcc-toolchain-ubuntu:arm-linux-musleabi /build/.github/workflows/cross_build.sh
@@ -41,6 +29,18 @@ export CXXFLAGS='-s'
 
 export SELF_DIR="$(dirname "$(readlink -f "${0}")")"
 mkdir -p "/usr/src"
+
+
+. ${SELF_DIR}/utils.sh
+. ${SELF_DIR}/prepaare_boost.sh
+. ${SELF_DIR}/prepare_ssl.sh
+. ${SELF_DIR}/prepare_cmake.sh
+. ${SELF_DIR}/prepare_ninja.sh
+. ${SELF_DIR}/prepare_zlib.sh
+. ${SELF_DIR}/prepare_qt.sh
+. ${SELF_DIR}/prepare_libtorrent.sh
+. ${SELF_DIR}/build_qbittorrent.sh
+. ${SELF_DIR}/prepare_source.sh
 
 prepare_source
 
