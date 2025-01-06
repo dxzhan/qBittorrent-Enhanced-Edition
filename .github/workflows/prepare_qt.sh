@@ -2,7 +2,7 @@
 
 prepare_qt() {
   mirror_base_url="https://download.qt.io/official_releases/qt"
-  if [ "${USE_CHINA_MIRROR}" = 1 ]; then
+  if [ "${USE_CHINA_MIRROR}" = "1" ]; then
     mirror_base_url="https://mirrors.aliyun.com/qt/archive/qt"
   fi
   if [ -z "${qt_major_ver}" ]; then
@@ -20,7 +20,11 @@ prepare_qt() {
   if [ -n "${CROSS_HOST}" ]; then
     if [ ! -f "/usr/src/qt-host/${qt_ver}/gcc_64/bin/qt.conf" ]; then
         pipx install aqtinstall
-        retry "${HOME}/.local/bin/aqt" install-qt -b ${mirror_base_url} -O /usr/src/qt-host linux desktop "${qt_ver}" --archives qtbase qttools icu
+        if [ "${USE_CHINA_MIRROR}" = "1" ]; then
+            retry "${HOME}/.local/bin/aqt" install-qt -b ${mirror_base_url} -O /usr/src/qt-host linux desktop "${qt_ver}" --archives qtbase qttools icu
+        else
+            retry "${HOME}/.local/bin/aqt" install-qt -O /usr/src/qt-host linux desktop "${qt_ver}" --archives qtbase qttools icu
+        fi
     fi
   fi
   if [ ! -f "/usr/src/qtbase-${qt_ver}/.unpack_ok" ]; then
