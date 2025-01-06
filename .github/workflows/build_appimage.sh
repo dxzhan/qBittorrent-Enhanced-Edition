@@ -35,8 +35,6 @@ prepare_source
 prepare_baseenv() {
   retry apt update
   retry apt install -y software-properties-common apt-transport-https
-  # retry apt-add-repository -yn ppa:savoury1/backports
-  retry apt-add-repository -yn ppa:savoury1/gcc-11
 
   if [ "${USE_CHINA_MIRROR}" = "1" ]; then
     sed -i 's@http://ppa.launchpad.net@https://launchpad.proxy.ustclug.org@' /etc/apt/sources.list.d/*.list
@@ -46,7 +44,6 @@ prepare_baseenv() {
     build-essential \
     curl \
     desktop-file-utils \
-    g++-11 \
     git \
     libbrotli-dev \
     libfontconfig1-dev \
@@ -87,9 +84,6 @@ prepare_baseenv() {
     zlib1g-dev \
     zsync
 
-  update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 100
-  update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 100
-
   apt autoremove --purge -y
   # strip all compiled files by default
   export CFLAGS='-s'
@@ -101,7 +95,7 @@ prepare_baseenv() {
 build_appimage() {
   # build AppImage
   linuxdeploy_qt_download_url="https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
-  if [ x"${USE_CHINA_MIRROR}" = x1 ]; then
+  if [ "${USE_CHINA_MIRROR}" = "1" ]; then
     linuxdeploy_qt_download_url="https://ghp.ci/${linuxdeploy_qt_download_url}"
   fi
   [ -x "/tmp/linuxdeployqt-continuous-x86_64.AppImage" ] || retry curl -kSLC- -o /tmp/linuxdeployqt-continuous-x86_64.AppImage "${linuxdeploy_qt_download_url}"
@@ -256,7 +250,7 @@ EOF
   # Workaround to use the static runtime with the appimage
   ARCH="$(arch)"
   appimagetool_download_url="https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-${ARCH}.AppImage"
-  if [ x"${USE_CHINA_MIRROR}" = x1 ]; then
+  if [ "${USE_CHINA_MIRROR}" = "1" ]; then
     appimagetool_download_url="https://ghp.ci/${appimagetool_download_url}"
   fi
   [ -x "/tmp/appimagetool-${ARCH}.AppImage" ] || retry curl -kSLC- -o /tmp/appimagetool-"${ARCH}".AppImage "${appimagetool_download_url}"
