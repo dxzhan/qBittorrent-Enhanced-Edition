@@ -13,8 +13,8 @@ prepare_ninja() {
       rm -f "/usr/src/ninja-${ninja_ver}-linux.zip"
       retry curl -kLC- -o "/usr/src/ninja-${ninja_ver}-linux.zip" "${ninja_binary_url}"
       touch "/usr/src/ninja-${ninja_ver}-linux.zip.download_ok"
-      unzip -d /usr/local/bin "/usr/src/ninja-${ninja_ver}-linux.zip"
     fi
+    unzip -d /usr/local/bin "/usr/src/ninja-${ninja_ver}-linux.zip"
   fi
   echo "Ninja version $(ninja --version) done!"
 }
