@@ -270,7 +270,7 @@ prepare_cmake
 prepare_ninja
 # compile openssl 3.x. qBittorrent >= 5.0 required openssl 3.x
 prepare_ssl
-preapare_boost
+prepare_boost
 prepare_qt
 prepare_libtorrent
 build_qbittorrent
