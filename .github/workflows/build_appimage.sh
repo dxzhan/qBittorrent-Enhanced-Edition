@@ -266,11 +266,12 @@ move_artifacts() {
 }
 
 prepare_baseenv
-prepare_buildenv
+prepare_cmake
+prepare_ninja
 # compile openssl 3.x. qBittorrent >= 5.0 required openssl 3.x
 prepare_ssl
-prepare_qt
 preapare_libboost
+prepare_qt
 prepare_libtorrent
 build_qbittorrent
 build_appimage
