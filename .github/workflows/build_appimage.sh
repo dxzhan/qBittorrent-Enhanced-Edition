@@ -35,6 +35,8 @@ prepare_source
 prepare_baseenv() {
   retry apt update
   retry apt install -y software-properties-common apt-transport-https
+  # retry apt-add-repository -yn ppa:savoury1/backports
+  retry apt-add-repository -yn ppa:savoury1/gcc-11
 
   if [ "${USE_CHINA_MIRROR}" = "1" ]; then
     sed -i 's@http://ppa.launchpad.net@https://launchpad.proxy.ustclug.org@' /etc/apt/sources.list.d/*.list
