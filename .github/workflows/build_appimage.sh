@@ -39,11 +39,12 @@ prepare_baseenv() {
   if [ "${USE_CHINA_MIRROR}" = "1" ]; then
     sed -i 's@http://ppa.launchpad.net@https://launchpad.proxy.ustclug.org@' /etc/apt/sources.list.d/*.list
   fi
-
+  retry apt update
   retry apt install -y \
     build-essential \
     curl \
     desktop-file-utils \
+    g++-11 \
     git \
     libbrotli-dev \
     libfontconfig1-dev \
