@@ -87,6 +87,9 @@ prepare_baseenv() {
     zlib1g-dev \
     zsync
 
+  update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-11 100
+  update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-11 100
+
   apt autoremove --purge -y
   # strip all compiled files by default
   export CFLAGS='-s'
