@@ -3,7 +3,7 @@
 prepare_libtorrent() {
   echo "libtorrent-rasterbar branch: ${LIBTORRENT_BRANCH}"
   libtorrent_git_url="https://github.com/arvidn/libtorrent.git"
-  if [ "${USE_CHINA_MIRROR}" = 1 ]; then
+  if [ "${USE_CHINA_MIRROR}" = "1" ]; then
     libtorrent_git_url="https://ghp.ci/${libtorrent_git_url}"
   fi
   if [ ! -d "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/" ]; then

@@ -1,0 +1,54 @@
+#!/bin/bash -e
+export ARCH="aarch64-linux-musl"
+export USE_CHINA_MIRROR="1"
+export USE_ZLIB_NG="1"
+export boost_ver="1.87.0"
+export qt_major_ver="6.8"
+export qt_ver="6.8.1"
+export cmake_latest_ver="3.31.3"
+export ninja_ver="v1.12.1"
+
+curdir="$(git rev-parse --show-toplevel)"
+echo "${curdir}"
+
+#docker run --rm -v `git rev-parse --show-toplevel`:/build abcfy2/muslcc-toolchain-ubuntu:aarch64-unknown-linux-musl /build/.github/workflows/cross_build.sh
+
+#docker run --rm -v /ldata/workspace/qbittorrent/qBittorrent-Enhanced-Edition:/build muslcc-toolchain-ubuntu:aarch64-linux-musl /build/.github/workflows/cross_build.sh
+#docker run -e ARCH=${ARCH} -e USE_CHINA_MIRROR=${USE_CHINA_MIRROR} -e USE_ZLIB_NG=${USE_ZLIB_NG} -e qt_ver=${qt_ver} -e cmake_latest_ver=${cmake_latest_ver} -e ninja_ver=${ninja_ver} -v ${curdir}:/build -v ${curdir}/qbee-nox-cache:/var/cache/apt -v ${curdir}/qbee-nox-cache:/usr/src muslcc-toolchain-ubuntu:aarch64-linux-musl /build/.github/workflows/cross_build.sh
+
+
+# manaul build
+# in china
+#git clone --depth=1 https://github.com/abcfy2/docker-muslcc-toolchain-ubuntu.git
+#docker build --build-arg ARCH="${ARCH}" -t muslcc-toolchain-ubuntu:aarch64-linux-musl ./docker-muslcc-toolchain-ubuntu/
+docker run -it \
+    -e USE_CHINA_MIRROR=${USE_CHINA_MIRROR} \
+    -e ARCH=${ARCH} \
+    -e USE_ZLIB_NG=${USE_ZLIB_NG} \
+    -e boost_ver=${boost_ver} \
+    -e qt_major_ver=${qt_major_ver} \
+    -e qt_ver=${qt_ver} \
+    -e cmake_latest_ver=${cmake_latest_ver} \
+    -e ninja_ver=${ninja_ver} \
+    -v ${curdir}:/build \
+    -v ${curdir}/qbee-nox-cache:/var/cache/apt \
+    -v ${curdir}/qbee-nox-cache:/usr/src \
+    muslcc-toolchain-ubuntu:aarch64-linux-musl \
+    /bin/bash
+# in docker run command
+# cd /build/.github/workflows
+# ./cross_build
+
+#ocker run -it \
+#   -e ARCH=${ARCH} \
+#   -e USE_ZLIB_NG=${USE_ZLIB_NG} \
+#   -e boost_ver=${boost_ver} \
+#   -e qt_major_ver=${qt_major_ver} \
+#   -e qt_ver=${qt_ver} \
+#   -e cmake_latest_ver=${cmake_latest_ver} \
+#   -e ninja_ver=${ninja_ver} \
+#   -v ${curdir}:/build \
+#   -v ${curdir}/qbee-nox-cache:/var/cache/apt \
+#   -v ${curdir}/qbee-nox-cache:/usr/src \
+#   muslcc-toolchain-ubuntu:aarch64-linux-musl \
+#   /bin/bash

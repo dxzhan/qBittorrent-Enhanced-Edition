@@ -38,6 +38,7 @@ mkdir -p "/usr/src"
 . ${SELF_DIR}/prepare_cmake.sh
 . ${SELF_DIR}/prepare_ninja.sh
 . ${SELF_DIR}/prepare_zlib.sh
+. ${SELF_DIR}/prepare_sqlite3.sh
 . ${SELF_DIR}/prepare_qt.sh
 . ${SELF_DIR}/prepare_libtorrent.sh
 . ${SELF_DIR}/build_qbittorrent.sh
@@ -98,7 +99,7 @@ case "${TARGET_HOST}" in
 *)
   TARGET_HOST=Linux
   apt install -y "qemu-user-static"
-  if [ x"${TARGET_ARCH}" = xi686 ]; then
+  if [ "${TARGET_ARCH}" = "i686" ]; then
     RUNNER_CHECKER="qemu-i386-static"
   else
     RUNNER_CHECKER="qemu-${TARGET_ARCH}-static"
@@ -109,6 +110,7 @@ esac
 prepare_cmake
 prepare_ninja
 prepare_zlib
+prepare_sqlite3
 prepare_ssl
 prepare_boost
 prepare_qt

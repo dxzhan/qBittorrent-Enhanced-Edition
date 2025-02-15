@@ -5,7 +5,7 @@ prepare_zlib() {
     zlib_ng_latest_tag="$(retry curl -ksSL --compressed https://api.github.com/repos/zlib-ng/zlib-ng/releases \| jq -r "'.[0].tag_name'")"
     zlib_ng_latest_url="https://github.com/zlib-ng/zlib-ng/archive/refs/tags/${zlib_ng_latest_tag}.tar.gz"
     echo "zlib-ng version ${zlib_ng_latest_tag}"
-    if [ "${USE_CHINA_MIRROR}" = 1 ]; then
+    if [ "${USE_CHINA_MIRROR}" = "1" ]; then
       zlib_ng_latest_url="https://ghp.ci/${zlib_ng_latest_url}"
     fi
     if [ ! -f "/usr/src/zlib-ng-${zlib_ng_latest_tag}/.unpack_ok" ]; then
@@ -29,7 +29,7 @@ prepare_zlib() {
     cmake --install build
     # Fix mingw build sharedlibdir lost issue
     sed -i 's@^sharedlibdir=.*@sharedlibdir=${libdir}@' "${CROSS_PREFIX}/lib/pkgconfig/zlib.pc"
-    echo "zlib-ng version ${zlib_ng_latest_tag}"
+    echo "zlib-ng version ${zlib_ng_latest_tag} done!"
   else
     zlib_ver="$(retry curl -ksSL --compressed https://zlib.net/ \| grep -i "'<FONT.*FONT>'" \| sed -r "'s/.*zlib\s*([^<]+).*/\1/'" \| head -1)"
     echo "zlib version ${zlib_ver}"

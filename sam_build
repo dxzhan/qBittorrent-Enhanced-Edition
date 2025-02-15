@@ -1,0 +1,5 @@
+#!/bin/bash
+cmake -B build -DCMAKE_BUILD_TYPE=Release -DGUI=OFF -DQT6=ON -DBUILD_SHARED_LIBS=OFF -DCMAKE_CXX_STANDARD=17 -DCMAKE_CXX_EXTENSIONS=OFF -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON -Ddeprecated-functions=OFF
+cmake --build build
+sudo cmake --install build
+exit 0
