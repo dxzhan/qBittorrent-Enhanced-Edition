@@ -107,6 +107,8 @@ case "${TARGET_HOST}" in
   ;;
 esac
 
+export USE_CHINA_MIRROR="0"
+
 prepare_cmake
 prepare_ninja
 prepare_zlib

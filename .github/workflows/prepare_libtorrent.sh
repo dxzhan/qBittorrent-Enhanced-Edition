@@ -11,18 +11,20 @@ prepare_libtorrent() {
       "${libtorrent_git_url}" \
       "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
   fi
-  cd "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
-  if [ "${USE_CHINA_MIRROR}" != "1" ]; then
-    if ! git pull; then
-        # if pull failed, retry clone the repository.
-        cd /
-        rm -fr "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
-        retry git clone --depth 1 --recursive --shallow-submodules --branch "${LIBTORRENT_BRANCH}" \
-        "${libtorrent_git_url}" \
-        "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
-        cd "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
+  if [ -d "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/" ]; then
+    cd "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
+    if [ "${USE_CHINA_MIRROR}" != "1" ]; then
+        if ! git pull; then
+            # if pull failed, retry clone the repository.
+            cd /
+            rm -fr "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
+            retry git clone --depth 1 --recursive --shallow-submodules --branch "${LIBTORRENT_BRANCH}" \
+            "${libtorrent_git_url}" \
+            "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
+        fi
     fi
   fi
+  cd "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
   rm -fr build/CMakeCache.txt
   if [ -n "${CROSS_HOST}" ]; then
     # TODO: solve mingw build

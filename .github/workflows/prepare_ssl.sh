@@ -2,8 +2,11 @@
 
 prepare_ssl() {
   openssl_filename="$(retry curl -ksSL --compressed https://openssl-library.org/source/ \| grep -o "'>openssl-3\(\.[0-9]*\)*tar.gz<'" \| grep -o "'[^>]*.tar.gz'" \| sort -nr \| head -1)"
-  openssl_ver="$(echo "${openssl_filename}" | sed -r 's/openssl-(.+)\.tar\.gz/\1/')"
-  mkdir -p "/usr/src/openssl-${openssl_ver}/"
+  echo "openssl_filename=$openssl_filename"
+  if [ -z "$openssl_ver" ]; then
+    openssl_ver="$(echo "${openssl_filename}" | sed -r 's/openssl-(.+)\.tar\.gz/\1/')"
+    mkdir -p "/usr/src/openssl-${openssl_ver}/"
+  fi
 
   echo "OpenSSL version ${openssl_ver}"
   if [ ! -f "/usr/src/openssl-${openssl_ver}/.unpack_ok" ]; then
@@ -14,6 +17,7 @@ prepare_ssl() {
     retry curl -kSL "${openssl_latest_url}" \| tar -zxf - --strip-components=1 -C "/usr/src/openssl-${openssl_ver}/"
     touch "/usr/src/openssl-${openssl_ver}/.unpack_ok"
   fi
+
   cd "/usr/src/openssl-${openssl_ver}/"
   if [ -n "${CROSS_HOST}" ]; then
     ./Configure -static no-tests --openssldir=/etc/ssl --cross-compile-prefix="${CROSS_HOST}-" --prefix="${CROSS_PREFIX}" "${OPENSSL_COMPILER}"

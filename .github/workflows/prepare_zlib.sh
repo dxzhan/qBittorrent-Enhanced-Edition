@@ -2,12 +2,16 @@
 
 prepare_zlib() {
   if [ "${USE_ZLIB_NG}" = "1" ]; then
-    zlib_ng_latest_tag="$(retry curl -ksSL --compressed https://api.github.com/repos/zlib-ng/zlib-ng/releases \| jq -r "'.[0].tag_name'")"
-    zlib_ng_latest_url="https://github.com/zlib-ng/zlib-ng/archive/refs/tags/${zlib_ng_latest_tag}.tar.gz"
-    echo "zlib-ng version ${zlib_ng_latest_tag}"
-    if [ "${USE_CHINA_MIRROR}" = "1" ]; then
-      zlib_ng_latest_url="https://ghp.ci/${zlib_ng_latest_url}"
+    if [ -z "$zlib_ng_latest_tag" ]; then
+        zlib_ng_latest_tag="$(retry curl -ksSL --compressed https://api.github.com/repos/zlib-ng/zlib-ng/releases \| jq -r "'.[0].tag_name'")"
     fi
+
+    zlib_ng_latest_url="https://github.com/zlib-ng/zlib-ng/archive/refs/tags/${zlib_ng_latest_tag}.tar.gz"
+    if [ "${USE_CHINA_MIRROR}" = "1" ]; then
+        zlib_ng_latest_url="https://ghp.ci/${zlib_ng_latest_url}"
+    fi
+    echo "zlib-ng version ${zlib_ng_latest_tag}"
+
     if [ ! -f "/usr/src/zlib-ng-${zlib_ng_latest_tag}/.unpack_ok" ]; then
       mkdir -p "/usr/src/zlib-ng-${zlib_ng_latest_tag}/"
       retry curl -ksSL "${zlib_ng_latest_url}" \| tar -zxf - --strip-components=1 -C "/usr/src/zlib-ng-${zlib_ng_latest_tag}/"
