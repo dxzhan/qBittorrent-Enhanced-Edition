@@ -7,6 +7,8 @@ export qt_major_ver="6.8"
 export qt_ver="6.8.1"
 export cmake_latest_ver="3.31.3"
 export ninja_ver="v1.12.1"
+export openssl_ver="3.4.1"
+export zlib_ng_latest_tag="2.2.4"
 
 curdir="$(git rev-parse --show-toplevel)"
 echo "${curdir}"
@@ -25,6 +27,8 @@ docker run -it \
     -e USE_CHINA_MIRROR=${USE_CHINA_MIRROR} \
     -e ARCH=${ARCH} \
     -e USE_ZLIB_NG=${USE_ZLIB_NG} \
+    -e zlib_ng_latest_tag=${zlib_ng_latest_tag} \
+    -e openssl_ver=${openssl_ver} \
     -e boost_ver=${boost_ver} \
     -e qt_major_ver=${qt_major_ver} \
     -e qt_ver=${qt_ver} \
@@ -35,13 +39,12 @@ docker run -it \
     -v ${curdir}/qbee-nox-cache:/usr/src \
     muslcc-toolchain-ubuntu:aarch64-linux-musl \
     /bin/bash
-# in docker run command
-# cd /build/.github/workflows
-# ./cross_build
 
 #ocker run -it \
 #   -e ARCH=${ARCH} \
 #   -e USE_ZLIB_NG=${USE_ZLIB_NG} \
+#   -e zlib_ng_latest_tag=${zlib_ng_latest_tag} \
+#   -e openssl_ver=${openssl_ver} \
 #   -e boost_ver=${boost_ver} \
 #   -e qt_major_ver=${qt_major_ver} \
 #   -e qt_ver=${qt_ver} \
@@ -52,3 +55,8 @@ docker run -it \
 #   -v ${curdir}/qbee-nox-cache:/usr/src \
 #   muslcc-toolchain-ubuntu:aarch64-linux-musl \
 #   /bin/bash
+
+
+# in docker run command
+# cd /build/.github/workflows
+# ./cross_build
