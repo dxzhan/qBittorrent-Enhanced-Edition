@@ -12,5 +12,5 @@ prepare_sqlite3() {
     make -j$(nproc)
     make install
 
-    echo "sqlite3-3.48.0 done!"
+    echo "sqlite3-3.49.0 done!"
 }
