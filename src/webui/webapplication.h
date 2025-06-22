@@ -36,12 +36,12 @@
 #include <QElapsedTimer>
 #include <QHash>
 #include <QHostAddress>
+#include <QList>
 #include <QMap>
 #include <QObject>
 #include <QRegularExpression>
 #include <QSet>
 #include <QTranslator>
-#include <QVector>
 
 #include "base/applicationcomponent.h"
 #include "base/global.h"
@@ -54,7 +54,7 @@
 #include "base/utils/version.h"
 #include "api/isessionmanager.h"
 
-inline const Utils::Version<3, 2> API_VERSION {2, 11, 2};
+inline const Utils::Version<3, 2> API_VERSION {2, 11, 4};
 
 class QTimer;
 
@@ -128,9 +128,11 @@ private:
     bool isAuthNeeded();
     bool isPublicAPI(const QString &scope, const QString &action) const;
 
+    bool isOriginTrustworthy() const;
     bool isCrossSiteRequest(const Http::Request &request) const;
     bool validateHostHeader(const QStringList &domains) const;
 
+    // reverse proxy
     QHostAddress resolveClientAddress() const;
 
     // Persistent data
@@ -150,6 +152,7 @@ private:
     {
         // <<controller name, action name>, HTTP method>
         {{u"app"_s, u"sendTestEmail"_s}, Http::METHOD_POST},
+        {{u"app"_s, u"setCookies"_s}, Http::METHOD_POST},
         {{u"app"_s, u"setPreferences"_s}, Http::METHOD_POST},
         {{u"app"_s, u"shutdown"_s}, Http::METHOD_POST},
         {{u"auth"_s, u"login"_s}, Http::METHOD_POST},
@@ -177,6 +180,7 @@ private:
         {{u"torrents"_s, u"addPeers"_s}, Http::METHOD_POST},
         {{u"torrents"_s, u"addTags"_s}, Http::METHOD_POST},
         {{u"torrents"_s, u"addTrackers"_s}, Http::METHOD_POST},
+        {{u"torrents"_s, u"addWebSeeds"_s}, Http::METHOD_POST},
         {{u"transfer"_s, u"banPeers"_s}, Http::METHOD_POST},
         {{u"torrents"_s, u"bottomPrio"_s}, Http::METHOD_POST},
         {{u"torrents"_s, u"createCategory"_s}, Http::METHOD_POST},
@@ -186,6 +190,7 @@ private:
         {{u"torrents"_s, u"deleteTags"_s}, Http::METHOD_POST},
         {{u"torrents"_s, u"editCategory"_s}, Http::METHOD_POST},
         {{u"torrents"_s, u"editTracker"_s}, Http::METHOD_POST},
+        {{u"torrents"_s, u"editWebSeed"_s}, Http::METHOD_POST},
         {{u"torrents"_s, u"filePrio"_s}, Http::METHOD_POST},
         {{u"torrents"_s, u"increasePrio"_s}, Http::METHOD_POST},
         {{u"torrents"_s, u"reannounce"_s}, Http::METHOD_POST},
@@ -193,6 +198,7 @@ private:
         {{u"torrents"_s, u"removeCategories"_s}, Http::METHOD_POST},
         {{u"torrents"_s, u"removeTags"_s}, Http::METHOD_POST},
         {{u"torrents"_s, u"removeTrackers"_s}, Http::METHOD_POST},
+        {{u"torrents"_s, u"removeWebSeeds"_s}, Http::METHOD_POST},
         {{u"torrents"_s, u"rename"_s}, Http::METHOD_POST},
         {{u"torrents"_s, u"renameFile"_s}, Http::METHOD_POST},
         {{u"torrents"_s, u"renameFolder"_s}, Http::METHOD_POST},
@@ -206,6 +212,7 @@ private:
         {{u"torrents"_s, u"setShareLimits"_s}, Http::METHOD_POST},
         {{u"torrents"_s, u"setSSLParameters"_s}, Http::METHOD_POST},
         {{u"torrents"_s, u"setSuperSeeding"_s}, Http::METHOD_POST},
+        {{u"torrents"_s, u"setTags"_s}, Http::METHOD_POST},
         {{u"torrents"_s, u"setUploadLimit"_s}, Http::METHOD_POST},
         {{u"transfer"_s, u"setDownloadLimit"_s}, Http::METHOD_POST},
         {{u"transfer"_s, u"setSpeedLimitsMode"_s}, Http::METHOD_POST},
@@ -234,7 +241,7 @@ private:
     AuthController *m_authController = nullptr;
     bool m_isLocalAuthEnabled = false;
     bool m_isAuthSubnetWhitelistEnabled = false;
-    QVector<Utils::Net::Subnet> m_authSubnetWhitelist;
+    QList<Utils::Net::Subnet> m_authSubnetWhitelist;
     int m_sessionTimeout = 0;
     bool m_cookieExpirationEnabled = false;
     QString m_sessionCookieName;
@@ -248,10 +255,10 @@ private:
 
     // Reverse proxy
     bool m_isReverseProxySupportEnabled = false;
-    QVector<Utils::Net::Subnet> m_trustedReverseProxyList;
+    QList<Utils::Net::Subnet> m_trustedReverseProxyList;
     QHostAddress m_clientAddress;
 
-    QVector<Http::Header> m_prebuiltHeaders;
+    QList<Http::Header> m_prebuiltHeaders;
 
     Utils::Thread::UniquePtr m_workerThread;
     FreeDiskSpaceChecker *m_freeDiskSpaceChecker = nullptr;

@@ -70,6 +70,22 @@
         <source>Add to top of queue</source>
         <translation>เลื่อนเป็นคิวแรกสุด</translation>
     </message>
+    <message>
+        <source>One link per line (HTTP links, Magnet links and info-hashes are supported)</source>
+        <translation>หนึ่งลิ้งก์ต่อบรรทัด (HTTP ลิ้งก์, รองรับลิงก์แม่เหล็กและแฮชข้อมูล)</translation>
+    </message>
+    <message>
+        <source>Add torrent links</source>
+        <translation>เพิ่มลิงก์ทอร์เรนต์</translation>
+    </message>
+    <message>
+        <source>Select .torrent files</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Torrent options</source>
+        <translation type="unfinished" />
+    </message>
 </context>
 <context>
     <name>CategoryFilterModel</name>
@@ -126,10 +142,6 @@
     <message>
         <source>Exit qBittorrent</source>
         <translation>ออก qBittorrent</translation>
-    </message>
-    <message>
-        <source>Only one link per line</source>
-        <translation>หนึ่งลิงค์ต่อบรรทัดเท่านั้น</translation>
     </message>
     <message>
         <source>Global upload rate limit must be greater than 0 or disabled.</source>
@@ -205,10 +217,6 @@
         <translation>บันทึกไฟล์ไปยังตำแหน่ง:</translation>
     </message>
     <message>
-        <source>Cookie:</source>
-        <translation>คุกกี้:</translation>
-    </message>
-    <message>
         <source>More information</source>
         <translation>ข้อมูลมากกว่านี้</translation>
     </message>
@@ -272,10 +280,6 @@
         <translation>ออกจากระบบ</translation>
     </message>
     <message>
-        <source>Download Torrents from their URLs or Magnet links</source>
-        <translation>ดาวน์โหลดทอร์เรนต์จาก URL หรือลิงก์แม่เหล็ก</translation>
-    </message>
-    <message>
         <source>Upload local torrent</source>
         <translation>อัปโหลดทอร์เรนต์ในเครื่อง</translation>
     </message>
@@ -294,10 +298,6 @@
     <message>
         <source>Invalid category name:\nPlease do not use any special characters in the category name.</source>
         <translation>ชื่อหมวดหมู่ไม่ถูกต้อง:\nโปรดอย่าใช้อักขระพิเศษใดๆ ในชื่อหมวดหมู่</translation>
-    </message>
-    <message>
-        <source>Unable to create category</source>
-        <translation>ไม่สามารถสร้างหมวดหมู่ได้</translation>
     </message>
     <message>
         <source>Upload rate threshold must be greater than 0.</source>
@@ -360,10 +360,6 @@
         <translation>ผู้พัฒนาโปรแกรมเริ่มแรก</translation>
     </message>
     <message>
-        <source>Are you sure you want to remove the selected torrents from the transfer list?</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
         <source>The port used for the WebUI must be between 1 and 65535.</source>
         <translation type="unfinished" />
     </message>
@@ -376,28 +372,76 @@
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Unable to log in, qBittorrent is probably unreachable.</source>
-        <translation>ไม่สามารถเข้าสู่ระบบได้ qBittorrent อาจไม่สามารถเข้าถึงได้</translation>
+        <source>External IP: N/A</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Reverse proxy setup examples</source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Could not contact qBittorrent</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Password</source>
-        <translation>รหัสผ่าน</translation>
+        <source>Remember choice</source>
+        <translation>จำตัวเลือก</translation>
     </message>
     <message>
-        <source>Username</source>
-        <translation>ชื่อผู้ใช้</translation>
+        <source>Are you sure you want to remove these %1 torrents from the transfer list?</source>
+        <translation type="unfinished" />
     </message>
     <message>
-        <source>Invalid Username or Password.</source>
-        <translation>ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง.</translation>
+        <source>Unable to delete torrents.</source>
+        <translation type="unfinished" />
     </message>
     <message>
-        <source>Login</source>
-        <translation>ล็อกอิน</translation>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>External IP: %1%2</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Edit web seed</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Are you sure you want to remove %1 from the transfer list?</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to set Auto Torrent Management for the selected torrents.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to stop torrents.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to download file</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>External IPs: %1, %2</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to recheck torrents.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>List of web seeds to add (one per line):</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to start torrents.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Add web seeds</source>
+        <translation type="unfinished" />
     </message>
 </context>
 <context>
@@ -603,12 +647,40 @@
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Would you like to start all torrents?</source>
+        <source>Filter by:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Save Path</source>
         <translation type="unfinished" />
     </message>
     <message>
         <source>Stop</source>
         <translation>หยุด</translation>
+    </message>
+    <message>
+        <source>Use regular expression</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Would you like to start all torrents?</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Manage Cookies...</source>
+        <translation>จัดการคุกกี้...</translation>
+    </message>
+    <message>
+        <source>Unable to export torrent file</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>ชื่อ</translation>
     </message>
     <message>
         <source>Would you like to stop all torrents?</source>
@@ -620,10 +692,6 @@
     </message>
     <message>
         <source>Stop All</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>Start</source>
         <translation type="unfinished" />
     </message>
 </context>
@@ -652,10 +720,6 @@
     <message>
         <source>Language</source>
         <translation>ภาษา</translation>
-    </message>
-    <message>
-        <source>User Interface Language:</source>
-        <translation type="unfinished" />
     </message>
     <message>
         <source>Email notification upon download completion</source>
@@ -1284,10 +1348,6 @@
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Enable cookie Secure flag (requires HTTPS)</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
         <source>Header: value pairs, one per line</source>
         <translation type="unfinished" />
     </message>
@@ -1516,19 +1576,11 @@
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Run external program on torrent finished</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
         <source>Whitelist for filtering HTTP Host header values.
 In order to defend against DNS rebinding attack,
 you should put in domain names used by WebUI server.
 
 Use ';' to split multiple entries. Can use wildcard '*'.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>Run external program on torrent added</source>
         <translation type="unfinished" />
     </message>
     <message>
@@ -1594,10 +1646,6 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     <message>
         <source>days</source>
         <translation>วัน</translation>
-    </message>
-    <message>
-        <source>Log file</source>
-        <translation type="unfinished" />
     </message>
     <message>
         <source>Behavior</source>
@@ -1812,55 +1860,23 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Send test email</source>
-        <translation>ส่งอีเมลทดสอบ</translation>
-    </message>
-    <message>
-        <source>Attempted to send email. Check your inbox to confirm success</source>
+        <source>Color scheme:</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Automatically append these trackers to new downloads:</source>
+        <source>Show external IP in status bar</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Stop torrent</source>
-        <translation>หยุดทอร์เรนต์</translation>
-    </message>
-    <message>
-        <source>Move files to trash (if possible)</source>
-        <translation>ย้่ายไฟล์ไปยังถังขยะ (หากทำได้)</translation>
-    </message>
-    <message>
-        <source>Torrent content removing mode:</source>
+        <source>Fetched trackers</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Delete files permanently</source>
-        <translation>ลบไฟล์ถาวร</translation>
-    </message>
-    <message>
-        <source>Merge trackers to existing torrent</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>When duplicate torrent is being added</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>Resolve relative Save Path against appropriate Category path instead of Default one</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>Use Category paths in Manual Mode</source>
-        <translation type="unfinished" />
+        <source>Confirm when deleting torrents</source>
+        <translation>ยืนยันเมื่อทำการลบทอร์เรนต์</translation>
     </message>
     <message>
         <source>Ignore SSL errors:</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>Simple pread/pwrite</source>
         <translation type="unfinished" />
     </message>
     <message>
@@ -1868,11 +1884,151 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation type="unfinished" />
     </message>
     <message>
+        <source>Delete files permanently</source>
+        <translation>ลบไฟล์ถาวร</translation>
+    </message>
+    <message>
         <source>Auto</source>
         <translation>อัตโนมัติ</translation>
     </message>
     <message>
-        <source>Color scheme:</source>
+        <source>Use alternating row colors</source>
+        <translation>ใช้สีแถวสลับกัน</translation>
+    </message>
+    <message>
+        <source>Display full announce URL in the Tracker column</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>URL:</source>
+        <translation>URL:</translation>
+    </message>
+    <message>
+        <source>Transfer list</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>The announce port must be between 0 and 65535.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Light</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Automatically append these trackers to new downloads:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Downloading torrents:</source>
+        <translation>กำลังดาวน์โหลดทอร์เรนต์:</translation>
+    </message>
+    <message>
+        <source>Start / stop torrent</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Send test email</source>
+        <translation>ส่งอีเมลทดสอบ</translation>
+    </message>
+    <message>
+        <source>Completed torrents:</source>
+        <translation>ทอร์เรนต์ที่เสร็จสมบูรณ์:</translation>
+    </message>
+    <message>
+        <source>Enable cookie Secure flag (requires HTTPS or localhost connection)</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>When duplicate torrent is being added</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Action on double-click</source>
+        <translation>การดำเนินการเมื่อดับเบิลคลิก</translation>
+    </message>
+    <message>
+        <source>Save statistics interval:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Shows a confirmation dialog upon torrent deletion</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Run on torrent finished:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Attempted to send email. Check your inbox to confirm success</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Automatically append trackers from URL to new downloads:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Torrent content removing mode:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Move files to trash (if possible)</source>
+        <translation>ย้่ายไฟล์ไปยังถังขยะ (หากทำได้)</translation>
+    </message>
+    <message>
+        <source>Stop torrent</source>
+        <translation>หยุดทอร์เรนต์</translation>
+    </message>
+    <message>
+        <source>Use Category paths in Manual Mode</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>List of alternative WebUI</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Run on torrent added:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Port reported to trackers (requires restart) [0: listening port]:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>User interface language:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Merge trackers to existing torrent</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Confirm torrent recheck:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Custom WebUI settings</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Following settings are WebUI only</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Simple pread/pwrite</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Resolve relative Save Path against appropriate Category path instead of Default one</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>No action</source>
+        <translation>ไม่มีการกระทำ</translation>
+    </message>
+    <message>
+        <source>Auto hide zero status filters</source>
         <translation type="unfinished" />
     </message>
     <message>
@@ -1880,7 +2036,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>หน้าตา</translation>
     </message>
     <message>
-        <source>Light</source>
+        <source>Log Files</source>
         <translation type="unfinished" />
     </message>
 </context>
@@ -1925,12 +2081,12 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     <message>
         <source>Downloaded</source>
         <comment>i.e: total data downloaded</comment>
-        <translation>ดาวน์โหลด</translation>
+        <translation>ดาวน์โหลดแล้ว</translation>
     </message>
     <message>
         <source>Uploaded</source>
         <comment>i.e: total data uploaded</comment>
-        <translation>อัพโหลด</translation>
+        <translation>อัปโหลดแล้ว</translation>
     </message>
     <message>
         <source>Relevance</source>
@@ -1990,7 +2146,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source>Do not download</source>
-        <translation>ไม่โหลด</translation>
+        <translation>อย่าโหลด</translation>
     </message>
 </context>
 <context>
@@ -2037,7 +2193,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source>Uploaded:</source>
-        <translation>อัพโหลด:</translation>
+        <translation>อัปโหลด:</translation>
     </message>
     <message>
         <source>Seeds:</source>
@@ -2057,11 +2213,11 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source>Download Limit:</source>
-        <translation>จำกัดดาวน์โหลด:</translation>
+        <translation>ขีดจำกัดการดาวน์โหลด:</translation>
     </message>
     <message>
         <source>Upload Limit:</source>
-        <translation>จำกัดอัปโหลด:</translation>
+        <translation>ขีดจำกัดการอัปโหลด:</translation>
     </message>
     <message>
         <source>Wasted:</source>
@@ -2248,20 +2404,52 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Popularity:</source>
+        <source>Copy web seed URL</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Ratio / Time Active (in months), indicates how popular the torrent is</source>
+        <source>Replace option</source>
         <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Edit web seed URL...</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Web seed URL:</source>
+        <translation>URL ส่งต่อเว็บ:</translation>
     </message>
     <message>
         <source>Yes</source>
         <translation>ใช่</translation>
     </message>
     <message>
+        <source>Ratio / Time Active (in months), indicates how popular the torrent is</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Popularity:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Apply to which filename part</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <source>No</source>
         <translation>ไม่</translation>
+    </message>
+    <message>
+        <source>Remove web seed</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Web seed editing</source>
+        <translation>แก้ไขการส่งต่อเว็บ</translation>
+    </message>
+    <message>
+        <source>Add web seeds...</source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Private:</source>
@@ -2366,7 +2554,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source>Total queued size:</source>
-        <translation>ขนาดเข้าคิวทั้งหมด:</translation>
+        <translation>ขนาดคิวทั้งหมด:</translation>
     </message>
 </context>
 <context>
@@ -2476,7 +2664,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Running (%1)</source>
+        <source>Running (0)</source>
         <translation type="unfinished" />
     </message>
     <message>
@@ -2488,8 +2676,20 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Running (0)</source>
+        <source>Running (%1)</source>
         <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Remove torrents</source>
+        <translation>ลบทอเร้นต์</translation>
+    </message>
+    <message>
+        <source>Start torrents</source>
+        <translation>เริ่มทอร์เรนต์</translation>
+    </message>
+    <message>
+        <source>Stop torrents</source>
+        <translation>หยุดทอร์เรนต์</translation>
     </message>
 </context>
 <context>
@@ -2558,7 +2758,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     <message>
         <source>Completed On</source>
         <comment>Torrent was completed on 01/01/2010 08:00</comment>
-        <translation>เสร็จเมื่อ:</translation>
+        <translation>เสร็จเมื่อ</translation>
     </message>
     <message>
         <source>Tracker</source>
@@ -2643,7 +2843,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Popularity</source>
+        <source>Private</source>
         <translation type="unfinished" />
     </message>
     <message>
@@ -2651,11 +2851,11 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>กระบวนการ</translation>
     </message>
     <message>
-        <source>Info Hash v1</source>
+        <source>Info Hash v2</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Info Hash v2</source>
+        <source>Info Hash v1</source>
         <translation type="unfinished" />
     </message>
     <message>
@@ -2663,7 +2863,11 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Private</source>
+        <source>Popularity</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Status Icon</source>
         <translation type="unfinished" />
     </message>
 </context>
@@ -2818,7 +3022,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source>Queued</source>
-        <translation>คิว</translation>
+        <translation>เพิ่มในคิวแล้ว</translation>
     </message>
     <message>
         <source>Errored</source>
@@ -2894,6 +3098,10 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     <message>
         <source>Collapse/expand</source>
         <translation>ย่อ/ขยาย</translation>
+    </message>
+    <message>
+        <source>Collapse/expand category</source>
+        <translation type="unfinished" />
     </message>
 </context>
 <context>
@@ -2989,14 +3197,6 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>หมวดหมู่ใหม่</translation>
     </message>
     <message>
-        <source>Location</source>
-        <translation>ตำแหน่ง</translation>
-    </message>
-    <message>
-        <source>New name</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
         <source>Set location</source>
         <translation>กำหนดตำแหน่ง</translation>
     </message>
@@ -3009,16 +3209,8 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Save path</source>
-        <translation>บันทึกเส้นทาง</translation>
-    </message>
-    <message>
         <source>Comma-separated tags:</source>
         <translation>แท็กที่คั่นด้วยจุลภาค:</translation>
-    </message>
-    <message>
-        <source>Add Tags</source>
-        <translation>เพิ่มแท็ก</translation>
     </message>
     <message>
         <source>Tags</source>
@@ -3081,16 +3273,40 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>ความคิดเห็น</translation>
     </message>
     <message>
-        <source>Stop</source>
-        <translation>หยุด</translation>
-    </message>
-    <message>
         <source>Force Start</source>
         <translation type="unfinished" />
     </message>
     <message>
+        <source>Save path:</source>
+        <translation>บันทึกเส้นทาง:</translation>
+    </message>
+    <message>
+        <source>Location:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>หยุด</translation>
+    </message>
+    <message>
+        <source>Automatic mode means that various torrent properties(eg save path) will be decided by the associated category</source>
+        <translation>โหมดอัตโนมัติหมายความว่าคุณสมบัติทอร์เรนต์ต่างๆ (เช่นบันทึกเส้นทาง) จะถูกกำหนดโดยหมวดหมู่ที่เกี่ยวข้อง</translation>
+    </message>
+    <message>
         <source>Start</source>
         <translation type="unfinished" />
+    </message>
+    <message>
+        <source>New name:</source>
+        <translation>ชื่อใหม่:</translation>
+    </message>
+    <message>
+        <source>Add tags</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Category:</source>
+        <translation>หมวดหมู่:</translation>
     </message>
 </context>
 <context>
@@ -3135,6 +3351,10 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source>Also remove the content files</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Remove tracker</source>
         <translation type="unfinished" />
     </message>
 </context>
@@ -3240,7 +3460,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source>Plugin path:</source>
-        <translation>ตำแหน่งของปลั๊กอิน;</translation>
+        <translation>ตำแหน่งของปลั๊กอิน:</translation>
     </message>
     <message>
         <source>URL or local directory</source>
@@ -3338,7 +3558,23 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation type="unfinished" />
     </message>
     <message>
+        <source>Select category</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Min size prefix</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <source>Start a search above.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Max size prefix</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Select plugins</source>
         <translation type="unfinished" />
     </message>
 </context>
@@ -3374,7 +3610,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source>Check for updates</source>
-        <translation>ตรวจสอบอัพเดต</translation>
+        <translation>ตรวจหาอัปเดต</translation>
     </message>
     <message>
         <source>Search plugins</source>
@@ -3396,15 +3632,19 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>ผู้รับ</translation>
     </message>
     <message>
-        <source>Search engine</source>
-        <translation>เครื่องมือค้นหา</translation>
-    </message>
-    <message>
         <source>Seeders</source>
         <translation>ผู้ส่ง</translation>
     </message>
     <message>
         <source>Published On</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Engine URL</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Engine</source>
         <translation type="unfinished" />
     </message>
 </context>
@@ -3470,7 +3710,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source>Tag:</source>
-        <translation>เท็ก:</translation>
+        <translation>แท็ก:</translation>
     </message>
     <message>
         <source>Remove unused tags</source>
@@ -3486,7 +3726,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source>Remove torrents</source>
-        <translation>ลบทอเร้นต์</translation>
+        <translation>ลบทอร์เรนต์</translation>
     </message>
     <message>
         <source>Start torrents</source>
@@ -3512,7 +3752,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     <name>AboutDialog</name>
     <message>
         <source>Bug Tracker:</source>
-        <translation>ติดตามบั๊ค:</translation>
+        <translation>ติดตามบั๊ก:</translation>
     </message>
     <message>
         <source>About</source>
@@ -3637,10 +3877,6 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>ลิ้งค์ดาวน์โหลด</translation>
     </message>
     <message>
-        <source>Searching...</source>
-        <translation>กำลังค้นหา...</translation>
-    </message>
-    <message>
         <source>Search has finished</source>
         <translation>การค้นหาเสร็จสิ้น</translation>
     </message>
@@ -3649,8 +3885,20 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>เกิดข้อผิดพลาดระหว่างการค้นหา...</translation>
     </message>
     <message>
+        <source>Close tab</source>
+        <translation>ปิดแท็บ</translation>
+    </message>
+    <message>
+        <source>Searching...</source>
+        <translation>กำลังค้นหา...</translation>
+    </message>
+    <message>
         <source>Search aborted</source>
         <translation>ยกเลิกการค้นหา</translation>
+    </message>
+    <message>
+        <source>Close all tabs</source>
+        <translation>ปิดทุกแท็บ</translation>
     </message>
 </context>
 <context>
@@ -3684,7 +3932,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source>Update all</source>
-        <translation>อัพเดททั้งหมด</translation>
+        <translation>อัปเดตทั้งหมด</translation>
     </message>
     <message>
         <source>Delete</source>
@@ -3700,7 +3948,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source>Update all feeds</source>
-        <translation>อัพเดทฟีดทั้งหมด</translation>
+        <translation>อัปเดตฟีดทั้งหมด</translation>
     </message>
     <message>
         <source>Copy feed URL</source>
@@ -3761,6 +4009,22 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     <message>
         <source>Download torrent</source>
         <translation>ดาวน์โหลดทอร์เรนต์</translation>
+    </message>
+    <message>
+        <source>Edit feed URL...</source>
+        <translation>แก้ไข URL ของหน้าฟีด...</translation>
+    </message>
+    <message>
+        <source>Unable to update URL</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>URL is unchanged</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>URL cannot be empty</source>
+        <translation type="unfinished" />
     </message>
 </context>
 <context>
@@ -4008,6 +4272,14 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
         <translation>เพิ่มแท็ก:</translation>
     </message>
     <message>
+        <source>Remove rule</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Add rule</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <source>Add Stopped:</source>
         <translation type="unfinished" />
     </message>
@@ -4015,20 +4287,24 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
 <context>
     <name>TrackerFiltersList</name>
     <message>
-        <source>All (%1)</source>
-        <translation>ทั้งหมด (%1)</translation>
-    </message>
-    <message>
-        <source>Trackerless (%1)</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
         <source>Remove torrents</source>
-        <translation>ลบทอเร้นต์</translation>
+        <translation>ลบทอร์เรนต์</translation>
+    </message>
+    <message>
+        <source>All</source>
+        <translation>ทั้งหมด</translation>
+    </message>
+    <message>
+        <source>Trackerless</source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Start torrents</source>
         <translation>เริ่มทอร์เรนต์</translation>
+    </message>
+    <message>
+        <source>Remove tracker</source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Stop torrents</source>
@@ -4182,10 +4458,128 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
     </message>
 </context>
 <context>
+    <name>TrackersFilterWidget</name>
+    <message>
+        <source>Are you sure you want to remove tracker %1 from all torrents?</source>
+        <translation type="unfinished" />
+    </message>
+</context>
+<context>
+    <name>Category</name>
+    <message>
+        <source>Unable to edit category</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>ตกลง</translation>
+    </message>
+    <message>
+        <source>Unable to create category</source>
+        <translation>ไม่สามารถสร้างหมวดหมู่ได้</translation>
+    </message>
+    <message>
+        <source>Unable to set category</source>
+        <translation type="unfinished" />
+    </message>
+</context>
+<context>
+    <name>CookiesDialog</name>
+    <message>
+        <source>Domain</source>
+        <translation>โดเมน</translation>
+    </message>
+    <message>
+        <source>Manage Cookies</source>
+        <translation>จัดการคุกกี้</translation>
+    </message>
+    <message>
+        <source>Add Cookie</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>ลบ</translation>
+    </message>
+    <message>
+        <source>Expiration Date</source>
+        <translation>วันหมดอายุ</translation>
+    </message>
+    <message>
+        <source>Value</source>
+        <translation>มูลค่า</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>ชื่อ</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>เส้นทาง</translation>
+    </message>
+</context>
+<context>
+    <name>confirmAutoTMMDialog</name>
+    <message>
+        <source>Enable automatic torrent management</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Are you sure you want to enable Automatic Torrent Management for the selected torrent(s)? They may be relocated.</source>
+        <translation type="unfinished" />
+    </message>
+</context>
+<context>
+    <name>confirmRecheckDialog</name>
+    <message>
+        <source>Are you sure you want to recheck the selected torrent(s)?</source>
+        <translation>คุณแน่ใจใช่ไหมว่าต้องการจะตรวจสอบไฟล์ Torrent ที่เลือก (s)?</translation>
+    </message>
+    <message>
+        <source>Recheck confirmation</source>
+        <translation>ตรวจสอบการยืนยันอีกครั้ง</translation>
+    </message>
+</context>
+<context>
     <name>SearchWidget</name>
     <message>
         <source>Close tab</source>
         <translation>ปิดแท็บ</translation>
+    </message>
+</context>
+<context>
+    <name>Login</name>
+    <message>
+        <source>qBittorrent WebUI</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>รหัสผ่าน</translation>
+    </message>
+    <message>
+        <source>JavaScript Required! You must enable JavaScript for the WebUI to work properly</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Login</source>
+        <translation>ล็อกอิน</translation>
+    </message>
+    <message>
+        <source>Server response:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to log in, server is probably unreachable.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>ชื่อผู้ใช้</translation>
+    </message>
+    <message>
+        <source>Invalid Username or Password.</source>
+        <translation>ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง.</translation>
     </message>
 </context>
 </TS>

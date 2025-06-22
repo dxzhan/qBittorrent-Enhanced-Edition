@@ -359,6 +359,19 @@ void Preferences::setStatusbarDisplayed(const bool displayed)
     setValue(u"Preferences/General/StatusbarDisplayed"_s, displayed);
 }
 
+bool Preferences::isStatusbarExternalIPDisplayed() const
+{
+    return value(u"Preferences/General/StatusbarExternalIPDisplayed"_s, false);
+}
+
+void Preferences::setStatusbarExternalIPDisplayed(const bool displayed)
+{
+    if (displayed == isStatusbarExternalIPDisplayed())
+        return;
+
+    setValue(u"Preferences/General/StatusbarExternalIPDisplayed"_s, displayed);
+}
+
 bool Preferences::isSplashScreenDisabled() const
 {
     return value(u"Preferences/General/NoSplashScreen"_s, true);
@@ -642,6 +655,47 @@ void Preferences::setSearchEnabled(const bool enabled)
     setValue(u"Preferences/Search/SearchEnabled"_s, enabled);
 }
 
+int Preferences::searchHistoryLength() const
+{
+    const int val = value(u"Search/HistoryLength"_s, 50);
+    return std::clamp(val, 0, 99);
+}
+
+void Preferences::setSearchHistoryLength(const int length)
+{
+    const int clampedLength = std::clamp(length, 0, 99);
+    if (clampedLength == searchHistoryLength())
+        return;
+
+    setValue(u"Search/HistoryLength"_s, clampedLength);
+}
+
+bool Preferences::storeOpenedSearchTabs() const
+{
+    return value(u"Search/StoreOpenedSearchTabs"_s, false);
+}
+
+void Preferences::setStoreOpenedSearchTabs(const bool enabled)
+{
+    if (enabled == storeOpenedSearchTabs())
+        return;
+
+    setValue(u"Search/StoreOpenedSearchTabs"_s, enabled);
+}
+
+bool Preferences::storeOpenedSearchTabResults() const
+{
+    return value(u"Search/StoreOpenedSearchTabResults"_s, false);
+}
+
+void Preferences::setStoreOpenedSearchTabResults(const bool enabled)
+{
+    if (enabled == storeOpenedSearchTabResults())
+        return;
+
+    setValue(u"Search/StoreOpenedSearchTabResults"_s, enabled);
+}
+
 bool Preferences::isWebUIEnabled() const
 {
 #ifdef DISABLE_GUI
@@ -686,11 +740,11 @@ void Preferences::setWebUIAuthSubnetWhitelistEnabled(const bool enabled)
     setValue(u"Preferences/WebUI/AuthSubnetWhitelistEnabled"_s, enabled);
 }
 
-QVector<Utils::Net::Subnet> Preferences::getWebUIAuthSubnetWhitelist() const
+QList<Utils::Net::Subnet> Preferences::getWebUIAuthSubnetWhitelist() const
 {
     const auto subnets = value<QStringList>(u"Preferences/WebUI/AuthSubnetWhitelist"_s);
 
-    QVector<Utils::Net::Subnet> ret;
+    QList<Utils::Net::Subnet> ret;
     ret.reserve(subnets.size());
 
     for (const QString &rawSubnet : subnets)
@@ -2043,15 +2097,6 @@ void Preferences::setShadowBan(const bool checked)
     setValue(u"Preferences/Advanced/ShadowBan"_s, checked);
 }
 
-QString Preferences::customizeTrackersListUrl() const
-{
-    return value(u"Preferences/Bittorrent/CustomizeTrackersListUrl"_s, u"https://ngosang.github.io/trackerslist/trackers_best.txt"_s);
-}
-
-void Preferences::setCustomizeTrackersListUrl(const QString &trackersUrl) {
-    setValue(u"Preferences/Bittorrent/CustomizeTrackersListUrl"_s, trackersUrl);
-}
-
 bool Preferences::isCookieExpirationEnabled() const
 {
     return value(u"Preferences/WebUI/CookieExpiration"_s, false);
@@ -2063,6 +2108,28 @@ void Preferences::setCookieExpirationEnabled(const bool enabled)
         return;
 
     setValue(u"Preferences/WebUI/CookieExpiration"_s, enabled);
+}
+
+QString Preferences::getTrackersListUrl() const
+{
+    return value(u"Preferences/Bittorrent/CustomizeTrackersListUrl"_s, u"https://ngosang.github.io/trackerslist/trackers_best.txt"_s);
+}
+
+bool Preferences::isAutoUpdateTrackersEnabled() const
+{
+    return value(u"BitTorrent/Session/AutoUpdateTrackersEnabled"_s, false);
+}
+
+void Preferences::setMigrateStatus(const bool enabled)
+{
+    setValue(u"Preferences/General/MigrateStatus"_s, enabled);
+    if (enabled)
+        SettingsStorage::instance()->removeValue(u"BitTorrent/Session/PublicTrackersList"_s);
+}
+
+bool Preferences::getMigrateStatus() const
+{
+    return value(u"Preferences/General/MigrateStatus"_s, false);
 }
 
 void Preferences::apply()

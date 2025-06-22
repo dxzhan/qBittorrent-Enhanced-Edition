@@ -74,6 +74,7 @@ class OptionsDialog final : public GUIApplicationComponent<QDialog>
         TAB_CONNECTION,
         TAB_SPEED,
         TAB_BITTORRENT,
+        TAB_SEARCH,
         TAB_RSS,
         TAB_WEBUI,
         TAB_ADVANCED
@@ -140,6 +141,9 @@ private:
     void loadRSSTabOptions();
     void saveRSSTabOptions() const;
 
+    void loadSearchTabOptions();
+    void saveSearchTabOptions() const;
+
 #ifndef DISABLE_WEBUI
     void loadWebUITabOptions();
     void saveWebUITabOptions() const;
@@ -148,6 +152,7 @@ private:
     // General options
     void initializeLanguageCombo();
     void initializeStyleCombo();
+    void initializeColorSchemeOptions();
     QString getLocale() const;
     bool isSplashScreenDisabled() const;
 #ifdef Q_OS_WIN

@@ -70,6 +70,22 @@
         <source>Add to top of queue</source>
         <translation type="unfinished" />
     </message>
+    <message>
+        <source>One link per line (HTTP links, Magnet links and info-hashes are supported)</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Add torrent links</source>
+        <translation>Ավելացնել torrent հղումներ</translation>
+    </message>
+    <message>
+        <source>Select .torrent files</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Torrent options</source>
+        <translation type="unfinished" />
+    </message>
 </context>
 <context>
     <name>CategoryFilterModel</name>
@@ -126,10 +142,6 @@
     <message>
         <source>Exit qBittorrent</source>
         <translation>Ելք qBittorrent-ից</translation>
-    </message>
-    <message>
-        <source>Only one link per line</source>
-        <translation>Մեկ հղում տողի համար</translation>
     </message>
     <message>
         <source>Global upload rate limit must be greater than 0 or disabled.</source>
@@ -205,10 +217,6 @@
         <translation>Պահպանել ֆայլերը՝</translation>
     </message>
     <message>
-        <source>Cookie:</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
         <source>More information</source>
         <translation>Հավելյալ տեղեկություն</translation>
     </message>
@@ -272,10 +280,6 @@
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Download Torrents from their URLs or Magnet links</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
         <source>Upload local torrent</source>
         <translation type="unfinished" />
     </message>
@@ -294,10 +298,6 @@
     <message>
         <source>Invalid category name:\nPlease do not use any special characters in the category name.</source>
         <translation type="unfinished" />
-    </message>
-    <message>
-        <source>Unable to create category</source>
-        <translation>Չհաջողվեց ստեղծել անվանակարգ</translation>
     </message>
     <message>
         <source>Upload rate threshold must be greater than 0.</source>
@@ -360,10 +360,6 @@
         <translation>Հիմնադիր հեղինակ</translation>
     </message>
     <message>
-        <source>Are you sure you want to remove the selected torrents from the transfer list?</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
         <source>The port used for the WebUI must be between 1 and 65535.</source>
         <translation type="unfinished" />
     </message>
@@ -376,7 +372,11 @@
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Unable to log in, qBittorrent is probably unreachable.</source>
+        <source>External IP: N/A</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Reverse proxy setup examples</source>
         <translation type="unfinished" />
     </message>
     <message>
@@ -384,20 +384,64 @@
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Password</source>
-        <translation>Գաղտնաբառ</translation>
+        <source>Remember choice</source>
+        <translation>Հիշել ընտրանքը</translation>
     </message>
     <message>
-        <source>Username</source>
-        <translation>Մուտքանուն</translation>
-    </message>
-    <message>
-        <source>Invalid Username or Password.</source>
+        <source>Are you sure you want to remove these %1 torrents from the transfer list?</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Login</source>
-        <translation>Օգտանուն</translation>
+        <source>Unable to delete torrents.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>URL</source>
+        <translation>Հղումը</translation>
+    </message>
+    <message>
+        <source>External IP: %1%2</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Edit web seed</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Are you sure you want to remove %1 from the transfer list?</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to set Auto Torrent Management for the selected torrents.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to stop torrents.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to download file</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>External IPs: %1, %2</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to recheck torrents.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>List of web seeds to add (one per line):</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to start torrents.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Add web seeds</source>
+        <translation type="unfinished" />
     </message>
 </context>
 <context>
@@ -603,12 +647,40 @@
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Would you like to start all torrents?</source>
+        <source>Filter by:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Save Path</source>
         <translation type="unfinished" />
     </message>
     <message>
         <source>Stop</source>
         <translation>Կանգնեցնել</translation>
+    </message>
+    <message>
+        <source>Use regular expression</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Would you like to start all torrents?</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Start</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Manage Cookies...</source>
+        <translation>Կառավարել թխուկները...</translation>
+    </message>
+    <message>
+        <source>Unable to export torrent file</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Անվանում</translation>
     </message>
     <message>
         <source>Would you like to stop all torrents?</source>
@@ -620,10 +692,6 @@
     </message>
     <message>
         <source>Stop All</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>Start</source>
         <translation type="unfinished" />
     </message>
 </context>
@@ -652,10 +720,6 @@
     <message>
         <source>Language</source>
         <translation>Լեզու</translation>
-    </message>
-    <message>
-        <source>User Interface Language:</source>
-        <translation>Միջերեսի լեզուն՝</translation>
     </message>
     <message>
         <source>Email notification upon download completion</source>
@@ -1284,10 +1348,6 @@
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Enable cookie Secure flag (requires HTTPS)</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
         <source>Header: value pairs, one per line</source>
         <translation type="unfinished" />
     </message>
@@ -1516,19 +1576,11 @@
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Run external program on torrent finished</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
         <source>Whitelist for filtering HTTP Host header values.
 In order to defend against DNS rebinding attack,
 you should put in domain names used by WebUI server.
 
 Use ';' to split multiple entries. Can use wildcard '*'.</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>Run external program on torrent added</source>
         <translation type="unfinished" />
     </message>
     <message>
@@ -1594,10 +1646,6 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     <message>
         <source>days</source>
         <translation>օր</translation>
-    </message>
-    <message>
-        <source>Log file</source>
-        <translation type="unfinished" />
     </message>
     <message>
         <source>Behavior</source>
@@ -1812,55 +1860,23 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Send test email</source>
+        <source>Color scheme:</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Attempted to send email. Check your inbox to confirm success</source>
+        <source>Show external IP in status bar</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Automatically append these trackers to new downloads:</source>
+        <source>Fetched trackers</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Stop torrent</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>Move files to trash (if possible)</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>Torrent content removing mode:</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>Delete files permanently</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>Merge trackers to existing torrent</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>When duplicate torrent is being added</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>Resolve relative Save Path against appropriate Category path instead of Default one</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>Use Category paths in Manual Mode</source>
-        <translation type="unfinished" />
+        <source>Confirm when deleting torrents</source>
+        <translation>Հաստատել torrent-ները ջնջելիս</translation>
     </message>
     <message>
         <source>Ignore SSL errors:</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>Simple pread/pwrite</source>
         <translation type="unfinished" />
     </message>
     <message>
@@ -1868,11 +1884,151 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation type="unfinished" />
     </message>
     <message>
+        <source>Delete files permanently</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <source>Auto</source>
         <translation>Ինքնաշխատ</translation>
     </message>
     <message>
-        <source>Color scheme:</source>
+        <source>Use alternating row colors</source>
+        <translation>Տարբեր գույների տողեր կիրառել</translation>
+    </message>
+    <message>
+        <source>Display full announce URL in the Tracker column</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>URL:</source>
+        <translation>URL՝</translation>
+    </message>
+    <message>
+        <source>Transfer list</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>The announce port must be between 0 and 65535.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Light</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Automatically append these trackers to new downloads:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Downloading torrents:</source>
+        <translation>Ներբեռնվող torrent-ներ՝</translation>
+    </message>
+    <message>
+        <source>Start / stop torrent</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Send test email</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Completed torrents:</source>
+        <translation>Ավարտված torrent-ները՝</translation>
+    </message>
+    <message>
+        <source>Enable cookie Secure flag (requires HTTPS or localhost connection)</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>When duplicate torrent is being added</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Action on double-click</source>
+        <translation>Երկկտտոցի գործողությունը</translation>
+    </message>
+    <message>
+        <source>Save statistics interval:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Shows a confirmation dialog upon torrent deletion</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Run on torrent finished:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Attempted to send email. Check your inbox to confirm success</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Automatically append trackers from URL to new downloads:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Torrent content removing mode:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Move files to trash (if possible)</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Stop torrent</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Use Category paths in Manual Mode</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>List of alternative WebUI</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Run on torrent added:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Port reported to trackers (requires restart) [0: listening port]:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>User interface language:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Merge trackers to existing torrent</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Confirm torrent recheck:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Custom WebUI settings</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Following settings are WebUI only</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Simple pread/pwrite</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Resolve relative Save Path against appropriate Category path instead of Default one</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>No action</source>
+        <translation>Առանց գործողության</translation>
+    </message>
+    <message>
+        <source>Auto hide zero status filters</source>
         <translation type="unfinished" />
     </message>
     <message>
@@ -1880,7 +2036,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>Միջերես</translation>
     </message>
     <message>
-        <source>Light</source>
+        <source>Log Files</source>
         <translation type="unfinished" />
     </message>
 </context>
@@ -2248,20 +2404,52 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Popularity:</source>
+        <source>Copy web seed URL</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Ratio / Time Active (in months), indicates how popular the torrent is</source>
+        <source>Replace option</source>
         <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Edit web seed URL...</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Web seed URL:</source>
+        <translation>Վեբ հատիկի URL-ը՝</translation>
     </message>
     <message>
         <source>Yes</source>
         <translation>Այո</translation>
     </message>
     <message>
+        <source>Ratio / Time Active (in months), indicates how popular the torrent is</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Popularity:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Apply to which filename part</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <source>No</source>
         <translation>Ոչ</translation>
+    </message>
+    <message>
+        <source>Remove web seed</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Web seed editing</source>
+        <translation>Վեբ շղթայի խմբագրում</translation>
+    </message>
+    <message>
+        <source>Add web seeds...</source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Private:</source>
@@ -2476,7 +2664,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Running (%1)</source>
+        <source>Running (0)</source>
         <translation type="unfinished" />
     </message>
     <message>
@@ -2488,7 +2676,19 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Running (0)</source>
+        <source>Running (%1)</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Remove torrents</source>
+        <translation>Հեռացնել torrent-ները</translation>
+    </message>
+    <message>
+        <source>Start torrents</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Stop torrents</source>
         <translation type="unfinished" />
     </message>
 </context>
@@ -2643,7 +2843,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Popularity</source>
+        <source>Private</source>
         <translation type="unfinished" />
     </message>
     <message>
@@ -2651,11 +2851,11 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>Ընթացք</translation>
     </message>
     <message>
-        <source>Info Hash v1</source>
+        <source>Info Hash v2</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Info Hash v2</source>
+        <source>Info Hash v1</source>
         <translation type="unfinished" />
     </message>
     <message>
@@ -2663,7 +2863,11 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Private</source>
+        <source>Popularity</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Status Icon</source>
         <translation type="unfinished" />
     </message>
 </context>
@@ -2895,6 +3099,10 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <source>Collapse/expand</source>
         <translation type="unfinished" />
     </message>
+    <message>
+        <source>Collapse/expand category</source>
+        <translation type="unfinished" />
+    </message>
 </context>
 <context>
     <name>TransferListWidget</name>
@@ -2989,14 +3197,6 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>Նոր անվանակարգ</translation>
     </message>
     <message>
-        <source>Location</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>New name</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
         <source>Set location</source>
         <translation type="unfinished" />
     </message>
@@ -3009,16 +3209,8 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation type="unfinished" />
     </message>
     <message>
-        <source>Save path</source>
-        <translation>Պահպանելու ճ-ը</translation>
-    </message>
-    <message>
         <source>Comma-separated tags:</source>
         <translation>Ստորակետով բաժանված պիտակներ՝</translation>
-    </message>
-    <message>
-        <source>Add Tags</source>
-        <translation>Ավելացնել պիտակներ</translation>
     </message>
     <message>
         <source>Tags</source>
@@ -3081,16 +3273,40 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation type="unfinished" />
     </message>
     <message>
+        <source>Force Start</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Save path:</source>
+        <translation>Պահելու ուղին՝</translation>
+    </message>
+    <message>
+        <source>Location:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <source>Stop</source>
         <translation>Կանգնեցնել</translation>
     </message>
     <message>
-        <source>Force Start</source>
+        <source>Automatic mode means that various torrent properties(eg save path) will be decided by the associated category</source>
         <translation type="unfinished" />
     </message>
     <message>
         <source>Start</source>
         <translation type="unfinished" />
+    </message>
+    <message>
+        <source>New name:</source>
+        <translation>Նոր անվանում՝</translation>
+    </message>
+    <message>
+        <source>Add tags</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Category:</source>
+        <translation>Անվանակարգ՝</translation>
     </message>
 </context>
 <context>
@@ -3136,6 +3352,10 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     <message>
         <source>Also remove the content files</source>
         <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Remove tracker</source>
+        <translation>Ջնջել ուղղորդիչը</translation>
     </message>
 </context>
 <context>
@@ -3338,7 +3558,23 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation type="unfinished" />
     </message>
     <message>
+        <source>Select category</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Min size prefix</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <source>Start a search above.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Max size prefix</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Select plugins</source>
         <translation type="unfinished" />
     </message>
 </context>
@@ -3396,15 +3632,19 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>Քաշողներ</translation>
     </message>
     <message>
-        <source>Search engine</source>
-        <translation>Որոնիչ</translation>
-    </message>
-    <message>
         <source>Seeders</source>
         <translation>Բաժանողներ</translation>
     </message>
     <message>
         <source>Published On</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Engine URL</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Engine</source>
         <translation type="unfinished" />
     </message>
 </context>
@@ -3637,10 +3877,6 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>Ներբեռնման հղում</translation>
     </message>
     <message>
-        <source>Searching...</source>
-        <translation>Որոնվում է...</translation>
-    </message>
-    <message>
         <source>Search has finished</source>
         <translation>Որոնումը ավարտվել է</translation>
     </message>
@@ -3649,8 +3885,20 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>Սխալ՝ փնտրելիս…</translation>
     </message>
     <message>
+        <source>Close tab</source>
+        <translation>Փակել ներդիրը</translation>
+    </message>
+    <message>
+        <source>Searching...</source>
+        <translation>Որոնվում է...</translation>
+    </message>
+    <message>
         <source>Search aborted</source>
         <translation>Որոնումը ընդհատվեց</translation>
+    </message>
+    <message>
+        <source>Close all tabs</source>
+        <translation>Փակել բոլոր ներդիրները</translation>
     </message>
 </context>
 <context>
@@ -3761,6 +4009,22 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     <message>
         <source>Download torrent</source>
         <translation>Ներբեռնել torrent-ը</translation>
+    </message>
+    <message>
+        <source>Edit feed URL...</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to update URL</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>URL is unchanged</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>URL cannot be empty</source>
+        <translation type="unfinished" />
     </message>
 </context>
 <context>
@@ -4007,6 +4271,14 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
         <translation type="unfinished" />
     </message>
     <message>
+        <source>Remove rule</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Add rule</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <source>Add Stopped:</source>
         <translation type="unfinished" />
     </message>
@@ -4014,20 +4286,24 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
 <context>
     <name>TrackerFiltersList</name>
     <message>
-        <source>All (%1)</source>
-        <translation>Բոլորը (%1)</translation>
-    </message>
-    <message>
-        <source>Trackerless (%1)</source>
-        <translation>Անգրանցորդ (%1)</translation>
-    </message>
-    <message>
         <source>Remove torrents</source>
         <translation>Հեռացնել torrent-ները</translation>
     </message>
     <message>
+        <source>All</source>
+        <translation>Բոլորը</translation>
+    </message>
+    <message>
+        <source>Trackerless</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <source>Start torrents</source>
         <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Remove tracker</source>
+        <translation>Ջնջել ուղղորդիչը</translation>
     </message>
     <message>
         <source>Stop torrents</source>
@@ -4181,10 +4457,128 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
     </message>
 </context>
 <context>
+    <name>TrackersFilterWidget</name>
+    <message>
+        <source>Are you sure you want to remove tracker %1 from all torrents?</source>
+        <translation type="unfinished" />
+    </message>
+</context>
+<context>
+    <name>Category</name>
+    <message>
+        <source>Unable to edit category</source>
+        <translation>Չհաջողվեց խմբագրել անվանակարգը</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>ԼԱՎ</translation>
+    </message>
+    <message>
+        <source>Unable to create category</source>
+        <translation>Չհաջողվեց ստեղծել անվանակարգ</translation>
+    </message>
+    <message>
+        <source>Unable to set category</source>
+        <translation type="unfinished" />
+    </message>
+</context>
+<context>
+    <name>CookiesDialog</name>
+    <message>
+        <source>Domain</source>
+        <translation>Տիրույթ</translation>
+    </message>
+    <message>
+        <source>Manage Cookies</source>
+        <translation>Կառավարել թխուկները</translation>
+    </message>
+    <message>
+        <source>Add Cookie</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Expiration Date</source>
+        <translation>Սպառման ժամկետ</translation>
+    </message>
+    <message>
+        <source>Value</source>
+        <translation>Արժեք</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Անվանում</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>Ուղի</translation>
+    </message>
+</context>
+<context>
+    <name>confirmAutoTMMDialog</name>
+    <message>
+        <source>Enable automatic torrent management</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Are you sure you want to enable Automatic Torrent Management for the selected torrent(s)? They may be relocated.</source>
+        <translation type="unfinished" />
+    </message>
+</context>
+<context>
+    <name>confirmRecheckDialog</name>
+    <message>
+        <source>Are you sure you want to recheck the selected torrent(s)?</source>
+        <translation>Վստա՞հ եք, որ ուզում եք վերստուգել ընտրված torrent-(ներ)ը:</translation>
+    </message>
+    <message>
+        <source>Recheck confirmation</source>
+        <translation>Վերստուգման հաստատում</translation>
+    </message>
+</context>
+<context>
     <name>SearchWidget</name>
     <message>
         <source>Close tab</source>
         <translation>Փակել ներդիրը</translation>
+    </message>
+</context>
+<context>
+    <name>Login</name>
+    <message>
+        <source>qBittorrent WebUI</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Գաղտնաբառ</translation>
+    </message>
+    <message>
+        <source>JavaScript Required! You must enable JavaScript for the WebUI to work properly</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Login</source>
+        <translation>Օգտանուն</translation>
+    </message>
+    <message>
+        <source>Server response:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to log in, server is probably unreachable.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Մուտքանուն</translation>
+    </message>
+    <message>
+        <source>Invalid Username or Password.</source>
+        <translation type="unfinished" />
     </message>
 </context>
 </TS>

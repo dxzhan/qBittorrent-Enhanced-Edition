@@ -64,7 +64,7 @@ namespace BitTorrent
 
         void store(const TorrentID &id, const LoadTorrentParams &resumeData) const;
         void remove(const TorrentID &id) const;
-        void storeQueue(const QVector<TorrentID> &queue) const;
+        void storeQueue(const QList<TorrentID> &queue) const;
 
     private:
         const Path m_resumeDataDir;
@@ -131,10 +131,11 @@ BitTorrent::BencodeResumeDataStorage::BencodeResumeDataStorage(const Path &path,
 
     m_asyncWorker->moveToThread(m_ioThread.get());
     connect(m_ioThread.get(), &QThread::finished, m_asyncWorker, &QObject::deleteLater);
+    m_ioThread->setObjectName("BencodeResumeDataStorage m_ioThread");
     m_ioThread->start();
 }
 
-QVector<BitTorrent::TorrentID> BitTorrent::BencodeResumeDataStorage::registeredTorrents() const
+QList<BitTorrent::TorrentID> BitTorrent::BencodeResumeDataStorage::registeredTorrents() const
 {
     return m_registeredTorrents;
 }
@@ -289,10 +290,11 @@ BitTorrent::LoadResumeDataResult BitTorrent::BencodeResumeDataStorage::loadTorre
     lt::add_torrent_params &p = torrentParams.ltAddTorrentParams;
 
     p = lt::read_resume_data(resumeDataRoot, ec);
+    if (ec)
+        return nonstd::make_unexpected(tr("Cannot parse resume data: %1").arg(QString::fromStdString(ec.message())));
 
     if (!metadata.isEmpty())
     {
-        const auto *pref = Preferences::instance();
         const lt::bdecode_node torentInfoRoot = lt::bdecode(metadata, ec
                 , nullptr, pref->getBdecodeDepthLimit(), pref->getBdecodeTokenLimit());
         if (ec)
@@ -320,6 +322,8 @@ BitTorrent::LoadResumeDataResult BitTorrent::BencodeResumeDataStorage::loadTorre
 
     p.save_path = Profile::instance()->fromPortablePath(
                 Path(fromLTString(p.save_path))).toString().toStdString();
+    if (p.save_path.empty())
+        return nonstd::make_unexpected(tr("Corrupted resume data: %1").arg(tr("save_path is invalid")));
 
     torrentParams.stopped = (p.flags & lt::torrent_flags::paused) && !(p.flags & lt::torrent_flags::auto_managed);
     torrentParams.operatingMode = (p.flags & lt::torrent_flags::paused) || (p.flags & lt::torrent_flags::auto_managed)
@@ -354,7 +358,7 @@ void BitTorrent::BencodeResumeDataStorage::remove(const TorrentID &id) const
     });
 }
 
-void BitTorrent::BencodeResumeDataStorage::storeQueue(const QVector<TorrentID> &queue) const
+void BitTorrent::BencodeResumeDataStorage::storeQueue(const QList<TorrentID> &queue) const
 {
     QMetaObject::invokeMethod(m_asyncWorker, [this, queue]()
     {
@@ -460,7 +464,7 @@ void BitTorrent::BencodeResumeDataStorage::Worker::remove(const TorrentID &id) c
     Utils::Fs::removeFile(m_resumeDataDir / torrentFilename);
 }
 
-void BitTorrent::BencodeResumeDataStorage::Worker::storeQueue(const QVector<TorrentID> &queue) const
+void BitTorrent::BencodeResumeDataStorage::Worker::storeQueue(const QList<TorrentID> &queue) const
 {
     QByteArray data;
     data.reserve(((BitTorrent::TorrentID::length() * 2) + 1) * queue.size());

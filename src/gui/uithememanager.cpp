@@ -69,6 +69,9 @@ void UIThemeManager::initInstance()
 
 UIThemeManager::UIThemeManager()
     : m_useCustomTheme {Preferences::instance()->useCustomUITheme()}
+#ifdef QBT_HAS_COLORSCHEME_OPTION
+    , m_colorSchemeSetting {u"Appearance/ColorScheme"_s}
+#endif
 #if (defined(Q_OS_UNIX) && !defined(Q_OS_MACOS))
     , m_useSystemIcons {Preferences::instance()->useSystemIcons()}
 #endif
@@ -79,6 +82,10 @@ UIThemeManager::UIThemeManager()
         if (!QApplication::setStyle(styleName.isEmpty() ? u"Fusion"_s : styleName))
             LogMsg(tr("Set app style failed. Unknown style: \"%1\"").arg(styleName), Log::WARNING);
     }
+#endif
+
+#ifdef QBT_HAS_COLORSCHEME_OPTION
+    applyColorScheme();
 #endif
 
     // NOTE: Qt::QueuedConnection can be omitted as soon as support for Qt 6.5 is dropped
@@ -115,6 +122,38 @@ UIThemeManager *UIThemeManager::instance()
 {
     return m_instance;
 }
+
+#ifdef QBT_HAS_COLORSCHEME_OPTION
+ColorScheme UIThemeManager::colorScheme() const
+{
+    return m_colorSchemeSetting.get(ColorScheme::System);
+}
+
+void UIThemeManager::setColorScheme(const ColorScheme value)
+{
+    if (value == colorScheme())
+        return;
+
+    m_colorSchemeSetting = value;
+}
+
+void UIThemeManager::applyColorScheme() const
+{
+    switch (colorScheme())
+    {
+    case ColorScheme::System:
+    default:
+        qApp->styleHints()->unsetColorScheme();
+        break;
+    case ColorScheme::Light:
+        qApp->styleHints()->setColorScheme(Qt::ColorScheme::Light);
+        break;
+    case ColorScheme::Dark:
+        qApp->styleHints()->setColorScheme(Qt::ColorScheme::Dark);
+        break;
+    }
+}
+#endif
 
 void UIThemeManager::applyStyleSheet() const
 {

@@ -70,6 +70,22 @@
         <source>Add to top of queue</source>
         <translation>添加到队列顶部</translation>
     </message>
+    <message>
+        <source>One link per line (HTTP links, Magnet links and info-hashes are supported)</source>
+        <translation>每行一个链接（支持 HTTP 链接，磁力链接和哈希值）</translation>
+    </message>
+    <message>
+        <source>Add torrent links</source>
+        <translation>添加 torrent 链接</translation>
+    </message>
+    <message>
+        <source>Select .torrent files</source>
+        <translation>选择 .torrent 文件</translation>
+    </message>
+    <message>
+        <source>Torrent options</source>
+        <translation>Torrent 选项</translation>
+    </message>
 </context>
 <context>
     <name>CategoryFilterModel</name>
@@ -126,10 +142,6 @@
     <message>
         <source>Exit qBittorrent</source>
         <translation>退出 qBittorrent</translation>
-    </message>
-    <message>
-        <source>Only one link per line</source>
-        <translation>每行一个连接</translation>
     </message>
     <message>
         <source>Global upload rate limit must be greater than 0 or disabled.</source>
@@ -205,10 +217,6 @@
         <translation>保存文件到：</translation>
     </message>
     <message>
-        <source>Cookie:</source>
-        <translation>Cookie：</translation>
-    </message>
-    <message>
         <source>More information</source>
         <translation>更多信息</translation>
     </message>
@@ -272,10 +280,6 @@
         <translation>注销</translation>
     </message>
     <message>
-        <source>Download Torrents from their URLs or Magnet links</source>
-        <translation>从 URL 或磁力链接下载 Torrent</translation>
-    </message>
-    <message>
         <source>Upload local torrent</source>
         <translation>上传本地的 torrent</translation>
     </message>
@@ -294,10 +298,6 @@
     <message>
         <source>Invalid category name:\nPlease do not use any special characters in the category name.</source>
         <translation>无效的分类名：\n在分类名中请不要使用特殊字符。</translation>
-    </message>
-    <message>
-        <source>Unable to create category</source>
-        <translation>无法创建分类</translation>
     </message>
     <message>
         <source>Upload rate threshold must be greater than 0.</source>
@@ -360,10 +360,6 @@
         <translation>原始作者</translation>
     </message>
     <message>
-        <source>Are you sure you want to remove the selected torrents from the transfer list?</source>
-        <translation>你确定要从传输列表中删除选中的 torrent 吗？</translation>
-    </message>
-    <message>
         <source>The port used for the WebUI must be between 1 and 65535.</source>
         <translation>用于 WebUI 的端口必选在 1 和 65535 之间</translation>
     </message>
@@ -376,28 +372,76 @@
         <translation>JavaScript 是必需的！要让 WebUI 正确工作，你必须启用 JavaScript</translation>
     </message>
     <message>
-        <source>Unable to log in, qBittorrent is probably unreachable.</source>
-        <translation>登录失败，可能无法连接到 qBttorrent。</translation>
+        <source>External IP: N/A</source>
+        <translation>外部 IP：N/A</translation>
+    </message>
+    <message>
+        <source>Reverse proxy setup examples</source>
+        <translation>反向代理设置示例</translation>
     </message>
     <message>
         <source>Could not contact qBittorrent</source>
         <translation>无法联系 qBittorrent</translation>
     </message>
     <message>
-        <source>Password</source>
-        <translation>密码</translation>
+        <source>Remember choice</source>
+        <translation>记住选择</translation>
     </message>
     <message>
-        <source>Username</source>
-        <translation>用户名</translation>
+        <source>Are you sure you want to remove these %1 torrents from the transfer list?</source>
+        <translation>您确定要从传输列表中删除这 %1 个 Torrent 吗？</translation>
     </message>
     <message>
-        <source>Invalid Username or Password.</source>
-        <translation>无效的用户名或密码。</translation>
+        <source>Unable to delete torrents.</source>
+        <translation>无法删除 torrents。</translation>
     </message>
     <message>
-        <source>Login</source>
-        <translation>登录</translation>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>External IP: %1%2</source>
+        <translation>外部 IP：%1%2</translation>
+    </message>
+    <message>
+        <source>Edit web seed</source>
+        <translation>编辑 web 种子</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to remove %1 from the transfer list?</source>
+        <translation>您确定要从传输列表中删除 “%1” 吗？</translation>
+    </message>
+    <message>
+        <source>Unable to set Auto Torrent Management for the selected torrents.</source>
+        <translation>无法为所选 Torrent 设置自动 Torrent 管理。</translation>
+    </message>
+    <message>
+        <source>Unable to stop torrents.</source>
+        <translation>无法停止 torrents。</translation>
+    </message>
+    <message>
+        <source>Unable to download file</source>
+        <translation>无法下载文件</translation>
+    </message>
+    <message>
+        <source>External IPs: %1, %2</source>
+        <translation>外部 IP：%1, %2</translation>
+    </message>
+    <message>
+        <source>Unable to recheck torrents.</source>
+        <translation>无法重新校验 torrent。</translation>
+    </message>
+    <message>
+        <source>List of web seeds to add (one per line):</source>
+        <translation>添加 web 种子到列表（每行一个）：</translation>
+    </message>
+    <message>
+        <source>Unable to start torrents.</source>
+        <translation>无法开始 torrents。</translation>
+    </message>
+    <message>
+        <source>Add web seeds</source>
+        <translation>添加 web 种子</translation>
     </message>
 </context>
 <context>
@@ -603,12 +647,40 @@
         <translation>[D: %1, U: %2]</translation>
     </message>
     <message>
-        <source>Would you like to start all torrents?</source>
-        <translation>你要启动所有 torrent 吗？</translation>
+        <source>Filter by:</source>
+        <translation>过滤依据：</translation>
+    </message>
+    <message>
+        <source>Save Path</source>
+        <translation>保存路径</translation>
     </message>
     <message>
         <source>Stop</source>
         <translation>停止</translation>
+    </message>
+    <message>
+        <source>Use regular expression</source>
+        <translation>使用正则表达式</translation>
+    </message>
+    <message>
+        <source>Would you like to start all torrents?</source>
+        <translation>你要启动所有 torrent 吗？</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>启动</translation>
+    </message>
+    <message>
+        <source>Manage Cookies...</source>
+        <translation>管理 Cookies...</translation>
+    </message>
+    <message>
+        <source>Unable to export torrent file</source>
+        <translation>无法导出 torrent 文件</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>名称</translation>
     </message>
     <message>
         <source>Would you like to stop all torrents?</source>
@@ -621,10 +693,6 @@
     <message>
         <source>Stop All</source>
         <translation>全部停止</translation>
-    </message>
-    <message>
-        <source>Start</source>
-        <translation>启动</translation>
     </message>
 </context>
 <context>
@@ -652,10 +720,6 @@
     <message>
         <source>Language</source>
         <translation>语言</translation>
-    </message>
-    <message>
-        <source>User Interface Language:</source>
-        <translation>用户界面语言：</translation>
     </message>
     <message>
         <source>Email notification upon download completion</source>
@@ -989,7 +1053,7 @@
     </message>
     <message>
         <source>Tip: Encapsulate parameter with quotation marks to avoid text being cut off at whitespace (e.g., "%N")</source>
-        <translation>提示：使用引号将参数括起以防止文本被空白符分割（例如："%N"）</translation>
+        <translation>提示：使用引号将参数扩起以防止文本被空白符分割（例如："%N"）</translation>
     </message>
     <message>
         <source>minutes</source>
@@ -1284,10 +1348,6 @@
         <translation>连续失败后禁止客户端：</translation>
     </message>
     <message>
-        <source>Enable cookie Secure flag (requires HTTPS)</source>
-        <translation>启用 cookie 安全标志（需要 HTTPS）</translation>
-    </message>
-    <message>
         <source>Header: value pairs, one per line</source>
         <translation>Header: value 值对，每行一个</translation>
     </message>
@@ -1516,10 +1576,6 @@
         <translation>支持国际化域名（IDN）：</translation>
     </message>
     <message>
-        <source>Run external program on torrent finished</source>
-        <translation>torrent 完成时运行外部程序</translation>
-    </message>
-    <message>
         <source>Whitelist for filtering HTTP Host header values.
 In order to defend against DNS rebinding attack,
 you should put in domain names used by WebUI server.
@@ -1530,10 +1586,6 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
 您应当指定供 Web UI 使用的域名。
 
 使用 ';' 区分不同的输入。可以使用通配符 '*'。</translation>
-    </message>
-    <message>
-        <source>Run external program on torrent added</source>
-        <translation>新增 torrent 时运行外部程序</translation>
     </message>
     <message>
         <source>HTTPS certificate should not be empty</source>
@@ -1598,10 +1650,6 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     <message>
         <source>days</source>
         <translation>天</translation>
-    </message>
-    <message>
-        <source>Log file</source>
-        <translation>日志文件</translation>
     </message>
     <message>
         <source>Behavior</source>
@@ -1733,7 +1781,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source> sec</source>
-        <translation> 秒</translation>
+        <translation>秒</translation>
     </message>
     <message>
         <source>I2P outbound quantity:</source>
@@ -1816,76 +1864,184 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>定制程序实例名</translation>
     </message>
     <message>
-        <source>Send test email</source>
-        <translation>发送测试邮件</translation>
+        <source>Color scheme:</source>
+        <translation>配色方案：</translation>
     </message>
     <message>
-        <source>Attempted to send email. Check your inbox to confirm success</source>
-        <translation>已尝试发送邮件。检查你的收件箱确认是否发送成功</translation>
+        <source>Show external IP in status bar</source>
+        <translation>在状态栏展示外部 IP</translation>
     </message>
     <message>
-        <source>Automatically append these trackers to new downloads:</source>
-        <translation>自动附加这些 tracker 到新下载：</translation>
+        <source>Fetched trackers</source>
+        <translation>获取 tracker</translation>
     </message>
     <message>
-        <source>Stop torrent</source>
-        <translation>停止 torrent</translation>
-    </message>
-    <message>
-        <source>Move files to trash (if possible)</source>
-        <translation>移动文件到回收站（如果可能）</translation>
-    </message>
-    <message>
-        <source>Torrent content removing mode:</source>
-        <translation>Torrent 内容删除模式：</translation>
-    </message>
-    <message>
-        <source>Delete files permanently</source>
-        <translation>永久删除文件</translation>
-    </message>
-    <message>
-        <source>Merge trackers to existing torrent</source>
-        <translation>合并 tracker 到现有 torrent</translation>
-    </message>
-    <message>
-        <source>When duplicate torrent is being added</source>
-        <translation>当添加重复的 torrent 时</translation>
-    </message>
-    <message>
-        <source>Resolve relative Save Path against appropriate Category path instead of Default one</source>
-        <translation>根据适当的分类路径而不是默认路径解析相对的保存路径</translation>
-    </message>
-    <message>
-        <source>Use Category paths in Manual Mode</source>
-        <translation>在手动模式下使用分类路径</translation>
+        <source>Confirm when deleting torrents</source>
+        <translation>删除 Torrent 时提示确认</translation>
     </message>
     <message>
         <source>Ignore SSL errors:</source>
         <translation>忽略 SSL 错误：</translation>
     </message>
     <message>
-        <source>Simple pread/pwrite</source>
-        <translation>简单预读/预写</translation>
-    </message>
-    <message>
         <source>Dark</source>
         <translation>深色</translation>
+    </message>
+    <message>
+        <source>Delete files permanently</source>
+        <translation>永久删除文件</translation>
     </message>
     <message>
         <source>Auto</source>
         <translation>自动</translation>
     </message>
     <message>
-        <source>Color scheme:</source>
-        <translation>配色方案：</translation>
+        <source>Use alternating row colors</source>
+        <translation>使用交替的行颜色</translation>
+    </message>
+    <message>
+        <source>Display full announce URL in the Tracker column</source>
+        <translation>在Tracker 栏目展示完整的公告URL</translation>
+    </message>
+    <message>
+        <source>URL:</source>
+        <translation>网址：</translation>
+    </message>
+    <message>
+        <source>Transfer list</source>
+        <translation>传输列表</translation>
+    </message>
+    <message>
+        <source>The announce port must be between 0 and 65535.</source>
+        <translation>公告端口必须为 0 到 65535 之间。</translation>
+    </message>
+    <message>
+        <source>Light</source>
+        <translation>浅色</translation>
+    </message>
+    <message>
+        <source>Automatically append these trackers to new downloads:</source>
+        <translation>自动附加这些 tracker 到新下载：</translation>
+    </message>
+    <message>
+        <source>Downloading torrents:</source>
+        <translation>正在下载的 torrent：</translation>
+    </message>
+    <message>
+        <source>Start / stop torrent</source>
+        <translation>开始 / 停止 torrent</translation>
+    </message>
+    <message>
+        <source>Send test email</source>
+        <translation>发送测试邮件</translation>
+    </message>
+    <message>
+        <source>Completed torrents:</source>
+        <translation>完成的 torrent：</translation>
+    </message>
+    <message>
+        <source>Enable cookie Secure flag (requires HTTPS or localhost connection)</source>
+        <translation>启用 cookie 安全标志（需要 HTTPS或本地连接）</translation>
+    </message>
+    <message>
+        <source>When duplicate torrent is being added</source>
+        <translation>当添加重复的 torrent 时</translation>
+    </message>
+    <message>
+        <source>Action on double-click</source>
+        <translation>双击执行操作</translation>
+    </message>
+    <message>
+        <source>Save statistics interval:</source>
+        <translation>保存统计数据间隔：</translation>
+    </message>
+    <message>
+        <source>Shows a confirmation dialog upon torrent deletion</source>
+        <translation>删除 Torrent 时显示确认对话框</translation>
+    </message>
+    <message>
+        <source>Run on torrent finished:</source>
+        <translation>torrent 完成时运行：</translation>
+    </message>
+    <message>
+        <source>Attempted to send email. Check your inbox to confirm success</source>
+        <translation>已尝试发送邮件。检查你的收件箱确认是否发送成功</translation>
+    </message>
+    <message>
+        <source>Automatically append trackers from URL to new downloads:</source>
+        <translation>自动附加 URL 的 trackers 到新的下载：</translation>
+    </message>
+    <message>
+        <source>Torrent content removing mode:</source>
+        <translation>Torrent 内容删除模式：</translation>
+    </message>
+    <message>
+        <source>Move files to trash (if possible)</source>
+        <translation>移动文件到回收站（如果可能）</translation>
+    </message>
+    <message>
+        <source>Stop torrent</source>
+        <translation>停止 torrent</translation>
+    </message>
+    <message>
+        <source>Use Category paths in Manual Mode</source>
+        <translation>在手动模式下使用分类路径</translation>
+    </message>
+    <message>
+        <source>List of alternative WebUI</source>
+        <translation>备选 WebUI 列表</translation>
+    </message>
+    <message>
+        <source>Run on torrent added:</source>
+        <translation>新增 Torrent 时运行：</translation>
+    </message>
+    <message>
+        <source>Port reported to trackers (requires restart) [0: listening port]:</source>
+        <translation>报告给 trackers的端口（需要重启）[0：监听端口]</translation>
+    </message>
+    <message>
+        <source>User interface language:</source>
+        <translation>用户界面语言：</translation>
+    </message>
+    <message>
+        <source>Merge trackers to existing torrent</source>
+        <translation>合并 tracker 到现有 torrent</translation>
+    </message>
+    <message>
+        <source>Confirm torrent recheck:</source>
+        <translation> Torrent 重新校验确认：</translation>
+    </message>
+    <message>
+        <source>Custom WebUI settings</source>
+        <translation>自定义 WebUI 设置</translation>
+    </message>
+    <message>
+        <source>Following settings are WebUI only</source>
+        <translation>以下设置仅适用于 WebUI</translation>
+    </message>
+    <message>
+        <source>Simple pread/pwrite</source>
+        <translation>简单预读/预写</translation>
+    </message>
+    <message>
+        <source>Resolve relative Save Path against appropriate Category path instead of Default one</source>
+        <translation>根据适当的分类路径而不是默认路径解析相对的保存路径</translation>
+    </message>
+    <message>
+        <source>No action</source>
+        <translation>不执行操作</translation>
+    </message>
+    <message>
+        <source>Auto hide zero status filters</source>
+        <translation>自动隐藏零状态过滤器</translation>
     </message>
     <message>
         <source>Interface</source>
         <translation>界面</translation>
     </message>
     <message>
-        <source>Light</source>
-        <translation>浅色</translation>
+        <source>Log Files</source>
+        <translation>日志文件</translation>
     </message>
 </context>
 <context>
@@ -2252,20 +2408,52 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>匹配所有出现</translation>
     </message>
     <message>
-        <source>Popularity:</source>
-        <translation>流行度：</translation>
+        <source>Copy web seed URL</source>
+        <translation>复制 Web 种子 URL</translation>
     </message>
     <message>
-        <source>Ratio / Time Active (in months), indicates how popular the torrent is</source>
-        <translation>比例/活跃时间（月份为单位），表明 torrent 的流行度</translation>
+        <source>Replace option</source>
+        <translation>替换选项</translation>
+    </message>
+    <message>
+        <source>Edit web seed URL...</source>
+        <translation>编辑 Web 种子 URL...</translation>
+    </message>
+    <message>
+        <source>Web seed URL:</source>
+        <translation>Web 种子 URL：</translation>
     </message>
     <message>
         <source>Yes</source>
         <translation>是</translation>
     </message>
     <message>
+        <source>Ratio / Time Active (in months), indicates how popular the torrent is</source>
+        <translation>分享率/活跃时间（月份为单位），表明 torrent 的流行度</translation>
+    </message>
+    <message>
+        <source>Popularity:</source>
+        <translation>流行度：</translation>
+    </message>
+    <message>
+        <source>Apply to which filename part</source>
+        <translation>应用于文件名的哪个部分</translation>
+    </message>
+    <message>
         <source>No</source>
         <translation>否</translation>
+    </message>
+    <message>
+        <source>Remove web seed</source>
+        <translation>移除 Web 种子</translation>
+    </message>
+    <message>
+        <source>Web seed editing</source>
+        <translation>编辑 Web 种子</translation>
+    </message>
+    <message>
+        <source>Add web seeds...</source>
+        <translation>添加 web 种子...</translation>
     </message>
     <message>
         <source>Private:</source>
@@ -2480,8 +2668,8 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>正在移动 (0)</translation>
     </message>
     <message>
-        <source>Running (%1)</source>
-        <translation>正运行 (%1)</translation>
+        <source>Running (0)</source>
+        <translation>正运行 (0)</translation>
     </message>
     <message>
         <source>Stopped (0)</source>
@@ -2492,8 +2680,20 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>已停止 (%1)</translation>
     </message>
     <message>
-        <source>Running (0)</source>
-        <translation>正运行 (0)</translation>
+        <source>Running (%1)</source>
+        <translation>正运行 (%1)</translation>
+    </message>
+    <message>
+        <source>Remove torrents</source>
+        <translation>移除 Torrent</translation>
+    </message>
+    <message>
+        <source>Start torrents</source>
+        <translation>启动 torrent</translation>
+    </message>
+    <message>
+        <source>Stop torrents</source>
+        <translation>停止 torrent</translation>
     </message>
 </context>
 <context>
@@ -2647,28 +2847,32 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>下次重新汇报</translation>
     </message>
     <message>
-        <source>Popularity</source>
-        <translation>流行度</translation>
+        <source>Private</source>
+        <translation>私密</translation>
     </message>
     <message>
         <source>Progress</source>
         <translation>进度</translation>
     </message>
     <message>
-        <source>Info Hash v1</source>
-        <translation>信息哈希值 v1</translation>
-    </message>
-    <message>
         <source>Info Hash v2</source>
         <translation>信息哈希值 v2</translation>
+    </message>
+    <message>
+        <source>Info Hash v1</source>
+        <translation>信息哈希值 v1</translation>
     </message>
     <message>
         <source>Incomplete Save Path</source>
         <translation>保存路径不完整</translation>
     </message>
     <message>
-        <source>Private</source>
-        <translation>私密</translation>
+        <source>Popularity</source>
+        <translation>流行度</translation>
+    </message>
+    <message>
+        <source>Status Icon</source>
+        <translation>状态图标</translation>
     </message>
 </context>
 <context>
@@ -2899,6 +3103,10 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <source>Collapse/expand</source>
         <translation>折叠/展开</translation>
     </message>
+    <message>
+        <source>Collapse/expand category</source>
+        <translation>折叠/展开分类</translation>
+    </message>
 </context>
 <context>
     <name>TransferListWidget</name>
@@ -2993,14 +3201,6 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>新分类</translation>
     </message>
     <message>
-        <source>Location</source>
-        <translation>路径</translation>
-    </message>
-    <message>
-        <source>New name</source>
-        <translation>新名称</translation>
-    </message>
-    <message>
         <source>Set location</source>
         <translation>更改保存位置</translation>
     </message>
@@ -3013,16 +3213,8 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>编辑分类</translation>
     </message>
     <message>
-        <source>Save path</source>
-        <translation>保存路径</translation>
-    </message>
-    <message>
         <source>Comma-separated tags:</source>
         <translation>标签（以逗号分隔）：</translation>
-    </message>
-    <message>
-        <source>Add Tags</source>
-        <translation>添加标签</translation>
     </message>
     <message>
         <source>Tags</source>
@@ -3085,16 +3277,40 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>注释</translation>
     </message>
     <message>
-        <source>Stop</source>
-        <translation>停止</translation>
-    </message>
-    <message>
         <source>Force Start</source>
         <translation>强制启动</translation>
     </message>
     <message>
+        <source>Save path:</source>
+        <translation>保存路径：</translation>
+    </message>
+    <message>
+        <source>Location:</source>
+        <translation>路径：</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>停止</translation>
+    </message>
+    <message>
+        <source>Automatic mode means that various torrent properties(eg save path) will be decided by the associated category</source>
+        <translation>自动模式表示不同的 torrent 的配置信息（例如保存路径）将由相关的分类决定</translation>
+    </message>
+    <message>
         <source>Start</source>
         <translation>启动</translation>
+    </message>
+    <message>
+        <source>New name:</source>
+        <translation>新名称：</translation>
+    </message>
+    <message>
+        <source>Add tags</source>
+        <translation>添加标签</translation>
+    </message>
+    <message>
+        <source>Category:</source>
+        <translation>分类：</translation>
     </message>
 </context>
 <context>
@@ -3140,6 +3356,10 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     <message>
         <source>Also remove the content files</source>
         <translation>同时删除已下载的文件</translation>
+    </message>
+    <message>
+        <source>Remove tracker</source>
+        <translation>移除 tracker</translation>
     </message>
 </context>
 <context>
@@ -3342,8 +3562,24 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>未安装任何搜索插件</translation>
     </message>
     <message>
+        <source>Select category</source>
+        <translation>选择分类</translation>
+    </message>
+    <message>
+        <source>Min size prefix</source>
+        <translation>最小文件体积</translation>
+    </message>
+    <message>
         <source>Start a search above.</source>
         <translation>在上方启动搜索。</translation>
+    </message>
+    <message>
+        <source>Max size prefix</source>
+        <translation>最大文件体积</translation>
+    </message>
+    <message>
+        <source>Select plugins</source>
+        <translation>选择插件</translation>
     </message>
 </context>
 <context>
@@ -3400,16 +3636,20 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>下载</translation>
     </message>
     <message>
-        <source>Search engine</source>
-        <translation>搜索引擎</translation>
-    </message>
-    <message>
         <source>Seeders</source>
         <translation>做种</translation>
     </message>
     <message>
         <source>Published On</source>
         <translation>发布于</translation>
+    </message>
+    <message>
+        <source>Engine URL</source>
+        <translation>引擎 URL</translation>
+    </message>
+    <message>
+        <source>Engine</source>
+        <translation>引擎</translation>
     </message>
 </context>
 <context>
@@ -3641,10 +3881,6 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>下载链接</translation>
     </message>
     <message>
-        <source>Searching...</source>
-        <translation>搜索...</translation>
-    </message>
-    <message>
         <source>Search has finished</source>
         <translation>搜索已完成</translation>
     </message>
@@ -3653,8 +3889,20 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>搜索期间发生错误...</translation>
     </message>
     <message>
+        <source>Close tab</source>
+        <translation>关闭标签</translation>
+    </message>
+    <message>
+        <source>Searching...</source>
+        <translation>搜索...</translation>
+    </message>
+    <message>
         <source>Search aborted</source>
         <translation>搜索中止</translation>
+    </message>
+    <message>
+        <source>Close all tabs</source>
+        <translation>关闭所有标签</translation>
     </message>
 </context>
 <context>
@@ -3765,6 +4013,22 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     <message>
         <source>Download torrent</source>
         <translation>下载 torrent</translation>
+    </message>
+    <message>
+        <source>Edit feed URL...</source>
+        <translation>编辑源 URL...</translation>
+    </message>
+    <message>
+        <source>Unable to update URL</source>
+        <translation>无法更新 URL</translation>
+    </message>
+    <message>
+        <source>URL is unchanged</source>
+        <translation>URL 未更改</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty</source>
+        <translation>URL 不能为空</translation>
     </message>
 </context>
 <context>
@@ -4012,6 +4276,14 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
         <translation>添加标签：</translation>
     </message>
     <message>
+        <source>Remove rule</source>
+        <translation>移除规则</translation>
+    </message>
+    <message>
+        <source>Add rule</source>
+        <translation>增加规则</translation>
+    </message>
+    <message>
         <source>Add Stopped:</source>
         <translation>添加已停止的：</translation>
     </message>
@@ -4019,20 +4291,24 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
 <context>
     <name>TrackerFiltersList</name>
     <message>
-        <source>All (%1)</source>
-        <translation>全部 (%1)</translation>
-    </message>
-    <message>
-        <source>Trackerless (%1)</source>
-        <translation>缺少 Tracker (%1)</translation>
-    </message>
-    <message>
         <source>Remove torrents</source>
         <translation>移除 Torrent</translation>
     </message>
     <message>
+        <source>All</source>
+        <translation>全部</translation>
+    </message>
+    <message>
+        <source>Trackerless</source>
+        <translation>没有 Tracker</translation>
+    </message>
+    <message>
         <source>Start torrents</source>
         <translation>启动 torrent</translation>
+    </message>
+    <message>
+        <source>Remove tracker</source>
+        <translation>移除 tracker</translation>
     </message>
     <message>
         <source>Stop torrents</source>
@@ -4186,10 +4462,128 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
     </message>
 </context>
 <context>
+    <name>TrackersFilterWidget</name>
+    <message>
+        <source>Are you sure you want to remove tracker %1 from all torrents?</source>
+        <translation>你确定要从所有 Torrent 移除 Tracker "%1"吗？</translation>
+    </message>
+</context>
+<context>
+    <name>Category</name>
+    <message>
+        <source>Unable to edit category</source>
+        <translation>无法编辑分类</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>确定</translation>
+    </message>
+    <message>
+        <source>Unable to create category</source>
+        <translation>无法创建分类</translation>
+    </message>
+    <message>
+        <source>Unable to set category</source>
+        <translation>无法设置分类</translation>
+    </message>
+</context>
+<context>
+    <name>CookiesDialog</name>
+    <message>
+        <source>Domain</source>
+        <translation>域名</translation>
+    </message>
+    <message>
+        <source>Manage Cookies</source>
+        <translation>管理  </translation>
+    </message>
+    <message>
+        <source>Add Cookie</source>
+        <translation>添加 Cookie</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>删除</translation>
+    </message>
+    <message>
+        <source>Expiration Date</source>
+        <translation>过期时间</translation>
+    </message>
+    <message>
+        <source>Value</source>
+        <translation>值</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>名称</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>路径</translation>
+    </message>
+</context>
+<context>
+    <name>confirmAutoTMMDialog</name>
+    <message>
+        <source>Enable automatic torrent management</source>
+        <translation>启用自动 Torrent 管理</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to enable Automatic Torrent Management for the selected torrent(s)? They may be relocated.</source>
+        <translation>你确定要为选定的 Torrent 启用自动 Torrent 管理吗？它们可能会被移动到新位置。</translation>
+    </message>
+</context>
+<context>
+    <name>confirmRecheckDialog</name>
+    <message>
+        <source>Are you sure you want to recheck the selected torrent(s)?</source>
+        <translation>您确定要重新校验所选的 Torrent 吗？</translation>
+    </message>
+    <message>
+        <source>Recheck confirmation</source>
+        <translation>确认重新校验</translation>
+    </message>
+</context>
+<context>
     <name>SearchWidget</name>
     <message>
         <source>Close tab</source>
         <translation>关闭标签</translation>
+    </message>
+</context>
+<context>
+    <name>Login</name>
+    <message>
+        <source>qBittorrent WebUI</source>
+        <translation>qBittorrent WebUI</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>密码</translation>
+    </message>
+    <message>
+        <source>JavaScript Required! You must enable JavaScript for the WebUI to work properly</source>
+        <translation>JavaScript 是必需的！要让 WebUI 正确工作，你必须启用 JavaScript</translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation>登录</translation>
+    </message>
+    <message>
+        <source>Server response:</source>
+        <translation>服务器响应：</translation>
+    </message>
+    <message>
+        <source>Unable to log in, server is probably unreachable.</source>
+        <translation>登录失败，服务器可能无法访问。</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>用户名</translation>
+    </message>
+    <message>
+        <source>Invalid Username or Password.</source>
+        <translation>无效的用户名或密码。</translation>
     </message>
 </context>
 </TS>

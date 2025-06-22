@@ -39,7 +39,6 @@
 
 #include "base/3rdparty/expected.hpp"
 #include "base/path.h"
-#include "torrentdescriptor.h"
 #include "torrentinfo.h"
 
 class QByteArray;
@@ -60,8 +59,8 @@ namespace BitTorrent
         QDateTime creationDate() const;
         QString creator() const;
         QString comment() const;
-        QVector<TrackerEntry> trackers() const;
-        QVector<QUrl> urlSeeds() const;
+        QList<TrackerEntry> trackers() const;
+        QList<QUrl> urlSeeds() const;
         const std::optional<TorrentInfo> &info() const;
 
         void setTorrentInfo(TorrentInfo torrentInfo);

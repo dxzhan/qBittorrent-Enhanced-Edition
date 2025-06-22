@@ -7,11 +7,9 @@ qBittorrent Enhanced Edition
 
 2. _Auto Ban Unknown Peer from China_ Option (Default: OFF)
 
-3. Auto Update Public Trackers List (Default: OFF)
+3. Auto Ban BitTorrent Media Player Peer Option (Default: OFF)
 
-4. Auto Ban BitTorrent Media Player Peer Option (Default: OFF)
-
-5. Peer whitelist/blacklist
+4. Peer whitelist/blacklist
 ********************************
 ### Description:
 qBittorrent is a bittorrent client programmed in C++ / Qt that uses

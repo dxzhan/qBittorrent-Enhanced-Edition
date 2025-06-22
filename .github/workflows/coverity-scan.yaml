@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        libt_version: ["2.0.10"]
+        libt_version: ["2.0.11"]
         qbt_gui: ["GUI=ON"]
         qt_version: ["6.7.0"]
 
@@ -26,6 +26,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Install dependencies
         run: |
@@ -40,7 +42,7 @@ jobs:
           BOOST_MINOR_VERSION: "87"
           BOOST_PATCH_VERSION: "0"
         run: |
-          boost_url="https://boostorg.jfrog.io/artifactory/main/release/${{ env.BOOST_MAJOR_VERSION }}.${{ env.BOOST_MINOR_VERSION }}.${{ env.BOOST_PATCH_VERSION }}/source/boost_${{ env.BOOST_MAJOR_VERSION }}_${{ env.BOOST_MINOR_VERSION }}_${{ env.BOOST_PATCH_VERSION }}.tar.gz"
+          boost_url="https://archives.boost.io/release/${{ env.BOOST_MAJOR_VERSION }}.${{ env.BOOST_MINOR_VERSION }}.${{ env.BOOST_PATCH_VERSION }}/source/boost_${{ env.BOOST_MAJOR_VERSION }}_${{ env.BOOST_MINOR_VERSION }}_${{ env.BOOST_PATCH_VERSION }}.tar.gz"
           boost_url2="https://sourceforge.net/projects/boost/files/boost/${{ env.BOOST_MAJOR_VERSION }}.${{ env.BOOST_MINOR_VERSION }}.${{ env.BOOST_PATCH_VERSION }}/boost_${{ env.BOOST_MAJOR_VERSION }}_${{ env.BOOST_MINOR_VERSION }}_${{ env.BOOST_PATCH_VERSION }}.tar.gz"
           set +e
           curl -L -o "${{ runner.temp }}/boost.tar.gz" "$boost_url"
@@ -71,6 +73,7 @@ jobs:
             -B build \
             -G "Ninja" \
             -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+            -DCMAKE_CXX_STANDARD=20 \
             -DBOOST_ROOT="${{ env.boost_path }}" \
             -Ddeprecated-functions=OFF
           cmake --build build

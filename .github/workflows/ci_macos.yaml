@@ -2,8 +2,7 @@ name: CI - macOS
 
 on: [pull_request, push]
 
-permissions:
-  actions: write
+permissions: {}
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
@@ -13,11 +12,13 @@ jobs:
   ci:
     name: Build
     runs-on: macos-latest
+    permissions:
+      actions: write
 
     strategy:
       fail-fast: false
       matrix:
-        libt_version: ["2.0.10"]
+        libt_version: ["2.0.11", "1.2.20"]
         qbt_gui: ["GUI=ON", "GUI=OFF"]
         qt_version: ["6.7.3"]
 
@@ -28,6 +29,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Install dependencies
         uses: Wandalen/wretry.action@v3
@@ -57,7 +60,7 @@ jobs:
           BOOST_MINOR_VERSION: "87"
           BOOST_PATCH_VERSION: "0"
         run: |
-          boost_url="https://boostorg.jfrog.io/artifactory/main/release/${{ env.BOOST_MAJOR_VERSION }}.${{ env.BOOST_MINOR_VERSION }}.${{ env.BOOST_PATCH_VERSION }}/source/boost_${{ env.BOOST_MAJOR_VERSION }}_${{ env.BOOST_MINOR_VERSION }}_${{ env.BOOST_PATCH_VERSION }}.tar.gz"
+          boost_url="https://archives.boost.io/release/${{ env.BOOST_MAJOR_VERSION }}.${{ env.BOOST_MINOR_VERSION }}.${{ env.BOOST_PATCH_VERSION }}/source/boost_${{ env.BOOST_MAJOR_VERSION }}_${{ env.BOOST_MINOR_VERSION }}_${{ env.BOOST_PATCH_VERSION }}.tar.gz"
           boost_url2="https://sourceforge.net/projects/boost/files/boost/${{ env.BOOST_MAJOR_VERSION }}.${{ env.BOOST_MINOR_VERSION }}.${{ env.BOOST_PATCH_VERSION }}/boost_${{ env.BOOST_MAJOR_VERSION }}_${{ env.BOOST_MINOR_VERSION }}_${{ env.BOOST_PATCH_VERSION }}.tar.gz"
           set +e
           curl -L -o "${{ runner.temp }}/boost.tar.gz" "$boost_url"
@@ -90,7 +93,7 @@ jobs:
             -G "Ninja" \
             -DBUILD_SHARED_LIBS=OFF \
             -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-            -DCMAKE_CXX_STANDARD=17 \
+            -DCMAKE_CXX_STANDARD=20 \
             -DCMAKE_EXPORT_COMPILE_COMMANDS=ON \
             -DBOOST_ROOT="${{ env.boost_path }}" \
             -Ddeprecated-functions=OFF
@@ -99,7 +102,7 @@ jobs:
 
       - name: Build qBittorrent
         run: |
-          CXXFLAGS="$CXXFLAGS -Werror -Wno-error=deprecated-declarations" \
+          CXXFLAGS="$CXXFLAGS -DQT_FORCE_ASSERTS -Werror -Wno-error=deprecated-declarations" \
           LDFLAGS="$LDFLAGS -gz" \
           cmake \
             -B build \

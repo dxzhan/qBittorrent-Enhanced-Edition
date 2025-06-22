@@ -28,11 +28,9 @@
 
 "use strict";
 
-if (window.qBittorrent === undefined)
-    window.qBittorrent = {};
-
-window.qBittorrent.FileTree = (function() {
-    const exports = function() {
+window.qBittorrent ??= {};
+window.qBittorrent.FileTree ??= (() => {
+    const exports = () => {
         return {
             FilePriority: FilePriority,
             TriState: TriState,
@@ -43,18 +41,18 @@ window.qBittorrent.FileTree = (function() {
     };
 
     const FilePriority = {
-        "Ignored": 0,
-        "Normal": 1,
-        "High": 6,
-        "Maximum": 7,
-        "Mixed": -1
+        Ignored: 0,
+        Normal: 1,
+        High: 6,
+        Maximum: 7,
+        Mixed: -1
     };
     Object.freeze(FilePriority);
 
     const TriState = {
-        "Unchecked": 0,
-        "Checked": 1,
-        "Partial": 2
+        Unchecked: 0,
+        Checked: 1,
+        Partial: 2
     };
     Object.freeze(TriState);
 
@@ -90,7 +88,7 @@ window.qBittorrent.FileTree = (function() {
                 : this.nodeMap[rowId];
         },
 
-        getRowId: function(node) {
+        getRowId: (node) => {
             return node.rowId;
         },
 
@@ -196,5 +194,4 @@ window.qBittorrent.FileTree = (function() {
 
     return exports();
 })();
-
 Object.freeze(window.qBittorrent.FileTree);

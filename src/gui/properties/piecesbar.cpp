@@ -241,7 +241,7 @@ QColor PiecesBar::colorBoxBorderColor() const
     return palette().color(QPalette::Active, QPalette::ToolTipText);
 }
 
-const QVector<QRgb> &PiecesBar::pieceColors() const
+const QList<QRgb> &PiecesBar::pieceColors() const
 {
     return m_pieceColors;
 }
@@ -280,7 +280,7 @@ void PiecesBar::showToolTip(const QHelpEvent *e)
         {
             const PieceIndexToImagePos transform {torrentInfo, m_image};
             const int pieceIndex = transform.pieceIndex(imagePos);
-            const QVector<int> fileIndexes = torrentInfo.fileIndicesForPiece(pieceIndex);
+            const QList<int> fileIndexes = torrentInfo.fileIndicesForPiece(pieceIndex);
 
             QString tooltipTitle;
             if (fileIndexes.count() > 1)
@@ -324,7 +324,7 @@ void PiecesBar::highlightFile(int imagePos)
     PieceIndexToImagePos transform {torrentInfo, m_image};
 
     int pieceIndex = transform.pieceIndex(imagePos);
-    QVector<int> fileIndices {torrentInfo.fileIndicesForPiece(pieceIndex)};
+    QList<int> fileIndices {torrentInfo.fileIndicesForPiece(pieceIndex)};
     if (fileIndices.count() == 1)
     {
         BitTorrent::TorrentInfo::PieceRange filePieces = torrentInfo.filePieces(fileIndices.first());
@@ -351,7 +351,7 @@ void PiecesBar::updateColors()
 
 void PiecesBar::updateColorsImpl()
 {
-    m_pieceColors = QVector<QRgb>(256);
+    m_pieceColors = QList<QRgb>(256);
     for (int i = 0; i < 256; ++i)
     {
         const float ratio = (i / 255.0);

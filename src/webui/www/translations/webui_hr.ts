@@ -70,6 +70,22 @@
         <source>Add to top of queue</source>
         <translation>Dodaj na vrh reda čekanja</translation>
     </message>
+    <message>
+        <source>One link per line (HTTP links, Magnet links and info-hashes are supported)</source>
+        <translation>Jedna veza po retku (podržani su HTTP linkovi, Magnet linkovi i info-hashovi)</translation>
+    </message>
+    <message>
+        <source>Add torrent links</source>
+        <translation>Dodajte torrent linkove</translation>
+    </message>
+    <message>
+        <source>Select .torrent files</source>
+        <translation>Odaberi .torrent datoteke</translation>
+    </message>
+    <message>
+        <source>Torrent options</source>
+        <translation>Mogućnosti Torrenta</translation>
+    </message>
 </context>
 <context>
     <name>CategoryFilterModel</name>
@@ -126,10 +142,6 @@
     <message>
         <source>Exit qBittorrent</source>
         <translation>Zatvorite qBittorrent</translation>
-    </message>
-    <message>
-        <source>Only one link per line</source>
-        <translation>Samo jedna poveznica po liniji</translation>
     </message>
     <message>
         <source>Global upload rate limit must be greater than 0 or disabled.</source>
@@ -205,10 +217,6 @@
         <translation>Spremi datoteke na lokaciju:</translation>
     </message>
     <message>
-        <source>Cookie:</source>
-        <translation>Kolačić:</translation>
-    </message>
-    <message>
         <source>More information</source>
         <translation>Više informacija</translation>
     </message>
@@ -272,10 +280,6 @@
         <translation>Odjava</translation>
     </message>
     <message>
-        <source>Download Torrents from their URLs or Magnet links</source>
-        <translation>Preuzmi torrente sa njegovih URLova ili Magnet linkova</translation>
-    </message>
-    <message>
         <source>Upload local torrent</source>
         <translation>Slanje lokalnog torrenta</translation>
     </message>
@@ -294,10 +298,6 @@
     <message>
         <source>Invalid category name:\nPlease do not use any special characters in the category name.</source>
         <translation>Neispravno ime kategorije:\nNe koristite posebne znakove u imenu kategorije.</translation>
-    </message>
-    <message>
-        <source>Unable to create category</source>
-        <translation>Nije moguće stvoriti kategoriju</translation>
     </message>
     <message>
         <source>Upload rate threshold must be greater than 0.</source>
@@ -360,10 +360,6 @@
         <translation>Izvorni autor</translation>
     </message>
     <message>
-        <source>Are you sure you want to remove the selected torrents from the transfer list?</source>
-        <translation>Jeste li sigurni da želite ukloniti odabrane torrente s popisa prijenosa?</translation>
-    </message>
-    <message>
         <source>The port used for the WebUI must be between 1 and 65535.</source>
         <translation>Port koji se koristi za WebUI mora biti između 1 i 65535.</translation>
     </message>
@@ -376,28 +372,76 @@
         <translation>Potreban je JavaScript! Morate omogućiti JavaScript kako bi WebUI ispravno radio</translation>
     </message>
     <message>
-        <source>Unable to log in, qBittorrent is probably unreachable.</source>
-        <translation>Nije moguća prijava. qBittorrent je vjerojatno nedostupan.</translation>
+        <source>External IP: N/A</source>
+        <translation>Vanjski IP: N/A</translation>
+    </message>
+    <message>
+        <source>Reverse proxy setup examples</source>
+        <translation>Obrnuti primjeri postavljanja proxyja</translation>
     </message>
     <message>
         <source>Could not contact qBittorrent</source>
         <translation>Nije moguće kontaktirati qBittorrent</translation>
     </message>
     <message>
-        <source>Password</source>
-        <translation>Lozinka</translation>
+        <source>Remember choice</source>
+        <translation>Zapamti izbor</translation>
     </message>
     <message>
-        <source>Username</source>
-        <translation>Korisničko ime</translation>
+        <source>Are you sure you want to remove these %1 torrents from the transfer list?</source>
+        <translation>Jeste li sigurni da želite ukloniti ove %1 torrente s popisa prijenosa?</translation>
     </message>
     <message>
-        <source>Invalid Username or Password.</source>
-        <translation>Neispravno korisničko ime ili lozinka</translation>
+        <source>Unable to delete torrents.</source>
+        <translation>Nije moguće izbrisati torrente.</translation>
     </message>
     <message>
-        <source>Login</source>
-        <translation>Prijava</translation>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>External IP: %1%2</source>
+        <translation>Vanjski IP: %1%2</translation>
+    </message>
+    <message>
+        <source>Edit web seed</source>
+        <translation>Uredi web seed</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to remove %1 from the transfer list?</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to set Auto Torrent Management for the selected torrents.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to stop torrents.</source>
+        <translation>Nije moguće zaustaviti torrente.</translation>
+    </message>
+    <message>
+        <source>Unable to download file</source>
+        <translation>Nije moguće preuzeti datoteku</translation>
+    </message>
+    <message>
+        <source>External IPs: %1, %2</source>
+        <translation>Vanjski IP-jevi: %1, %2</translation>
+    </message>
+    <message>
+        <source>Unable to recheck torrents.</source>
+        <translation>Nije moguće ponovno provjertiti torrente.</translation>
+    </message>
+    <message>
+        <source>List of web seeds to add (one per line):</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to start torrents.</source>
+        <translation>Nije moguće pokrenuti torrente.</translation>
+    </message>
+    <message>
+        <source>Add web seeds</source>
+        <translation>Dodaj web seedove</translation>
     </message>
 </context>
 <context>
@@ -603,12 +647,40 @@
         <translation>[D: %1, U: %2]</translation>
     </message>
     <message>
-        <source>Would you like to start all torrents?</source>
-        <translation>Želite li pokrenuti sve torrente?</translation>
+        <source>Filter by:</source>
+        <translation>Filtrirati po:</translation>
+    </message>
+    <message>
+        <source>Save Path</source>
+        <translation>Putanja za spremanje</translation>
     </message>
     <message>
         <source>Stop</source>
         <translation>Zaustavi</translation>
+    </message>
+    <message>
+        <source>Use regular expression</source>
+        <translation>Koristi regularni izraz</translation>
+    </message>
+    <message>
+        <source>Would you like to start all torrents?</source>
+        <translation>Želite li pokrenuti sve torrente?</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>Start</translation>
+    </message>
+    <message>
+        <source>Manage Cookies...</source>
+        <translation>Upravljaj kolačićima...</translation>
+    </message>
+    <message>
+        <source>Unable to export torrent file</source>
+        <translation>Nije moguće izvesti torrent datoteku</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Naziv</translation>
     </message>
     <message>
         <source>Would you like to stop all torrents?</source>
@@ -621,10 +693,6 @@
     <message>
         <source>Stop All</source>
         <translation>Zaustavi sve</translation>
-    </message>
-    <message>
-        <source>Start</source>
-        <translation>Start</translation>
     </message>
 </context>
 <context>
@@ -652,10 +720,6 @@
     <message>
         <source>Language</source>
         <translation>Jezik</translation>
-    </message>
-    <message>
-        <source>User Interface Language:</source>
-        <translation>Jezik korisničkog sučelja:</translation>
     </message>
     <message>
         <source>Email notification upon download completion</source>
@@ -1284,10 +1348,6 @@
         <translation>Ban klijenta nakon uzastopnih neuspjeha:</translation>
     </message>
     <message>
-        <source>Enable cookie Secure flag (requires HTTPS)</source>
-        <translation>Omogući sigurnu oznaku kolačića (zahtijeva HTTPS)</translation>
-    </message>
-    <message>
         <source>Header: value pairs, one per line</source>
         <translation>Zaglavlje: parovi vrijednosti, jedan po retku</translation>
     </message>
@@ -1516,10 +1576,6 @@
         <translation>Podrška internacionaliziranom nazivu domene (IDN):</translation>
     </message>
     <message>
-        <source>Run external program on torrent finished</source>
-        <translation>Pokretanje vanjskog programa kod završenog torrenta</translation>
-    </message>
-    <message>
         <source>Whitelist for filtering HTTP Host header values.
 In order to defend against DNS rebinding attack,
 you should put in domain names used by WebUI server.
@@ -1530,10 +1586,6 @@ U svrhu obrane od napada ponovnog povezivanja DNS-a,
 trebali biste unijeti nazive domena koje koristi WebUI poslužitelj.
 
 Koristite ';' za razdvajanje više unosa. Može koristiti zamjenski znak '*'.</translation>
-    </message>
-    <message>
-        <source>Run external program on torrent added</source>
-        <translation>Pokretanje vanjskog programa kod dodanog torrenta</translation>
     </message>
     <message>
         <source>HTTPS certificate should not be empty</source>
@@ -1598,10 +1650,6 @@ Koristite ';' za razdvajanje više unosa. Može koristiti zamjenski znak '*'.</t
     <message>
         <source>days</source>
         <translation>dana</translation>
-    </message>
-    <message>
-        <source>Log file</source>
-        <translation>Datoteka zapisa</translation>
     </message>
     <message>
         <source>Behavior</source>
@@ -1816,76 +1864,184 @@ Koristite ';' za razdvajanje više unosa. Može koristiti zamjenski znak '*'.</t
         <translation>Prilagodite naziv instance aplikacije:</translation>
     </message>
     <message>
-        <source>Send test email</source>
-        <translation>Pošalji probnu e-poštu</translation>
+        <source>Color scheme:</source>
+        <translation>Tema:</translation>
     </message>
     <message>
-        <source>Attempted to send email. Check your inbox to confirm success</source>
-        <translation>Pokušano slanje e-pošte. Provjerite svoju pristiglu poštu kako biste potvrdili uspjeh</translation>
+        <source>Show external IP in status bar</source>
+        <translation>Pokaži eksternalni IP u traci statusa</translation>
     </message>
     <message>
-        <source>Automatically append these trackers to new downloads:</source>
-        <translation>Automatski dodajte ove alate za praćenje novim preuzimanjima:</translation>
+        <source>Fetched trackers</source>
+        <translation>Dohvaćeni trackeri</translation>
     </message>
     <message>
-        <source>Stop torrent</source>
-        <translation>Zaustavi torrent</translation>
-    </message>
-    <message>
-        <source>Move files to trash (if possible)</source>
-        <translation>Premjestite datoteke u smeće (ako je moguće)</translation>
-    </message>
-    <message>
-        <source>Torrent content removing mode:</source>
-        <translation>Način uklanjanja torrent sadržaja:</translation>
-    </message>
-    <message>
-        <source>Delete files permanently</source>
-        <translation>Trajno brisanje datoteka</translation>
-    </message>
-    <message>
-        <source>Merge trackers to existing torrent</source>
-        <translation>Spojite trackere na postojeći torrent</translation>
-    </message>
-    <message>
-        <source>When duplicate torrent is being added</source>
-        <translation>Kada se dodaje dvostruki torrent</translation>
-    </message>
-    <message>
-        <source>Resolve relative Save Path against appropriate Category path instead of Default one</source>
-        <translation>Razriješi relativnu putanju spremanja s odgovarajućom putanjom kategorije umjesto zadane</translation>
-    </message>
-    <message>
-        <source>Use Category paths in Manual Mode</source>
-        <translation>Koristite putanje kategorija u ručnom načinu rada</translation>
+        <source>Confirm when deleting torrents</source>
+        <translation>Potvrdi prilikom brisanja torrenta</translation>
     </message>
     <message>
         <source>Ignore SSL errors:</source>
         <translation>Ignoriraj SSL pogreške:</translation>
     </message>
     <message>
-        <source>Simple pread/pwrite</source>
-        <translation>Jednostavno pčitanje/ppisanje</translation>
-    </message>
-    <message>
         <source>Dark</source>
         <translation>Tamna</translation>
+    </message>
+    <message>
+        <source>Delete files permanently</source>
+        <translation>Trajno brisanje datoteka</translation>
     </message>
     <message>
         <source>Auto</source>
         <translation>Auto</translation>
     </message>
     <message>
-        <source>Color scheme:</source>
-        <translation>Tema:</translation>
+        <source>Use alternating row colors</source>
+        <translation>Koristi alternativne boje redova</translation>
+    </message>
+    <message>
+        <source>Display full announce URL in the Tracker column</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>URL:</source>
+        <translation>URL:</translation>
+    </message>
+    <message>
+        <source>Transfer list</source>
+        <translation>Popis prijenosa</translation>
+    </message>
+    <message>
+        <source>The announce port must be between 0 and 65535.</source>
+        <translation>Port za najavu mora biti između 0 i 65535.</translation>
+    </message>
+    <message>
+        <source>Light</source>
+        <translation>Svijetla</translation>
+    </message>
+    <message>
+        <source>Automatically append these trackers to new downloads:</source>
+        <translation>Automatski dodajte ove alate za praćenje novim preuzimanjima:</translation>
+    </message>
+    <message>
+        <source>Downloading torrents:</source>
+        <translation>Preuzimanje torrenta:</translation>
+    </message>
+    <message>
+        <source>Start / stop torrent</source>
+        <translation>Započni / zaustavi torrent</translation>
+    </message>
+    <message>
+        <source>Send test email</source>
+        <translation>Pošalji probnu e-poštu</translation>
+    </message>
+    <message>
+        <source>Completed torrents:</source>
+        <translation>Dovršeni torrenti:</translation>
+    </message>
+    <message>
+        <source>Enable cookie Secure flag (requires HTTPS or localhost connection)</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>When duplicate torrent is being added</source>
+        <translation>Kada se dodaje dvostruki torrent</translation>
+    </message>
+    <message>
+        <source>Action on double-click</source>
+        <translation>Radnja na dvostruki klik</translation>
+    </message>
+    <message>
+        <source>Save statistics interval:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Shows a confirmation dialog upon torrent deletion</source>
+        <translation>Prikazuje dijaloški okvir za potvrdu nakon brisanja torrenta</translation>
+    </message>
+    <message>
+        <source>Run on torrent finished:</source>
+        <translation>Pokreni kad torrent završi:</translation>
+    </message>
+    <message>
+        <source>Attempted to send email. Check your inbox to confirm success</source>
+        <translation>Pokušano slanje e-pošte. Provjerite svoju pristiglu poštu kako biste potvrdili uspjeh</translation>
+    </message>
+    <message>
+        <source>Automatically append trackers from URL to new downloads:</source>
+        <translation>Automatski dodaj trackere iz poveznice novim preuzimanjima:</translation>
+    </message>
+    <message>
+        <source>Torrent content removing mode:</source>
+        <translation>Način uklanjanja torrent sadržaja:</translation>
+    </message>
+    <message>
+        <source>Move files to trash (if possible)</source>
+        <translation>Premjestite datoteke u smeće (ako je moguće)</translation>
+    </message>
+    <message>
+        <source>Stop torrent</source>
+        <translation>Zaustavi torrent</translation>
+    </message>
+    <message>
+        <source>Use Category paths in Manual Mode</source>
+        <translation>Koristite putanje kategorija u ručnom načinu rada</translation>
+    </message>
+    <message>
+        <source>List of alternative WebUI</source>
+        <translation>Popis alternativnih WebUI-jeva</translation>
+    </message>
+    <message>
+        <source>Run on torrent added:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Port reported to trackers (requires restart) [0: listening port]:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>User interface language:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Merge trackers to existing torrent</source>
+        <translation>Spojite trackere na postojeći torrent</translation>
+    </message>
+    <message>
+        <source>Confirm torrent recheck:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Custom WebUI settings</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Following settings are WebUI only</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Simple pread/pwrite</source>
+        <translation>Jednostavno pčitanje/ppisanje</translation>
+    </message>
+    <message>
+        <source>Resolve relative Save Path against appropriate Category path instead of Default one</source>
+        <translation>Razriješi relativnu putanju spremanja s odgovarajućom putanjom kategorije umjesto zadane</translation>
+    </message>
+    <message>
+        <source>No action</source>
+        <translation>Bez radnje</translation>
+    </message>
+    <message>
+        <source>Auto hide zero status filters</source>
+        <translation>Automatsko skrivanje filtera nultog statusa</translation>
     </message>
     <message>
         <source>Interface</source>
         <translation>Sučelje</translation>
     </message>
     <message>
-        <source>Light</source>
-        <translation>Svijetla</translation>
+        <source>Log Files</source>
+        <translation type="unfinished" />
     </message>
 </context>
 <context>
@@ -2252,20 +2408,52 @@ Koristite ';' za razdvajanje više unosa. Može koristiti zamjenski znak '*'.</t
         <translation>Spoji sve pojave</translation>
     </message>
     <message>
-        <source>Popularity:</source>
-        <translation>Popularnost:</translation>
+        <source>Copy web seed URL</source>
+        <translation type="unfinished" />
     </message>
     <message>
-        <source>Ratio / Time Active (in months), indicates how popular the torrent is</source>
-        <translation>Omjer / vrijeme aktivnosti (u mjesecima), pokazuje koliko je torrent popularan</translation>
+        <source>Replace option</source>
+        <translation>Zamijeni opciju</translation>
+    </message>
+    <message>
+        <source>Edit web seed URL...</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Web seed URL:</source>
+        <translation>URL web seeda:</translation>
     </message>
     <message>
         <source>Yes</source>
         <translation>Da</translation>
     </message>
     <message>
+        <source>Ratio / Time Active (in months), indicates how popular the torrent is</source>
+        <translation>Omjer / vrijeme aktivnosti (u mjesecima), pokazuje koliko je torrent popularan</translation>
+    </message>
+    <message>
+        <source>Popularity:</source>
+        <translation>Popularnost:</translation>
+    </message>
+    <message>
+        <source>Apply to which filename part</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <source>No</source>
         <translation>Ne</translation>
+    </message>
+    <message>
+        <source>Remove web seed</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Web seed editing</source>
+        <translation>Uređivanje web seeda</translation>
+    </message>
+    <message>
+        <source>Add web seeds...</source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Private:</source>
@@ -2480,8 +2668,8 @@ Koristite ';' za razdvajanje više unosa. Može koristiti zamjenski znak '*'.</t
         <translation>Premještanje (0)</translation>
     </message>
     <message>
-        <source>Running (%1)</source>
-        <translation>Pokrenuto (%1)</translation>
+        <source>Running (0)</source>
+        <translation>Pokrenuto (0)</translation>
     </message>
     <message>
         <source>Stopped (0)</source>
@@ -2492,8 +2680,20 @@ Koristite ';' za razdvajanje više unosa. Može koristiti zamjenski znak '*'.</t
         <translation>Zaustavljeno (%1)</translation>
     </message>
     <message>
-        <source>Running (0)</source>
-        <translation>Pokrenuto (0)</translation>
+        <source>Running (%1)</source>
+        <translation>Pokrenuto (%1)</translation>
+    </message>
+    <message>
+        <source>Remove torrents</source>
+        <translation>Ukloni torrente</translation>
+    </message>
+    <message>
+        <source>Start torrents</source>
+        <translation>Pokreni torrente</translation>
+    </message>
+    <message>
+        <source>Stop torrents</source>
+        <translation>Zaustavi torrente</translation>
     </message>
 </context>
 <context>
@@ -2647,28 +2847,32 @@ Koristite ';' za razdvajanje više unosa. Može koristiti zamjenski znak '*'.</t
         <translation>Ponovno najavi za</translation>
     </message>
     <message>
-        <source>Popularity</source>
-        <translation>Popularnost</translation>
+        <source>Private</source>
+        <translation>Privatno</translation>
     </message>
     <message>
         <source>Progress</source>
         <translation>Napredak</translation>
     </message>
     <message>
-        <source>Info Hash v1</source>
-        <translation>Info hash v1</translation>
-    </message>
-    <message>
         <source>Info Hash v2</source>
         <translation>Info hash v2</translation>
+    </message>
+    <message>
+        <source>Info Hash v1</source>
+        <translation>Info hash v1</translation>
     </message>
     <message>
         <source>Incomplete Save Path</source>
         <translation>Nepotpuna putanja spremanja</translation>
     </message>
     <message>
-        <source>Private</source>
-        <translation>Privatno</translation>
+        <source>Popularity</source>
+        <translation>Popularnost</translation>
+    </message>
+    <message>
+        <source>Status Icon</source>
+        <translation>Status ikona</translation>
     </message>
 </context>
 <context>
@@ -2899,6 +3103,10 @@ Koristite ';' za razdvajanje više unosa. Može koristiti zamjenski znak '*'.</t
         <source>Collapse/expand</source>
         <translation>Sažmi/proširi</translation>
     </message>
+    <message>
+        <source>Collapse/expand category</source>
+        <translation type="unfinished" />
+    </message>
 </context>
 <context>
     <name>TransferListWidget</name>
@@ -2993,14 +3201,6 @@ Koristite ';' za razdvajanje više unosa. Može koristiti zamjenski znak '*'.</t
         <translation>Nove kategorije</translation>
     </message>
     <message>
-        <source>Location</source>
-        <translation>Lokacija</translation>
-    </message>
-    <message>
-        <source>New name</source>
-        <translation>Novi naziv</translation>
-    </message>
-    <message>
         <source>Set location</source>
         <translation>Postavi lokaciju</translation>
     </message>
@@ -3013,16 +3213,8 @@ Koristite ';' za razdvajanje više unosa. Može koristiti zamjenski znak '*'.</t
         <translation>Uredi kategoriju</translation>
     </message>
     <message>
-        <source>Save path</source>
-        <translation>Putanja za spremanje</translation>
-    </message>
-    <message>
         <source>Comma-separated tags:</source>
         <translation>Oznake odvojene zarezima:</translation>
-    </message>
-    <message>
-        <source>Add Tags</source>
-        <translation>Dodaj oznake</translation>
     </message>
     <message>
         <source>Tags</source>
@@ -3085,16 +3277,40 @@ Koristite ';' za razdvajanje više unosa. Može koristiti zamjenski znak '*'.</t
         <translation>Komentar</translation>
     </message>
     <message>
-        <source>Stop</source>
-        <translation>Zaustavi</translation>
-    </message>
-    <message>
         <source>Force Start</source>
         <translation>Prisilni start</translation>
     </message>
     <message>
+        <source>Save path:</source>
+        <translation>Putanja spremanja:</translation>
+    </message>
+    <message>
+        <source>Location:</source>
+        <translation>Lokacija:</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Zaustavi</translation>
+    </message>
+    <message>
+        <source>Automatic mode means that various torrent properties(eg save path) will be decided by the associated category</source>
+        <translation>Automatski način rada znači da će različita svojstva torrenta (npr. putanja spremanja) biti određena pridruženom kategorijom</translation>
+    </message>
+    <message>
         <source>Start</source>
         <translation>Start</translation>
+    </message>
+    <message>
+        <source>New name:</source>
+        <translation>Novi naziv:</translation>
+    </message>
+    <message>
+        <source>Add tags</source>
+        <translation>Dodaj oznake</translation>
+    </message>
+    <message>
+        <source>Category:</source>
+        <translation>Kategorija:</translation>
     </message>
 </context>
 <context>
@@ -3140,6 +3356,10 @@ Koristite ';' za razdvajanje više unosa. Može koristiti zamjenski znak '*'.</t
     <message>
         <source>Also remove the content files</source>
         <translation>Također uklonite datoteke sadržaja</translation>
+    </message>
+    <message>
+        <source>Remove tracker</source>
+        <translation>Ukloni trackera</translation>
     </message>
 </context>
 <context>
@@ -3342,8 +3562,24 @@ Koristite ';' za razdvajanje više unosa. Može koristiti zamjenski znak '*'.</t
         <translation>Nema instaliranih dodataka za pretraživanje.</translation>
     </message>
     <message>
+        <source>Select category</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Min size prefix</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <source>Start a search above.</source>
         <translation>Započnite pretragu iznad.</translation>
+    </message>
+    <message>
+        <source>Max size prefix</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Select plugins</source>
+        <translation type="unfinished" />
     </message>
 </context>
 <context>
@@ -3400,16 +3636,20 @@ Koristite ';' za razdvajanje više unosa. Može koristiti zamjenski znak '*'.</t
         <translation>Leecheri</translation>
     </message>
     <message>
-        <source>Search engine</source>
-        <translation>Pretraživač</translation>
-    </message>
-    <message>
         <source>Seeders</source>
         <translation>Seederi</translation>
     </message>
     <message>
         <source>Published On</source>
         <translation>Objavljeno dana</translation>
+    </message>
+    <message>
+        <source>Engine URL</source>
+        <translation>URL pogona</translation>
+    </message>
+    <message>
+        <source>Engine</source>
+        <translation>Pogon</translation>
     </message>
 </context>
 <context>
@@ -3641,10 +3881,6 @@ Koristite ';' za razdvajanje više unosa. Može koristiti zamjenski znak '*'.</t
         <translation>Link preuzimanja</translation>
     </message>
     <message>
-        <source>Searching...</source>
-        <translation>Pretraživanje...</translation>
-    </message>
-    <message>
         <source>Search has finished</source>
         <translation>Pretraga je završila</translation>
     </message>
@@ -3653,8 +3889,20 @@ Koristite ';' za razdvajanje više unosa. Može koristiti zamjenski znak '*'.</t
         <translation>Greška prilikom pretrage...</translation>
     </message>
     <message>
+        <source>Close tab</source>
+        <translation>Zatvori karticu</translation>
+    </message>
+    <message>
+        <source>Searching...</source>
+        <translation>Pretraživanje...</translation>
+    </message>
+    <message>
         <source>Search aborted</source>
         <translation>Pretraga prekinuta</translation>
+    </message>
+    <message>
+        <source>Close all tabs</source>
+        <translation>Zatvori sve kartice</translation>
     </message>
 </context>
 <context>
@@ -3765,6 +4013,22 @@ Koristite ';' za razdvajanje više unosa. Može koristiti zamjenski znak '*'.</t
     <message>
         <source>Download torrent</source>
         <translation>Preuzimanje torrenta</translation>
+    </message>
+    <message>
+        <source>Edit feed URL...</source>
+        <translation>Uredi URL feeda...</translation>
+    </message>
+    <message>
+        <source>Unable to update URL</source>
+        <translation>Nije moguće ažurirati URL</translation>
+    </message>
+    <message>
+        <source>URL is unchanged</source>
+        <translation>URL nije promijenjen</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty</source>
+        <translation>URL ne može biti prazan</translation>
     </message>
 </context>
 <context>
@@ -4011,6 +4275,14 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
         <translation>Dodaj oznake:</translation>
     </message>
     <message>
+        <source>Remove rule</source>
+        <translation>Ukloni pravilo</translation>
+    </message>
+    <message>
+        <source>Add rule</source>
+        <translation>Dodaj pravilo</translation>
+    </message>
+    <message>
         <source>Add Stopped:</source>
         <translation>Dodaj zaustavljeno:</translation>
     </message>
@@ -4018,20 +4290,24 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
 <context>
     <name>TrackerFiltersList</name>
     <message>
-        <source>All (%1)</source>
-        <translation>Sve (%1)</translation>
-    </message>
-    <message>
-        <source>Trackerless (%1)</source>
-        <translation>Bez trackera (%1)</translation>
-    </message>
-    <message>
         <source>Remove torrents</source>
         <translation>Ukloni torrente</translation>
     </message>
     <message>
+        <source>All</source>
+        <translation>Sve</translation>
+    </message>
+    <message>
+        <source>Trackerless</source>
+        <translation>Bez trackera</translation>
+    </message>
+    <message>
         <source>Start torrents</source>
         <translation>Pokreni torrente</translation>
+    </message>
+    <message>
+        <source>Remove tracker</source>
+        <translation>Ukloni trackera</translation>
     </message>
     <message>
         <source>Stop torrents</source>
@@ -4185,10 +4461,128 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
     </message>
 </context>
 <context>
+    <name>TrackersFilterWidget</name>
+    <message>
+        <source>Are you sure you want to remove tracker %1 from all torrents?</source>
+        <translation type="unfinished" />
+    </message>
+</context>
+<context>
+    <name>Category</name>
+    <message>
+        <source>Unable to edit category</source>
+        <translation>Nije moguće urediti kategoriju</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>U redu</translation>
+    </message>
+    <message>
+        <source>Unable to create category</source>
+        <translation>Nije moguće stvoriti kategoriju</translation>
+    </message>
+    <message>
+        <source>Unable to set category</source>
+        <translation>Nije moguće postaviti kategoriju</translation>
+    </message>
+</context>
+<context>
+    <name>CookiesDialog</name>
+    <message>
+        <source>Domain</source>
+        <translation>Domena</translation>
+    </message>
+    <message>
+        <source>Manage Cookies</source>
+        <translation>Upravljaj kolačićima</translation>
+    </message>
+    <message>
+        <source>Add Cookie</source>
+        <translation>Dodaj kolačić</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>Ukloni</translation>
+    </message>
+    <message>
+        <source>Expiration Date</source>
+        <translation>Rok trajanja</translation>
+    </message>
+    <message>
+        <source>Value</source>
+        <translation>Vrijednost</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Naziv</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>Putanja</translation>
+    </message>
+</context>
+<context>
+    <name>confirmAutoTMMDialog</name>
+    <message>
+        <source>Enable automatic torrent management</source>
+        <translation>Omogući automatsko upravljanje torrentima</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to enable Automatic Torrent Management for the selected torrent(s)? They may be relocated.</source>
+        <translation>Jeste li sigurni da želite omogućiti automatsko upravljanje torrentima za odabrani torrent(e)? Mogu biti premješteni.</translation>
+    </message>
+</context>
+<context>
+    <name>confirmRecheckDialog</name>
+    <message>
+        <source>Are you sure you want to recheck the selected torrent(s)?</source>
+        <translation>Jeste li sigurni da želite ponovno provjeriti odabrani/e torrent(e)?</translation>
+    </message>
+    <message>
+        <source>Recheck confirmation</source>
+        <translation>Ponovno provjeri potvrđivanje</translation>
+    </message>
+</context>
+<context>
     <name>SearchWidget</name>
     <message>
         <source>Close tab</source>
         <translation>Zatvori karticu</translation>
+    </message>
+</context>
+<context>
+    <name>Login</name>
+    <message>
+        <source>qBittorrent WebUI</source>
+        <translation>qBittorrent WebUI</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Lozinka</translation>
+    </message>
+    <message>
+        <source>JavaScript Required! You must enable JavaScript for the WebUI to work properly</source>
+        <translation>Potreban je JavaScript! Morate omogućiti JavaScript kako bi WebUI ispravno radio</translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation>Prijava</translation>
+    </message>
+    <message>
+        <source>Server response:</source>
+        <translation>Odgovor poslužitelja:</translation>
+    </message>
+    <message>
+        <source>Unable to log in, server is probably unreachable.</source>
+        <translation>Nije se moguće prijaviti, poslužitelj je vjerojatno nedostupan.</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Korisničko ime</translation>
+    </message>
+    <message>
+        <source>Invalid Username or Password.</source>
+        <translation>Neispravno korisničko ime ili lozinka</translation>
     </message>
 </context>
 </TS>

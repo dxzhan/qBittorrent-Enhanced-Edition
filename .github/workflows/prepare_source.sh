@@ -24,6 +24,8 @@ EOF
   export PIP_INDEX_URL="https://repo.huaweicloud.com/repository/pypi/simple"
 fi
 
+export DEBIAN_FRONTEND=noninteractive
+
 # keep debs in container for store cache in docker volume
 rm -f /etc/apt/apt.conf.d/*
 echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' >/etc/apt/apt.conf.d/01keep-debs

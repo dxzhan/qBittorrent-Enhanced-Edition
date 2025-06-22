@@ -35,9 +35,9 @@
 #include <QTreeView>
 
 #include "base/bittorrent/infohash.h"
+#include "guiapplicationcomponent.h"
 #include "transferlistmodel.h"
 
-class MainWindow;
 class Path;
 class TransferListSortModel;
 
@@ -52,13 +52,13 @@ enum class CopyInfohashPolicy
     Version2
 };
 
-class TransferListWidget final : public QTreeView
+class TransferListWidget final : public GUIApplicationComponent<QTreeView>
 {
     Q_OBJECT
     Q_DISABLE_COPY_MOVE(TransferListWidget)
 
 public:
-    TransferListWidget(QWidget *parent, MainWindow *mainWindow);
+    TransferListWidget(IGUIApplication *app, QWidget *parent);
     ~TransferListWidget() override;
     TransferListModel *getSourceModel() const;
 
@@ -119,22 +119,24 @@ private slots:
     void saveSettings();
 
 private:
+    void dragEnterEvent(QDragEnterEvent *event) override;
+    void dragMoveEvent(QDragMoveEvent *event) override;
+    void dropEvent(QDropEvent *event) override;
     void wheelEvent(QWheelEvent *event) override;
     QModelIndex mapToSource(const QModelIndex &index) const;
     QModelIndexList mapToSource(const QModelIndexList &indexes) const;
     QModelIndex mapFromSource(const QModelIndex &index) const;
     bool loadSettings();
-    QVector<BitTorrent::Torrent *> getSelectedTorrents() const;
+    QList<BitTorrent::Torrent *> getSelectedTorrents() const;
     void askAddTagsForSelection();
     void editTorrentTrackers();
     void exportTorrent();
     void confirmRemoveAllTagsForSelection();
     TagSet askTagsForSelection(const QString &dialogTitle);
     void applyToSelectedTorrents(const std::function<void (BitTorrent::Torrent *const)> &fn);
-    QVector<BitTorrent::Torrent *> getVisibleTorrents() const;
+    QList<BitTorrent::Torrent *> getVisibleTorrents() const;
     int visibleColumnsCount() const;
 
     TransferListModel *m_listModel = nullptr;
     TransferListSortModel *m_sortFilterModel = nullptr;
-    MainWindow *m_mainWindow = nullptr;
 };

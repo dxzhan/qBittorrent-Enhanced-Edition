@@ -41,11 +41,11 @@
 #include <QBitArray>
 #include <QDateTime>
 #include <QHash>
+#include <QList>
 #include <QMap>
 #include <QObject>
 #include <QQueue>
 #include <QString>
-#include <QVector>
 
 #include "base/path.h"
 #include "base/tagset.h"
@@ -162,7 +162,7 @@ namespace BitTorrent
         qlonglong fileSize(int index) const override;
         PathList filePaths() const override;
         PathList actualFilePaths() const override;
-        QVector<DownloadPriority> filePriorities() const override;
+        QList<DownloadPriority> filePriorities() const override;
 
         TorrentInfo info() const override;
         bool isFinished() const override;
@@ -184,13 +184,13 @@ namespace BitTorrent
         bool hasMissingFiles() const override;
         bool hasError() const override;
         int queuePosition() const override;
-        QVector<TrackerEntryStatus> trackers() const override;
-        QVector<QUrl> urlSeeds() const override;
+        QList<TrackerEntryStatus> trackers() const override;
+        QList<QUrl> urlSeeds() const override;
         QString error() const override;
         qlonglong totalDownload() const override;
         qlonglong totalUpload() const override;
         qlonglong eta() const override;
-        QVector<qreal> filesProgress() const override;
+        QList<qreal> filesProgress() const override;
         int seedsCount() const override;
         int peersCount() const override;
         int leechsCount() const override;
@@ -203,10 +203,10 @@ namespace BitTorrent
         bool isDHTDisabled() const override;
         bool isPEXDisabled() const override;
         bool isLSDDisabled() const override;
-        QVector<PeerInfo> peers() const override;
+        QList<PeerInfo> peers() const override;
         QBitArray pieces() const override;
         QBitArray downloadingPieces() const override;
-        QVector<int> pieceAvailability() const override;
+        QList<int> pieceAvailability() const override;
         qreal distributedCopies() const override;
         qreal maxRatio() const override;
         int maxSeedingTime() const override;
@@ -220,7 +220,7 @@ namespace BitTorrent
         int connectionsCount() const override;
         int connectionsLimit() const override;
         qlonglong nextAnnounce() const override;
-        QVector<qreal> availableFileFractions() const override;
+        QList<qreal> availableFileFractions() const override;
 
         void setName(const QString &name) override;
         void setSequentialDownload(bool enable) override;
@@ -231,7 +231,7 @@ namespace BitTorrent
         void forceDHTAnnounce() override;
         void forceRecheck() override;
         void renameFile(int index, const Path &path) override;
-        void prioritizeFiles(const QVector<DownloadPriority> &priorities) override;
+        void prioritizeFiles(const QList<DownloadPriority> &priorities) override;
         void setUploadLimit(int limit) override;
         void setDownloadLimit(int limit) override;
         void setSuperSeeding(bool enable) override;
@@ -239,11 +239,11 @@ namespace BitTorrent
         void setPEXDisabled(bool disable) override;
         void setLSDDisabled(bool disable) override;
         void flushCache() const override;
-        void addTrackers(QVector<TrackerEntry> trackers) override;
+        void addTrackers(QList<TrackerEntry> trackers) override;
         void removeTrackers(const QStringList &trackers) override;
-        void replaceTrackers(QVector<TrackerEntry> trackers) override;
-        void addUrlSeeds(const QVector<QUrl> &urlSeeds) override;
-        void removeUrlSeeds(const QVector<QUrl> &urlSeeds) override;
+        void replaceTrackers(QList<TrackerEntry> trackers) override;
+        void addUrlSeeds(const QList<QUrl> &urlSeeds) override;
+        void removeUrlSeeds(const QList<QUrl> &urlSeeds) override;
         bool connectPeer(const PeerAddress &peerAddress) override;
         void clearPeers() override;
         void setMetadata(const TorrentInfo &torrentInfo) override;
@@ -258,11 +258,11 @@ namespace BitTorrent
         nonstd::expected<QByteArray, QString> exportToBuffer() const override;
         nonstd::expected<void, QString> exportToFile(const Path &path) const override;
 
-        void fetchPeerInfo(std::function<void (QVector<PeerInfo>)> resultHandler) const override;
-        void fetchURLSeeds(std::function<void (QVector<QUrl>)> resultHandler) const override;
-        void fetchPieceAvailability(std::function<void (QVector<int>)> resultHandler) const override;
+        void fetchPeerInfo(std::function<void (QList<PeerInfo>)> resultHandler) const override;
+        void fetchURLSeeds(std::function<void (QList<QUrl>)> resultHandler) const override;
+        void fetchPieceAvailability(std::function<void (QList<int>)> resultHandler) const override;
         void fetchDownloadingPieces(std::function<void (QBitArray)> resultHandler) const override;
-        void fetchAvailableFileFractions(std::function<void (QVector<qreal>)> resultHandler) const override;
+        void fetchAvailableFileFractions(std::function<void (QList<qreal>)> resultHandler) const override;
 
         bool needSaveResumeData() const;
 
@@ -337,7 +337,7 @@ namespace BitTorrent
         TorrentInfo m_torrentInfo;
         PathList m_filePaths;
         QHash<lt::file_index_t, int> m_indexMap;
-        QVector<DownloadPriority> m_filePriorities;
+        QList<DownloadPriority> m_filePriorities;
         QBitArray m_completedFiles;
         SpeedMonitor m_payloadRateMonitor;
 
@@ -361,8 +361,8 @@ namespace BitTorrent
 
         MaintenanceJob m_maintenanceJob = MaintenanceJob::None;
 
-        QVector<TrackerEntryStatus> m_trackerEntryStatuses;
-        QVector<QUrl> m_urlSeeds;
+        QList<TrackerEntryStatus> m_trackerEntryStatuses;
+        QList<QUrl> m_urlSeeds;
         FileErrorInfo m_lastFileError;
 
         // Persistent data
@@ -393,7 +393,7 @@ namespace BitTorrent
         int m_uploadLimit = 0;
 
         QBitArray m_pieces;
-        QVector<std::int64_t> m_filesProgress;
+        QList<std::int64_t> m_filesProgress;
 
         bool m_deferredRequestResumeDataInvoked = false;
     };

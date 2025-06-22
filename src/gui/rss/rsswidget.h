@@ -37,8 +37,10 @@
 class QListWidgetItem;
 class QTreeWidgetItem;
 
-class ArticleListWidget;
-class FeedListWidget;
+namespace RSS
+{
+    class Article;
+}
 
 namespace RSS
 {
@@ -94,6 +96,4 @@ private:
     void renderArticle(const RSS::Article *article) const;
 
     Ui::RSSWidget *m_ui = nullptr;
-    ArticleListWidget *m_articleListWidget = nullptr;
-    FeedListWidget *m_feedListWidget = nullptr;
 };

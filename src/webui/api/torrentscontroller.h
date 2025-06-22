@@ -44,6 +44,9 @@ private slots:
     void propertiesAction();
     void trackersAction();
     void webseedsAction();
+    void addWebSeedsAction();
+    void editWebSeedAction();
+    void removeWebSeedsAction();
     void filesAction();
     void pieceHashesAction();
     void pieceStatesAction();
@@ -58,6 +61,7 @@ private slots:
     void removeCategoriesAction();
     void categoriesAction();
     void addTagsAction();
+    void setTagsAction();
     void removeTagsAction();
     void createTagsAction();
     void deleteTagsAction();

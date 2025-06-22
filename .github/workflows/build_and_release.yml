@@ -10,8 +10,6 @@ on:
   release:
     types:
       - released
-env:
-  USE_ZLIB_NG: 1
 jobs:
   appimage:
     runs-on: ubuntu-latest

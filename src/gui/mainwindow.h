@@ -128,14 +128,11 @@ private slots:
     void displayExecutionLogTab();
     void toggleFocusBetweenLineEdits();
     void loadSessionStats();
-    void reloadTorrentStats(const QVector<BitTorrent::Torrent *> &torrents);
+    void reloadTorrentStats(const QList<BitTorrent::Torrent *> &torrents);
     void loadPreferences();
     void optionsSaved();
     void toggleAlternativeSpeeds();
 
-#ifdef Q_OS_WIN
-    void pythonDownloadFinished(const Net::DownloadResult &result);
-#endif
     void addToolbarContextMenu();
     void manageCookies();
 
@@ -184,15 +181,13 @@ private slots:
 #else
     void toggleVisibility();
 #endif
+#ifdef Q_OS_WIN
+    void pythonDownloadFinished(const Net::DownloadResult &result);
+#endif
 
 private:
     void populateDesktopIntegrationMenu();
-#ifdef Q_OS_WIN
-    void installPython();
-#endif
 
-    void dropEvent(QDropEvent *event) override;
-    void dragEnterEvent(QDragEnterEvent *event) override;
     void closeEvent(QCloseEvent *) override;
     void showEvent(QShowEvent *) override;
     void keyPressEvent(QKeyEvent *event) override;
@@ -205,6 +200,11 @@ private:
     void applyTransferListFilter();
     void refreshWindowTitle();
     void refreshTrayIconTooltip();
+
+#ifdef Q_OS_WIN
+    void installPython();
+    bool verifyPythonInstaller(const Path &installerPath) const;
+#endif
 
     Ui::MainWindow *m_ui = nullptr;
 

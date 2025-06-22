@@ -32,9 +32,9 @@
 #include <QByteArray>
 #include <QHash>
 #include <QHostAddress>
+#include <QList>
 #include <QMap>
 #include <QString>
-#include <QVector>
 
 #include "base/global.h"
 
@@ -60,6 +60,7 @@ namespace Http
     inline const QString HEADER_X_CONTENT_TYPE_OPTIONS = u"x-content-type-options"_s;
     inline const QString HEADER_X_FORWARDED_FOR = u"x-forwarded-for"_s;
     inline const QString HEADER_X_FORWARDED_HOST = u"x-forwarded-host"_s;
+    inline const QString HEADER_X_FORWARDED_PROTO = u"X-forwarded-proto"_s;
     inline const QString HEADER_X_FRAME_OPTIONS = u"x-frame-options"_s;
     inline const QString HEADER_X_XSS_PROTECTION = u"x-xss-protection"_s;
 
@@ -78,7 +79,7 @@ namespace Http
     inline const QString CONTENT_TYPE_FORM_DATA = u"multipart/form-data"_s;
 
     // portability: "\r\n" doesn't guarantee mapping to the correct symbol
-    inline const char CRLF[] = {0x0D, 0x0A, '\0'};
+    inline const QByteArray CRLF = QByteArrayLiteral("\x0D\x0A");
 
     struct Environment
     {
@@ -112,7 +113,7 @@ namespace Http
         HeaderMap headers;
         QHash<QString, QByteArray> query;
         QHash<QString, QString> posts;
-        QVector<UploadedFile> files;
+        QList<UploadedFile> files;
     };
 
     struct ResponseStatus

@@ -39,7 +39,6 @@
 #include <QSplitter>
 #include <QShortcut>
 #include <QStackedWidget>
-#include <QThread>
 #include <QUrl>
 
 #include "base/bittorrent/infohash.h"
@@ -479,7 +478,7 @@ void PropertiesWidget::loadDynamicData()
                 {
                     // Pieces availability
                     showPiecesAvailability(true);
-                    m_torrent->fetchPieceAvailability([this, torrent = TorrentPtr(m_torrent)](const QVector<int> &pieceAvailability)
+                    m_torrent->fetchPieceAvailability([this, torrent = TorrentPtr(m_torrent)](const QList<int> &pieceAvailability)
                     {
                         if (torrent == m_torrent)
                             m_piecesAvailability->setAvailability(pieceAvailability);
@@ -525,17 +524,17 @@ void PropertiesWidget::loadUrlSeeds()
         return;
 
     using TorrentPtr = QPointer<BitTorrent::Torrent>;
-    m_torrent->fetchURLSeeds([this, torrent = TorrentPtr(m_torrent)](const QVector<QUrl> &urlSeeds)
+    m_torrent->fetchURLSeeds([this, torrent = TorrentPtr(m_torrent)](const QList<QUrl> &urlSeeds)
     {
         if (torrent != m_torrent)
             return;
 
         m_ui->listWebSeeds->clear();
-        qDebug("Loading URL seeds");
+        qDebug("Loading web seeds");
         // Add url seeds
         for (const QUrl &urlSeed : urlSeeds)
         {
-            qDebug("Loading URL seed: %s", qUtf8Printable(urlSeed.toString()));
+            qDebug("Loading web seed: %s", qUtf8Printable(urlSeed.toString()));
             new QListWidgetItem(urlSeed.toString(), m_ui->listWebSeeds);
         }
     });
@@ -550,16 +549,16 @@ void PropertiesWidget::displayWebSeedListMenu()
     QMenu *menu = new QMenu(this);
     menu->setAttribute(Qt::WA_DeleteOnClose);
 
-    menu->addAction(UIThemeManager::instance()->getIcon(u"list-add"_s), tr("New Web seed"), this, &PropertiesWidget::askWebSeed);
+    menu->addAction(UIThemeManager::instance()->getIcon(u"list-add"_s), tr("Add web seed..."), this, &PropertiesWidget::askWebSeed);
 
     if (!rows.isEmpty())
     {
-        menu->addAction(UIThemeManager::instance()->getIcon(u"edit-clear"_s, u"list-remove"_s), tr("Remove Web seed")
+        menu->addAction(UIThemeManager::instance()->getIcon(u"edit-clear"_s, u"list-remove"_s), tr("Remove web seed")
             , this, &PropertiesWidget::deleteSelectedUrlSeeds);
         menu->addSeparator();
-        menu->addAction(UIThemeManager::instance()->getIcon(u"edit-copy"_s), tr("Copy Web seed URL")
+        menu->addAction(UIThemeManager::instance()->getIcon(u"edit-copy"_s), tr("Copy web seed URL")
             , this, &PropertiesWidget::copySelectedWebSeedsToClipboard);
-        menu->addAction(UIThemeManager::instance()->getIcon(u"edit-rename"_s), tr("Edit Web seed URL")
+        menu->addAction(UIThemeManager::instance()->getIcon(u"edit-rename"_s), tr("Edit web seed URL...")
             , this, &PropertiesWidget::editWebSeed);
     }
 
@@ -607,14 +606,14 @@ void PropertiesWidget::askWebSeed()
 {
     bool ok = false;
     // Ask user for a new url seed
-    const QString urlSeed = AutoExpandableDialog::getText(this, tr("New URL seed", "New HTTP source"),
-                                                           tr("New URL seed:"), QLineEdit::Normal,
+    const QString urlSeed = AutoExpandableDialog::getText(this, tr("Add web seed", "Add HTTP source"),
+                                                           tr("Add web seed:"), QLineEdit::Normal,
                                                            u"http://www."_s, &ok);
     if (!ok) return;
     qDebug("Adding %s web seed", qUtf8Printable(urlSeed));
     if (!m_ui->listWebSeeds->findItems(urlSeed, Qt::MatchFixedString).empty())
     {
-        QMessageBox::warning(this, u"qBittorrent"_s, tr("This URL seed is already in the list."), QMessageBox::Ok);
+        QMessageBox::warning(this, u"qBittorrent"_s, tr("This web seed is already in the list."), QMessageBox::Ok);
         return;
     }
     if (m_torrent)
@@ -628,7 +627,7 @@ void PropertiesWidget::deleteSelectedUrlSeeds()
     const QList<QListWidgetItem *> selectedItems = m_ui->listWebSeeds->selectedItems();
     if (selectedItems.isEmpty()) return;
 
-    QVector<QUrl> urlSeeds;
+    QList<QUrl> urlSeeds;
     urlSeeds.reserve(selectedItems.size());
 
     for (const QListWidgetItem *item : selectedItems)
@@ -667,7 +666,7 @@ void PropertiesWidget::editWebSeed()
     if (!m_ui->listWebSeeds->findItems(newSeed, Qt::MatchFixedString).empty())
     {
         QMessageBox::warning(this, u"qBittorrent"_s,
-                             tr("This URL seed is already in the list."),
+                             tr("This web seed is already in the list."),
                              QMessageBox::Ok);
         return;
     }

@@ -70,6 +70,22 @@
         <source>Add to top of queue</source>
         <translation>Bovenaan wachtrij toevoegen</translation>
     </message>
+    <message>
+        <source>One link per line (HTTP links, Magnet links and info-hashes are supported)</source>
+        <translation>Een koppeling per regel (http-verbindingen, magneetkoppelingen en info-hashes worden ondersteund)</translation>
+    </message>
+    <message>
+        <source>Add torrent links</source>
+        <translation>Torrent-koppelingen toevoegen</translation>
+    </message>
+    <message>
+        <source>Select .torrent files</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Torrent options</source>
+        <translation type="unfinished" />
+    </message>
 </context>
 <context>
     <name>CategoryFilterModel</name>
@@ -126,10 +142,6 @@
     <message>
         <source>Exit qBittorrent</source>
         <translation>qBittorrent afsluiten</translation>
-    </message>
-    <message>
-        <source>Only one link per line</source>
-        <translation>Slechts één koppeling per regel</translation>
     </message>
     <message>
         <source>Global upload rate limit must be greater than 0 or disabled.</source>
@@ -205,10 +217,6 @@
         <translation>Bestanden opslaan in:</translation>
     </message>
     <message>
-        <source>Cookie:</source>
-        <translation>Cookie:</translation>
-    </message>
-    <message>
         <source>More information</source>
         <translation>Meer informatie</translation>
     </message>
@@ -272,10 +280,6 @@
         <translation>Afmelden</translation>
     </message>
     <message>
-        <source>Download Torrents from their URLs or Magnet links</source>
-        <translation>Torrents downloaden via hun URL's of magneetkoppelingen</translation>
-    </message>
-    <message>
         <source>Upload local torrent</source>
         <translation>Lokale torrent uploaden</translation>
     </message>
@@ -294,10 +298,6 @@
     <message>
         <source>Invalid category name:\nPlease do not use any special characters in the category name.</source>
         <translation>Ongeldige categorienaam:\nGebruik geen speciale tekens in de categorienaam.</translation>
-    </message>
-    <message>
-        <source>Unable to create category</source>
-        <translation>Kan categorie niet aanmaken</translation>
     </message>
     <message>
         <source>Upload rate threshold must be greater than 0.</source>
@@ -360,10 +360,6 @@
         <translation>Oorspronkelijke auteur</translation>
     </message>
     <message>
-        <source>Are you sure you want to remove the selected torrents from the transfer list?</source>
-        <translation>Weet u zeker dat u de geselecteerde torrents wilt verwijderen uit de overdrachtlijst?</translation>
-    </message>
-    <message>
         <source>The port used for the WebUI must be between 1 and 65535.</source>
         <translation>De poort gebruikt voor de WebUI moet tussen 1 en 65535 liggen.</translation>
     </message>
@@ -376,28 +372,76 @@
         <translation>JavaScript vereist! U moet JavaScript inschakelen om de WebUI goed te laten werken</translation>
     </message>
     <message>
-        <source>Unable to log in, qBittorrent is probably unreachable.</source>
-        <translation>Kan niet inloggen, qBittorrent is waarschijnlijk onbereikbaar.</translation>
+        <source>External IP: N/A</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Reverse proxy setup examples</source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Could not contact qBittorrent</source>
         <translation>Kon geen contact opnemen met qBittorrent</translation>
     </message>
     <message>
-        <source>Password</source>
-        <translation>Wachtwoord</translation>
+        <source>Remember choice</source>
+        <translation>Keuze onthouden</translation>
     </message>
     <message>
-        <source>Username</source>
-        <translation>Gebruikersnaam</translation>
+        <source>Are you sure you want to remove these %1 torrents from the transfer list?</source>
+        <translation>Weet u zeker dat u deze %1 torrents uit de overdrachtlijst wilt verwijderen?</translation>
     </message>
     <message>
-        <source>Invalid Username or Password.</source>
-        <translation>Ongeldige gebruikersnaam of wachtwoord.</translation>
+        <source>Unable to delete torrents.</source>
+        <translation type="unfinished" />
     </message>
     <message>
-        <source>Login</source>
-        <translation>Login</translation>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>External IP: %1%2</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Edit web seed</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Are you sure you want to remove %1 from the transfer list?</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to set Auto Torrent Management for the selected torrents.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to stop torrents.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to download file</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>External IPs: %1, %2</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to recheck torrents.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>List of web seeds to add (one per line):</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to start torrents.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Add web seeds</source>
+        <translation type="unfinished" />
     </message>
 </context>
 <context>
@@ -603,12 +647,40 @@
         <translation>[D: %1, U: %2]</translation>
     </message>
     <message>
-        <source>Would you like to start all torrents?</source>
-        <translation>Wilt u alle torrents starten?</translation>
+        <source>Filter by:</source>
+        <translation>Filteren op:</translation>
+    </message>
+    <message>
+        <source>Save Path</source>
+        <translation>Opslagpad</translation>
     </message>
     <message>
         <source>Stop</source>
         <translation>Stoppen</translation>
+    </message>
+    <message>
+        <source>Use regular expression</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Would you like to start all torrents?</source>
+        <translation>Wilt u alle torrents starten?</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>Starten</translation>
+    </message>
+    <message>
+        <source>Manage Cookies...</source>
+        <translation>Cookies beheren...</translation>
+    </message>
+    <message>
+        <source>Unable to export torrent file</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Naam</translation>
     </message>
     <message>
         <source>Would you like to stop all torrents?</source>
@@ -621,10 +693,6 @@
     <message>
         <source>Stop All</source>
         <translation>Alles stoppen</translation>
-    </message>
-    <message>
-        <source>Start</source>
-        <translation>Starten</translation>
     </message>
 </context>
 <context>
@@ -652,10 +720,6 @@
     <message>
         <source>Language</source>
         <translation>Taal</translation>
-    </message>
-    <message>
-        <source>User Interface Language:</source>
-        <translation>Taal gebruikersinterface:</translation>
     </message>
     <message>
         <source>Email notification upon download completion</source>
@@ -1284,10 +1348,6 @@
         <translation>Cliënt verbannen na opeenvolgende fouten:</translation>
     </message>
     <message>
-        <source>Enable cookie Secure flag (requires HTTPS)</source>
-        <translation>Secure-flag van cookie inschakelen (vereist https)</translation>
-    </message>
-    <message>
         <source>Header: value pairs, one per line</source>
         <translation>Header: waardeparen, één per regel</translation>
     </message>
@@ -1516,10 +1576,6 @@
         <translation>Ondersteuning voor geïnternationaliseerde domeinnamen (IDN):</translation>
     </message>
     <message>
-        <source>Run external program on torrent finished</source>
-        <translation>Extern programma uitvoeren wanneer torrent klaar is</translation>
-    </message>
-    <message>
         <source>Whitelist for filtering HTTP Host header values.
 In order to defend against DNS rebinding attack,
 you should put in domain names used by WebUI server.
@@ -1530,10 +1586,6 @@ Om te verdedigen tegen een DNS-rebinding-aanval
 zet u er domeinnamen in die gebruikt worden door de WebUI-server.
 
 Gebruik ';' om meerdere items te splitsen. Jokerteken '*' kan gebruikt worden.</translation>
-    </message>
-    <message>
-        <source>Run external program on torrent added</source>
-        <translation>Extern programma uitvoeren wanneer torrent toegevoegd wordt</translation>
     </message>
     <message>
         <source>HTTPS certificate should not be empty</source>
@@ -1598,10 +1650,6 @@ Gebruik ';' om meerdere items te splitsen. Jokerteken '*' kan gebruikt worden.</
     <message>
         <source>days</source>
         <translation>dagen</translation>
-    </message>
-    <message>
-        <source>Log file</source>
-        <translation>Logbestand</translation>
     </message>
     <message>
         <source>Behavior</source>
@@ -1816,76 +1864,184 @@ Gebruik ';' om meerdere items te splitsen. Jokerteken '*' kan gebruikt worden.</
         <translation>Naam van instantie van toepassing aanpassen:</translation>
     </message>
     <message>
-        <source>Send test email</source>
-        <translation>Test e-mail versturen</translation>
+        <source>Color scheme:</source>
+        <translation>Kleurenschema</translation>
     </message>
     <message>
-        <source>Attempted to send email. Check your inbox to confirm success</source>
-        <translation>Geprobeerd e-mail te verzenden. Controleer uw inbox voor bevestiging</translation>
+        <source>Show external IP in status bar</source>
+        <translation type="unfinished" />
     </message>
     <message>
-        <source>Automatically append these trackers to new downloads:</source>
-        <translation>Deze trackers automatisch toevoegen aan nieuwe downloads:</translation>
+        <source>Fetched trackers</source>
+        <translation type="unfinished" />
     </message>
     <message>
-        <source>Stop torrent</source>
-        <translation>Torrent stoppen</translation>
-    </message>
-    <message>
-        <source>Move files to trash (if possible)</source>
-        <translation>Bestanden naar prullenbak verplaatsen (indien mogelijk)</translation>
-    </message>
-    <message>
-        <source>Torrent content removing mode:</source>
-        <translation>Modus voor verwijderen van torrent-inhoud:</translation>
-    </message>
-    <message>
-        <source>Delete files permanently</source>
-        <translation>Bestanden permanent verwijderen</translation>
-    </message>
-    <message>
-        <source>Merge trackers to existing torrent</source>
-        <translation>Trackers samenvoegen in bestaande torrent</translation>
-    </message>
-    <message>
-        <source>When duplicate torrent is being added</source>
-        <translation>Wanneer een dubbele torrent toegevoegd wordt</translation>
-    </message>
-    <message>
-        <source>Resolve relative Save Path against appropriate Category path instead of Default one</source>
-        <translation>Relatief opslagpad omzetten in het juiste categoriepad in plaats van het standaardpad</translation>
-    </message>
-    <message>
-        <source>Use Category paths in Manual Mode</source>
-        <translation>Categoriepaden gebruiken in handmatige modus</translation>
+        <source>Confirm when deleting torrents</source>
+        <translation>Bevestigen bij verwijderen van torrents</translation>
     </message>
     <message>
         <source>Ignore SSL errors:</source>
         <translation>SSL-fouten negeren:</translation>
     </message>
     <message>
-        <source>Simple pread/pwrite</source>
-        <translation>Eenvoudige pread/pwrite</translation>
-    </message>
-    <message>
         <source>Dark</source>
         <translation>Donker</translation>
+    </message>
+    <message>
+        <source>Delete files permanently</source>
+        <translation>Bestanden permanent verwijderen</translation>
     </message>
     <message>
         <source>Auto</source>
         <translation>Automatisch</translation>
     </message>
     <message>
-        <source>Color scheme:</source>
-        <translation>Kleurenschema</translation>
+        <source>Use alternating row colors</source>
+        <translation>Afwisselende rijkleuren gebruiken</translation>
+    </message>
+    <message>
+        <source>Display full announce URL in the Tracker column</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>URL:</source>
+        <translation>URL:</translation>
+    </message>
+    <message>
+        <source>Transfer list</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>The announce port must be between 0 and 65535.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Light</source>
+        <translation>Licht</translation>
+    </message>
+    <message>
+        <source>Automatically append these trackers to new downloads:</source>
+        <translation>Deze trackers automatisch toevoegen aan nieuwe downloads:</translation>
+    </message>
+    <message>
+        <source>Downloading torrents:</source>
+        <translation>Downloadende torrents:</translation>
+    </message>
+    <message>
+        <source>Start / stop torrent</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Send test email</source>
+        <translation>Test e-mail versturen</translation>
+    </message>
+    <message>
+        <source>Completed torrents:</source>
+        <translation>Voltooide torrents:</translation>
+    </message>
+    <message>
+        <source>Enable cookie Secure flag (requires HTTPS or localhost connection)</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>When duplicate torrent is being added</source>
+        <translation>Wanneer een dubbele torrent toegevoegd wordt</translation>
+    </message>
+    <message>
+        <source>Action on double-click</source>
+        <translation>Actie bij dubbelklikken</translation>
+    </message>
+    <message>
+        <source>Save statistics interval:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Shows a confirmation dialog upon torrent deletion</source>
+        <translation>Geeft een bevestigingsvenster weer bij verwijderen van een torrent</translation>
+    </message>
+    <message>
+        <source>Run on torrent finished:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Attempted to send email. Check your inbox to confirm success</source>
+        <translation>Geprobeerd e-mail te verzenden. Controleer uw inbox voor bevestiging</translation>
+    </message>
+    <message>
+        <source>Automatically append trackers from URL to new downloads:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Torrent content removing mode:</source>
+        <translation>Modus voor verwijderen van torrent-inhoud:</translation>
+    </message>
+    <message>
+        <source>Move files to trash (if possible)</source>
+        <translation>Bestanden naar prullenbak verplaatsen (indien mogelijk)</translation>
+    </message>
+    <message>
+        <source>Stop torrent</source>
+        <translation>Torrent stoppen</translation>
+    </message>
+    <message>
+        <source>Use Category paths in Manual Mode</source>
+        <translation>Categoriepaden gebruiken in handmatige modus</translation>
+    </message>
+    <message>
+        <source>List of alternative WebUI</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Run on torrent added:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Port reported to trackers (requires restart) [0: listening port]:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>User interface language:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Merge trackers to existing torrent</source>
+        <translation>Trackers samenvoegen in bestaande torrent</translation>
+    </message>
+    <message>
+        <source>Confirm torrent recheck:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Custom WebUI settings</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Following settings are WebUI only</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Simple pread/pwrite</source>
+        <translation>Eenvoudige pread/pwrite</translation>
+    </message>
+    <message>
+        <source>Resolve relative Save Path against appropriate Category path instead of Default one</source>
+        <translation>Relatief opslagpad omzetten in het juiste categoriepad in plaats van het standaardpad</translation>
+    </message>
+    <message>
+        <source>No action</source>
+        <translation>Geen actie</translation>
+    </message>
+    <message>
+        <source>Auto hide zero status filters</source>
+        <translation>Filters met nulstatus automatisch verbergen</translation>
     </message>
     <message>
         <source>Interface</source>
         <translation>Interface</translation>
     </message>
     <message>
-        <source>Light</source>
-        <translation>Licht</translation>
+        <source>Log Files</source>
+        <translation type="unfinished" />
     </message>
 </context>
 <context>
@@ -2252,20 +2408,52 @@ Gebruik ';' om meerdere items te splitsen. Jokerteken '*' kan gebruikt worden.</
         <translation>Overeenkomen met alle resultaten</translation>
     </message>
     <message>
-        <source>Popularity:</source>
-        <translation>Populariteit:</translation>
+        <source>Copy web seed URL</source>
+        <translation type="unfinished" />
     </message>
     <message>
-        <source>Ratio / Time Active (in months), indicates how popular the torrent is</source>
-        <translation>Verhouding / tijd actief (in maanden), geeft aan hoe populair de torrent is</translation>
+        <source>Replace option</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Edit web seed URL...</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Web seed URL:</source>
+        <translation>Webseed-URL:</translation>
     </message>
     <message>
         <source>Yes</source>
         <translation>Ja</translation>
     </message>
     <message>
+        <source>Ratio / Time Active (in months), indicates how popular the torrent is</source>
+        <translation>Verhouding / tijd actief (in maanden), geeft aan hoe populair de torrent is</translation>
+    </message>
+    <message>
+        <source>Popularity:</source>
+        <translation>Populariteit:</translation>
+    </message>
+    <message>
+        <source>Apply to which filename part</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <source>No</source>
         <translation>Nee</translation>
+    </message>
+    <message>
+        <source>Remove web seed</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Web seed editing</source>
+        <translation>Webseed bewerken</translation>
+    </message>
+    <message>
+        <source>Add web seeds...</source>
+        <translation type="unfinished" />
     </message>
     <message>
         <source>Private:</source>
@@ -2480,8 +2668,8 @@ Gebruik ';' om meerdere items te splitsen. Jokerteken '*' kan gebruikt worden.</
         <translation>Verplaatsen (0)</translation>
     </message>
     <message>
-        <source>Running (%1)</source>
-        <translation>Actief (%1)</translation>
+        <source>Running (0)</source>
+        <translation>Actief (0)</translation>
     </message>
     <message>
         <source>Stopped (0)</source>
@@ -2492,8 +2680,20 @@ Gebruik ';' om meerdere items te splitsen. Jokerteken '*' kan gebruikt worden.</
         <translation>Gestopt (%1)</translation>
     </message>
     <message>
-        <source>Running (0)</source>
-        <translation>Actief (0)</translation>
+        <source>Running (%1)</source>
+        <translation>Actief (%1)</translation>
+    </message>
+    <message>
+        <source>Remove torrents</source>
+        <translation>Torrents verwijderen</translation>
+    </message>
+    <message>
+        <source>Start torrents</source>
+        <translation>Torrents starten</translation>
+    </message>
+    <message>
+        <source>Stop torrents</source>
+        <translation>Torrents stoppen</translation>
     </message>
 </context>
 <context>
@@ -2647,28 +2847,32 @@ Gebruik ';' om meerdere items te splitsen. Jokerteken '*' kan gebruikt worden.</
         <translation>Opnieuw aankondigen over</translation>
     </message>
     <message>
-        <source>Popularity</source>
-        <translation>Populariteit</translation>
+        <source>Private</source>
+        <translation>Privé</translation>
     </message>
     <message>
         <source>Progress</source>
         <translation>Voortgang</translation>
     </message>
     <message>
-        <source>Info Hash v1</source>
-        <translation>Info-hash v1</translation>
-    </message>
-    <message>
         <source>Info Hash v2</source>
         <translation>Info-hash v2</translation>
+    </message>
+    <message>
+        <source>Info Hash v1</source>
+        <translation>Info-hash v1</translation>
     </message>
     <message>
         <source>Incomplete Save Path</source>
         <translation>Onvolledig opslagpad</translation>
     </message>
     <message>
-        <source>Private</source>
-        <translation>Privé</translation>
+        <source>Popularity</source>
+        <translation>Populariteit</translation>
+    </message>
+    <message>
+        <source>Status Icon</source>
+        <translation type="unfinished" />
     </message>
 </context>
 <context>
@@ -2899,6 +3103,10 @@ Gebruik ';' om meerdere items te splitsen. Jokerteken '*' kan gebruikt worden.</
         <source>Collapse/expand</source>
         <translation>Samenvouwen/uitvouwen</translation>
     </message>
+    <message>
+        <source>Collapse/expand category</source>
+        <translation type="unfinished" />
+    </message>
 </context>
 <context>
     <name>TransferListWidget</name>
@@ -2993,14 +3201,6 @@ Gebruik ';' om meerdere items te splitsen. Jokerteken '*' kan gebruikt worden.</
         <translation>Nieuwe categorie</translation>
     </message>
     <message>
-        <source>Location</source>
-        <translation>Locatie</translation>
-    </message>
-    <message>
-        <source>New name</source>
-        <translation>Nieuwe naam</translation>
-    </message>
-    <message>
         <source>Set location</source>
         <translation>Locatie instellen</translation>
     </message>
@@ -3013,16 +3213,8 @@ Gebruik ';' om meerdere items te splitsen. Jokerteken '*' kan gebruikt worden.</
         <translation>Categorie bewerken</translation>
     </message>
     <message>
-        <source>Save path</source>
-        <translation>Opslagpad</translation>
-    </message>
-    <message>
         <source>Comma-separated tags:</source>
         <translation>Kommagescheiden labels:</translation>
-    </message>
-    <message>
-        <source>Add Tags</source>
-        <translation>Labels toevoegen</translation>
     </message>
     <message>
         <source>Tags</source>
@@ -3085,16 +3277,40 @@ Gebruik ';' om meerdere items te splitsen. Jokerteken '*' kan gebruikt worden.</
         <translation>Opmerking</translation>
     </message>
     <message>
-        <source>Stop</source>
-        <translation>Stoppen</translation>
-    </message>
-    <message>
         <source>Force Start</source>
         <translation>Geforceerd starten</translation>
     </message>
     <message>
+        <source>Save path:</source>
+        <translation>Opslagpad:</translation>
+    </message>
+    <message>
+        <source>Location:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Stoppen</translation>
+    </message>
+    <message>
+        <source>Automatic mode means that various torrent properties(eg save path) will be decided by the associated category</source>
+        <translation>Automatische modus betekent dat verschillende torrent-eigenschappen (bijvoorbeeld opslagpad) bepaald zullen worden door de bijbehorende categorie.</translation>
+    </message>
+    <message>
         <source>Start</source>
         <translation>Starten</translation>
+    </message>
+    <message>
+        <source>New name:</source>
+        <translation>Nieuwe naam:</translation>
+    </message>
+    <message>
+        <source>Add tags</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Category:</source>
+        <translation>Categorie:</translation>
     </message>
 </context>
 <context>
@@ -3140,6 +3356,10 @@ Gebruik ';' om meerdere items te splitsen. Jokerteken '*' kan gebruikt worden.</
     <message>
         <source>Also remove the content files</source>
         <translation>Ook de inhoud-bestanden verwijderen</translation>
+    </message>
+    <message>
+        <source>Remove tracker</source>
+        <translation>Tracker verwijderen</translation>
     </message>
 </context>
 <context>
@@ -3342,8 +3562,24 @@ Gebruik ';' om meerdere items te splitsen. Jokerteken '*' kan gebruikt worden.</
         <translation>Er zijn geen zoekplugins geïnstalleerd.</translation>
     </message>
     <message>
+        <source>Select category</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Min size prefix</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <source>Start a search above.</source>
         <translation>Start hierboven een zoekopdracht.</translation>
+    </message>
+    <message>
+        <source>Max size prefix</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Select plugins</source>
+        <translation type="unfinished" />
     </message>
 </context>
 <context>
@@ -3400,16 +3636,20 @@ Gebruik ';' om meerdere items te splitsen. Jokerteken '*' kan gebruikt worden.</
         <translation>Leechers</translation>
     </message>
     <message>
-        <source>Search engine</source>
-        <translation>Zoekmachine</translation>
-    </message>
-    <message>
         <source>Seeders</source>
         <translation>Seeders</translation>
     </message>
     <message>
         <source>Published On</source>
         <translation>Verschenen op</translation>
+    </message>
+    <message>
+        <source>Engine URL</source>
+        <translation>Engine-URL</translation>
+    </message>
+    <message>
+        <source>Engine</source>
+        <translation>Engine</translation>
     </message>
 </context>
 <context>
@@ -3641,10 +3881,6 @@ Gebruik ';' om meerdere items te splitsen. Jokerteken '*' kan gebruikt worden.</
         <translation>Downloadkoppeling</translation>
     </message>
     <message>
-        <source>Searching...</source>
-        <translation>Zoeken...</translation>
-    </message>
-    <message>
         <source>Search has finished</source>
         <translation>Zoeken is voltooid</translation>
     </message>
@@ -3653,8 +3889,20 @@ Gebruik ';' om meerdere items te splitsen. Jokerteken '*' kan gebruikt worden.</
         <translation>Er trad een fout op tijdens het zoeken...</translation>
     </message>
     <message>
+        <source>Close tab</source>
+        <translation>Tabblad sluiten</translation>
+    </message>
+    <message>
+        <source>Searching...</source>
+        <translation>Zoeken...</translation>
+    </message>
+    <message>
         <source>Search aborted</source>
         <translation>Zoeken afgebroken</translation>
+    </message>
+    <message>
+        <source>Close all tabs</source>
+        <translation>Alle tabbladen sluiten</translation>
     </message>
 </context>
 <context>
@@ -3765,6 +4013,22 @@ Gebruik ';' om meerdere items te splitsen. Jokerteken '*' kan gebruikt worden.</
     <message>
         <source>Download torrent</source>
         <translation>Torrent downloaden</translation>
+    </message>
+    <message>
+        <source>Edit feed URL...</source>
+        <translation>Feed-URL bewerken...</translation>
+    </message>
+    <message>
+        <source>Unable to update URL</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>URL is unchanged</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>URL cannot be empty</source>
+        <translation type="unfinished" />
     </message>
 </context>
 <context>
@@ -4012,6 +4276,14 @@ Ondersteunt de formaten:  S01E01, 1x1, 2017.12.31 en 31.12.2017 (datumformaten o
         <translation>Labels toevoegen:</translation>
     </message>
     <message>
+        <source>Remove rule</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Add rule</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
         <source>Add Stopped:</source>
         <translation>Gestopt toevoegen:</translation>
     </message>
@@ -4019,20 +4291,24 @@ Ondersteunt de formaten:  S01E01, 1x1, 2017.12.31 en 31.12.2017 (datumformaten o
 <context>
     <name>TrackerFiltersList</name>
     <message>
-        <source>All (%1)</source>
-        <translation>Alle (%1)</translation>
-    </message>
-    <message>
-        <source>Trackerless (%1)</source>
-        <translation>Zonder trackers (%1)</translation>
-    </message>
-    <message>
         <source>Remove torrents</source>
         <translation>Torrents verwijderen</translation>
     </message>
     <message>
+        <source>All</source>
+        <translation>Alle</translation>
+    </message>
+    <message>
+        <source>Trackerless</source>
+        <translation>Zonder trackers</translation>
+    </message>
+    <message>
         <source>Start torrents</source>
         <translation>Torrents starten</translation>
+    </message>
+    <message>
+        <source>Remove tracker</source>
+        <translation>Tracker verwijderen</translation>
     </message>
     <message>
         <source>Stop torrents</source>
@@ -4186,10 +4462,128 @@ Ondersteunt de formaten:  S01E01, 1x1, 2017.12.31 en 31.12.2017 (datumformaten o
     </message>
 </context>
 <context>
+    <name>TrackersFilterWidget</name>
+    <message>
+        <source>Are you sure you want to remove tracker %1 from all torrents?</source>
+        <translation type="unfinished" />
+    </message>
+</context>
+<context>
+    <name>Category</name>
+    <message>
+        <source>Unable to edit category</source>
+        <translation>Kan categorie niet bewerken</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>Ok</translation>
+    </message>
+    <message>
+        <source>Unable to create category</source>
+        <translation>Kan categorie niet aanmaken</translation>
+    </message>
+    <message>
+        <source>Unable to set category</source>
+        <translation type="unfinished" />
+    </message>
+</context>
+<context>
+    <name>CookiesDialog</name>
+    <message>
+        <source>Domain</source>
+        <translation>Domein</translation>
+    </message>
+    <message>
+        <source>Manage Cookies</source>
+        <translation>Cookies beheren</translation>
+    </message>
+    <message>
+        <source>Add Cookie</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>Verwijderen</translation>
+    </message>
+    <message>
+        <source>Expiration Date</source>
+        <translation>Vervaldatum</translation>
+    </message>
+    <message>
+        <source>Value</source>
+        <translation>Waarde</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Naam</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>Pad</translation>
+    </message>
+</context>
+<context>
+    <name>confirmAutoTMMDialog</name>
+    <message>
+        <source>Enable automatic torrent management</source>
+        <translation>Automatisch torrent-beheer inschakelen</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to enable Automatic Torrent Management for the selected torrent(s)? They may be relocated.</source>
+        <translation>Weet u zeker dat u automatisch torrent-beheer wilt inschakelen voor de geselecteerde torrent(s)? Mogelijk worden ze verplaatst.</translation>
+    </message>
+</context>
+<context>
+    <name>confirmRecheckDialog</name>
+    <message>
+        <source>Are you sure you want to recheck the selected torrent(s)?</source>
+        <translation>Weet u zeker dat u de geselecteerde torrent(s) opnieuw wilt controleren?</translation>
+    </message>
+    <message>
+        <source>Recheck confirmation</source>
+        <translation>Bevestiging opnieuw controleren</translation>
+    </message>
+</context>
+<context>
     <name>SearchWidget</name>
     <message>
         <source>Close tab</source>
         <translation>Tabblad sluiten</translation>
+    </message>
+</context>
+<context>
+    <name>Login</name>
+    <message>
+        <source>qBittorrent WebUI</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Wachtwoord</translation>
+    </message>
+    <message>
+        <source>JavaScript Required! You must enable JavaScript for the WebUI to work properly</source>
+        <translation>JavaScript vereist! U moet JavaScript inschakelen om de WebUI goed te laten werken</translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation>Login</translation>
+    </message>
+    <message>
+        <source>Server response:</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Unable to log in, server is probably unreachable.</source>
+        <translation type="unfinished" />
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Gebruikersnaam</translation>
+    </message>
+    <message>
+        <source>Invalid Username or Password.</source>
+        <translation>Ongeldige gebruikersnaam of wachtwoord.</translation>
     </message>
 </context>
 </TS>

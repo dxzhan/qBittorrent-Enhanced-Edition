@@ -46,7 +46,7 @@ build/
 node_modules
 package-lock.json
 
-/.idea/*
+.idea/*
 
 gbee-nox-cache/
 
@@ -54,4 +54,5 @@ gbee-nox-cache/
 aqtinstall.log
 
 qbee-nox-cache/
+
 

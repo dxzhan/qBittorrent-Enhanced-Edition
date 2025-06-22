@@ -43,7 +43,6 @@
 #include <QDesktopServices>
 #include <QFileDialog>
 #include <QFileSystemWatcher>
-#include <QKeyEvent>
 #include <QLabel>
 #include <QMenu>
 #include <QMessageBox>
@@ -56,6 +55,11 @@
 #include <QStatusBar>
 #include <QString>
 #include <QTimer>
+
+#ifdef Q_OS_WIN
+#include <QCryptographicHash>
+#include <QScopeGuard>
+#endif
 
 #include "base/bittorrent/session.h"
 #include "base/bittorrent/sessionstatus.h"
@@ -114,13 +118,11 @@ namespace
 
     const std::chrono::seconds PREVENT_SUSPEND_INTERVAL {60};
 
-    bool isTorrentLink(const QString &str)
-    {
-        return str.startsWith(u"magnet:", Qt::CaseInsensitive)
-            || str.endsWith(TORRENT_FILE_EXTENSION, Qt::CaseInsensitive)
-            || (!str.startsWith(u"file:", Qt::CaseInsensitive)
-                && Net::DownloadManager::hasSupportedScheme(str));
-    }
+#ifdef Q_OS_WIN
+    const QString PYTHON_INSTALLER_URL = u"https://www.python.org/ftp/python/3.13.0/python-3.13.0-amd64.exe"_s;
+    const QByteArray PYTHON_INSTALLER_MD5 = QByteArrayLiteral("f5e5d48ba86586d4bef67bcb3790d339");
+    const QByteArray PYTHON_INSTALLER_SHA3_512 = QByteArrayLiteral("28ed23b82451efa5ec87e5dd18d7dacb9bc4d0a3643047091e5a687439f7e03a1c6e60ec64ee1210a0acaf2e5012504ff342ff27e5db108db05407e62aeff2f1");
+#endif
 }
 
 MainWindow::MainWindow(IGUIApplication *app, const WindowState initialState, const QString &titleSuffix)
@@ -241,7 +243,7 @@ MainWindow::MainWindow(IGUIApplication *app, const WindowState initialState, con
     m_ui->toolBar->insertWidget(m_columnFilterAction, spacer);
 
     // Transfer List tab
-    m_transferListWidget = new TransferListWidget(hSplitter, this);
+    m_transferListWidget = new TransferListWidget(app, this);
     m_propertiesWidget = new PropertiesWidget(hSplitter);
     connect(m_transferListWidget, &TransferListWidget::currentTorrentChanged, m_propertiesWidget, &PropertiesWidget::loadTorrentInfos);
     hSplitter->addWidget(m_transferListWidget);
@@ -254,7 +256,7 @@ MainWindow::MainWindow(IGUIApplication *app, const WindowState initialState, con
 #endif
         tr("Transfers"));
     // Filter types
-    const QVector<TransferListModel::Column> filterTypes = {TransferListModel::Column::TR_NAME, TransferListModel::Column::TR_SAVE_PATH};
+    const QList<TransferListModel::Column> filterTypes = {TransferListModel::Column::TR_NAME, TransferListModel::Column::TR_SAVE_PATH};
     for (const TransferListModel::Column type : filterTypes)
     {
         const QString typeName = m_transferListWidget->getSourceModel()->headerData(type, Qt::Horizontal, Qt::DisplayRole).value<QString>();
@@ -347,8 +349,6 @@ MainWindow::MainWindow(IGUIApplication *app, const WindowState initialState, con
     connect(BitTorrent::Session::instance(), &BitTorrent::Session::statsUpdated, this, &MainWindow::loadSessionStats);
     connect(BitTorrent::Session::instance(), &BitTorrent::Session::torrentsUpdated, this, &MainWindow::reloadTorrentStats);
 
-    // Accept drag 'n drops
-    setAcceptDrops(true);
     createKeyboardShortcuts();
 
 #ifdef Q_OS_MACOS
@@ -739,6 +739,16 @@ void MainWindow::displaySearchTab(bool enable)
         if (!m_searchWidget)
         {
             m_searchWidget = new SearchWidget(app(), this);
+            connect(m_searchWidget, &SearchWidget::searchFinished, this, [this](const bool failed)
+            {
+                if (app()->desktopIntegration()->isNotificationsEnabled() && (currentTabWidget() != m_searchWidget))
+                {
+                    if (failed)
+                        app()->desktopIntegration()->showNotification(tr("Search Engine"), tr("Search has failed"));
+                    else
+                        app()->desktopIntegration()->showNotification(tr("Search Engine"), tr("Search has finished"));
+                }
+            });
             m_tabs->insertTab(1, m_searchWidget,
 #ifndef Q_OS_MACOS
                 UIThemeManager::instance()->getIcon(u"edit-find"_s),
@@ -1124,16 +1134,13 @@ void MainWindow::keyPressEvent(QKeyEvent *event)
     if (event->matches(QKeySequence::Paste))
     {
         const QMimeData *mimeData = QGuiApplication::clipboard()->mimeData();
-
         if (mimeData->hasText())
         {
             const QStringList lines = mimeData->text().split(u'\n', Qt::SkipEmptyParts);
-
             for (QString line : lines)
             {
                 line = line.trimmed();
-
-                if (!isTorrentLink(line))
+                if (!Utils::Misc::isTorrentLink(line))
                     continue;
 
                 app()->addTorrentManager()->addTorrent(line);
@@ -1172,7 +1179,7 @@ void MainWindow::closeEvent(QCloseEvent *e)
     }
 #endif // Q_OS_MACOS
 
-    const QVector<BitTorrent::Torrent *> allTorrents = BitTorrent::Session::instance()->torrents();
+    const QList<BitTorrent::Torrent *> allTorrents = BitTorrent::Session::instance()->torrents();
     const bool hasActiveTorrents = std::any_of(allTorrents.cbegin(), allTorrents.cend(), [](BitTorrent::Torrent *torrent)
     {
         return torrent->isActive();
@@ -1282,66 +1289,6 @@ bool MainWindow::event(QEvent *e)
 #endif // Q_OS_MACOS
 
     return QMainWindow::event(e);
-}
-
-// action executed when a file is dropped
-void MainWindow::dropEvent(QDropEvent *event)
-{
-    event->acceptProposedAction();
-
-    // remove scheme
-    QStringList files;
-    if (event->mimeData()->hasUrls())
-    {
-        for (const QUrl &url : asConst(event->mimeData()->urls()))
-        {
-            if (url.isEmpty())
-                continue;
-
-            files << ((url.scheme().compare(u"file", Qt::CaseInsensitive) == 0)
-                ? url.toLocalFile()
-                : url.toString());
-        }
-    }
-    else
-    {
-        files = event->mimeData()->text().split(u'\n');
-    }
-
-    // differentiate ".torrent" files/links & magnet links from others
-    QStringList torrentFiles, otherFiles;
-    for (const QString &file : asConst(files))
-    {
-        if (isTorrentLink(file))
-            torrentFiles << file;
-        else
-            otherFiles << file;
-    }
-
-    // Download torrents
-    for (const QString &file : asConst(torrentFiles))
-        app()->addTorrentManager()->addTorrent(file);
-    if (!torrentFiles.isEmpty()) return;
-
-    // Create torrent
-    for (const QString &file : asConst(otherFiles))
-    {
-        createTorrentTriggered(Path(file));
-
-        // currently only handle the first entry
-        // this is a stub that can be expanded later to create many torrents at once
-        break;
-    }
-}
-
-// Decode if we accept drag 'n drop or not
-void MainWindow::dragEnterEvent(QDragEnterEvent *event)
-{
-    for (const QString &mime : asConst(event->mimeData()->formats()))
-        qDebug("mimeData: %s", mime.toLocal8Bit().data());
-
-    if (event->mimeData()->hasFormat(u"text/plain"_s) || event->mimeData()->hasFormat(u"text/uri-list"_s))
-        event->acceptProposedAction();
 }
 
 // Display a dialog to allow user to add
@@ -1523,7 +1470,7 @@ void MainWindow::loadSessionStats()
     refreshWindowTitle();
 }
 
-void MainWindow::reloadTorrentStats(const QVector<BitTorrent::Torrent *> &torrents)
+void MainWindow::reloadTorrentStats(const QList<BitTorrent::Torrent *> &torrents)
 {
     if (currentTabWidget() == m_transferListWidget)
     {
@@ -1667,14 +1614,14 @@ void MainWindow::on_actionSearchWidget_triggered()
 #ifdef Q_OS_WIN
             const QMessageBox::StandardButton buttonPressed = QMessageBox::question(this, tr("Old Python Runtime")
                 , tr("Your Python version (%1) is outdated. Minimum requirement: %2.\nDo you want to install a newer version now?")
-                    .arg(pyInfo.version.toString(), u"3.7.0")
+                    .arg(pyInfo.version.toString(), u"3.9.0")
                 , (QMessageBox::Yes | QMessageBox::No), QMessageBox::Yes);
             if (buttonPressed == QMessageBox::Yes)
                 installPython();
 #else
             QMessageBox::information(this, tr("Old Python Runtime")
                 , tr("Your Python version (%1) is outdated. Please upgrade to latest version for search engines to work.\nMinimum requirement: %2.")
-                .arg(pyInfo.version.toString(), u"3.7.0"));
+                .arg(pyInfo.version.toString(), u"3.9.0"));
 #endif
             return;
         }
@@ -1719,7 +1666,7 @@ void MainWindow::handleUpdateCheckFinished(ProgramUpdater *updater, const bool i
         const QString content = updater->getNewContent();
         const QString msg {tr("A new version is available.") + u"<br/>"
             + tr("Do you want to download %1?%2").arg(newVersion, content) + u"<br/><br/>"
-            + u"<a href=\"https://www.qbittorrent.org/news.php\">%1</a>"_s.arg(tr("Open changelog..."))};
+            + u"<a href=\"https://www.qbittorrent.org/news\">%1</a>"_s.arg(tr("Open changelog..."))};
         auto *msgBox = new QMessageBox {QMessageBox::Question, tr("qBittorrent Update Available"), msg
             , (QMessageBox::Yes | QMessageBox::No), this};
         msgBox->setAttribute(Qt::WA_DeleteOnClose);
@@ -1870,7 +1817,7 @@ void MainWindow::updatePowerManagementState() const
     const bool preventFromSuspendWhenDownloading = pref->preventFromSuspendWhenDownloading();
     const bool preventFromSuspendWhenSeeding = pref->preventFromSuspendWhenSeeding();
 
-    const QVector<BitTorrent::Torrent *> allTorrents = BitTorrent::Session::instance()->torrents();
+    const QList<BitTorrent::Torrent *> allTorrents = BitTorrent::Session::instance()->torrents();
     const bool inhibitSuspend = std::any_of(allTorrents.cbegin(), allTorrents.cend(), [&](const BitTorrent::Torrent *torrent)
     {
         if (preventFromSuspendWhenDownloading && (!torrent->isFinished() && !torrent->isStopped() && !torrent->isErrored() && torrent->hasMetadata()))
@@ -1953,50 +1900,114 @@ void MainWindow::checkProgramUpdate(const bool invokedByUser)
 #ifdef Q_OS_WIN
 void MainWindow::installPython()
 {
-    setCursor(QCursor(Qt::WaitCursor));
+    m_ui->actionSearchWidget->setEnabled(false);
+    m_ui->actionSearchWidget->setToolTip(tr("Python installation in progress..."));
+    setCursor(Qt::WaitCursor);
     // Download python
-    const auto installerURL = u"https://www.python.org/ftp/python/3.10.11/python-3.10.11-amd64.exe"_s;
     Net::DownloadManager::instance()->download(
-            Net::DownloadRequest(installerURL).saveToFile(true)
+            Net::DownloadRequest(PYTHON_INSTALLER_URL).saveToFile(true)
             , Preferences::instance()->useProxyForGeneralPurposes()
             , this, &MainWindow::pythonDownloadFinished);
 }
 
+bool MainWindow::verifyPythonInstaller(const Path &installerPath) const
+{
+    // Verify installer hash
+    // Python.org only provides MD5 hash but MD5 is already broken and doesn't guarantee file is not tampered.
+    // Therefore, MD5 is only included to prove that the hash is still the same with upstream and we rely on
+    // SHA3-512 for the main check.
+
+    QFile file {installerPath.data()};
+    if (!file.open(QIODevice::ReadOnly))
+    {
+        LogMsg((tr("Failed to open Python installer. File: \"%1\".").arg(installerPath.toString())), Log::WARNING);
+        return false;
+    }
+
+    QCryptographicHash md5Hash {QCryptographicHash::Md5};
+    md5Hash.addData(&file);
+    if (const QByteArray hashHex = md5Hash.result().toHex(); hashHex != PYTHON_INSTALLER_MD5)
+    {
+        LogMsg((tr("Failed MD5 hash check for Python installer. File: \"%1\". Result hash: \"%2\". Expected hash: \"%3\".")
+                .arg(installerPath.toString(), QString::fromLatin1(hashHex), QString::fromLatin1(PYTHON_INSTALLER_MD5)))
+            , Log::WARNING);
+        return false;
+    }
+
+    file.seek(0);
+
+    QCryptographicHash sha3Hash {QCryptographicHash::Sha3_512};
+    sha3Hash.addData(&file);
+    if (const QByteArray hashHex = sha3Hash.result().toHex(); hashHex != PYTHON_INSTALLER_SHA3_512)
+    {
+        LogMsg((tr("Failed SHA3-512 hash check for Python installer. File: \"%1\". Result hash: \"%2\". Expected hash: \"%3\".")
+                .arg(installerPath.toString(), QString::fromLatin1(hashHex), QString::fromLatin1(PYTHON_INSTALLER_SHA3_512)))
+            , Log::WARNING);
+        return false;
+    }
+
+    return true;
+}
+
 void MainWindow::pythonDownloadFinished(const Net::DownloadResult &result)
 {
+    auto restoreWidgetsGuard = qScopeGuard([this]
+    {
+        m_ui->actionSearchWidget->setEnabled(true);
+        m_ui->actionSearchWidget->setToolTip({});
+        setCursor(Qt::ArrowCursor);
+    });
+
     if (result.status != Net::DownloadStatus::Success)
     {
-        setCursor(QCursor(Qt::ArrowCursor));
         QMessageBox::warning(
                     this, tr("Download error")
-                    , tr("Python setup could not be downloaded, reason: %1.\nPlease install it manually.")
+                    , tr("Python installer could not be downloaded. Error: %1.\nPlease install it manually.")
                     .arg(result.errorString));
         return;
     }
 
-    setCursor(QCursor(Qt::ArrowCursor));
-    QProcess installer;
-    qDebug("Launching Python installer in passive mode...");
-
     const Path exePath = result.filePath + u".exe";
-    Utils::Fs::renameFile(result.filePath, exePath);
-    installer.start(exePath.toString(), {u"/passive"_s});
-
-    // Wait for setup to complete
-    installer.waitForFinished(10 * 60 * 1000);
-
-    qDebug("Installer stdout: %s", installer.readAllStandardOutput().data());
-    qDebug("Installer stderr: %s", installer.readAllStandardError().data());
-    qDebug("Setup should be complete!");
-
-    // Delete temp file
-    Utils::Fs::removeFile(exePath);
-
-    // Reload search engine
-    if (Utils::ForeignApps::pythonInfo().isSupportedVersion())
+    if (!Utils::Fs::renameFile(result.filePath, exePath))
     {
-        m_ui->actionSearchWidget->setChecked(true);
-        displaySearchTab(true);
+        LogMsg(tr("Rename Python installer failed. Source: \"%1\". Destination: \"%2\".")
+                .arg(result.filePath.toString(), exePath.toString())
+            , Log::WARNING);
+        return;
     }
+
+    if (!verifyPythonInstaller(exePath))
+        return;
+
+    // launch installer
+    auto *installer = new QProcess(this);
+    installer->connect(installer, &QProcess::finished, this, [this, exePath, installer, restoreWidgetsGuard = std::move(restoreWidgetsGuard)](const int exitCode, const QProcess::ExitStatus exitStatus)
+    {
+        installer->deleteLater();
+
+        if ((exitStatus == QProcess::NormalExit) && (exitCode == 0))
+        {
+            LogMsg(tr("Python installation success."), Log::INFO);
+
+            // Delete installer
+            Utils::Fs::removeFile(exePath);
+
+            // Reload search engine
+            if (Utils::ForeignApps::pythonInfo().isSupportedVersion())
+            {
+                m_ui->actionSearchWidget->setChecked(true);
+                displaySearchTab(true);
+            }
+        }
+        else
+        {
+            const QString errorInfo = (exitStatus == QProcess::NormalExit)
+                ? tr("Exit code: %1.").arg(QString::number(exitCode))
+                : tr("Reason: installer crashed.");
+            LogMsg(u"%1 %2"_s.arg(tr("Python installation failed."), errorInfo), Log::WARNING);
+        }
+    });
+    LogMsg(tr("Launching Python installer. File: \"%1\".").arg(exePath.toString()), Log::INFO);
+    installer->start(exePath.toString(), {u"/passive"_s});
 }
 #endif // Q_OS_WIN

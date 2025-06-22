@@ -8,7 +8,6 @@
 
 #include "peer_filter_plugin.hpp"
 #include "peer_filter.hpp"
-#include "peer_logger.hpp"
 
 // filter factory function
 std::unique_ptr<peer_filter> create_peer_filter(const QString& filename)
@@ -71,7 +70,6 @@ protected:
       // always match with both pid & client name when applying blacklist
       bool matched_blacklist = m_blacklist->match_peer(info, false);
       if (matched_blacklist) {
-        peer_logger_singleton::instance().log_peer(info, "blacklist");
         *stop_filtering = true;
         return true;
       }
@@ -80,7 +78,6 @@ protected:
     if (m_whitelist) {
       bool matched_whitelist = m_whitelist->match_peer(info, handshake);
       if (!matched_whitelist) {
-        peer_logger_singleton::instance().log_peer(info, "whitelist");
         *stop_filtering = true;
         return true;
       }

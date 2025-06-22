@@ -52,6 +52,13 @@
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout_4">
+     <item row="0" column="0">
+      <widget class="QLabel" name="labelCategory">
+       <property name="text">
+        <string>Category:</string>
+       </property>
+      </widget>
+     </item>
      <item row="0" column="1">
       <widget class="QComboBox" name="comboCategory">
        <property name="sizePolicy">
@@ -67,14 +74,7 @@
         <number>2147483647</number>
        </property>
        <property name="insertPolicy">
-        <enum>QComboBox::InsertAtTop</enum>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="labelCategory">
-       <property name="text">
-        <string>Category:</string>
+        <enum>QComboBox::InsertPolicy::InsertAtTop</enum>
        </property>
       </widget>
      </item>
@@ -83,26 +83,20 @@
    <item>
     <widget class="QGroupBox" name="groupBox">
      <property name="title">
-      <string>Torrent speed limits</string>
+      <string>Torrent Speed Limits</string>
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
-      <item row="1" column="0">
-       <widget class="QLabel" name="label_2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label">
         <property name="text">
-         <string>Download:</string>
+         <string>Upload:</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
-       <widget class="QSpinBox" name="spinDownloadLimit">
-        <property name="specialValueText">
-         <string>∞</string>
-        </property>
-        <property name="suffix">
-         <string> KiB/s</string>
-        </property>
-        <property name="maximum">
-         <number>2000000</number>
+      <item row="0" column="1">
+       <widget class="QSlider" name="sliderUploadLimit">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
        </widget>
       </item>
@@ -117,6 +111,39 @@
         <property name="maximum">
          <number>2000000</number>
         </property>
+        <property name="stepType">
+         <enum>QAbstractSpinBox::StepType::AdaptiveDecimalStepType</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Download:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QSlider" name="sliderDownloadLimit">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
+       <widget class="QSpinBox" name="spinDownloadLimit">
+        <property name="specialValueText">
+         <string>∞</string>
+        </property>
+        <property name="suffix">
+         <string> KiB/s</string>
+        </property>
+        <property name="maximum">
+         <number>2000000</number>
+        </property>
+        <property name="stepType">
+         <enum>QAbstractSpinBox::StepType::AdaptiveDecimalStepType</enum>
+        </property>
        </widget>
       </item>
       <item row="2" column="1" colspan="2">
@@ -126,34 +153,13 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Upload:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QSlider" name="sliderUploadLimit">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QSlider" name="sliderDownloadLimit">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-       </widget>
-      </item>
      </layout>
     </widget>
    </item>
    <item>
     <widget class="QGroupBox" name="torrentShareLimitsBox">
      <property name="title">
-      <string>Torrent share limits</string>
+      <string>Torrent Share Limits</string>
      </property>
      <layout class="QVBoxLayout" name="torrentShareLimitsBoxLayout">
       <item>
@@ -181,7 +187,7 @@
      <item row="0" column="2">
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Orientation::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -217,7 +223,7 @@
    <item>
     <spacer name="verticalSpacer">
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
+      <enum>Qt::Orientation::Vertical</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
@@ -230,7 +236,7 @@
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+      <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
      </property>
     </widget>
    </item>
@@ -252,7 +258,4 @@
  </customwidgets>
  <resources/>
  <connections/>
- <buttongroups>
-  <buttongroup name="buttonGroup"/>
- </buttongroups>
 </ui>

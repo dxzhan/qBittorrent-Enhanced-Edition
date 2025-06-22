@@ -70,6 +70,22 @@
         <source>Add to top of queue</source>
         <translation>Kuyruğun en üstüne ekle</translation>
     </message>
+    <message>
+        <source>One link per line (HTTP links, Magnet links and info-hashes are supported)</source>
+        <translation>Her satıra bir bağlantı (HTTP bağlantıları, Magnet bağlantıları ve bilgi adreslemeleri desteklenir)</translation>
+    </message>
+    <message>
+        <source>Add torrent links</source>
+        <translation>Torrent bağlantılarını ekleyin</translation>
+    </message>
+    <message>
+        <source>Select .torrent files</source>
+        <translation>.torrent dosyalarını seçin</translation>
+    </message>
+    <message>
+        <source>Torrent options</source>
+        <translation>Torrent seçenekleri</translation>
+    </message>
 </context>
 <context>
     <name>CategoryFilterModel</name>
@@ -126,10 +142,6 @@
     <message>
         <source>Exit qBittorrent</source>
         <translation>qBittorrent'ten Çık</translation>
-    </message>
-    <message>
-        <source>Only one link per line</source>
-        <translation>Her satıra sadece bir bağlantı</translation>
     </message>
     <message>
         <source>Global upload rate limit must be greater than 0 or disabled.</source>
@@ -205,10 +217,6 @@
         <translation>Dosyaların kaydedildiği yer:</translation>
     </message>
     <message>
-        <source>Cookie:</source>
-        <translation>Tanımlama Bilgisi:</translation>
-    </message>
-    <message>
         <source>More information</source>
         <translation>Daha fazla bilgi</translation>
     </message>
@@ -272,10 +280,6 @@
         <translation>Oturumu Kapat</translation>
     </message>
     <message>
-        <source>Download Torrents from their URLs or Magnet links</source>
-        <translation>Torrent'leri URL'lerinden ya da Magnet bağlantılarından indirin</translation>
-    </message>
-    <message>
         <source>Upload local torrent</source>
         <translation>Yerel torrent'i gönder</translation>
     </message>
@@ -294,10 +298,6 @@
     <message>
         <source>Invalid category name:\nPlease do not use any special characters in the category name.</source>
         <translation>Geçersiz kategori adı:\nLütfen kategori adı içinde hiçbir özel karakter kullanmayın.</translation>
-    </message>
-    <message>
-        <source>Unable to create category</source>
-        <translation>Kategori oluşturulamıyor</translation>
     </message>
     <message>
         <source>Upload rate threshold must be greater than 0.</source>
@@ -360,10 +360,6 @@
         <translation>Orijinal hazırlayanı</translation>
     </message>
     <message>
-        <source>Are you sure you want to remove the selected torrents from the transfer list?</source>
-        <translation>Seçilen torrent’leri aktarım listesinden kaldırmak istediğinize emin misiniz?</translation>
-    </message>
-    <message>
         <source>The port used for the WebUI must be between 1 and 65535.</source>
         <translation>Web Arayüzü için kullanılan bağlantı noktası 1 ve 65535 arasında olmak zorundadır.</translation>
     </message>
@@ -376,28 +372,76 @@
         <translation>JavaScript Gerekli! Web Arayüzünün düzgün çalışması için JavaScript'i etkinleştirmek zorundasınız</translation>
     </message>
     <message>
-        <source>Unable to log in, qBittorrent is probably unreachable.</source>
-        <translation>Oturum açılamıyor, qBittorrent'e muhtemelen ulaşılamıyor.</translation>
+        <source>External IP: N/A</source>
+        <translation>Dış IP: Yok</translation>
+    </message>
+    <message>
+        <source>Reverse proxy setup examples</source>
+        <translation>Ters proksi kurulum örnekleri</translation>
     </message>
     <message>
         <source>Could not contact qBittorrent</source>
         <translation>qBittorrent’le bağlantı kurulamadı</translation>
     </message>
     <message>
-        <source>Password</source>
-        <translation>Parola</translation>
+        <source>Remember choice</source>
+        <translation>Seçimi hatırla</translation>
     </message>
     <message>
-        <source>Username</source>
-        <translation>Kullanıcı adı</translation>
+        <source>Are you sure you want to remove these %1 torrents from the transfer list?</source>
+        <translation>Bu %1 torrent'i aktarım listesinden kaldırmak istediğinize emin misiniz?</translation>
     </message>
     <message>
-        <source>Invalid Username or Password.</source>
-        <translation>Geçersiz Kullanıcı Adı veya Parola.</translation>
+        <source>Unable to delete torrents.</source>
+        <translation>Torrent'ler silinemiyor.</translation>
     </message>
     <message>
-        <source>Login</source>
-        <translation>Oturum aç</translation>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>External IP: %1%2</source>
+        <translation>Dış IP: %1%2</translation>
+    </message>
+    <message>
+        <source>Edit web seed</source>
+        <translation>Web gönderimini düzenle</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to remove %1 from the transfer list?</source>
+        <translation>%1 dosyasını aktarım listesinden kaldırmak istediğinize emin misiniz?</translation>
+    </message>
+    <message>
+        <source>Unable to set Auto Torrent Management for the selected torrents.</source>
+        <translation>Seçilen torrent'ler için Otomatik Torrent Yönetimi ayarlanamıyor.</translation>
+    </message>
+    <message>
+        <source>Unable to stop torrents.</source>
+        <translation>Torrent'ler durdurulamıyor.</translation>
+    </message>
+    <message>
+        <source>Unable to download file</source>
+        <translation>Dosya indirilemiyor</translation>
+    </message>
+    <message>
+        <source>External IPs: %1, %2</source>
+        <translation>Dış IP'ler: %1, %2</translation>
+    </message>
+    <message>
+        <source>Unable to recheck torrents.</source>
+        <translation>Torrent'ler yeniden denetlenemiyor.</translation>
+    </message>
+    <message>
+        <source>List of web seeds to add (one per line):</source>
+        <translation>Eklenecek web gönderimleri listesi (her satıra bir tane):</translation>
+    </message>
+    <message>
+        <source>Unable to start torrents.</source>
+        <translation>Torrent'ler başlatılamıyor.</translation>
+    </message>
+    <message>
+        <source>Add web seeds</source>
+        <translation>Web gönderimleri ekle</translation>
     </message>
 </context>
 <context>
@@ -603,12 +647,40 @@
         <translation>[İ: %1, G: %2]</translation>
     </message>
     <message>
-        <source>Would you like to start all torrents?</source>
-        <translation>Tüm torrent’leri başlatmak ister misiniz?</translation>
+        <source>Filter by:</source>
+        <translation>Süzme şekli:</translation>
+    </message>
+    <message>
+        <source>Save Path</source>
+        <translation>Kaydetme Yolu</translation>
     </message>
     <message>
         <source>Stop</source>
         <translation>Durdur</translation>
+    </message>
+    <message>
+        <source>Use regular expression</source>
+        <translation>Düzenli ifade kullan</translation>
+    </message>
+    <message>
+        <source>Would you like to start all torrents?</source>
+        <translation>Tüm torrent’leri başlatmak ister misiniz?</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>Başlat</translation>
+    </message>
+    <message>
+        <source>Manage Cookies...</source>
+        <translation>Tanımlama Bilgilerini Yönet...</translation>
+    </message>
+    <message>
+        <source>Unable to export torrent file</source>
+        <translation>Torrent dosyası dışa aktarılamıyor</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Ad</translation>
     </message>
     <message>
         <source>Would you like to stop all torrents?</source>
@@ -621,10 +693,6 @@
     <message>
         <source>Stop All</source>
         <translation>Tümünü Durdur</translation>
-    </message>
-    <message>
-        <source>Start</source>
-        <translation>Başlat</translation>
     </message>
 </context>
 <context>
@@ -652,10 +720,6 @@
     <message>
         <source>Language</source>
         <translation>Dil</translation>
-    </message>
-    <message>
-        <source>User Interface Language:</source>
-        <translation>Kullanıcı Arayüzü Dili:</translation>
     </message>
     <message>
         <source>Email notification upon download completion</source>
@@ -1284,10 +1348,6 @@
         <translation>Art arda şu kadar hatadan sonra istemciyi yasakla:</translation>
     </message>
     <message>
-        <source>Enable cookie Secure flag (requires HTTPS)</source>
-        <translation>Tanımlama bilgisi Güvenli işaretini etkinleştir (HTTPS gerektirir)</translation>
-    </message>
-    <message>
         <source>Header: value pairs, one per line</source>
         <translation>Üstbilgi: değer çiftleri, her satıra bir tane</translation>
     </message>
@@ -1516,10 +1576,6 @@
         <translation>Uluslararasılaştırılmış etki alanı adını (IDN) destekle:</translation>
     </message>
     <message>
-        <source>Run external program on torrent finished</source>
-        <translation>Torrent tamamlandığında harici program çalıştır</translation>
-    </message>
-    <message>
         <source>Whitelist for filtering HTTP Host header values.
 In order to defend against DNS rebinding attack,
 you should put in domain names used by WebUI server.
@@ -1530,10 +1586,6 @@ DNS'i yeniden bağlama saldırılarına karşı savunmak için, Web Arayüzü
 sunucusu tarafından kullanılan etki alanı adlarına eklemelisiniz.
 
 Çoklu girişleri bölmek için ';' kullanın. '*' joker karakteri kullanılabilir.</translation>
-    </message>
-    <message>
-        <source>Run external program on torrent added</source>
-        <translation>Torrent eklendiğinde harici program çalıştır</translation>
     </message>
     <message>
         <source>HTTPS certificate should not be empty</source>
@@ -1598,10 +1650,6 @@ sunucusu tarafından kullanılan etki alanı adlarına eklemelisiniz.
     <message>
         <source>days</source>
         <translation>gün</translation>
-    </message>
-    <message>
-        <source>Log file</source>
-        <translation>Günlük dosyası</translation>
     </message>
     <message>
         <source>Behavior</source>
@@ -1816,76 +1864,184 @@ sunucusu tarafından kullanılan etki alanı adlarına eklemelisiniz.
         <translation>Uygulama örneği adını özelleştir:</translation>
     </message>
     <message>
-        <source>Send test email</source>
-        <translation>Deneme e-postası gönder</translation>
+        <source>Color scheme:</source>
+        <translation>Renk şeması:</translation>
     </message>
     <message>
-        <source>Attempted to send email. Check your inbox to confirm success</source>
-        <translation>E-posta gönderilmeye çalışıldı. Başarılı olup olmadığını onaylamak için gelen kutunuzu gözden geçirin</translation>
+        <source>Show external IP in status bar</source>
+        <translation>Durum çubuğunda dış IP'yi göster</translation>
     </message>
     <message>
-        <source>Automatically append these trackers to new downloads:</source>
-        <translation>Bu izleyicileri yeni indirmelere otomatik olarak ekle:</translation>
+        <source>Fetched trackers</source>
+        <translation>Getirilen izleyiciler</translation>
     </message>
     <message>
-        <source>Stop torrent</source>
-        <translation>Torrent'i durdur</translation>
-    </message>
-    <message>
-        <source>Move files to trash (if possible)</source>
-        <translation>Dosyaları çöp kutusuna taşı (mümkünse)</translation>
-    </message>
-    <message>
-        <source>Torrent content removing mode:</source>
-        <translation>Torrent içeriğini kaldırma kipi:</translation>
-    </message>
-    <message>
-        <source>Delete files permanently</source>
-        <translation>Dosyaları kalıcı olarak sil</translation>
-    </message>
-    <message>
-        <source>Merge trackers to existing torrent</source>
-        <translation>İzleyicileri varolan torrent ile birleştir</translation>
-    </message>
-    <message>
-        <source>When duplicate torrent is being added</source>
-        <translation>Kopya torrent eklendiğinde</translation>
-    </message>
-    <message>
-        <source>Resolve relative Save Path against appropriate Category path instead of Default one</source>
-        <translation>Göreceli Kaydetme Yolunu, Varsayılan yol yerine uygun Kategori yoluna göre çöz</translation>
-    </message>
-    <message>
-        <source>Use Category paths in Manual Mode</source>
-        <translation>Kategori yollarını Elle Kipinde kullan</translation>
+        <source>Confirm when deleting torrents</source>
+        <translation>Torrent'leri silerken onayla</translation>
     </message>
     <message>
         <source>Ignore SSL errors:</source>
         <translation>SSL hatalarını yoksay:</translation>
     </message>
     <message>
-        <source>Simple pread/pwrite</source>
-        <translation>Basit p-okuma/p-yazma</translation>
-    </message>
-    <message>
         <source>Dark</source>
         <translation>Koyu</translation>
+    </message>
+    <message>
+        <source>Delete files permanently</source>
+        <translation>Dosyaları kalıcı olarak sil</translation>
     </message>
     <message>
         <source>Auto</source>
         <translation>Otomatik</translation>
     </message>
     <message>
-        <source>Color scheme:</source>
-        <translation>Renk şeması:</translation>
+        <source>Use alternating row colors</source>
+        <translation>Değişen satır renkleri kullan</translation>
+    </message>
+    <message>
+        <source>Display full announce URL in the Tracker column</source>
+        <translation>İzleyici sütununda tam duyurma URL'sini görüntüle</translation>
+    </message>
+    <message>
+        <source>URL:</source>
+        <translation>URL:</translation>
+    </message>
+    <message>
+        <source>Transfer list</source>
+        <translation>Aktarım listesi</translation>
+    </message>
+    <message>
+        <source>The announce port must be between 0 and 65535.</source>
+        <translation>Duyurma bağlantı noktası 0 ve 65535 arasında olmak zorundadır.</translation>
+    </message>
+    <message>
+        <source>Light</source>
+        <translation>Açık</translation>
+    </message>
+    <message>
+        <source>Automatically append these trackers to new downloads:</source>
+        <translation>Bu izleyicileri yeni indirmelere otomatik olarak ekle:</translation>
+    </message>
+    <message>
+        <source>Downloading torrents:</source>
+        <translation>İndirilen torrent'ler:</translation>
+    </message>
+    <message>
+        <source>Start / stop torrent</source>
+        <translation>Torrent'i başlat / durdur</translation>
+    </message>
+    <message>
+        <source>Send test email</source>
+        <translation>Deneme e-postası gönder</translation>
+    </message>
+    <message>
+        <source>Completed torrents:</source>
+        <translation>Tamamlanan torrent'ler:</translation>
+    </message>
+    <message>
+        <source>Enable cookie Secure flag (requires HTTPS or localhost connection)</source>
+        <translation>Tanımlama bilgisi Güvenli işaretini etkinleştir (HTTPS veya localhost bağlantısı gerektirir)</translation>
+    </message>
+    <message>
+        <source>When duplicate torrent is being added</source>
+        <translation>Kopya torrent eklendiğinde</translation>
+    </message>
+    <message>
+        <source>Action on double-click</source>
+        <translation>Çift tıklama eylemi</translation>
+    </message>
+    <message>
+        <source>Save statistics interval:</source>
+        <translation>İstatistikleri kaydetme aralığı:</translation>
+    </message>
+    <message>
+        <source>Shows a confirmation dialog upon torrent deletion</source>
+        <translation>Torrent silme işlemi üzerine bir onay ileti penceresi gösterir</translation>
+    </message>
+    <message>
+        <source>Run on torrent finished:</source>
+        <translation>Torrent tamamlandığında çalıştır:</translation>
+    </message>
+    <message>
+        <source>Attempted to send email. Check your inbox to confirm success</source>
+        <translation>E-posta gönderilmeye çalışıldı. Başarılı olup olmadığını onaylamak için gelen kutunuzu gözden geçirin</translation>
+    </message>
+    <message>
+        <source>Automatically append trackers from URL to new downloads:</source>
+        <translation>İzleyicileri URL'den yeni indirmelere otomatik olarak ekle:</translation>
+    </message>
+    <message>
+        <source>Torrent content removing mode:</source>
+        <translation>Torrent içeriğini kaldırma kipi:</translation>
+    </message>
+    <message>
+        <source>Move files to trash (if possible)</source>
+        <translation>Dosyaları çöp kutusuna taşı (mümkünse)</translation>
+    </message>
+    <message>
+        <source>Stop torrent</source>
+        <translation>Torrent'i durdur</translation>
+    </message>
+    <message>
+        <source>Use Category paths in Manual Mode</source>
+        <translation>Kategori yollarını Elle Kipinde kullan</translation>
+    </message>
+    <message>
+        <source>List of alternative WebUI</source>
+        <translation>Alternatif Web arayüzü listesi</translation>
+    </message>
+    <message>
+        <source>Run on torrent added:</source>
+        <translation>Torrent eklendiğinde çalıştır:</translation>
+    </message>
+    <message>
+        <source>Port reported to trackers (requires restart) [0: listening port]:</source>
+        <translation>İzleyicilere bildirilen bağlantı noktası (yeniden başlatma gerektirir)  [0: dinlenen bağ. noktası]:</translation>
+    </message>
+    <message>
+        <source>User interface language:</source>
+        <translation>Kullanıcı arayüzü dili:</translation>
+    </message>
+    <message>
+        <source>Merge trackers to existing torrent</source>
+        <translation>İzleyicileri varolan torrent ile birleştir</translation>
+    </message>
+    <message>
+        <source>Confirm torrent recheck:</source>
+        <translation>Torrent'i yeniden denetlemeyi onayla:</translation>
+    </message>
+    <message>
+        <source>Custom WebUI settings</source>
+        <translation>Özel Web Arayüzü ayarları</translation>
+    </message>
+    <message>
+        <source>Following settings are WebUI only</source>
+        <translation>Aşağıdaki ayarlar sadece Web Arayüzü içindir</translation>
+    </message>
+    <message>
+        <source>Simple pread/pwrite</source>
+        <translation>Basit p-okuma/p-yazma</translation>
+    </message>
+    <message>
+        <source>Resolve relative Save Path against appropriate Category path instead of Default one</source>
+        <translation>Göreceli Kaydetme Yolunu, Varsayılan yol yerine uygun Kategori yoluna göre çöz</translation>
+    </message>
+    <message>
+        <source>No action</source>
+        <translation>Eylem yok</translation>
+    </message>
+    <message>
+        <source>Auto hide zero status filters</source>
+        <translation>Sıfır durum süzgeçlerini otomatik gizle</translation>
     </message>
     <message>
         <source>Interface</source>
         <translation>Arayüz</translation>
     </message>
     <message>
-        <source>Light</source>
-        <translation>Açık</translation>
+        <source>Log Files</source>
+        <translation>Günlük Dosyaları</translation>
     </message>
 </context>
 <context>
@@ -2252,20 +2408,52 @@ sunucusu tarafından kullanılan etki alanı adlarına eklemelisiniz.
         <translation>Tüm oluşumları eşleştir</translation>
     </message>
     <message>
-        <source>Popularity:</source>
-        <translation>Yaygınlık:</translation>
+        <source>Copy web seed URL</source>
+        <translation>Web gönderim URL'sini kopyala</translation>
     </message>
     <message>
-        <source>Ratio / Time Active (in months), indicates how popular the torrent is</source>
-        <translation>Oran / Etkin Süre (ay cinsinden), torrent'in ne kadar popüler olduğunu gösterir</translation>
+        <source>Replace option</source>
+        <translation>Değiştirme seçeneği</translation>
+    </message>
+    <message>
+        <source>Edit web seed URL...</source>
+        <translation>Web gönderim URL'sini düzenle...</translation>
+    </message>
+    <message>
+        <source>Web seed URL:</source>
+        <translation>Web gönderim URL'si:</translation>
     </message>
     <message>
         <source>Yes</source>
         <translation>Evet</translation>
     </message>
     <message>
+        <source>Ratio / Time Active (in months), indicates how popular the torrent is</source>
+        <translation>Oran / Etkin Süre (ay cinsinden), torrent'in ne kadar yaygın olduğunu gösterir</translation>
+    </message>
+    <message>
+        <source>Popularity:</source>
+        <translation>Yaygınlık:</translation>
+    </message>
+    <message>
+        <source>Apply to which filename part</source>
+        <translation>Dosya adının olduğu kısma uygula</translation>
+    </message>
+    <message>
         <source>No</source>
         <translation>Hayır</translation>
+    </message>
+    <message>
+        <source>Remove web seed</source>
+        <translation>Web gönderimini kaldır</translation>
+    </message>
+    <message>
+        <source>Web seed editing</source>
+        <translation>Web gönderim düzenleme</translation>
+    </message>
+    <message>
+        <source>Add web seeds...</source>
+        <translation>Web gönderimleri ekle...</translation>
     </message>
     <message>
         <source>Private:</source>
@@ -2480,8 +2668,8 @@ sunucusu tarafından kullanılan etki alanı adlarına eklemelisiniz.
         <translation>Taşınıyor (0)</translation>
     </message>
     <message>
-        <source>Running (%1)</source>
-        <translation>Çalışıyor (%1)</translation>
+        <source>Running (0)</source>
+        <translation>Çalışıyor (0)</translation>
     </message>
     <message>
         <source>Stopped (0)</source>
@@ -2492,8 +2680,20 @@ sunucusu tarafından kullanılan etki alanı adlarına eklemelisiniz.
         <translation>Durduruldu (%1)</translation>
     </message>
     <message>
-        <source>Running (0)</source>
-        <translation>Çalışıyor (0)</translation>
+        <source>Running (%1)</source>
+        <translation>Çalışıyor (%1)</translation>
+    </message>
+    <message>
+        <source>Remove torrents</source>
+        <translation>Torrent'leri kaldır</translation>
+    </message>
+    <message>
+        <source>Start torrents</source>
+        <translation>Torrent'leri başlat</translation>
+    </message>
+    <message>
+        <source>Stop torrents</source>
+        <translation>Torrent'leri durdur</translation>
     </message>
 </context>
 <context>
@@ -2647,28 +2847,32 @@ sunucusu tarafından kullanılan etki alanı adlarına eklemelisiniz.
         <translation>Yeniden Duyurma Süresi</translation>
     </message>
     <message>
-        <source>Popularity</source>
-        <translation>Yaygınlık</translation>
+        <source>Private</source>
+        <translation>Özel</translation>
     </message>
     <message>
         <source>Progress</source>
         <translation>İlerleme</translation>
     </message>
     <message>
-        <source>Info Hash v1</source>
-        <translation>Bilgi Adreslemesi v1</translation>
-    </message>
-    <message>
         <source>Info Hash v2</source>
         <translation>Bilgi Adreslemesi v2</translation>
+    </message>
+    <message>
+        <source>Info Hash v1</source>
+        <translation>Bilgi Adreslemesi v1</translation>
     </message>
     <message>
         <source>Incomplete Save Path</source>
         <translation>Tamamlanmamış Kaydetme Yolu</translation>
     </message>
     <message>
-        <source>Private</source>
-        <translation>Özel</translation>
+        <source>Popularity</source>
+        <translation>Yaygınlık</translation>
+    </message>
+    <message>
+        <source>Status Icon</source>
+        <translation>Durum Simgesi</translation>
     </message>
 </context>
 <context>
@@ -2899,6 +3103,10 @@ sunucusu tarafından kullanılan etki alanı adlarına eklemelisiniz.
         <source>Collapse/expand</source>
         <translation>Daralt/genişlet</translation>
     </message>
+    <message>
+        <source>Collapse/expand category</source>
+        <translation>Kategoriyi daralt/genişlet</translation>
+    </message>
 </context>
 <context>
     <name>TransferListWidget</name>
@@ -2993,14 +3201,6 @@ sunucusu tarafından kullanılan etki alanı adlarına eklemelisiniz.
         <translation>Yeni Kategori</translation>
     </message>
     <message>
-        <source>Location</source>
-        <translation>Konum</translation>
-    </message>
-    <message>
-        <source>New name</source>
-        <translation>Yeni adı</translation>
-    </message>
-    <message>
         <source>Set location</source>
         <translation>Yeri ayarla</translation>
     </message>
@@ -3013,16 +3213,8 @@ sunucusu tarafından kullanılan etki alanı adlarına eklemelisiniz.
         <translation>Kategoriyi Düzenle</translation>
     </message>
     <message>
-        <source>Save path</source>
-        <translation>Kaydetme yolu</translation>
-    </message>
-    <message>
         <source>Comma-separated tags:</source>
         <translation>Virgülle ayrılmış etiketler:</translation>
-    </message>
-    <message>
-        <source>Add Tags</source>
-        <translation>Etiketleri Ekle</translation>
     </message>
     <message>
         <source>Tags</source>
@@ -3085,16 +3277,40 @@ sunucusu tarafından kullanılan etki alanı adlarına eklemelisiniz.
         <translation>Açıklama</translation>
     </message>
     <message>
-        <source>Stop</source>
-        <translation>Durdur</translation>
-    </message>
-    <message>
         <source>Force Start</source>
         <translation>Başlatmaya Zorla</translation>
     </message>
     <message>
+        <source>Save path:</source>
+        <translation>Kaydetme yolu:</translation>
+    </message>
+    <message>
+        <source>Location:</source>
+        <translation>Konum:</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Durdur</translation>
+    </message>
+    <message>
+        <source>Automatic mode means that various torrent properties(eg save path) will be decided by the associated category</source>
+        <translation>Otomatik kip, çeşitli torrent özelliklerine (örn. kaydetme yolu) ilişkilendirilmiş kategori tarafından karar verileceği anlamına gelir</translation>
+    </message>
+    <message>
         <source>Start</source>
         <translation>Başlat</translation>
+    </message>
+    <message>
+        <source>New name:</source>
+        <translation>Yeni adı:</translation>
+    </message>
+    <message>
+        <source>Add tags</source>
+        <translation>Etiketleri ekle</translation>
+    </message>
+    <message>
+        <source>Category:</source>
+        <translation>Kategori:</translation>
     </message>
 </context>
 <context>
@@ -3140,6 +3356,10 @@ sunucusu tarafından kullanılan etki alanı adlarına eklemelisiniz.
     <message>
         <source>Also remove the content files</source>
         <translation>Ayrıca içerik dosyalarını kaldır</translation>
+    </message>
+    <message>
+        <source>Remove tracker</source>
+        <translation>İzleyiciyi kaldır</translation>
     </message>
 </context>
 <context>
@@ -3342,8 +3562,24 @@ sunucusu tarafından kullanılan etki alanı adlarına eklemelisiniz.
         <translation>Yüklü herhangi bir arama eklentisi yok.</translation>
     </message>
     <message>
+        <source>Select category</source>
+        <translation>Kategoriyi seç</translation>
+    </message>
+    <message>
+        <source>Min size prefix</source>
+        <translation>En düşük boyut öneki</translation>
+    </message>
+    <message>
         <source>Start a search above.</source>
         <translation>Yukarıda bir arama başlatın.</translation>
+    </message>
+    <message>
+        <source>Max size prefix</source>
+        <translation>En fazla boyut öneki</translation>
+    </message>
+    <message>
+        <source>Select plugins</source>
+        <translation>Eklentileri seç</translation>
     </message>
 </context>
 <context>
@@ -3400,16 +3636,20 @@ sunucusu tarafından kullanılan etki alanı adlarına eklemelisiniz.
         <translation>Çeken</translation>
     </message>
     <message>
-        <source>Search engine</source>
-        <translation>Arama motoru</translation>
-    </message>
-    <message>
         <source>Seeders</source>
         <translation>Gönderen</translation>
     </message>
     <message>
         <source>Published On</source>
         <translation>Yayınlanma Tarihi</translation>
+    </message>
+    <message>
+        <source>Engine URL</source>
+        <translation>Motor URL'si</translation>
+    </message>
+    <message>
+        <source>Engine</source>
+        <translation>Motor</translation>
     </message>
 </context>
 <context>
@@ -3641,10 +3881,6 @@ sunucusu tarafından kullanılan etki alanı adlarına eklemelisiniz.
         <translation>İndirme bağlantısı</translation>
     </message>
     <message>
-        <source>Searching...</source>
-        <translation>Aranıyor...</translation>
-    </message>
-    <message>
         <source>Search has finished</source>
         <translation>Arama tamamlandı</translation>
     </message>
@@ -3653,8 +3889,20 @@ sunucusu tarafından kullanılan etki alanı adlarına eklemelisiniz.
         <translation>Arama sırasında bir hata meydana geldi...</translation>
     </message>
     <message>
+        <source>Close tab</source>
+        <translation>Sekmeyi kapat</translation>
+    </message>
+    <message>
+        <source>Searching...</source>
+        <translation>Aranıyor...</translation>
+    </message>
+    <message>
         <source>Search aborted</source>
         <translation>Arama iptal edildi</translation>
+    </message>
+    <message>
+        <source>Close all tabs</source>
+        <translation>Tüm sekmeleri kapat</translation>
     </message>
 </context>
 <context>
@@ -3765,6 +4013,22 @@ sunucusu tarafından kullanılan etki alanı adlarına eklemelisiniz.
     <message>
         <source>Download torrent</source>
         <translation>Torrent'i indir</translation>
+    </message>
+    <message>
+        <source>Edit feed URL...</source>
+        <translation>Bildirim URLʼsini düzenle...</translation>
+    </message>
+    <message>
+        <source>Unable to update URL</source>
+        <translation>URL güncellenemiyor</translation>
+    </message>
+    <message>
+        <source>URL is unchanged</source>
+        <translation>URL değişmedi</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty</source>
+        <translation>URL boş olamaz</translation>
     </message>
 </context>
 <context>
@@ -4012,6 +4276,14 @@ Desteklenen biçimler: S01E01, 1x1, 2017.12.31 ve 31.12.2017 (Tarih biçimleri d
         <translation>Etiketleri Ekle:</translation>
     </message>
     <message>
+        <source>Remove rule</source>
+        <translation>Kuralı kaldır</translation>
+    </message>
+    <message>
+        <source>Add rule</source>
+        <translation>Kural ekle</translation>
+    </message>
+    <message>
         <source>Add Stopped:</source>
         <translation>Durduruldu Olarak Ekle:</translation>
     </message>
@@ -4019,20 +4291,24 @@ Desteklenen biçimler: S01E01, 1x1, 2017.12.31 ve 31.12.2017 (Tarih biçimleri d
 <context>
     <name>TrackerFiltersList</name>
     <message>
-        <source>All (%1)</source>
-        <translation>Tümü (%1)</translation>
-    </message>
-    <message>
-        <source>Trackerless (%1)</source>
-        <translation>İzleyicisiz (%1)</translation>
-    </message>
-    <message>
         <source>Remove torrents</source>
         <translation>Torrent'leri kaldır</translation>
     </message>
     <message>
+        <source>All</source>
+        <translation>Tümü</translation>
+    </message>
+    <message>
+        <source>Trackerless</source>
+        <translation>İzleyicisiz</translation>
+    </message>
+    <message>
         <source>Start torrents</source>
         <translation>Torrent'leri başlat</translation>
+    </message>
+    <message>
+        <source>Remove tracker</source>
+        <translation>İzleyiciyi kaldır</translation>
     </message>
     <message>
         <source>Stop torrents</source>
@@ -4186,10 +4462,128 @@ Desteklenen biçimler: S01E01, 1x1, 2017.12.31 ve 31.12.2017 (Tarih biçimleri d
     </message>
 </context>
 <context>
+    <name>TrackersFilterWidget</name>
+    <message>
+        <source>Are you sure you want to remove tracker %1 from all torrents?</source>
+        <translation>%1 izleyicisini tüm torrent'lerden kaldırmak istediğinize emin misiniz?</translation>
+    </message>
+</context>
+<context>
+    <name>Category</name>
+    <message>
+        <source>Unable to edit category</source>
+        <translation>Kategori düzenlenemiyor</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>TAMAM</translation>
+    </message>
+    <message>
+        <source>Unable to create category</source>
+        <translation>Kategori oluşturulamıyor</translation>
+    </message>
+    <message>
+        <source>Unable to set category</source>
+        <translation>Kategori ayarlanamıyor</translation>
+    </message>
+</context>
+<context>
+    <name>CookiesDialog</name>
+    <message>
+        <source>Domain</source>
+        <translation>Etki Alanı</translation>
+    </message>
+    <message>
+        <source>Manage Cookies</source>
+        <translation>Tanımlama Bilgilerini Yönetin</translation>
+    </message>
+    <message>
+        <source>Add Cookie</source>
+        <translation>Tanımlama bilgisi ekle</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>Kaldır</translation>
+    </message>
+    <message>
+        <source>Expiration Date</source>
+        <translation>Bitiş Tarihi</translation>
+    </message>
+    <message>
+        <source>Value</source>
+        <translation>Değer</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Ad</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>Yol</translation>
+    </message>
+</context>
+<context>
+    <name>confirmAutoTMMDialog</name>
+    <message>
+        <source>Enable automatic torrent management</source>
+        <translation>Otomatik torrent yönetimini etkinleştirin</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to enable Automatic Torrent Management for the selected torrent(s)? They may be relocated.</source>
+        <translation>Seçilen torrent'(ler) için Otomatik Torrent Yönetimi'ni etkinleştirmek istediğinize emin misiniz? Yer değiştirebilirler.</translation>
+    </message>
+</context>
+<context>
+    <name>confirmRecheckDialog</name>
+    <message>
+        <source>Are you sure you want to recheck the selected torrent(s)?</source>
+        <translation>Seçilen torrent'(ler)i yeniden denetlemek istediğinize emin misiniz?</translation>
+    </message>
+    <message>
+        <source>Recheck confirmation</source>
+        <translation>Yeniden denetleme onayı</translation>
+    </message>
+</context>
+<context>
     <name>SearchWidget</name>
     <message>
         <source>Close tab</source>
         <translation>Sekmeyi kapat</translation>
+    </message>
+</context>
+<context>
+    <name>Login</name>
+    <message>
+        <source>qBittorrent WebUI</source>
+        <translation>qBittorrent Web Arayüzü</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Parola</translation>
+    </message>
+    <message>
+        <source>JavaScript Required! You must enable JavaScript for the WebUI to work properly</source>
+        <translation>JavaScript Gerekli! Web Arayüzünün düzgün çalışması için JavaScript'i etkinleştirmek zorundasınız</translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation>Oturum aç</translation>
+    </message>
+    <message>
+        <source>Server response:</source>
+        <translation>Sunucu yanıtı:</translation>
+    </message>
+    <message>
+        <source>Unable to log in, server is probably unreachable.</source>
+        <translation>Oturum açılamıyor, sunucuya muhtemelen ulaşılamıyor.</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Kullanıcı adı</translation>
+    </message>
+    <message>
+        <source>Invalid Username or Password.</source>
+        <translation>Geçersiz Kullanıcı Adı veya Parola.</translation>
     </message>
 </context>
 </TS>

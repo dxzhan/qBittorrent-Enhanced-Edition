@@ -41,6 +41,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QNetworkCookie>
 #include <QNetworkInterface>
 #include <QRegularExpression>
 #include <QStringList>
@@ -50,6 +51,7 @@
 #include "base/bittorrent/session.h"
 #include "base/global.h"
 #include "base/interfaces/iapplication.h"
+#include "base/net/downloadmanager.h"
 #include "base/net/portforwarder.h"
 #include "base/net/proxyconfigurationmanager.h"
 #include "base/path.h"
@@ -58,6 +60,7 @@
 #include "base/rss/rss_session.h"
 #include "base/torrentfileguard.h"
 #include "base/torrentfileswatcher.h"
+#include "base/utils/datetime.h"
 #include "base/utils/fs.h"
 #include "base/utils/misc.h"
 #include "base/utils/net.h"
@@ -68,6 +71,12 @@
 #include "../webapplication.h"
 
 using namespace std::chrono_literals;
+
+const QString KEY_COOKIE_NAME = u"name"_s;
+const QString KEY_COOKIE_DOMAIN = u"domain"_s;
+const QString KEY_COOKIE_PATH = u"path"_s;
+const QString KEY_COOKIE_VALUE = u"value"_s;
+const QString KEY_COOKIE_EXPIRATION_DATE = u"expirationDate"_s;
 
 void AppController::webapiVersionAction()
 {
@@ -127,6 +136,9 @@ void AppController::preferencesAction()
     // Language
     data[u"locale"_s] = pref->getLocale();
     data[u"performance_warning"_s] = session->isPerformanceWarningEnabled();
+    data[u"status_bar_external_ip"_s] = pref->isStatusbarExternalIPDisplayed();
+    // Transfer List
+    data[u"confirm_torrent_deletion"_s] = pref->confirmTorrentDeletion();
     // Log file
     data[u"file_log_enabled"_s] = app()->isFileLoggerEnabled();
     data[u"file_log_path"_s] = app()->fileLoggerPath().toString();
@@ -302,6 +314,9 @@ void AppController::preferencesAction()
     // Add trackers
     data[u"add_trackers_enabled"_s] = session->isAddTrackersEnabled();
     data[u"add_trackers"_s] = session->additionalTrackers();
+    data[u"add_trackers_from_url_enabled"_s] = session->isAddTrackersFromURLEnabled();
+    data[u"add_trackers_url"_s] = session->additionalTrackersURL();
+    data[u"add_trackers_url_list"_s] = session->additionalTrackersFromURL();
 
     // WebUI
     // HTTP Server
@@ -370,8 +385,12 @@ void AppController::preferencesAction()
     data[u"current_interface_address"_s] = session->networkInterfaceAddress();
     // Save resume data interval
     data[u"save_resume_data_interval"_s] = session->saveResumeDataInterval();
+    // Save statistics interval
+    data[u"save_statistics_interval"_s] = static_cast<int>(session->saveStatisticsInterval().count());
     // .torrent file size limit
     data[u"torrent_file_size_limit"_s] = pref->getTorrentFileSizeLimit();
+    // Confirm torrent recheck
+    data[u"confirm_torrent_recheck"_s] = pref->confirmTorrentRecheck();
     // Recheck completed torrents
     data[u"recheck_completed_torrents"_s] = pref->recheckTorrentsOnCompletion();
     // Customize application instance name
@@ -462,6 +481,7 @@ void AppController::preferencesAction()
     data[u"announce_to_all_trackers"_s] = session->announceToAllTrackers();
     data[u"announce_to_all_tiers"_s] = session->announceToAllTiers();
     data[u"announce_ip"_s] = session->announceIP();
+    data[u"announce_port"_s] = session->announcePort();
     data[u"max_concurrent_http_announces"_s] = session->maxConcurrentHTTPAnnounces();
     data[u"stop_tracker_timeout"_s] = session->stopTrackerTimeout();
     // Peer Turnover
@@ -512,8 +532,13 @@ void AppController::setPreferencesAction()
             pref->setLocale(locale);
         }
     }
+    if (hasKey(u"status_bar_external_ip"_s))
+        pref->setStatusbarExternalIPDisplayed(it.value().toBool());
     if (hasKey(u"performance_warning"_s))
         session->setPerformanceWarningEnabled(it.value().toBool());
+    // Transfer List
+    if (hasKey(u"confirm_torrent_deletion"_s))
+        pref->setConfirmTorrentDeletion(it.value().toBool());
     // Log file
     if (hasKey(u"file_log_enabled"_s))
         app()->setFileLoggerEnabled(it.value().toBool());
@@ -858,10 +883,10 @@ void AppController::setPreferencesAction()
         session->setAddTrackersEnabled(it.value().toBool());
     if (hasKey(u"add_trackers"_s))
         session->setAdditionalTrackers(it.value().toString());
-    if (hasKey(u"auto_update_trackers_enabled"_s))
-        session->setAutoUpdateTrackersEnabled(it.value().toBool());
-    if (hasKey(u"customize_trackers_list_url"_s))
-        pref->setCustomizeTrackersListUrl(it.value().toString());
+    if (hasKey(u"add_trackers_from_url_enabled"_s))
+        session->setAddTrackersFromURLEnabled(it.value().toBool());
+    if (hasKey(u"add_trackers_url"_s))
+        session->setAdditionalTrackersURL(it.value().toString());
 
     // WebUI
     // HTTP Server
@@ -988,9 +1013,15 @@ void AppController::setPreferencesAction()
     // Save resume data interval
     if (hasKey(u"save_resume_data_interval"_s))
         session->setSaveResumeDataInterval(it.value().toInt());
+    // Save statistics interval
+    if (hasKey(u"save_statistics_interval"_s))
+        session->setSaveStatisticsInterval(std::chrono::minutes(it.value().toInt()));
     // .torrent file size limit
     if (hasKey(u"torrent_file_size_limit"_s))
         pref->setTorrentFileSizeLimit(it.value().toLongLong());
+    // Confirm torrent recheck
+    if (hasKey(u"confirm_torrent_recheck"_s))
+        pref->setConfirmTorrentRecheck(it.value().toBool());
     // Recheck completed torrents
     if (hasKey(u"recheck_completed_torrents"_s))
         pref->recheckTorrentsOnCompletion(it.value().toBool());
@@ -1132,6 +1163,8 @@ void AppController::setPreferencesAction()
         const QHostAddress announceAddr {it.value().toString().trimmed()};
         session->setAnnounceIP(announceAddr.isNull() ? QString {} : announceAddr.toString());
     }
+    if (hasKey(u"announce_port"_s))
+        session->setAnnouncePort(it.value().toInt());
     if (hasKey(u"max_concurrent_http_announces"_s))
         session->setMaxConcurrentHTTPAnnounces(it.value().toInt());
     if (hasKey(u"stop_tracker_timeout"_s))
@@ -1197,6 +1230,63 @@ void AppController::getDirectoryContentAction()
     while (it.hasNext())
         ret.append(it.next());
     setResult(ret);
+}
+
+void AppController::cookiesAction()
+{
+    const QList<QNetworkCookie> cookies = Net::DownloadManager::instance()->allCookies();
+    QJsonArray ret;
+    for (const QNetworkCookie &cookie : cookies)
+    {
+        ret << QJsonObject {
+            {KEY_COOKIE_NAME, QString::fromLatin1(cookie.name())},
+            {KEY_COOKIE_DOMAIN, cookie.domain()},
+            {KEY_COOKIE_PATH, cookie.path()},
+            {KEY_COOKIE_VALUE, QString::fromLatin1(cookie.value())},
+            {KEY_COOKIE_EXPIRATION_DATE, Utils::DateTime::toSecsSinceEpoch(cookie.expirationDate())},
+        };
+    }
+
+    setResult(ret);
+}
+
+void AppController::setCookiesAction()
+{
+    requireParams({u"cookies"_s});
+    const QString cookiesParam {params()[u"cookies"_s].trimmed()};
+
+    QJsonParseError jsonError;
+    const auto cookiesJsonDocument = QJsonDocument::fromJson(cookiesParam.toUtf8(), &jsonError);
+    if (jsonError.error != QJsonParseError::NoError)
+        throw APIError(APIErrorType::BadParams, jsonError.errorString());
+    if (!cookiesJsonDocument.isArray())
+        throw APIError(APIErrorType::BadParams, tr("cookies must be array"));
+
+    const QJsonArray cookiesJsonArr = cookiesJsonDocument.array();
+    QList<QNetworkCookie> cookies;
+    cookies.reserve(cookiesJsonArr.size());
+    for (const QJsonValue &jsonVal : cookiesJsonArr)
+    {
+        if (!jsonVal.isObject())
+            throw APIError(APIErrorType::BadParams);
+
+        QNetworkCookie cookie;
+        const QJsonObject jsonObj = jsonVal.toObject();
+        if (jsonObj.contains(KEY_COOKIE_NAME))
+            cookie.setName(jsonObj.value(KEY_COOKIE_NAME).toString().toLatin1());
+        if (jsonObj.contains(KEY_COOKIE_DOMAIN))
+            cookie.setDomain(jsonObj.value(KEY_COOKIE_DOMAIN).toString());
+        if (jsonObj.contains(KEY_COOKIE_PATH))
+            cookie.setPath(jsonObj.value(KEY_COOKIE_PATH).toString());
+        if (jsonObj.contains(KEY_COOKIE_VALUE))
+            cookie.setValue(jsonObj.value(KEY_COOKIE_VALUE).toString().toUtf8());
+        if (jsonObj.contains(KEY_COOKIE_EXPIRATION_DATE))
+            cookie.setExpirationDate(QDateTime::fromSecsSinceEpoch(jsonObj.value(KEY_COOKIE_EXPIRATION_DATE).toInteger()));
+
+        cookies << cookie;
+    }
+
+    Net::DownloadManager::instance()->setAllCookies(cookies);
 }
 
 void AppController::networkInterfaceListAction()

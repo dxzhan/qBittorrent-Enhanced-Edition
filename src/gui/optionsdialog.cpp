@@ -165,6 +165,7 @@ OptionsDialog::OptionsDialog(IGUIApplication *app, QWidget *parent)
     m_ui->tabSelection->item(TAB_DOWNLOADS)->setIcon(UIThemeManager::instance()->getIcon(u"download"_s, u"folder-download"_s));
     m_ui->tabSelection->item(TAB_SPEED)->setIcon(UIThemeManager::instance()->getIcon(u"speedometer"_s, u"chronometer"_s));
     m_ui->tabSelection->item(TAB_RSS)->setIcon(UIThemeManager::instance()->getIcon(u"application-rss"_s, u"application-rss+xml"_s));
+    m_ui->tabSelection->item(TAB_SEARCH)->setIcon(UIThemeManager::instance()->getIcon(u"edit-find"_s));
 #ifdef DISABLE_WEBUI
     m_ui->tabSelection->item(TAB_WEBUI)->setHidden(true);
 #else
@@ -191,6 +192,7 @@ OptionsDialog::OptionsDialog(IGUIApplication *app, QWidget *parent)
     loadSpeedTabOptions();
     loadBittorrentTabOptions();
     loadRSSTabOptions();
+    loadSearchTabOptions();
 #ifndef DISABLE_WEBUI
     loadWebUITabOptions();
 #endif
@@ -245,6 +247,7 @@ void OptionsDialog::loadBehaviorTabOptions()
     setLocale(pref->getLocale());
 
     initializeStyleCombo();
+    initializeColorSchemeOptions();
 
     m_ui->checkUseCustomTheme->setChecked(Preferences::instance()->useCustomUITheme());
     m_ui->customThemeFilePath->setSelectedPath(Preferences::instance()->customUIThemePath());
@@ -353,12 +356,17 @@ void OptionsDialog::loadBehaviorTabOptions()
     // Groupbox's check state  must be initialized after some of its children if they are manually enabled/disabled
     m_ui->checkFileLog->setChecked(app()->isFileLoggerEnabled());
 
+    m_ui->checkBoxExternalIPStatusBar->setChecked(pref->isStatusbarExternalIPDisplayed());
     m_ui->checkBoxPerformanceWarning->setChecked(session->isPerformanceWarningEnabled());
 
     connect(m_ui->comboLanguage, qComboBoxCurrentIndexChanged, this, &ThisType::enableApplyButton);
 
 #ifdef Q_OS_WIN
     connect(m_ui->comboStyle, qComboBoxCurrentIndexChanged, this, &ThisType::enableApplyButton);
+#endif
+
+#ifdef QBT_HAS_COLORSCHEME_OPTION
+    connect(m_ui->comboColorScheme, qComboBoxCurrentIndexChanged, this, &ThisType::enableApplyButton);
 #endif
 
 #if (defined(Q_OS_UNIX) && !defined(Q_OS_MACOS))
@@ -436,6 +444,7 @@ void OptionsDialog::loadBehaviorTabOptions()
     connect(m_ui->spinFileLogAge, qSpinBoxValueChanged, this, &ThisType::enableApplyButton);
     connect(m_ui->comboFileLogAgeType, qComboBoxCurrentIndexChanged, this, &ThisType::enableApplyButton);
 
+    connect(m_ui->checkBoxExternalIPStatusBar, &QAbstractButton::toggled, this, &ThisType::enableApplyButton);
     connect(m_ui->checkBoxPerformanceWarning, &QAbstractButton::toggled, this, &ThisType::enableApplyButton);
 }
 
@@ -459,6 +468,10 @@ void OptionsDialog::saveBehaviorTabOptions() const
 
 #ifdef Q_OS_WIN
     pref->setStyle(m_ui->comboStyle->currentData().toString());
+#endif
+
+#ifdef QBT_HAS_COLORSCHEME_OPTION
+    UIThemeManager::instance()->setColorScheme(m_ui->comboColorScheme->currentData().value<ColorScheme>());
 #endif
 
 #if (defined(Q_OS_UNIX) && !defined(Q_OS_MACOS))
@@ -524,6 +537,7 @@ void OptionsDialog::saveBehaviorTabOptions() const
 
     app()->setStartUpWindowState(m_ui->windowStateComboBox->currentData().value<WindowState>());
 
+    pref->setStatusbarExternalIPDisplayed(m_ui->checkBoxExternalIPStatusBar->isChecked());
     session->setPerformanceWarningEnabled(m_ui->checkBoxPerformanceWarning->isChecked());
 }
 
@@ -1150,6 +1164,10 @@ void OptionsDialog::loadBittorrentTabOptions()
     connect(m_ui->checkAutoUpdateTrackers, &QGroupBox::toggled, this, &ThisType::enableApplyButton);
     connect(m_ui->textCustomizeTrackersListUrl, &QLineEdit::textChanged, this, &ThisType::enableApplyButton);
 
+    m_ui->checkAddTrackersFromURL->setChecked(session->isAddTrackersFromURLEnabled());
+    m_ui->textTrackersURL->setText(session->additionalTrackersURL());
+    m_ui->textTrackersFromURL->setPlainText(session->additionalTrackersFromURL());
+
     connect(m_ui->checkDHT, &QAbstractButton::toggled, this, &ThisType::enableApplyButton);
     connect(m_ui->checkPeX, &QAbstractButton::toggled, this, &ThisType::enableApplyButton);
     connect(m_ui->checkLSD, &QAbstractButton::toggled, this, &ThisType::enableApplyButton);
@@ -1183,6 +1201,9 @@ void OptionsDialog::loadBittorrentTabOptions()
 
     connect(m_ui->checkEnableAddTrackers, &QGroupBox::toggled, this, &ThisType::enableApplyButton);
     connect(m_ui->textTrackers, &QPlainTextEdit::textChanged, this, &ThisType::enableApplyButton);
+
+    connect(m_ui->checkAddTrackersFromURL, &QGroupBox::toggled, this, &ThisType::enableApplyButton);
+    connect(m_ui->textTrackersURL, &QLineEdit::textChanged, this, &ThisType::enableApplyButton);
 }
 
 void OptionsDialog::saveBittorrentTabOptions() const
@@ -1210,7 +1231,7 @@ void OptionsDialog::saveBittorrentTabOptions() const
     session->setGlobalMaxRatio(getMaxRatio());
     session->setGlobalMaxSeedingMinutes(getMaxSeedingMinutes());
     session->setGlobalMaxInactiveSeedingMinutes(getMaxInactiveSeedingMinutes());
-    const QVector<BitTorrent::ShareLimitAction> actIndex =
+    const QList<BitTorrent::ShareLimitAction> actIndex =
     {
         BitTorrent::ShareLimitAction::Stop,
         BitTorrent::ShareLimitAction::Remove,
@@ -1222,8 +1243,8 @@ void OptionsDialog::saveBittorrentTabOptions() const
     session->setAddTrackersEnabled(m_ui->checkEnableAddTrackers->isChecked());
     session->setAdditionalTrackers(m_ui->textTrackers->toPlainText());
 
-    session->setAutoUpdateTrackersEnabled(m_ui->checkAutoUpdateTrackers->isChecked());
-    pref->setCustomizeTrackersListUrl(m_ui->textCustomizeTrackersListUrl->text());
+    session->setAddTrackersFromURLEnabled(m_ui->checkAddTrackersFromURL->isChecked());
+    session->setAdditionalTrackersURL(m_ui->textTrackersURL->text());
 }
 
 void OptionsDialog::loadRSSTabOptions()
@@ -1268,6 +1289,28 @@ void OptionsDialog::saveRSSTabOptions() const
     autoDownloader->setDownloadRepacks(m_ui->checkSmartFilterDownloadRepacks->isChecked());
 }
 
+void OptionsDialog::loadSearchTabOptions()
+{
+    const auto *pref = Preferences::instance();
+
+    m_ui->groupStoreOpenedTabs->setChecked(pref->storeOpenedSearchTabs());
+    m_ui->checkStoreTabsSearchResults->setChecked(pref->storeOpenedSearchTabResults());
+    m_ui->searchHistoryLengthSpinBox->setValue(pref->searchHistoryLength());
+
+    connect(m_ui->groupStoreOpenedTabs, &QGroupBox::toggled, this, &OptionsDialog::enableApplyButton);
+    connect(m_ui->checkStoreTabsSearchResults, &QCheckBox::toggled, this, &OptionsDialog::enableApplyButton);
+    connect(m_ui->searchHistoryLengthSpinBox, qSpinBoxValueChanged, this, &OptionsDialog::enableApplyButton);
+}
+
+void OptionsDialog::saveSearchTabOptions() const
+{
+    auto *pref = Preferences::instance();
+
+    pref->setStoreOpenedSearchTabs(m_ui->groupStoreOpenedTabs->isChecked());
+    pref->setStoreOpenedSearchTabResults(m_ui->checkStoreTabsSearchResults->isChecked());
+    pref->setSearchHistoryLength(m_ui->searchHistoryLengthSpinBox->value());
+}
+
 #ifndef DISABLE_WEBUI
 void OptionsDialog::loadWebUITabOptions()
 {
@@ -1308,7 +1351,6 @@ void OptionsDialog::loadWebUITabOptions()
     // Security
     m_ui->checkClickjacking->setChecked(pref->isWebUIClickjackingProtectionEnabled());
     m_ui->checkCSRFProtection->setChecked(pref->isWebUICSRFProtectionEnabled());
-    m_ui->checkSecureCookie->setEnabled(pref->isWebUIHttpsEnabled());
     m_ui->checkSecureCookie->setChecked(pref->isWebUISecureCookieEnabled());
     m_ui->groupHostHeaderValidation->setChecked(pref->isWebUIHostHeaderValidationEnabled());
     m_ui->textServerDomains->setText(pref->getServerDomains());
@@ -1351,7 +1393,6 @@ void OptionsDialog::loadWebUITabOptions()
 
     connect(m_ui->checkClickjacking, &QCheckBox::toggled, this, &ThisType::enableApplyButton);
     connect(m_ui->checkCSRFProtection, &QCheckBox::toggled, this, &ThisType::enableApplyButton);
-    connect(m_ui->checkWebUIHttps, &QGroupBox::toggled, m_ui->checkSecureCookie, &QWidget::setEnabled);
     connect(m_ui->checkSecureCookie, &QCheckBox::toggled, this, &ThisType::enableApplyButton);
     connect(m_ui->groupHostHeaderValidation, &QGroupBox::toggled, this, &ThisType::enableApplyButton);
     connect(m_ui->textServerDomains, &QLineEdit::textChanged, this, &ThisType::enableApplyButton);
@@ -1465,6 +1506,7 @@ void OptionsDialog::saveOptions() const
     saveSpeedTabOptions();
     saveBittorrentTabOptions();
     saveRSSTabOptions();
+    saveSearchTabOptions();
 #ifndef DISABLE_WEBUI
     saveWebUITabOptions();
 #endif
@@ -1739,6 +1781,22 @@ void OptionsDialog::initializeStyleCombo()
     m_ui->UISettingsBoxLayout->removeWidget(m_ui->labelStyle);
     m_ui->UISettingsBoxLayout->removeWidget(m_ui->comboStyle);
     m_ui->UISettingsBoxLayout->removeWidget(m_ui->labelStyleHint);
+#endif
+}
+
+void OptionsDialog::initializeColorSchemeOptions()
+{
+#ifdef QBT_HAS_COLORSCHEME_OPTION
+    m_ui->comboColorScheme->addItem(tr("Dark", "Dark color scheme"), QVariant::fromValue(ColorScheme::Dark));
+    m_ui->comboColorScheme->addItem(tr("Light", "Light color scheme"), QVariant::fromValue(ColorScheme::Light));
+    m_ui->comboColorScheme->addItem(tr("System", "System color scheme"), QVariant::fromValue(ColorScheme::System));
+    m_ui->comboColorScheme->setCurrentIndex(m_ui->comboColorScheme->findData(QVariant::fromValue(UIThemeManager::instance()->colorScheme())));
+#else
+    m_ui->labelColorScheme->hide();
+    m_ui->comboColorScheme->hide();
+    m_ui->UISettingsBoxLayout->removeWidget(m_ui->labelColorScheme);
+    m_ui->UISettingsBoxLayout->removeWidget(m_ui->comboColorScheme);
+    m_ui->UISettingsBoxLayout->removeItem(m_ui->spacerColorScheme);
 #endif
 }
 

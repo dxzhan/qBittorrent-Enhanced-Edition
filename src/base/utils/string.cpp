@@ -31,10 +31,10 @@
 
 #include <cmath>
 
+#include <QList>
 #include <QLocale>
 #include <QRegularExpression>
 #include <QStringList>
-#include <QVector>
 
 // to send numbers instead of strings with suffixes
 QString Utils::String::fromDouble(const double n, const int precision)
@@ -47,6 +47,16 @@ QString Utils::String::fromDouble(const double n, const int precision)
 
     const double prec = std::pow(10.0, precision);
     return QLocale::system().toString(std::floor(n * prec) / prec, 'f', precision);
+}
+
+QString Utils::String::fromLatin1(const std::string_view string)
+{
+    return QString::fromLatin1(string.data(), string.size());
+}
+
+QString Utils::String::fromLocal8Bit(const std::string_view string)
+{
+    return QString::fromLocal8Bit(string.data(), string.size());
 }
 
 QString Utils::String::wildcardToRegexPattern(const QString &pattern)

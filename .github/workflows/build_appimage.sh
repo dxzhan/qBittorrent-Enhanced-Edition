@@ -28,11 +28,11 @@ export SELF_DIR="$(dirname "$(readlink -f "${0}")")"
 . ${SELF_DIR}/prepare_libtorrent.sh
 . ${SELF_DIR}/build_qbittorrent.sh
 
-
-
 prepare_source
 
 prepare_baseenv() {
+
+
   retry apt update
   retry apt install -y software-properties-common apt-transport-https
   # retry apt-add-repository -yn ppa:savoury1/backports

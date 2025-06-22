@@ -23,11 +23,9 @@
 
 "use strict";
 
-if (window.qBittorrent === undefined)
-    window.qBittorrent = {};
-
-window.qBittorrent.Download = (function() {
-    const exports = function() {
+window.qBittorrent ??= {};
+window.qBittorrent.Download ??= (() => {
+    const exports = () => {
         return {
             changeCategorySelect: changeCategorySelect,
             changeTMM: changeTMM
@@ -37,34 +35,36 @@ window.qBittorrent.Download = (function() {
     let categories = {};
     let defaultSavePath = "";
 
-    const getCategories = function() {
-        new Request.JSON({
-            url: "api/v2/torrents/categories",
-            method: "get",
-            noCache: true,
-            onSuccess: function(data) {
-                if (data) {
-                    categories = data;
-                    for (const i in data) {
-                        if (!Object.hasOwn(data, i))
-                            continue;
+    const getCategories = () => {
+        fetch("api/v2/torrents/categories", {
+                method: "GET",
+                cache: "no-store"
+            })
+            .then(async (response) => {
+                if (!response.ok)
+                    return;
 
-                        const category = data[i];
-                        const option = new Element("option");
-                        option.set("value", category.name);
-                        option.set("html", category.name);
-                        $("categorySelect").appendChild(option);
-                    }
+                const data = await response.json();
+
+                categories = data;
+                for (const i in data) {
+                    if (!Object.hasOwn(data, i))
+                        continue;
+
+                    const category = data[i];
+                    const option = document.createElement("option");
+                    option.value = category.name;
+                    option.textContent = category.name;
+                    $("categorySelect").appendChild(option);
                 }
-            }
-        }).send();
+            });
     };
 
-    const getPreferences = function() {
+    const getPreferences = () => {
         const pref = window.parent.qBittorrent.Cache.preferences.get();
 
         defaultSavePath = pref.save_path;
-        $("savepath").setProperty("value", defaultSavePath);
+        $("savepath").value = defaultSavePath;
         $("startTorrent").checked = !pref.add_stopped_enabled;
         $("addToTopOfQueue").checked = pref.add_to_top_of_queue;
 
@@ -91,7 +91,7 @@ window.qBittorrent.Download = (function() {
             $("contentLayout").selectedIndex = 0;
     };
 
-    const changeCategorySelect = function(item) {
+    const changeCategorySelect = (item) => {
         if (item.value === "\\other") {
             item.nextElementSibling.hidden = false;
             item.nextElementSibling.value = "";
@@ -116,7 +116,7 @@ window.qBittorrent.Download = (function() {
         }
     };
 
-    const changeTMM = function(item) {
+    const changeTMM = (item) => {
         if (item.selectedIndex === 1) {
             $("savepath").disabled = true;
 
@@ -131,12 +131,15 @@ window.qBittorrent.Download = (function() {
         }
     };
 
-    $(window).addEventListener("load", () => {
+    $(window).addEventListener("load", async () => {
+        // user might load this page directly (via browser magnet handler)
+        // so wait for crucial initialization to complete
+        await window.parent.qBittorrent.Client.initializeCaches();
+
         getPreferences();
         getCategories();
     });
 
     return exports();
 })();
-
 Object.freeze(window.qBittorrent.Download);

@@ -39,7 +39,6 @@
 
 #include <QApplication>
 #include <QDesktopServices>
-#include <QIcon>
 #include <QPixmap>
 #include <QPixmapCache>
 #include <QPoint>
@@ -58,13 +57,6 @@
 #include "base/tag.h"
 #include "base/utils/fs.h"
 #include "base/utils/version.h"
-
-QPixmap Utils::Gui::scaledPixmap(const QIcon &icon, const int height)
-{
-    Q_ASSERT(height > 0);
-
-    return icon.pixmap(height);
-}
 
 QPixmap Utils::Gui::scaledPixmap(const Path &path, const int height)
 {
@@ -142,6 +134,7 @@ void Utils::Gui::openPath(const Path &path)
             ::CoUninitialize();
         }
     });
+    thread->setObjectName("Utils::Gui::openPath thread");
     QObject::connect(thread, &QThread::finished, thread, &QObject::deleteLater);
     thread->start();
 #else
@@ -176,6 +169,7 @@ void Utils::Gui::openFolderSelect(const Path &path)
             ::CoUninitialize();
         }
     });
+    thread->setObjectName("Utils::Gui::openFolderSelect thread");
     QObject::connect(thread, &QThread::finished, thread, &QObject::deleteLater);
     thread->start();
 #elif defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
@@ -208,6 +202,10 @@ void Utils::Gui::openFolderSelect(const Path &path)
     else if ((output == u"konqueror.desktop") || (output == u"kfmclient_dir.desktop"))
     {
         proc.startDetached(u"konqueror"_s, {u"--select"_s, path.toString()});
+    }
+    else if (output == u"thunar.desktop")
+    {
+        proc.startDetached(u"thunar"_s, {path.toString()});
     }
     else
     {

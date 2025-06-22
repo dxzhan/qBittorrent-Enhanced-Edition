@@ -70,6 +70,22 @@
         <source>Add to top of queue</source>
         <translation>Add to top of queue</translation>
     </message>
+    <message>
+        <source>One link per line (HTTP links, Magnet links and info-hashes are supported)</source>
+        <translation>One link per line (HTTP links, Magnet links and info-hashes are supported)</translation>
+    </message>
+    <message>
+        <source>Add torrent links</source>
+        <translation>Add torrent links</translation>
+    </message>
+    <message>
+        <source>Select .torrent files</source>
+        <translation>Select .torrent files</translation>
+    </message>
+    <message>
+        <source>Torrent options</source>
+        <translation>Torrent options</translation>
+    </message>
 </context>
 <context>
     <name>CategoryFilterModel</name>
@@ -126,10 +142,6 @@
     <message>
         <source>Exit qBittorrent</source>
         <translation>Exit qBittorrent</translation>
-    </message>
-    <message>
-        <source>Only one link per line</source>
-        <translation>Only one link per line</translation>
     </message>
     <message>
         <source>Global upload rate limit must be greater than 0 or disabled.</source>
@@ -205,10 +217,6 @@
         <translation>Save files to location:</translation>
     </message>
     <message>
-        <source>Cookie:</source>
-        <translation>Cookie:</translation>
-    </message>
-    <message>
         <source>More information</source>
         <translation>More information</translation>
     </message>
@@ -272,10 +280,6 @@
         <translation>Logout</translation>
     </message>
     <message>
-        <source>Download Torrents from their URLs or Magnet links</source>
-        <translation>Download Torrents from their URLs or Magnet links</translation>
-    </message>
-    <message>
         <source>Upload local torrent</source>
         <translation>Upload local torrent</translation>
     </message>
@@ -294,10 +298,6 @@
     <message>
         <source>Invalid category name:\nPlease do not use any special characters in the category name.</source>
         <translation>Invalid category name:\nPlease do not use any special characters in the category name.</translation>
-    </message>
-    <message>
-        <source>Unable to create category</source>
-        <translation>Unable to create category</translation>
     </message>
     <message>
         <source>Upload rate threshold must be greater than 0.</source>
@@ -360,10 +360,6 @@
         <translation>Original author</translation>
     </message>
     <message>
-        <source>Are you sure you want to remove the selected torrents from the transfer list?</source>
-        <translation>Are you sure you want to remove the selected torrents from the transfer list?</translation>
-    </message>
-    <message>
         <source>The port used for the WebUI must be between 1 and 65535.</source>
         <translation>The port used for the WebUI must be between 1 and 65535.</translation>
     </message>
@@ -376,28 +372,76 @@
         <translation>JavaScript Required! You must enable JavaScript for the WebUI to work properly</translation>
     </message>
     <message>
-        <source>Unable to log in, qBittorrent is probably unreachable.</source>
-        <translation>Unable to log in, qBittorrent is probably unreachable.</translation>
+        <source>External IP: N/A</source>
+        <translation>External IP: N/A</translation>
+    </message>
+    <message>
+        <source>Reverse proxy setup examples</source>
+        <translation>Reverse proxy setup examples</translation>
     </message>
     <message>
         <source>Could not contact qBittorrent</source>
         <translation>Could not contact qBittorrent</translation>
     </message>
     <message>
-        <source>Password</source>
-        <translation>Password</translation>
+        <source>Remember choice</source>
+        <translation>Remember choice</translation>
     </message>
     <message>
-        <source>Username</source>
-        <translation>Username</translation>
+        <source>Are you sure you want to remove these %1 torrents from the transfer list?</source>
+        <translation>Are you sure you want to remove these %1 torrents from the transfer list?</translation>
     </message>
     <message>
-        <source>Invalid Username or Password.</source>
-        <translation>Invalid Username or Password.</translation>
+        <source>Unable to delete torrents.</source>
+        <translation>Unable to delete torrents.</translation>
     </message>
     <message>
-        <source>Login</source>
-        <translation>Login</translation>
+        <source>URL</source>
+        <translation>URL</translation>
+    </message>
+    <message>
+        <source>External IP: %1%2</source>
+        <translation>External IP: %1%2</translation>
+    </message>
+    <message>
+        <source>Edit web seed</source>
+        <translation>Edit web seed</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to remove %1 from the transfer list?</source>
+        <translation>Are you sure you want to remove %1 from the transfer list?</translation>
+    </message>
+    <message>
+        <source>Unable to set Auto Torrent Management for the selected torrents.</source>
+        <translation>Unable to set Auto Torrent Management for the selected torrents.</translation>
+    </message>
+    <message>
+        <source>Unable to stop torrents.</source>
+        <translation>Unable to stop torrents.</translation>
+    </message>
+    <message>
+        <source>Unable to download file</source>
+        <translation>Unable to download file</translation>
+    </message>
+    <message>
+        <source>External IPs: %1, %2</source>
+        <translation>External IPs: %1, %2</translation>
+    </message>
+    <message>
+        <source>Unable to recheck torrents.</source>
+        <translation>Unable to recheck torrents.</translation>
+    </message>
+    <message>
+        <source>List of web seeds to add (one per line):</source>
+        <translation>List of web seeds to add (one per line):</translation>
+    </message>
+    <message>
+        <source>Unable to start torrents.</source>
+        <translation>Unable to start torrents.</translation>
+    </message>
+    <message>
+        <source>Add web seeds</source>
+        <translation>Add web seeds</translation>
     </message>
 </context>
 <context>
@@ -603,12 +647,40 @@
         <translation>[D: %1, U: %2]</translation>
     </message>
     <message>
-        <source>Would you like to start all torrents?</source>
-        <translation>Would you like to start all torrents?</translation>
+        <source>Filter by:</source>
+        <translation>Filter by:</translation>
+    </message>
+    <message>
+        <source>Save Path</source>
+        <translation>Save Path</translation>
     </message>
     <message>
         <source>Stop</source>
         <translation>Stop</translation>
+    </message>
+    <message>
+        <source>Use regular expression</source>
+        <translation>Use regular expression</translation>
+    </message>
+    <message>
+        <source>Would you like to start all torrents?</source>
+        <translation>Would you like to start all torrents?</translation>
+    </message>
+    <message>
+        <source>Start</source>
+        <translation>Start</translation>
+    </message>
+    <message>
+        <source>Manage Cookies...</source>
+        <translation>Manage Cookies...</translation>
+    </message>
+    <message>
+        <source>Unable to export torrent file</source>
+        <translation>Unable to export torrent file</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Name</translation>
     </message>
     <message>
         <source>Would you like to stop all torrents?</source>
@@ -621,10 +693,6 @@
     <message>
         <source>Stop All</source>
         <translation>Stop All</translation>
-    </message>
-    <message>
-        <source>Start</source>
-        <translation>Start</translation>
     </message>
 </context>
 <context>
@@ -652,10 +720,6 @@
     <message>
         <source>Language</source>
         <translation>Language</translation>
-    </message>
-    <message>
-        <source>User Interface Language:</source>
-        <translation>User Interface Language:</translation>
     </message>
     <message>
         <source>Email notification upon download completion</source>
@@ -1284,10 +1348,6 @@
         <translation>Ban client after consecutive failures:</translation>
     </message>
     <message>
-        <source>Enable cookie Secure flag (requires HTTPS)</source>
-        <translation>Enable cookie Secure flag (requires HTTPS)</translation>
-    </message>
-    <message>
         <source>Header: value pairs, one per line</source>
         <translation>Header: value pairs, one per line</translation>
     </message>
@@ -1516,10 +1576,6 @@
         <translation>Support Internationalised Domain Name (IDN):</translation>
     </message>
     <message>
-        <source>Run external program on torrent finished</source>
-        <translation>Run external program on Torrent finished</translation>
-    </message>
-    <message>
         <source>Whitelist for filtering HTTP Host header values.
 In order to defend against DNS rebinding attack,
 you should put in domain names used by WebUI server.
@@ -1530,10 +1586,6 @@ In order to defend against DNS rebinding attack,
 you should put in domain names used by Web UI server.
 
 Use ';' to split multiple entries. Can use wildcard '*'.</translation>
-    </message>
-    <message>
-        <source>Run external program on torrent added</source>
-        <translation>Run external program on Torrent added</translation>
     </message>
     <message>
         <source>HTTPS certificate should not be empty</source>
@@ -1598,10 +1650,6 @@ Use ';' to split multiple entries. Can use wildcard '*'.</translation>
     <message>
         <source>days</source>
         <translation>days</translation>
-    </message>
-    <message>
-        <source>Log file</source>
-        <translation>Log file</translation>
     </message>
     <message>
         <source>Behavior</source>
@@ -1816,76 +1864,184 @@ Use ';' to split multiple entries. Can use wildcard '*'.</translation>
         <translation>Customise application instance name:</translation>
     </message>
     <message>
-        <source>Send test email</source>
-        <translation>Send test email</translation>
+        <source>Color scheme:</source>
+        <translation>Color scheme:</translation>
     </message>
     <message>
-        <source>Attempted to send email. Check your inbox to confirm success</source>
-        <translation>Attempted to send email. Check your inbox to confirm success</translation>
+        <source>Show external IP in status bar</source>
+        <translation>Show external IP in status bar</translation>
     </message>
     <message>
-        <source>Automatically append these trackers to new downloads:</source>
-        <translation>Automatically append these trackers to new downloads:</translation>
+        <source>Fetched trackers</source>
+        <translation>Fetched trackers</translation>
     </message>
     <message>
-        <source>Stop torrent</source>
-        <translation>Stop torrent</translation>
-    </message>
-    <message>
-        <source>Move files to trash (if possible)</source>
-        <translation>Move files to Wastebasket (if possible)</translation>
-    </message>
-    <message>
-        <source>Torrent content removing mode:</source>
-        <translation>Torrent content removing mode:</translation>
-    </message>
-    <message>
-        <source>Delete files permanently</source>
-        <translation>Delete files permanently</translation>
-    </message>
-    <message>
-        <source>Merge trackers to existing torrent</source>
-        <translation>Merge trackers to existing torrent</translation>
-    </message>
-    <message>
-        <source>When duplicate torrent is being added</source>
-        <translation>When duplicate torrent is being added</translation>
-    </message>
-    <message>
-        <source>Resolve relative Save Path against appropriate Category path instead of Default one</source>
-        <translation>Resolve relative Save Path against appropriate Category path instead of Default one</translation>
-    </message>
-    <message>
-        <source>Use Category paths in Manual Mode</source>
-        <translation>Use Category paths in Manual Mode</translation>
+        <source>Confirm when deleting torrents</source>
+        <translation>Confirm when deleting torrents</translation>
     </message>
     <message>
         <source>Ignore SSL errors:</source>
         <translation>Ignore SSL errors:</translation>
     </message>
     <message>
-        <source>Simple pread/pwrite</source>
-        <translation>Simple pread/pwrite</translation>
-    </message>
-    <message>
         <source>Dark</source>
         <translation>Dark</translation>
+    </message>
+    <message>
+        <source>Delete files permanently</source>
+        <translation>Delete files permanently</translation>
     </message>
     <message>
         <source>Auto</source>
         <translation>Auto</translation>
     </message>
     <message>
-        <source>Color scheme:</source>
-        <translation>Color scheme:</translation>
+        <source>Use alternating row colors</source>
+        <translation>Use alternating row colours</translation>
+    </message>
+    <message>
+        <source>Display full announce URL in the Tracker column</source>
+        <translation>Display full announce URL in the Tracker column</translation>
+    </message>
+    <message>
+        <source>URL:</source>
+        <translation>URL:</translation>
+    </message>
+    <message>
+        <source>Transfer list</source>
+        <translation>Transfer list</translation>
+    </message>
+    <message>
+        <source>The announce port must be between 0 and 65535.</source>
+        <translation>The announce port must be between 0 and 65535.</translation>
+    </message>
+    <message>
+        <source>Light</source>
+        <translation>Light</translation>
+    </message>
+    <message>
+        <source>Automatically append these trackers to new downloads:</source>
+        <translation>Automatically append these trackers to new downloads:</translation>
+    </message>
+    <message>
+        <source>Downloading torrents:</source>
+        <translation>Downloading torrents:</translation>
+    </message>
+    <message>
+        <source>Start / stop torrent</source>
+        <translation>Start / stop torrent</translation>
+    </message>
+    <message>
+        <source>Send test email</source>
+        <translation>Send test email</translation>
+    </message>
+    <message>
+        <source>Completed torrents:</source>
+        <translation>Completed torrents:</translation>
+    </message>
+    <message>
+        <source>Enable cookie Secure flag (requires HTTPS or localhost connection)</source>
+        <translation>Enable cookie Secure flag (requires HTTPS or localhost connection)</translation>
+    </message>
+    <message>
+        <source>When duplicate torrent is being added</source>
+        <translation>When duplicate torrent is being added</translation>
+    </message>
+    <message>
+        <source>Action on double-click</source>
+        <translation>Action on double-click</translation>
+    </message>
+    <message>
+        <source>Save statistics interval:</source>
+        <translation>Save statistics interval:</translation>
+    </message>
+    <message>
+        <source>Shows a confirmation dialog upon torrent deletion</source>
+        <translation>Shows a confirmation dialogue upon torrent deletion</translation>
+    </message>
+    <message>
+        <source>Run on torrent finished:</source>
+        <translation>Run on torrent finished:</translation>
+    </message>
+    <message>
+        <source>Attempted to send email. Check your inbox to confirm success</source>
+        <translation>Attempted to send email. Check your inbox to confirm success</translation>
+    </message>
+    <message>
+        <source>Automatically append trackers from URL to new downloads:</source>
+        <translation>Automatically append trackers from URL to new downloads:</translation>
+    </message>
+    <message>
+        <source>Torrent content removing mode:</source>
+        <translation>Torrent content removing mode:</translation>
+    </message>
+    <message>
+        <source>Move files to trash (if possible)</source>
+        <translation>Move files to Wastebasket (if possible)</translation>
+    </message>
+    <message>
+        <source>Stop torrent</source>
+        <translation>Stop torrent</translation>
+    </message>
+    <message>
+        <source>Use Category paths in Manual Mode</source>
+        <translation>Use Category paths in Manual Mode</translation>
+    </message>
+    <message>
+        <source>List of alternative WebUI</source>
+        <translation>List of alternative WebUI</translation>
+    </message>
+    <message>
+        <source>Run on torrent added:</source>
+        <translation>Run on torrent added:</translation>
+    </message>
+    <message>
+        <source>Port reported to trackers (requires restart) [0: listening port]:</source>
+        <translation>Port reported to trackers (requires restart) [0: listening port]:</translation>
+    </message>
+    <message>
+        <source>User interface language:</source>
+        <translation>User interface language:</translation>
+    </message>
+    <message>
+        <source>Merge trackers to existing torrent</source>
+        <translation>Merge trackers to existing torrent</translation>
+    </message>
+    <message>
+        <source>Confirm torrent recheck:</source>
+        <translation>Confirm torrent recheck:</translation>
+    </message>
+    <message>
+        <source>Custom WebUI settings</source>
+        <translation>Custom WebUI settings</translation>
+    </message>
+    <message>
+        <source>Following settings are WebUI only</source>
+        <translation>Following settings are WebUI only</translation>
+    </message>
+    <message>
+        <source>Simple pread/pwrite</source>
+        <translation>Simple pread/pwrite</translation>
+    </message>
+    <message>
+        <source>Resolve relative Save Path against appropriate Category path instead of Default one</source>
+        <translation>Resolve relative Save Path against appropriate Category path instead of Default one</translation>
+    </message>
+    <message>
+        <source>No action</source>
+        <translation>No action</translation>
+    </message>
+    <message>
+        <source>Auto hide zero status filters</source>
+        <translation>Auto hide zero status filters</translation>
     </message>
     <message>
         <source>Interface</source>
         <translation>Interface</translation>
     </message>
     <message>
-        <source>Light</source>
-        <translation>Light</translation>
+        <source>Log Files</source>
+        <translation>Log Files</translation>
     </message>
 </context>
 <context>
@@ -2252,20 +2408,52 @@ Use ';' to split multiple entries. Can use wildcard '*'.</translation>
         <translation>Match all occurrences</translation>
     </message>
     <message>
-        <source>Popularity:</source>
-        <translation>Popularity:</translation>
+        <source>Copy web seed URL</source>
+        <translation>Copy web seed URL</translation>
     </message>
     <message>
-        <source>Ratio / Time Active (in months), indicates how popular the torrent is</source>
-        <translation>Ratio / Time Active (in months), indicates how popular the torrent is</translation>
+        <source>Replace option</source>
+        <translation>Replace option</translation>
+    </message>
+    <message>
+        <source>Edit web seed URL...</source>
+        <translation>Edit web seed URL...</translation>
+    </message>
+    <message>
+        <source>Web seed URL:</source>
+        <translation>Web seed URL:</translation>
     </message>
     <message>
         <source>Yes</source>
         <translation>Yes</translation>
     </message>
     <message>
+        <source>Ratio / Time Active (in months), indicates how popular the torrent is</source>
+        <translation>Ratio / Time Active (in months), indicates how popular the torrent is</translation>
+    </message>
+    <message>
+        <source>Popularity:</source>
+        <translation>Popularity:</translation>
+    </message>
+    <message>
+        <source>Apply to which filename part</source>
+        <translation>Apply to which filename part</translation>
+    </message>
+    <message>
         <source>No</source>
         <translation>No</translation>
+    </message>
+    <message>
+        <source>Remove web seed</source>
+        <translation>Remove web seed</translation>
+    </message>
+    <message>
+        <source>Web seed editing</source>
+        <translation>Web seed editing</translation>
+    </message>
+    <message>
+        <source>Add web seeds...</source>
+        <translation>Add web seeds...</translation>
     </message>
     <message>
         <source>Private:</source>
@@ -2480,8 +2668,8 @@ Use ';' to split multiple entries. Can use wildcard '*'.</translation>
         <translation>Moving (0)</translation>
     </message>
     <message>
-        <source>Running (%1)</source>
-        <translation>Running (%1)</translation>
+        <source>Running (0)</source>
+        <translation>Running (0)</translation>
     </message>
     <message>
         <source>Stopped (0)</source>
@@ -2492,8 +2680,20 @@ Use ';' to split multiple entries. Can use wildcard '*'.</translation>
         <translation>Stopped (%1)</translation>
     </message>
     <message>
-        <source>Running (0)</source>
-        <translation>Running (0)</translation>
+        <source>Running (%1)</source>
+        <translation>Running (%1)</translation>
+    </message>
+    <message>
+        <source>Remove torrents</source>
+        <translation>Remove torrents</translation>
+    </message>
+    <message>
+        <source>Start torrents</source>
+        <translation>Start torrents</translation>
+    </message>
+    <message>
+        <source>Stop torrents</source>
+        <translation>Stop torrents</translation>
     </message>
 </context>
 <context>
@@ -2647,28 +2847,32 @@ Use ';' to split multiple entries. Can use wildcard '*'.</translation>
         <translation>Reannounce In</translation>
     </message>
     <message>
-        <source>Popularity</source>
-        <translation>Popularity</translation>
+        <source>Private</source>
+        <translation>Private</translation>
     </message>
     <message>
         <source>Progress</source>
         <translation>Progress</translation>
     </message>
     <message>
-        <source>Info Hash v1</source>
-        <translation>Info Hash v1</translation>
-    </message>
-    <message>
         <source>Info Hash v2</source>
         <translation>Info Hash v2</translation>
+    </message>
+    <message>
+        <source>Info Hash v1</source>
+        <translation>Info Hash v1</translation>
     </message>
     <message>
         <source>Incomplete Save Path</source>
         <translation>Incomplete Save Path</translation>
     </message>
     <message>
-        <source>Private</source>
-        <translation>Private</translation>
+        <source>Popularity</source>
+        <translation>Popularity</translation>
+    </message>
+    <message>
+        <source>Status Icon</source>
+        <translation>Status Icon</translation>
     </message>
 </context>
 <context>
@@ -2899,6 +3103,10 @@ Use ';' to split multiple entries. Can use wildcard '*'.</translation>
         <source>Collapse/expand</source>
         <translation>Collapse/expand</translation>
     </message>
+    <message>
+        <source>Collapse/expand category</source>
+        <translation>Collapse/expand category</translation>
+    </message>
 </context>
 <context>
     <name>TransferListWidget</name>
@@ -2993,14 +3201,6 @@ Use ';' to split multiple entries. Can use wildcard '*'.</translation>
         <translation>New Category</translation>
     </message>
     <message>
-        <source>Location</source>
-        <translation>Location</translation>
-    </message>
-    <message>
-        <source>New name</source>
-        <translation>New name</translation>
-    </message>
-    <message>
         <source>Set location</source>
         <translation>Set location</translation>
     </message>
@@ -3013,16 +3213,8 @@ Use ';' to split multiple entries. Can use wildcard '*'.</translation>
         <translation>Edit Category</translation>
     </message>
     <message>
-        <source>Save path</source>
-        <translation>Save path</translation>
-    </message>
-    <message>
         <source>Comma-separated tags:</source>
         <translation>Comma-separated tags:</translation>
-    </message>
-    <message>
-        <source>Add Tags</source>
-        <translation>Add Tags</translation>
     </message>
     <message>
         <source>Tags</source>
@@ -3085,16 +3277,40 @@ Use ';' to split multiple entries. Can use wildcard '*'.</translation>
         <translation>Comment</translation>
     </message>
     <message>
-        <source>Stop</source>
-        <translation>Stop</translation>
-    </message>
-    <message>
         <source>Force Start</source>
         <translation>Force Start</translation>
     </message>
     <message>
+        <source>Save path:</source>
+        <translation>Save path:</translation>
+    </message>
+    <message>
+        <source>Location:</source>
+        <translation>Location:</translation>
+    </message>
+    <message>
+        <source>Stop</source>
+        <translation>Stop</translation>
+    </message>
+    <message>
+        <source>Automatic mode means that various torrent properties(eg save path) will be decided by the associated category</source>
+        <translation>Automatic mode means that various torrent properties(eg save path) will be decided by the associated category</translation>
+    </message>
+    <message>
         <source>Start</source>
         <translation>Start</translation>
+    </message>
+    <message>
+        <source>New name:</source>
+        <translation>New name:</translation>
+    </message>
+    <message>
+        <source>Add tags</source>
+        <translation>Add tags</translation>
+    </message>
+    <message>
+        <source>Category:</source>
+        <translation>Category:</translation>
     </message>
 </context>
 <context>
@@ -3140,6 +3356,10 @@ Use ';' to split multiple entries. Can use wildcard '*'.</translation>
     <message>
         <source>Also remove the content files</source>
         <translation>Also remove the content files</translation>
+    </message>
+    <message>
+        <source>Remove tracker</source>
+        <translation>Remove tracker</translation>
     </message>
 </context>
 <context>
@@ -3342,8 +3562,24 @@ Use ';' to split multiple entries. Can use wildcard '*'.</translation>
         <translation>There aren't any search plugins installed.</translation>
     </message>
     <message>
+        <source>Select category</source>
+        <translation>Select category</translation>
+    </message>
+    <message>
+        <source>Min size prefix</source>
+        <translation>Min size prefix</translation>
+    </message>
+    <message>
         <source>Start a search above.</source>
         <translation>Start a search above.</translation>
+    </message>
+    <message>
+        <source>Max size prefix</source>
+        <translation>Max size prefix</translation>
+    </message>
+    <message>
+        <source>Select plugins</source>
+        <translation>Select plugins</translation>
     </message>
 </context>
 <context>
@@ -3400,16 +3636,20 @@ Use ';' to split multiple entries. Can use wildcard '*'.</translation>
         <translation>Leechers</translation>
     </message>
     <message>
-        <source>Search engine</source>
-        <translation>Search engine</translation>
-    </message>
-    <message>
         <source>Seeders</source>
         <translation>Seeders</translation>
     </message>
     <message>
         <source>Published On</source>
         <translation>Published On</translation>
+    </message>
+    <message>
+        <source>Engine URL</source>
+        <translation>Engine URL</translation>
+    </message>
+    <message>
+        <source>Engine</source>
+        <translation>Engine</translation>
     </message>
 </context>
 <context>
@@ -3641,10 +3881,6 @@ Use ';' to split multiple entries. Can use wildcard '*'.</translation>
         <translation>Download link</translation>
     </message>
     <message>
-        <source>Searching...</source>
-        <translation>Searching...</translation>
-    </message>
-    <message>
         <source>Search has finished</source>
         <translation>Search has finished</translation>
     </message>
@@ -3653,8 +3889,20 @@ Use ';' to split multiple entries. Can use wildcard '*'.</translation>
         <translation>An error occurred during search...</translation>
     </message>
     <message>
+        <source>Close tab</source>
+        <translation>Close tab</translation>
+    </message>
+    <message>
+        <source>Searching...</source>
+        <translation>Searching...</translation>
+    </message>
+    <message>
         <source>Search aborted</source>
         <translation>Search aborted</translation>
+    </message>
+    <message>
+        <source>Close all tabs</source>
+        <translation>Close all tabs</translation>
     </message>
 </context>
 <context>
@@ -3765,6 +4013,22 @@ Use ';' to split multiple entries. Can use wildcard '*'.</translation>
     <message>
         <source>Download torrent</source>
         <translation>Download torrent</translation>
+    </message>
+    <message>
+        <source>Edit feed URL...</source>
+        <translation>Edit feed URL...</translation>
+    </message>
+    <message>
+        <source>Unable to update URL</source>
+        <translation>Unable to update URL</translation>
+    </message>
+    <message>
+        <source>URL is unchanged</source>
+        <translation>URL is unchanged</translation>
+    </message>
+    <message>
+        <source>URL cannot be empty</source>
+        <translation>URL cannot be empty</translation>
     </message>
 </context>
 <context>
@@ -4012,6 +4276,14 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
         <translation>Add Tags:</translation>
     </message>
     <message>
+        <source>Remove rule</source>
+        <translation>Remove rule</translation>
+    </message>
+    <message>
+        <source>Add rule</source>
+        <translation>Add rule</translation>
+    </message>
+    <message>
         <source>Add Stopped:</source>
         <translation>Add Stopped:</translation>
     </message>
@@ -4019,20 +4291,24 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
 <context>
     <name>TrackerFiltersList</name>
     <message>
-        <source>All (%1)</source>
-        <translation>All (%1)</translation>
-    </message>
-    <message>
-        <source>Trackerless (%1)</source>
-        <translation>Tracker-less (%1)</translation>
-    </message>
-    <message>
         <source>Remove torrents</source>
         <translation>Remove torrents</translation>
     </message>
     <message>
+        <source>All</source>
+        <translation>All</translation>
+    </message>
+    <message>
+        <source>Trackerless</source>
+        <translation>Trackerless</translation>
+    </message>
+    <message>
         <source>Start torrents</source>
         <translation>Start torrents</translation>
+    </message>
+    <message>
+        <source>Remove tracker</source>
+        <translation>Remove tracker</translation>
     </message>
     <message>
         <source>Stop torrents</source>
@@ -4186,10 +4462,128 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
     </message>
 </context>
 <context>
+    <name>TrackersFilterWidget</name>
+    <message>
+        <source>Are you sure you want to remove tracker %1 from all torrents?</source>
+        <translation>Are you sure you want to remove tracker %1 from all torrents?</translation>
+    </message>
+</context>
+<context>
+    <name>Category</name>
+    <message>
+        <source>Unable to edit category</source>
+        <translation>Unable to edit category</translation>
+    </message>
+    <message>
+        <source>OK</source>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <source>Unable to create category</source>
+        <translation>Unable to create category</translation>
+    </message>
+    <message>
+        <source>Unable to set category</source>
+        <translation>Unable to set category</translation>
+    </message>
+</context>
+<context>
+    <name>CookiesDialog</name>
+    <message>
+        <source>Domain</source>
+        <translation>Domain</translation>
+    </message>
+    <message>
+        <source>Manage Cookies</source>
+        <translation>Manage Cookies</translation>
+    </message>
+    <message>
+        <source>Add Cookie</source>
+        <translation>Add Cookie</translation>
+    </message>
+    <message>
+        <source>Remove</source>
+        <translation>Remove</translation>
+    </message>
+    <message>
+        <source>Expiration Date</source>
+        <translation>Expiration Date</translation>
+    </message>
+    <message>
+        <source>Value</source>
+        <translation>Value</translation>
+    </message>
+    <message>
+        <source>Name</source>
+        <translation>Name</translation>
+    </message>
+    <message>
+        <source>Path</source>
+        <translation>Path</translation>
+    </message>
+</context>
+<context>
+    <name>confirmAutoTMMDialog</name>
+    <message>
+        <source>Enable automatic torrent management</source>
+        <translation>Enable automatic torrent management</translation>
+    </message>
+    <message>
+        <source>Are you sure you want to enable Automatic Torrent Management for the selected torrent(s)? They may be relocated.</source>
+        <translation>Are you sure you want to enable Automatic Torrent Management for the selected torrent(s)? They may be relocated.</translation>
+    </message>
+</context>
+<context>
+    <name>confirmRecheckDialog</name>
+    <message>
+        <source>Are you sure you want to recheck the selected torrent(s)?</source>
+        <translation>Are you sure you want to recheck the selected torrent(s)?</translation>
+    </message>
+    <message>
+        <source>Recheck confirmation</source>
+        <translation>Recheck confirmation</translation>
+    </message>
+</context>
+<context>
     <name>SearchWidget</name>
     <message>
         <source>Close tab</source>
         <translation>Close tab</translation>
+    </message>
+</context>
+<context>
+    <name>Login</name>
+    <message>
+        <source>qBittorrent WebUI</source>
+        <translation>qBittorrent WebUI</translation>
+    </message>
+    <message>
+        <source>Password</source>
+        <translation>Password</translation>
+    </message>
+    <message>
+        <source>JavaScript Required! You must enable JavaScript for the WebUI to work properly</source>
+        <translation>JavaScript Required! You must enable JavaScript for the WebUI to work properly</translation>
+    </message>
+    <message>
+        <source>Login</source>
+        <translation>Login</translation>
+    </message>
+    <message>
+        <source>Server response:</source>
+        <translation>Server response:</translation>
+    </message>
+    <message>
+        <source>Unable to log in, server is probably unreachable.</source>
+        <translation>Unable to log in, server is probably unreachable.</translation>
+    </message>
+    <message>
+        <source>Username</source>
+        <translation>Username</translation>
+    </message>
+    <message>
+        <source>Invalid Username or Password.</source>
+        <translation>Invalid Username or Password.</translation>
     </message>
 </context>
 </TS>

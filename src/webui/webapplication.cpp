@@ -184,6 +184,7 @@ WebApplication::WebApplication(IApplication *app, QObject *parent)
 
     m_freeDiskSpaceChecker->moveToThread(m_workerThread.get());
     connect(m_workerThread.get(), &QThread::finished, m_freeDiskSpaceChecker, &QObject::deleteLater);
+    m_workerThread->setObjectName("WebApplication m_workerThread");
     m_workerThread->start();
 
     m_freeDiskSpaceCheckingTimer->setInterval(FREEDISKSPACE_CHECK_TIMEOUT);
@@ -265,9 +266,11 @@ void WebApplication::translateDocument(QString &data) const
             // it should fallback to `sourceText`
             QString translation = loadedText.isEmpty() ? sourceText : loadedText;
 
-            // Use HTML code for quotes to prevent issues with JS
-            translation.replace(u'\'', u"&#39;"_s);
-            translation.replace(u'\"', u"&#34;"_s);
+            // Escape quotes to workaround issues with HTML attributes
+            // FIXME: this is a dirty workaround to deal with broken translation strings:
+            // 1. Translation strings is the culprit of the issue, they should be fixed instead
+            // 2. The escaped quote/string is wrong for JS. JS use backslash to escape the quote: "\""
+            translation.replace(u'"', u"&#34;"_s);
 
             data.replace(i, regexMatch.capturedLength(), translation);
             i += translation.length();
@@ -393,7 +396,8 @@ void WebApplication::doProcessRequest()
         case APIErrorType::NotFound:
             throw NotFoundHTTPError(error.message());
         default:
-            Q_ASSERT(false);
+            Q_UNREACHABLE();
+            break;
         }
     }
 }
@@ -464,7 +468,7 @@ void WebApplication::configure()
     const QString contentSecurityPolicy =
         (m_isAltUIUsed
             ? QString()
-            : u"default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; object-src 'none'; form-action 'self';"_s)
+            : u"default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; object-src 'none'; form-action 'self'; frame-src 'self' blob:;"_s)
         + (isClickjackingProtectionEnabled ? u" frame-ancestors 'self';"_s : QString())
         + (m_isHttpsEnabled ? u" upgrade-insecure-requests;"_s : QString());
     if (!contentSecurityPolicy.isEmpty())
@@ -694,7 +698,7 @@ QString WebApplication::generateSid() const
 
 bool WebApplication::isAuthNeeded()
 {
-    if (!m_isLocalAuthEnabled && Utils::Net::isLoopbackAddress(m_clientAddress))
+    if (!m_isLocalAuthEnabled && m_clientAddress.isLoopback())
         return false;
     if (m_isAuthSubnetWhitelistEnabled && Utils::Net::isIPInSubnets(m_clientAddress, m_authSubnetWhitelist))
         return false;
@@ -740,7 +744,7 @@ void WebApplication::sessionStart()
 
     QNetworkCookie cookie {m_sessionCookieName.toLatin1(), m_currentSession->id().toLatin1()};
     cookie.setHttpOnly(true);
-    cookie.setSecure(m_isSecureCookieEnabled && m_isHttpsEnabled);
+    cookie.setSecure(m_isSecureCookieEnabled && isOriginTrustworthy());  // [rfc6265] 4.1.2.5. The Secure Attribute
     cookie.setPath(u"/"_s);
     if (m_cookieExpirationEnabled)
         cookie.setExpirationDate(QDateTime::currentDateTime().addSecs(m_sessionTimeout));
@@ -763,6 +767,23 @@ void WebApplication::sessionEnd()
     m_currentSession = nullptr;
 
     setHeader({Http::HEADER_SET_COOKIE, QString::fromLatin1(cookie.toRawForm())});
+}
+
+bool WebApplication::isOriginTrustworthy() const
+{
+    // https://w3c.github.io/webappsec-secure-contexts/#is-origin-trustworthy
+
+    if (m_isReverseProxySupportEnabled)
+    {
+        const QString forwardedProto = request().headers.value(Http::HEADER_X_FORWARDED_PROTO);
+        if (forwardedProto.compare(u"https", Qt::CaseInsensitive) == 0)
+            return true;
+    }
+
+    if (m_isHttpsEnabled)
+        return true;
+
+    return false;
 }
 
 bool WebApplication::isCrossSiteRequest(const Http::Request &request) const

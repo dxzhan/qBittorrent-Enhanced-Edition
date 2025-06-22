@@ -35,6 +35,7 @@
 #include <QClipboard>
 #include <QHeaderView>
 #include <QHostAddress>
+#include <QList>
 #include <QMenu>
 #include <QMessageBox>
 #include <QPointer>
@@ -42,7 +43,6 @@
 #include <QShortcut>
 #include <QSortFilterProxyModel>
 #include <QStandardItemModel>
-#include <QVector>
 #include <QWheelEvent>
 
 #include "base/bittorrent/peeraddress.h"
@@ -292,7 +292,7 @@ void PeerListWidget::showPeerListMenu()
     QAction *addNewPeer = menu->addAction(UIThemeManager::instance()->getIcon(u"peers-add"_s), tr("Add peers...")
         , this, [this, torrent]()
     {
-        const QVector<BitTorrent::PeerAddress> peersList = PeersAdditionDialog::askForPeers(this);
+        const QList<BitTorrent::PeerAddress> peersList = PeersAdditionDialog::askForPeers(this);
         const int peerCount = std::count_if(peersList.cbegin(), peersList.cend(), [torrent](const BitTorrent::PeerAddress &peer)
         {
             return torrent->connectPeer(peer);
@@ -467,7 +467,7 @@ void PeerListWidget::loadPeers(const BitTorrent::Torrent *torrent)
         return;
 
     using TorrentPtr = QPointer<const BitTorrent::Torrent>;
-    torrent->fetchPeerInfo([this, torrent = TorrentPtr(torrent)](const QVector<BitTorrent::PeerInfo> &peers)
+    torrent->fetchPeerInfo([this, torrent = TorrentPtr(torrent)](const QList<BitTorrent::PeerInfo> &peers)
     {
         if (torrent != m_properties->getCurrentTorrent())
             return;

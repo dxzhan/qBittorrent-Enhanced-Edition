@@ -1,6 +1,6 @@
 /*
  * Bittorrent Client using Qt and libtorrent.
- * Copyright (C) 2022-2024  Vladimir Golovnev <glassez@yandex.ru>
+ * Copyright (C) 2022-2025  Vladimir Golovnev <glassez@yandex.ru>
  * Copyright (C) 2012  Christophe Dumez <chris@qbittorrent.org>
  *
  * This program is free software; you can redistribute it and/or
@@ -38,6 +38,7 @@
 #include <QDebug>
 #include <QDir>
 #include <QFileDialog>
+#include <QList>
 #include <QMenu>
 #include <QMessageBox>
 #include <QPushButton>
@@ -46,7 +47,6 @@
 #include <QSize>
 #include <QString>
 #include <QUrl>
-#include <QVector>
 
 #include "base/bittorrent/addtorrentparams.h"
 #include "base/bittorrent/downloadpriority.h"
@@ -143,7 +143,7 @@ class AddNewTorrentDialog::TorrentContentAdaptor final
 {
 public:
     TorrentContentAdaptor(const BitTorrent::TorrentInfo &torrentInfo, PathList &filePaths
-            , QVector<BitTorrent::DownloadPriority> &filePriorities, std::function<void ()> onFilePrioritiesChanged)
+            , QList<BitTorrent::DownloadPriority> &filePriorities, std::function<void ()> onFilePrioritiesChanged)
         : m_torrentInfo {torrentInfo}
         , m_filePaths {filePaths}
         , m_filePriorities {filePriorities}
@@ -227,29 +227,29 @@ public:
         }
     }
 
-    QVector<BitTorrent::DownloadPriority> filePriorities() const override
+    QList<BitTorrent::DownloadPriority> filePriorities() const override
     {
         return m_filePriorities.isEmpty()
-                ? QVector<BitTorrent::DownloadPriority>(filesCount(), BitTorrent::DownloadPriority::Normal)
+                ? QList<BitTorrent::DownloadPriority>(filesCount(), BitTorrent::DownloadPriority::Normal)
                 : m_filePriorities;
     }
 
-    QVector<qreal> filesProgress() const override
+    QList<qreal> filesProgress() const override
     {
-        return QVector<qreal>(filesCount(), 0);
+        return QList<qreal>(filesCount(), 0);
     }
 
-    QVector<qreal> availableFileFractions() const override
+    QList<qreal> availableFileFractions() const override
     {
-        return QVector<qreal>(filesCount(), 0);
+        return QList<qreal>(filesCount(), 0);
     }
 
-    void fetchAvailableFileFractions(std::function<void (QVector<qreal>)> resultHandler) const override
+    void fetchAvailableFileFractions(std::function<void (QList<qreal>)> resultHandler) const override
     {
         resultHandler(availableFileFractions());
     }
 
-    void prioritizeFiles(const QVector<BitTorrent::DownloadPriority> &priorities) override
+    void prioritizeFiles(const QList<BitTorrent::DownloadPriority> &priorities) override
     {
         Q_ASSERT(priorities.size() == filesCount());
         m_filePriorities = priorities;
@@ -274,7 +274,7 @@ public:
 private:
     const BitTorrent::TorrentInfo &m_torrentInfo;
     PathList &m_filePaths;
-    QVector<BitTorrent::DownloadPriority> &m_filePriorities;
+    QList<BitTorrent::DownloadPriority> &m_filePriorities;
     std::function<void ()> m_onFilePrioritiesChanged;
     Path m_originalRootFolder;
     BitTorrent::TorrentContentLayout m_currentContentLayout;
@@ -384,7 +384,6 @@ AddNewTorrentDialog::AddNewTorrentDialog(const BitTorrent::TorrentDescriptor &to
 
 AddNewTorrentDialog::~AddNewTorrentDialog()
 {
-    saveState();
     delete m_ui;
 }
 
@@ -398,7 +397,7 @@ void AddNewTorrentDialog::loadState()
     if (const QSize dialogSize = m_storeDialogSize; dialogSize.isValid())
         resize(dialogSize);
 
-    m_ui->splitter->restoreState(m_storeSplitterState);;
+    m_ui->splitter->restoreState(m_storeSplitterState);
 }
 
 void AddNewTorrentDialog::saveState()
@@ -594,7 +593,7 @@ void AddNewTorrentDialog::updateDiskSpaceLabel()
     if (hasMetadata)
     {
         const auto torrentInfo = *torrentDescr.info();
-        const QVector<BitTorrent::DownloadPriority> &priorities = m_contentAdaptor->filePriorities();
+        const QList<BitTorrent::DownloadPriority> &priorities = m_contentAdaptor->filePriorities();
         Q_ASSERT(priorities.size() == torrentInfo.filesCount());
         for (int i = 0; i < priorities.size(); ++i)
         {
@@ -834,6 +833,12 @@ void AddNewTorrentDialog::reject()
     QDialog::reject();
 }
 
+void AddNewTorrentDialog::done(const int result)
+{
+    saveState();
+    QDialog::done(result);
+}
+
 void AddNewTorrentDialog::updateMetadata(const BitTorrent::TorrentInfo &metadata)
 {
     Q_ASSERT(m_currentContext);
@@ -899,11 +904,11 @@ void AddNewTorrentDialog::setupTreeview()
     // Set dialog title
     setWindowTitle(torrentDescr.name());
 
-    const auto &torrentInfo = *torrentDescr.info();
-
     // Set torrent information
-    m_ui->labelCommentData->setText(Utils::Misc::parseHtmlLinks(torrentInfo.comment().toHtmlEscaped()));
-    m_ui->labelDateData->setText(!torrentInfo.creationDate().isNull() ? QLocale().toString(torrentInfo.creationDate(), QLocale::ShortFormat) : tr("Not available"));
+    m_ui->labelCommentData->setText(Utils::Misc::parseHtmlLinks(torrentDescr.comment().toHtmlEscaped()));
+    m_ui->labelDateData->setText(!torrentDescr.creationDate().isNull() ? QLocale().toString(torrentDescr.creationDate(), QLocale::ShortFormat) : tr("Not available"));
+
+    const auto &torrentInfo = *torrentDescr.info();
 
     BitTorrent::AddTorrentParams &addTorrentParams = m_currentContext->torrentParams;
     if (addTorrentParams.filePaths.isEmpty())
@@ -918,7 +923,7 @@ void AddNewTorrentDialog::setupTreeview()
     if (BitTorrent::Session::instance()->isExcludedFileNamesEnabled())
     {
         // Check file name blacklist for torrents that are manually added
-        QVector<BitTorrent::DownloadPriority> priorities = m_contentAdaptor->filePriorities();
+        QList<BitTorrent::DownloadPriority> priorities = m_contentAdaptor->filePriorities();
         BitTorrent::Session::instance()->applyFilenameFilter(m_contentAdaptor->filePaths(), priorities);
         m_contentAdaptor->prioritizeFiles(priorities);
     }

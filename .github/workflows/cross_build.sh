@@ -60,6 +60,9 @@ apt install -y \
   pipx \
   python3-pip
 
+# use zlib-ng instead of zlib by default
+USE_ZLIB_NG=${USE_ZLIB_NG:-1}
+
 # OPENSSL_COMPILER value is from openssl source: ./Configure LIST
 # QT_DEVICE and QT_DEVICE_OPTIONS value are from https://github.com/qt/qtbase/tree/dev/mkspecs/devices/
 case "${CROSS_HOST}" in
@@ -89,6 +92,12 @@ i686-*-mingw*)
   ;;
 esac
 
+# strip all compiled files by default
+export CFLAGS='-s'
+export CXXFLAGS='-s'
+
+TARGET_ARCH="${CROSS_HOST%%-*}"
+TARGET_HOST="${CROSS_HOST#*-}"
 case "${TARGET_HOST}" in
 *"mingw"*)
   TARGET_HOST=Windows
@@ -99,7 +108,7 @@ case "${TARGET_HOST}" in
 *)
   TARGET_HOST=Linux
   apt install -y "qemu-user-static"
-  if [ "${TARGET_ARCH}" = "i686" ]; then
+  if [ x"${TARGET_ARCH}" = xi686 ]; then
     RUNNER_CHECKER="qemu-i386-static"
   else
     RUNNER_CHECKER="qemu-${TARGET_ARCH}-static"
@@ -108,6 +117,9 @@ case "${TARGET_HOST}" in
 esac
 
 export USE_CHINA_MIRROR="0"
+export PKG_CONFIG_PATH="${CROSS_PREFIX}/opt/qt/lib/pkgconfig:${CROSS_PREFIX}/lib/pkgconfig:${CROSS_PREFIX}/share/pkgconfig:${PKG_CONFIG_PATH}"
+SELF_DIR="$(dirname "$(readlink -f "${0}")")"
+mkdir -p "/usr/src"
 
 prepare_cmake
 prepare_ninja

@@ -237,6 +237,12 @@ namespace BitTorrent
         virtual Path finishedTorrentExportDirectory() const = 0;
         virtual void setFinishedTorrentExportDirectory(const Path &path) = 0;
 
+        virtual bool isAddTrackersFromURLEnabled() const = 0;
+        virtual void setAddTrackersFromURLEnabled(bool enabled) = 0;
+        virtual QString additionalTrackersURL() const = 0;
+        virtual void setAdditionalTrackersURL(const QString &url) = 0;
+        virtual QString additionalTrackersFromURL() const = 0;
+
         // Auto ban Unknown Peer
         virtual bool isAutoBanUnknownPeerEnabled() const = 0;
         virtual void setAutoBanUnknownPeer(bool value) = 0;
@@ -250,13 +256,6 @@ namespace BitTorrent
         virtual void setShadowBan(bool value) = 0;
         virtual QStringList shadowBannedIPs() const = 0;
         virtual void setShadowBannedIPs(const QStringList &newList) = 0;
-
-        // Trackers list
-        virtual bool isAutoUpdateTrackersEnabled() const = 0;
-        virtual void setAutoUpdateTrackersEnabled(bool enabled) = 0;
-        virtual QString publicTrackers() const = 0;
-        virtual void setPublicTrackers(const QString &trackers) = 0;
-        virtual void updatePublicTracker() = 0;
 
         virtual int globalDownloadSpeedLimit() const = 0;
         virtual void setGlobalDownloadSpeedLimit(int limit) = 0;
@@ -279,6 +278,8 @@ namespace BitTorrent
         virtual void setPerformanceWarningEnabled(bool enable) = 0;
         virtual int saveResumeDataInterval() const = 0;
         virtual void setSaveResumeDataInterval(int value) = 0;
+        virtual std::chrono::minutes saveStatisticsInterval() const = 0;
+        virtual void setSaveStatisticsInterval(std::chrono::minutes value) = 0;
         virtual int shutdownTimeout() const = 0;
         virtual void setShutdownTimeout(int value) = 0;
         virtual int port() const = 0;
@@ -405,6 +406,8 @@ namespace BitTorrent
         virtual void setIncludeOverheadInLimits(bool include) = 0;
         virtual QString announceIP() const = 0;
         virtual void setAnnounceIP(const QString &ip) = 0;
+        virtual int announcePort() const = 0;
+        virtual void setAnnouncePort(int port) = 0;
         virtual int maxConcurrentHTTPAnnounces() const = 0;
         virtual void setMaxConcurrentHTTPAnnounces(int value) = 0;
         virtual bool isReannounceWhenAddressChangedEnabled() const = 0;
@@ -468,7 +471,7 @@ namespace BitTorrent
 
         virtual Torrent *getTorrent(const TorrentID &id) const = 0;
         virtual Torrent *findTorrent(const InfoHash &infoHash) const = 0;
-        virtual QVector<Torrent *> torrents() const = 0;
+        virtual QList<Torrent *> torrents() const = 0;
         virtual qsizetype torrentsCount() const = 0;
         virtual const SessionStatus &status() const = 0;
         virtual const CacheStatus &cacheStatus() const = 0;
@@ -483,10 +486,13 @@ namespace BitTorrent
         virtual bool downloadMetadata(const TorrentDescriptor &torrentDescr) = 0;
         virtual bool cancelDownloadMetadata(const TorrentID &id) = 0;
 
-        virtual void increaseTorrentsQueuePos(const QVector<TorrentID> &ids) = 0;
-        virtual void decreaseTorrentsQueuePos(const QVector<TorrentID> &ids) = 0;
-        virtual void topTorrentsQueuePos(const QVector<TorrentID> &ids) = 0;
-        virtual void bottomTorrentsQueuePos(const QVector<TorrentID> &ids) = 0;
+        virtual void increaseTorrentsQueuePos(const QList<TorrentID> &ids) = 0;
+        virtual void decreaseTorrentsQueuePos(const QList<TorrentID> &ids) = 0;
+        virtual void topTorrentsQueuePos(const QList<TorrentID> &ids) = 0;
+        virtual void bottomTorrentsQueuePos(const QList<TorrentID> &ids) = 0;
+
+        virtual QString lastExternalIPv4Address() const = 0;
+        virtual QString lastExternalIPv6Address() const = 0;
 
     signals:
         void startupProgressUpdated(int progress);
@@ -517,12 +523,12 @@ namespace BitTorrent
         void torrentStarted(Torrent *torrent);
         void torrentSavePathChanged(Torrent *torrent);
         void torrentSavingModeChanged(Torrent *torrent);
-        void torrentsLoaded(const QVector<Torrent *> &torrents);
-        void torrentsUpdated(const QVector<Torrent *> &torrents);
+        void torrentsLoaded(const QList<Torrent *> &torrents);
+        void torrentsUpdated(const QList<Torrent *> &torrents);
         void torrentTagAdded(Torrent *torrent, const Tag &tag);
         void torrentTagRemoved(Torrent *torrent, const Tag &tag);
         void trackerError(Torrent *torrent, const QString &tracker);
-        void trackersAdded(Torrent *torrent, const QVector<TrackerEntry> &trackers);
+        void trackersAdded(Torrent *torrent, const QList<TrackerEntry> &trackers);
         void trackersChanged(Torrent *torrent);
         void trackersRemoved(Torrent *torrent, const QStringList &trackers);
         void trackerSuccess(Torrent *torrent, const QString &tracker);

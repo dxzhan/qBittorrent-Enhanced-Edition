@@ -34,8 +34,10 @@
 #include <QFileIconProvider>
 #include <QFileInfo>
 #include <QIcon>
+#include <QMimeData>
 #include <QPointer>
 #include <QScopeGuard>
+#include <QUrl>
 
 #if defined(Q_OS_MACOS)
 #define QBT_PIXMAP_CACHE_FOR_FILE_ICONS
@@ -163,7 +165,7 @@ namespace
 
 TorrentContentModel::TorrentContentModel(QObject *parent)
     : QAbstractItemModel(parent)
-    , m_rootItem(new TorrentContentModelFolder(QVector<QString>({ tr("Name"), tr("Total Size"), tr("Progress"), tr("Download Priority"), tr("Remaining"), tr("Availability") })))
+    , m_rootItem(new TorrentContentModelFolder(QList<QString>({ tr("Name"), tr("Total Size"), tr("Progress"), tr("Download Priority"), tr("Remaining"), tr("Availability") })))
 #if defined(Q_OS_WIN)
     , m_fileIconProvider {new QFileIconProvider}
 #elif defined(Q_OS_MACOS)
@@ -185,7 +187,7 @@ void TorrentContentModel::updateFilesProgress()
 {
     Q_ASSERT(m_contentHandler && m_contentHandler->hasMetadata());
 
-    const QVector<qreal> &filesProgress = m_contentHandler->filesProgress();
+    const QList<qreal> &filesProgress = m_contentHandler->filesProgress();
     Q_ASSERT(m_filesIndex.size() == filesProgress.size());
     // XXX: Why is this necessary?
     if (m_filesIndex.size() != filesProgress.size()) [[unlikely]]
@@ -202,7 +204,7 @@ void TorrentContentModel::updateFilesPriorities()
 {
     Q_ASSERT(m_contentHandler && m_contentHandler->hasMetadata());
 
-    const QVector<BitTorrent::DownloadPriority> fprio = m_contentHandler->filePriorities();
+    const QList<BitTorrent::DownloadPriority> fprio = m_contentHandler->filePriorities();
     Q_ASSERT(m_filesIndex.size() == fprio.size());
     // XXX: Why is this necessary?
     if (m_filesIndex.size() != fprio.size())
@@ -217,7 +219,7 @@ void TorrentContentModel::updateFilesAvailability()
     Q_ASSERT(m_contentHandler && m_contentHandler->hasMetadata());
 
     using HandlerPtr = QPointer<BitTorrent::TorrentContentHandler>;
-    m_contentHandler->fetchAvailableFileFractions([this, handler = HandlerPtr(m_contentHandler)](const QVector<qreal> &availableFileFractions)
+    m_contentHandler->fetchAvailableFileFractions([this, handler = HandlerPtr(m_contentHandler)](const QList<qreal> &availableFileFractions)
     {
         if (handler != m_contentHandler)
             return;
@@ -250,7 +252,7 @@ bool TorrentContentModel::setItemPriority(const QModelIndex &index, BitTorrent::
     m_rootItem->recalculateProgress();
     m_rootItem->recalculateAvailability();
 
-    const QVector<ColumnInterval> columns =
+    const QList<ColumnInterval> columns =
     {
         {TorrentContentModelItem::COL_NAME, TorrentContentModelItem::COL_NAME},
         {TorrentContentModelItem::COL_PRIO, TorrentContentModelItem::COL_PRIO}
@@ -260,9 +262,9 @@ bool TorrentContentModel::setItemPriority(const QModelIndex &index, BitTorrent::
     return true;
 }
 
-QVector<BitTorrent::DownloadPriority> TorrentContentModel::getFilePriorities() const
+QList<BitTorrent::DownloadPriority> TorrentContentModel::getFilePriorities() const
 {
-    QVector<BitTorrent::DownloadPriority> prio;
+    QList<BitTorrent::DownloadPriority> prio;
     prio.reserve(m_filesIndex.size());
     for (const TorrentContentModelFile *file : asConst(m_filesIndex))
         prio.push_back(file->priority());
@@ -436,7 +438,7 @@ Qt::ItemFlags TorrentContentModel::flags(const QModelIndex &index) const
     if (!index.isValid())
         return Qt::NoItemFlags;
 
-    Qt::ItemFlags flags {Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsUserCheckable};
+    Qt::ItemFlags flags {Qt::ItemIsDragEnabled | Qt::ItemIsEnabled | Qt::ItemIsSelectable | Qt::ItemIsUserCheckable};
     if (itemType(index) == TorrentContentModelItem::FolderType)
         flags |= Qt::ItemIsAutoTristate;
     if (index.column() == TorrentContentModelItem::COL_PRIO)
@@ -517,6 +519,47 @@ int TorrentContentModel::rowCount(const QModelIndex &parent) const
     return parentItem ? parentItem->childCount() : 0;
 }
 
+QMimeData *TorrentContentModel::mimeData(const QModelIndexList &indexes) const
+{
+    if (indexes.isEmpty())
+        return nullptr;
+
+    const Path storagePath = contentHandler()->actualStorageLocation();
+
+    QList<QUrl> paths;
+    paths.reserve(indexes.size());
+
+    for (const QModelIndex &index : indexes)
+    {
+        if (!index.isValid())
+            continue;
+        if (index.column() != TorrentContentModelItem::COL_NAME)
+            continue;
+
+        if (itemType(index) == TorrentContentModelItem::FileType)
+        {
+            const int idx = getFileIndex(index);
+            const Path fullPath = storagePath / contentHandler()->actualFilePath(idx);
+            paths.append(QUrl::fromLocalFile(fullPath.data()));
+        }
+        else // folder type
+        {
+            const Path fullPath = storagePath / getItemPath(index);
+            paths.append(QUrl::fromLocalFile(fullPath.data()));
+        }
+    }
+
+    auto *mimeData = new QMimeData; // lifetime will be handled by Qt
+    mimeData->setUrls(paths);
+
+    return mimeData;
+}
+
+QStringList TorrentContentModel::mimeTypes() const
+{
+    return {u"text/uri-list"_s};
+}
+
 void TorrentContentModel::populate()
 {
     Q_ASSERT(m_contentHandler && m_contentHandler->hasMetadata());
@@ -525,7 +568,7 @@ void TorrentContentModel::populate()
     m_filesIndex.reserve(filesCount);
 
     QHash<TorrentContentModelFolder *, QHash<QString, TorrentContentModelFolder *>> folderMap;
-    QVector<QString> lastParentPath;
+    QList<QString> lastParentPath;
     TorrentContentModelFolder *lastParent = m_rootItem;
     // Iterate over files
     for (int i = 0; i < filesCount; ++i)
@@ -604,7 +647,7 @@ void TorrentContentModel::refresh()
         updateFilesPriorities();
         updateFilesAvailability();
 
-        const QVector<ColumnInterval> columns =
+        const QList<ColumnInterval> columns =
         {
             {TorrentContentModelItem::COL_NAME, TorrentContentModelItem::COL_NAME},
             {TorrentContentModelItem::COL_PROGRESS, TorrentContentModelItem::COL_PROGRESS},
@@ -621,7 +664,7 @@ void TorrentContentModel::refresh()
     }
 }
 
-void TorrentContentModel::notifySubtreeUpdated(const QModelIndex &index, const QVector<ColumnInterval> &columns)
+void TorrentContentModel::notifySubtreeUpdated(const QModelIndex &index, const QList<ColumnInterval> &columns)
 {
     // For best performance, `columns` entries should be arranged from left to right
 
@@ -641,7 +684,7 @@ void TorrentContentModel::notifySubtreeUpdated(const QModelIndex &index, const Q
     }
 
     // propagate down the model
-    QVector<QModelIndex> parentIndexes;
+    QList<QModelIndex> parentIndexes;
 
     if (hasChildren(index))
         parentIndexes.push_back(index);

@@ -119,6 +119,8 @@ public:
     void setHideZeroComboValues(int n);
     bool isStatusbarDisplayed() const;
     void setStatusbarDisplayed(bool displayed);
+    bool isStatusbarExternalIPDisplayed() const;
+    void setStatusbarExternalIPDisplayed(bool displayed);
     bool isToolbarDisplayed() const;
     void setToolbarDisplayed(bool displayed);
     bool isSplashScreenDisabled() const;
@@ -170,6 +172,14 @@ public:
     bool isSearchEnabled() const;
     void setSearchEnabled(bool enabled);
 
+    // Search UI
+    int searchHistoryLength() const;
+    void setSearchHistoryLength(int length);
+    bool storeOpenedSearchTabs() const;
+    void setStoreOpenedSearchTabs(bool enabled);
+    bool storeOpenedSearchTabResults() const;
+    void setStoreOpenedSearchTabResults(bool enabled);
+
     // HTTP Server
     bool isWebUIEnabled() const;
     void setWebUIEnabled(bool enabled);
@@ -187,7 +197,7 @@ public:
     void setWebUILocalAuthEnabled(bool enabled);
     bool isWebUIAuthSubnetWhitelistEnabled() const;
     void setWebUIAuthSubnetWhitelistEnabled(bool enabled);
-    QVector<Utils::Net::Subnet> getWebUIAuthSubnetWhitelist() const;
+    QList<Utils::Net::Subnet> getWebUIAuthSubnetWhitelist() const;
     void setWebUIAuthSubnetWhitelist(QStringList subnets);
     QString getWebUIUsername() const;
     void setWebUIUsername(const QString &username);
@@ -433,10 +443,13 @@ public:
     void setAutoBanBTPlayerPeer(bool checked);
     bool getShadowBan() const;
     void setShadowBan(bool checked);
-    QString customizeTrackersListUrl() const;
-    void setCustomizeTrackersListUrl(const QString &trackersUrl);
     bool isCookieExpirationEnabled() const;
     void setCookieExpirationEnabled(bool enabled);
+    QString getTrackersListUrl() const;
+    bool isAutoUpdateTrackersEnabled() const;
+
+    void setMigrateStatus(bool enabled);
+    bool getMigrateStatus() const;
 
 public slots:
     void setStatusFilterState(bool checked);

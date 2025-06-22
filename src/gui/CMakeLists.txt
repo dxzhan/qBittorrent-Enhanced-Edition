@@ -47,6 +47,7 @@ add_library(qbt_gui STATIC
     autoexpandabledialog.h
     banlistoptionsdialog.h
     color.h
+    colorscheme.h
     cookiesdialog.h
     cookiesmodel.h
     deletionconfirmationdialog.h
@@ -289,6 +290,8 @@ if (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
         macosdockbadge/badger.mm
         macosdockbadge/badgeview.h
         macosdockbadge/badgeview.mm
+        macosshiftclickhandler.h
+        macosshiftclickhandler.cpp
         macutilities.h
         macutilities.mm
     )

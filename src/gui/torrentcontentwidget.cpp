@@ -37,7 +37,6 @@
 #include <QMessageBox>
 #include <QModelIndexList>
 #include <QShortcut>
-#include <QThread>
 #include <QWheelEvent>
 
 #include "base/bittorrent/torrentcontenthandler.h"
@@ -72,6 +71,8 @@ namespace
 TorrentContentWidget::TorrentContentWidget(QWidget *parent)
     : QTreeView(parent)
 {
+    setDragEnabled(true);
+    setDragDropMode(QAbstractItemView::DragOnly);
     setExpandsOnDoubleClick(false);
     setSortingEnabled(true);
     setUniformRowHeights(true);
