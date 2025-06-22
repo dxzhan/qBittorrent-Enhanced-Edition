@@ -1,16 +1,16 @@
 #!/bin/bash
 
 prepare_sqlite3() {
-    if [ ! -f "/usr/src/sqlite-autoconf-3490000.tar.gz.download_ok" ]; then
-        sqlite3_binary_url="https://sqlite.org/2025/sqlite-autoconf-3490000.tar.gz"
-        retry curl -ksSLo "/usr/src/sqlite-autoconf-3490000.tar.gz" "${sqlite3_binary_url}"
-        touch "/usr/src/sqlite-autoconf-3490000.tar.gz.download_ok"
+    if [ ! -f "/usr/src/sqlite-autoconf-3500100.tar.gz.download_ok" ]; then
+        sqlite3_binary_url="https://sqlite.org/2025/sqlite-autoconf-3500100.tar.gz"
+        retry curl -ksSLo "/usr/src/sqlite-autoconf-3500100.tar.gz" "${sqlite3_binary_url}"
+        touch "/usr/src/sqlite-autoconf-3500100.tar.gz.download_ok"
     fi
-    tar -zxf "/usr/src/sqlite-autoconf-3490000.tar.gz" -C "/usr/src"
-    cd /usr/src/sqlite-autoconf-3490000
+    tar -zxf "/usr/src/sqlite-autoconf-3500100.tar.gz" -C "/usr/src"
+    cd /usr/src/sqlite-autoconf-3500100
     ./configure
     make -j$(nproc)
     make install
 
-    echo "sqlite3-3.49.0 done!"
+    echo "sqlite3-3.50.1 done!"
 }

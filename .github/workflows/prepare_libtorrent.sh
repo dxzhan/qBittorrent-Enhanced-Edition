@@ -17,10 +17,10 @@ prepare_libtorrent() {
         if ! git pull; then
             # if pull failed, retry clone the repository.
             cd /
-            rm -fr "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
-            retry git clone --depth 1 --recursive --shallow-submodules --branch "${LIBTORRENT_BRANCH}" \
-            "${libtorrent_git_url}" \
-            "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
+            #rm -fr "/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
+            #retry git clone --depth 1 --recursive --shallow-submodules --branch "${LIBTORRENT_BRANCH}" \
+            #"${libtorrent_git_url}" \
+            #"/usr/src/libtorrent-rasterbar-${LIBTORRENT_BRANCH}/"
         fi
     fi
   fi
