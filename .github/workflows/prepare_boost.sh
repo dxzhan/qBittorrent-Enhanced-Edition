@@ -4,16 +4,24 @@ prepare_boost() {
   if [ -z "${boost_ver}" ]; then
     boost_ver="$(retry curl -ksSL --compressed https://www.boost.org/users/download/ \| grep data-current-boost-version \| sed 's/\"//g' \| sed 's/data-current-boost-version=//g' \| sed 's/\\s//g')"
   fi
+
   if [ -z "${boost_ver}" ]; then
-    boost_ver="1.87.0"
+    boost_ver="1.88.0"
   fi
+
   echo "Boost version ${boost_ver}"
   mkdir -p "/usr/src/boost-${boost_ver}/"
   apt install -y bison
+
   if [ ! -f "/usr/src/boost-${boost_ver}/.unpack_ok" ]; then
-    boost_latest_url="https://sourceforge.net/projects/boost/files/boost/${boost_ver}/boost_${boost_ver//./_}.tar.gz/download"
-    retry curl -kL "${boost_latest_url}" \| tar -zxf - -C "/usr/src/boost-${boost_ver}/" --strip-components 1
-    touch "/usr/src/boost-${boost_ver}/.unpack_ok"
+    if [ -f "boost_${boost_ver//./_}.tar.gz" ]; then
+        tar -zxf boost_${boost_ver//./_}.tar.gz -C "/usr/src/boost-${boost_ver}/" --strip-components 1
+        touch "/usr/src/boost-${boost_ver}/.unpack_ok"
+    else
+        boost_latest_url="https://sourceforge.net/projects/boost/files/boost/${boost_ver}/boost_${boost_ver//./_}.tar.gz/download"
+        retry curl -ksSL "${boost_latest_url}" \| tar -zxf - -C "/usr/src/boost-${boost_ver}/" --strip-components 1
+        touch "/usr/src/boost-${boost_ver}/.unpack_ok"
+    fi
   fi
   cd "/usr/src/boost-${boost_ver}/"
   if [ -n "${CROSS_HOST}" ]; then

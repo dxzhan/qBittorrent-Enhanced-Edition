@@ -8,7 +8,7 @@ prepare_zlib() {
 
     zlib_ng_latest_url="https://github.com/zlib-ng/zlib-ng/archive/refs/tags/${zlib_ng_latest_tag}.tar.gz"
     if [ "${USE_CHINA_MIRROR}" = "1" ]; then
-        zlib_ng_latest_url="https://ghp.ci/${zlib_ng_latest_url}"
+        zlib_ng_latest_url="https://ghproxy.net/${zlib_ng_latest_url}"
     fi
     echo "zlib-ng version ${zlib_ng_latest_tag}"
 

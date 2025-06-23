@@ -116,7 +116,7 @@ case "${TARGET_HOST}" in
   ;;
 esac
 
-export USE_CHINA_MIRROR="0"
+#export USE_CHINA_MIRROR="0"
 export PKG_CONFIG_PATH="${CROSS_PREFIX}/opt/qt/lib/pkgconfig:${CROSS_PREFIX}/lib/pkgconfig:${CROSS_PREFIX}/share/pkgconfig:${PKG_CONFIG_PATH}"
 SELF_DIR="$(dirname "$(readlink -f "${0}")")"
 mkdir -p "/usr/src"

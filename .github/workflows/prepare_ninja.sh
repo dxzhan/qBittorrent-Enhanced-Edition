@@ -7,7 +7,7 @@ prepare_ninja() {
     fi
     ninja_binary_url="https://github.com/ninja-build/ninja/releases/download/${ninja_ver}/ninja-linux.zip"
     if [ "${USE_CHINA_MIRROR}" = "1" ]; then
-      ninja_binary_url="https://ghp.ci/${ninja_binary_url}"
+      ninja_binary_url="https://ghproxy.net/${ninja_binary_url}"
     fi
     if [ ! -f "/usr/src/ninja-${ninja_ver}-linux.zip.download_ok" ]; then
       rm -f "/usr/src/ninja-${ninja_ver}-linux.zip"
