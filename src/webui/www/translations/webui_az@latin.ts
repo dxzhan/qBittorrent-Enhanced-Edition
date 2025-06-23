@@ -1582,7 +1582,7 @@ you should put in domain names used by WebUI server.
 
 Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <translation>HTTP Host başlıqlarının göstəricilərini filtrləmək üçün ağ siyahı.
-DNS ilə təkrar bağlantı hücumundan qorunmaq üçün WebUI
+DNS ilə təkrar bağlantı hücumundan qorunmaq üçün WebUI 
 serveri tərəfindən istifadə olunan domen adını göstərməlisiniz.
 
 Çoxsaylı elementləri bölmək üçün ';' istifadə edin. '*' ümumi nişanından istifadə edə bilərsiniz</translation>

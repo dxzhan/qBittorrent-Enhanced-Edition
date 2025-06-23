@@ -2094,7 +2094,7 @@ Supporta i formati: S01E01, 1x1, 2017.12.31 e 31.12.2017 (I formati a data suppo
         <translation>Impossibile creare cartella ripresa torrent: &apos;%1&apos;</translation>
     </message>
     <message>
-        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="224"/>
+        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="225"/>
         <source>Cannot parse resume data: invalid format</source>
         <translation>Impossibile analizzare dati di recupero: formato non valido</translation>
     </message>
@@ -2137,7 +2137,7 @@ Errore: %2.</translation>
 Errore: %2.</translation>
     </message>
     <message>
-        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="187"/>
+        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="188"/>
         <source>Couldn&apos;t load torrents queue: %1</source>
         <translation>Impossibile caricare la coda torrent: %1</translation>
     </message>

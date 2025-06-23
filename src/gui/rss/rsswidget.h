@@ -42,11 +42,6 @@ namespace RSS
     class Article;
 }
 
-namespace RSS
-{
-    class Article;
-}
-
 namespace Ui
 {
     class RSSWidget;

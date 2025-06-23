@@ -1177,7 +1177,7 @@
     </message>
     <message>
         <source>Upload rate based</source>
-        <translation>Dựa trên tỉ lệ tải lên</translation>
+        <translation>Tỷ lệ tải lên dựa trên</translation>
     </message>
     <message>
         <source>%G: Tags (separated by comma)</source>
@@ -1185,7 +1185,7 @@
     </message>
     <message>
         <source>Socket backlog size:</source>
-        <translation>Kích thước tồn đọng socket:</translation>
+        <translation>Kích thước tồn đọng socket</translation>
     </message>
     <message>
         <source>Enable super seeding for torrent</source>

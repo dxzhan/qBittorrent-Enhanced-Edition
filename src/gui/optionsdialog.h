@@ -112,8 +112,6 @@ private slots:
     void webUIHttpsCertChanged(const Path &path);
     void webUIHttpsKeyChanged(const Path &path);
     void on_registerDNSBtn_clicked();
-    void on_fetchButton_clicked();
-    void handlePublicTrackersListChanged(const Net::DownloadResult &result);
 #endif
 
 private:

@@ -1805,7 +1805,7 @@ Stöder formaten: S01E01, 1x1, 2017.12.31 och 31.12.2017 (datumformatet stöder 
     <message>
         <location filename="../gui/rss/automatedrssdownloader.cpp" line="114"/>
         <source>Single number: &lt;b&gt;1x25;&lt;/b&gt; matches episode 25 of season one</source>
-        <translation>Enstaka siffror: &lt;b&gt;1x25;&lt;/b&gt; matchar avsnitt 25 av säsong ett</translation>
+        <translation>Ensamma siffror: &lt;b&gt;1x25;&lt;/b&gt; matchar avsnitt 25 av säsong ett</translation>
     </message>
     <message>
         <location filename="../gui/rss/automatedrssdownloader.cpp" line="115"/>
@@ -2070,7 +2070,7 @@ Stöder formaten: S01E01, 1x1, 2017.12.31 och 31.12.2017 (datumformatet stöder 
         <translation>Det går inte att skapa återupptagningsmapp för torrent: &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="224"/>
+        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="225"/>
         <source>Cannot parse resume data: invalid format</source>
         <translation>Det går inte att analysera återupptagningsdata: ogiltigt format</translation>
     </message>
@@ -2111,7 +2111,7 @@ Stöder formaten: S01E01, 1x1, 2017.12.31 och 31.12.2017 (datumformatet stöder 
         <translation>Det gick inte att spara återupptagningsdata för torrent till &quot;%1&quot;. Fel: %2.</translation>
     </message>
     <message>
-        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="187"/>
+        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="188"/>
         <source>Couldn&apos;t load torrents queue: %1</source>
         <translation>Det gick inte att läsa in torrentkö: %1</translation>
     </message>
@@ -11176,10 +11176,10 @@ Välj ett annat namn och försök igen.</translation>
 - Below will show the common subset of trackers of the selected torrents.</source>
         <translation>En spårar-URL per rad.
 
-- Du kan dela in spårarna i grupper genom att infoga tomma rader.
+- Du kan dela in spårare i grupper genom att infoga tomma rader.
 - Alla spårare inom samma grupp kommer att tillhöra samma nivå.
-- Gruppen överst blir nivå 0, nästa gruppnivå 1 och så vidare.
-- Nedan kommer den vanliga underuppsättningen av spårare för de valda torrenterna att visas.</translation>
+- Gruppen på toppen kommer att vara nivå 0, nästa gruppnivå 1 och så vidare.
+- Nedan kommer att visa den vanliga uppsättningen av spårare för de valda torrenterna.</translation>
     </message>
 </context>
 <context>
@@ -12621,7 +12621,7 @@ Välj ett annat namn och försök igen.</translation>
         <location filename="../base/utils/misc.cpp" line="237"/>
         <source>&lt; 1m</source>
         <comment>&lt; 1 minute</comment>
-        <translation>&lt; 1m</translation>
+        <translation>&lt; 1 min</translation>
     </message>
 </context>
 </TS>

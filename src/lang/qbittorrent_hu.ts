@@ -2070,7 +2070,7 @@ Támogatja a formátumokat: S01E01, 1x1, 2017.12.31 és 31.12.2017. (A dátumfor
         <translation>Torrent folytatási mappa nem hozható létre: &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="224"/>
+        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="225"/>
         <source>Cannot parse resume data: invalid format</source>
         <translation>Nem lehet feldolgozni a folytatási adatot: érvénytelen formátum</translation>
     </message>
@@ -2111,7 +2111,7 @@ Támogatja a formátumokat: S01E01, 1x1, 2017.12.31 és 31.12.2017. (A dátumfor
         <translation>A torrent folytatási adat nem menthető ide: &apos;%1&apos;. Hiba: %2.</translation>
     </message>
     <message>
-        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="187"/>
+        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="188"/>
         <source>Couldn&apos;t load torrents queue: %1</source>
         <translation>Nem sikerült betölteni a torrent sorrendet: %1</translation>
     </message>
@@ -4404,7 +4404,7 @@ Minimális követelmény: %2.</translation>
     <message>
         <location filename="../base/net/downloadhandlerimpl.cpp" line="264"/>
         <source>The remote server closed the connection prematurely, before the entire reply was received and processed</source>
-        <translation>A távoli szerver idő előtt lezárta a kapcsolatot, mielőtt a teljes választ megkapta és feldolgozta volna</translation>
+        <translation>A távoli kiszolgáló idő előtt lezárta a kapcsolatot, mielőtt a teljes választ megkapta és feldolgozta volna</translation>
     </message>
     <message>
         <location filename="../base/net/downloadhandlerimpl.cpp" line="266"/>
@@ -4419,7 +4419,7 @@ Minimális követelmény: %2.</translation>
     <message>
         <location filename="../base/net/downloadhandlerimpl.cpp" line="270"/>
         <source>The remote server refused the connection</source>
-        <translation>A távoli szerver elutasította a kapcsolatot</translation>
+        <translation>A távoli kiszolgáló elutasította a kapcsolatot</translation>
     </message>
     <message>
         <location filename="../base/net/downloadhandlerimpl.cpp" line="272"/>
@@ -4459,7 +4459,7 @@ Minimális követelmény: %2.</translation>
     <message>
         <location filename="../base/net/downloadhandlerimpl.cpp" line="286"/>
         <source>The remote content was not found at the server (404)</source>
-        <translation>A távoli tartalom nem található a szerveren (404)</translation>
+        <translation>A távoli tartalom nem található a kiszolgálón (404)</translation>
     </message>
     <message>
         <location filename="../base/net/downloadhandlerimpl.cpp" line="288"/>
@@ -6802,7 +6802,7 @@ Kézi: A különböző torrenttulajdonságokat (például a mentési útvonalat)
     <message>
         <location filename="../gui/optionsdialog.ui" line="1330"/>
         <source>Use Category paths in Manual Mode</source>
-        <translation>Kategória útvonalak használata Kézi Módban</translation>
+        <translation>Használja a kategória elérési útjait kézi módban</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1327"/>
@@ -6905,7 +6905,7 @@ readme[0-9].txt: &apos;readme1.txt&apos;, &apos;readme2.txt&apos; szűrő, de ne
         <location filename="../gui/optionsdialog.ui" line="1548"/>
         <source>To:</source>
         <comment>To receiver</comment>
-        <translation>Címzett:</translation>
+        <translation>Neki:</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1558"/>

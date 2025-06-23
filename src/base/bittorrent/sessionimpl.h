@@ -483,8 +483,6 @@ namespace BitTorrent
         void addMappedPorts(const QSet<quint16> &ports);
         void removeMappedPorts(const QSet<quint16> &ports);
 
-        QDateTime fromLTTimePoint32(const lt::time_point32 &timePoint) const;
-
         template <typename Func>
         void invoke(Func &&func)
         {
@@ -516,27 +514,6 @@ namespace BitTorrent
         void setShadowBan(bool value) override;
         QStringList shadowBannedIPs() const override;
         void setShadowBannedIPs(const QStringList &newList) override;
-
-        // Auto ban Unknown Peer
-        bool isAutoBanUnknownPeerEnabled() const override;
-        void setAutoBanUnknownPeer(bool value) override;
-
-        // Auto ban Bittorrent Media Player Peer
-        bool isAutoBanBTPlayerPeerEnabled() const override;
-        void setAutoBanBTPlayerPeer(bool value) override;
-
-        // Shadowban Peers
-        bool isShadowBanEnabled() const override;
-        void setShadowBan(bool value) override;
-        QStringList shadowBannedIPs() const override;
-        void setShadowBannedIPs(const QStringList &newList) override;
-
-        // Trackers list
-        bool isAutoUpdateTrackersEnabled() const override;
-        void setAutoUpdateTrackersEnabled(bool enabled) override;
-        QString publicTrackers() const override;
-        void setPublicTrackers(const QString &trackers) override;
-        void updatePublicTracker() override;
 
     signals:
         void addTorrentAlertsReceived(qsizetype count);
@@ -893,11 +870,6 @@ namespace BitTorrent
         QElapsedTimer m_wakeupCheckTimestamp;
 
         QList<TorrentImpl *> m_pendingFinishedTorrents;
-
-        QList<TorrentImpl *> m_pendingFinishedTorrents;
-
-        QDateTime m_qNow;
-        lt::clock_type::time_point m_ltNow;
 
         friend void Session::initInstance();
         friend void Session::freeInstance();

@@ -333,7 +333,7 @@
     </message>
     <message>
         <source>Unable to add peers. Please ensure you are adhering to the IP:port format.</source>
-        <translation>Impossibile aggiungere peer.
+        <translation>Impossibile aggiungere peer. 
 Assicurati che corrispondano allo standard IP:porta.</translation>
     </message>
     <message>
@@ -370,7 +370,7 @@ Assicurati che corrispondano allo standard IP:porta.</translation>
     </message>
     <message>
         <source>JavaScript Required! You must enable JavaScript for the WebUI to work properly</source>
-        <translation>È richiesto JavaScript!
+        <translation>È richiesto JavaScript! 
 Per un funzionamento corretto della WebUI va abilitato JavaScript.</translation>
     </message>
     <message>
@@ -1753,7 +1753,7 @@ Usa ';' per dividere più voci.</translation>
     </message>
     <message>
         <source>If &amp;quot;mixed mode&amp;quot; is enabled, I2P torrents are allowed to also get peers from other sources than the tracker, and connect to regular IPs, not providing any anonymization. This may be useful if the user is not interested in the anonymization of I2P, but still wants to be able to connect to I2P peers.</source>
-        <translation>Se la &amp;quot;modalità mista&amp;quot; è abilitata, i torrent I2P possono ottenere peer anche da sorgenti diverse dal tracker e connettersi a IP regolari, senza fornire alcuna anonimizzazione.
+        <translation>Se la &amp;quot;modalità mista&amp;quot; è abilitata, i torrent I2P possono ottenere peer anche da sorgenti diverse dal tracker e connettersi a IP regolari, senza fornire alcuna anonimizzazione. 
 Ciò può essere utile se l'utente non è interessato all'anonimizzazione di I2P, ma vuole comunque potersi connettere ai peer I2P.</translation>
     </message>
     <message>
@@ -3825,7 +3825,7 @@ Ciò può essere utile se l'utente non è interessato all'anonimizzazione di I2P
     </message>
     <message>
         <source>The free IP to Country Lite database by DB-IP is used for resolving the countries of peers. The database is licensed under the Creative Commons Attribution 4.0 International License</source>
-        <translation>Il database gratuito da IP a Country Lite di DB-IP viene usato per risolvere i paesi dei peer.
+        <translation>Il database gratuito da IP a Country Lite di DB-IP viene usato per risolvere i paesi dei peer. 
 Il database è concesso in licenza con la licenza internazionale Creative Commons Attribution 4.0</translation>
     </message>
     <message>
@@ -4002,7 +4002,7 @@ Il database è concesso in licenza con la licenza internazionale Creative Common
     </message>
     <message>
         <source>Fetching of RSS feeds is disabled now! You can enable it in application settings.</source>
-        <translation>Il recupero dei feed RSS è disabilitato!
+        <translation>Il recupero dei feed RSS è disabilitato! 
 Puoi abilitarlo nelle impostazioni dell'applicazione.</translation>
     </message>
     <message>
@@ -4062,7 +4062,7 @@ Puoi abilitarlo nelle impostazioni dell'applicazione.</translation>
     </message>
     <message>
         <source>Auto downloading of RSS torrents is disabled now! You can enable it in application settings.</source>
-        <translation>Il download automatico dei torrent RSS è disabilitato!
+        <translation>Il download automatico dei torrent RSS è disabilitato! 
 Puoi abilitarlo nelle impostazioni dell'applicazione.</translation>
     </message>
     <message>
@@ -4537,7 +4537,7 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
     </message>
     <message>
         <source>Are you sure you want to enable Automatic Torrent Management for the selected torrent(s)? They may be relocated.</source>
-        <translation>Sei sicuro di voler abilitare la gestione automatica torrent per i torrent selezionati?
+        <translation>Sei sicuro di voler abilitare la gestione automatica torrent per i torrent selezionati? 
 I torrent potranno essere spostati.</translation>
     </message>
 </context>
@@ -4571,7 +4571,7 @@ I torrent potranno essere spostati.</translation>
     </message>
     <message>
         <source>JavaScript Required! You must enable JavaScript for the WebUI to work properly</source>
-        <translation>È richiesto JavaScript!
+        <translation>È richiesto JavaScript! 
 Per un funzionamento corretto della WebUI va abilitato JavaScript.</translation>
     </message>
     <message>

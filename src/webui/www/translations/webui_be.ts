@@ -903,7 +903,7 @@
     </message>
     <message>
         <source>Alternative Rate Limits</source>
-        <translation>Альтэрнатыўныя абмежаванні хуткасці</translation>
+        <translation>Іншыя абмежаванні хуткасці</translation>
     </message>
     <message>
         <source>From:</source>
@@ -1221,7 +1221,7 @@
     </message>
     <message>
         <source>Always announce to all tiers:</source>
-        <translation>Заўсёды анансаваць на ўсе ўзроўні:</translation>
+        <translation>Заўсёды абвяшчаць ўсе трэкеры:</translation>
     </message>
     <message>
         <source>Embedded tracker port:</source>
@@ -1594,7 +1594,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source>Specify reverse proxy IPs (or subnets, e.g. 0.0.0.0/24) in order to use forwarded client address (X-Forwarded-For header). Use ';' to split multiple entries.</source>
-        <translation type="unfinished" />
+        <translation>Specify reverse proxy IPs (or subnets, e.g. 0.0.0.0/24) in order to use forwarded client address (X-Forwarded-For header). Use ';' to split multiple entries.</translation>
     </message>
     <message>
         <source>HTTPS key should not be empty</source>
@@ -3255,7 +3255,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source>Torrent ID</source>
-        <translation>ID торэнта</translation>
+        <translation>Torrent ID</translation>
     </message>
     <message>
         <source>Export .torrent</source>
@@ -4224,7 +4224,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source>Wildcard mode: you can use</source>
-        <translation type="unfinished" />
+        <translation>Wildcard mode: you can use</translation>
     </message>
     <message>
         <source> will exclude all articles.</source>

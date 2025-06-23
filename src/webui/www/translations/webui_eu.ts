@@ -3164,7 +3164,7 @@ Erabili ';' sarrera ugari banantzeko. '*' ordez-hizkia erabili daiteke.</transla
     </message>
     <message>
         <source>Automatic Torrent Management</source>
-        <translation>Torrent kudeaketa automatikoa</translation>
+        <translation>Berezgaitasunezko Torrent Kudeaketa</translation>
     </message>
     <message>
         <source>Category</source>

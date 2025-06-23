@@ -783,7 +783,7 @@
     </message>
     <message>
         <source>Append .!qB extension to incomplete files</source>
-        <translation>为不完整的文件添加扩展名 ".!qB"</translation>
+        <translation>为不完整的文件添加扩展名 .!qB</translation>
     </message>
     <message>
         <source>Automatically add torrents from:</source>
@@ -795,7 +795,7 @@
     </message>
     <message>
         <source>This server requires a secure connection (SSL)</source>
-        <translation>该服务器需要安全连接（SSL）</translation>
+        <translation>该服务器需要安全链接（SSL）</translation>
     </message>
     <message>
         <source>Authentication</source>
@@ -831,7 +831,7 @@
     </message>
     <message>
         <source>Maximum number of connections per torrent:</source>
-        <translation>每个 torrent 最大连接数：</translation>
+        <translation>每 torrent 最大连接数：</translation>
     </message>
     <message>
         <source>Global maximum number of connections:</source>
@@ -883,7 +883,7 @@
     </message>
     <message>
         <source>Manually banned IP addresses...</source>
-        <translation>手动封禁 IP 地址...</translation>
+        <translation>手动屏蔽 IP 地址...</translation>
     </message>
     <message>
         <source>Apply to trackers</source>
@@ -1469,7 +1469,7 @@
     </message>
     <message>
         <source>Reannounce to all trackers when IP or port changed:</source>
-        <translation>当 IP 或端口更改时，重新通知所有 tracker：</translation>
+        <translation>当 IP 或端口更改时，重新通知所有 trackers：</translation>
     </message>
     <message>
         <source>Trusted proxies list:</source>
@@ -1489,7 +1489,7 @@
     </message>
     <message>
         <source>IP address reported to trackers (requires restart):</source>
-        <translation>IP 地址已报告给 Tracker (需要重启)</translation>
+        <translation>IP 地址已报告给 Trackers (需要重启)</translation>
     </message>
     <message>
         <source>Set to 0 to let your system pick an unused port</source>
@@ -2261,7 +2261,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source>Created By:</source>
-        <translation>创建者：</translation>
+        <translation>创建：</translation>
     </message>
     <message>
         <source>Added On:</source>

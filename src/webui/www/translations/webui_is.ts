@@ -3647,10 +3647,6 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <source>Engine</source>
         <translation type="unfinished" />
     </message>
-    <message>
-        <source>Published On</source>
-        <translation type="unfinished" />
-    </message>
 </context>
 <context>
     <name>SearchPluginsTable</name>

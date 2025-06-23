@@ -471,7 +471,7 @@
     <message>
         <location filename="../gui/addnewtorrentdialog.cpp" line="862"/>
         <source>Metadata retrieval complete</source>
-        <translation>Récuperation des métadonnées complétée</translation>
+        <translation>Récuperation des métadonnées terminée</translation>
     </message>
 </context>
 <context>
@@ -678,7 +678,7 @@
     <message>
         <location filename="../gui/advancedsettings.cpp" line="762"/>
         <source>Recheck torrents on completion</source>
-        <translation>Revérifier les torrents lorsqu&apos;ils sont complétés</translation>
+        <translation>Revérifier les torrents lorsqu&apos;ils sont terminés</translation>
     </message>
     <message>
         <location filename="../gui/advancedsettings.cpp" line="404"/>
@@ -2071,7 +2071,7 @@ Les formats supportés : S01E01, 1x1, 2017.12.31 et 31.12.2017 (les formats date
         <translation>Impossible de créer le dossier de reprise du torrent : « %1 »</translation>
     </message>
     <message>
-        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="224"/>
+        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="225"/>
         <source>Cannot parse resume data: invalid format</source>
         <translation>Impossible d&apos;analyser les données de reprise : format invalide</translation>
     </message>
@@ -2112,7 +2112,7 @@ Les formats supportés : S01E01, 1x1, 2017.12.31 et 31.12.2017 (les formats date
         <translation>Impossible d&apos;enregistrer les données de reprise du torrent vers &apos;%1&apos;. Erreur : %2.</translation>
     </message>
     <message>
-        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="187"/>
+        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="188"/>
         <source>Couldn&apos;t load torrents queue: %1</source>
         <translation>Impossible de charger la file d&apos;attente des torrents : %1</translation>
     </message>
@@ -5380,7 +5380,7 @@ Configuration minimale requise&#xa0;:&#xa0;%2.</translation>
     <message>
         <location filename="../base/net/geoipmanager.cpp" line="334"/>
         <source>Puerto Rico</source>
-        <translation>Porto Rico</translation>
+        <translation>Puerto Rico</translation>
     </message>
     <message>
         <location filename="../base/net/geoipmanager.cpp" line="336"/>
@@ -6085,7 +6085,7 @@ Configuration minimale requise&#xa0;:&#xa0;%2.</translation>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1937"/>
         <source>I2P (experimental)</source>
-        <translation>Activer I2P (expérimental)</translation>
+        <translation>I2P (expérimental)</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1999"/>
@@ -6933,7 +6933,7 @@ readme[0-9].txt : filtre &apos;readme1.txt&apos; et &apos;readme2.txt&apos;, mai
         <location filename="../gui/optionsdialog.ui" line="1577"/>
         <location filename="../gui/optionsdialog.ui" line="3688"/>
         <source>Authentication</source>
-        <translation>Nécessite une authentification</translation>
+        <translation>Authentification</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1589"/>
@@ -11498,7 +11498,7 @@ Veuillez en choisir un autre.</translation>
     <message>
         <location filename="../gui/transferlistfilterswidget.cpp" line="106"/>
         <source>Status</source>
-        <translation>États</translation>
+        <translation>Statut</translation>
     </message>
     <message>
         <location filename="../gui/transferlistfilterswidget.cpp" line="116"/>
@@ -12614,7 +12614,7 @@ Veuillez en choisir un autre.</translation>
     <message>
         <location filename="../base/utils/os.cpp" line="92"/>
         <source>qBittorrent will shutdown the computer now because all downloads are complete.</source>
-        <translation>qBittorrent va maintenant éteindre l&apos;ordinateur car tous les téléchargements sont complétés.</translation>
+        <translation>qBittorrent va maintenant éteindre l&apos;ordinateur car tous les téléchargements sont terminés.</translation>
     </message>
     <message>
         <location filename="../base/utils/misc.cpp" line="237"/>

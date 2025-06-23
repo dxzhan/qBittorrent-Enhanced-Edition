@@ -2070,7 +2070,7 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="224"/>
+        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="225"/>
         <source>Cannot parse resume data: invalid format</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2111,7 +2111,7 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="187"/>
+        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="188"/>
         <source>Couldn&apos;t load torrents queue: %1</source>
         <translation>टाॅरेंट पंक्ति लोड नहीं हो सकी। कारण: %1</translation>
     </message>
@@ -3953,7 +3953,7 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
     <message>
         <location filename="../gui/mainwindow.cpp" line="153"/>
         <source>Preferences</source>
-        <translation>सेटिंग्स</translation>
+        <translation>वरीयताएं</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.cpp" line="202"/>
@@ -7670,7 +7670,7 @@ readme[0-9].txt: filter &apos;readme1.txt&apos;, &apos;readme2.txt&apos; but not
     <message>
         <location filename="../gui/optionsdialog.cpp" line="154"/>
         <source>Preferences</source>
-        <translation>सेटिंग्स</translation>
+        <translation>वरीयताएं</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.cpp" line="2079"/>
@@ -7777,7 +7777,7 @@ readme[0-9].txt: filter &apos;readme1.txt&apos;, &apos;readme2.txt&apos; but not
     <message>
         <location filename="../gui/properties/peerlistwidget.cpp" line="112"/>
         <source>Country/Region</source>
-        <translation>देश/क्षेत्र</translation>
+        <translation>देश/छेत्र</translation>
     </message>
     <message>
         <location filename="../gui/properties/peerlistwidget.cpp" line="113"/>
@@ -8472,7 +8472,7 @@ Those plugins were disabled.</source>
     <message>
         <location filename="../gui/properties/propertieswidget.ui" line="552"/>
         <source>Reannounce In:</source>
-        <translation>के बाद पुनर्घोषणा :</translation>
+        <translation>के बाद पुनर्घोषणा:</translation>
     </message>
     <message>
         <location filename="../gui/properties/propertieswidget.ui" line="581"/>

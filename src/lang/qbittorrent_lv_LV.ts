@@ -183,7 +183,7 @@
     <message>
         <location filename="../gui/addnewtorrentdialog.ui" line="249"/>
         <source>Start torrent</source>
-        <translation>Palaist torrentu</translation>
+        <translation>Sākt lejupielādi</translation>
     </message>
     <message>
         <location filename="../gui/addnewtorrentdialog.ui" line="378"/>
@@ -567,7 +567,7 @@
     <message>
         <location filename="../gui/addtorrentparamswidget.ui" line="209"/>
         <source>Start torrent:</source>
-        <translation>Palaist torrentu:</translation>
+        <translation>Sākt lejupielādi:</translation>
     </message>
     <message>
         <location filename="../gui/addtorrentparamswidget.ui" line="247"/>
@@ -759,7 +759,7 @@
     <message>
         <location filename="../gui/advancedsettings.cpp" line="488"/>
         <source>Resume data storage type (requires restart)</source>
-        <translation>Atsākšanas datu krātuves veids (nepieciešama pārstartēšana)</translation>
+        <translation>Atsākšanas datu krātuves veids (nepieciešams restarts)</translation>
     </message>
     <message>
         <location filename="../gui/advancedsettings.cpp" line="506"/>
@@ -1126,7 +1126,7 @@
     <message>
         <location filename="../gui/advancedsettings.cpp" line="806"/>
         <source>IP address reported to trackers (requires restart)</source>
-        <translation>IP adrese, kuru paziņot trakeriem (nepieciešama pārstartēšana)</translation>
+        <translation>IP adrese, kuru paziņot trakeriem (nepieciešams restarts)</translation>
     </message>
     <message>
         <location filename="../gui/advancedsettings.cpp" line="813"/>
@@ -2070,7 +2070,7 @@ Atbalsta formātus: S01E01, 1x1, 2017.12.31 un 31.12.2017 (Datumu formātos kā 
         <translation>Nevar izveidot torrentu atsākšanas mapi: &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="224"/>
+        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="225"/>
         <source>Cannot parse resume data: invalid format</source>
         <translation>Nespēj parsēt atsākšanas datus: nederīgs formāts</translation>
     </message>
@@ -2111,7 +2111,7 @@ Atbalsta formātus: S01E01, 1x1, 2017.12.31 un 31.12.2017 (Datumu formātos kā 
         <translation>Neizdevās saglabāt torrenta atsākšanas datus &apos;%1&apos;. Iemesls: %2</translation>
     </message>
     <message>
-        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="187"/>
+        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="188"/>
         <source>Couldn&apos;t load torrents queue: %1</source>
         <translation>Neizdevās ielādēt torrentu rindu: %1</translation>
     </message>
@@ -2259,7 +2259,7 @@ Atbalsta formātus: S01E01, 1x1, 2017.12.31 un 31.12.2017 (Datumu formātos kā 
     <message>
         <location filename="../base/bittorrent/sessionimpl.cpp" line="746"/>
         <source>Restart is required to toggle Peer Exchange (PeX) support</source>
-        <translation>Nepieciešama programmas pārstartēšana, lai ieslēgtu vai izslēgtu Apmaiņu koplietotāju starpā (PeX) atbalstu</translation>
+        <translation>Nepieciešams pārstartēšana, lai ieslēgtu Apmaiņu koplietotāju starpā (PeX)</translation>
     </message>
     <message>
         <location filename="../base/bittorrent/sessionimpl.cpp" line="1417"/>
@@ -4054,7 +4054,7 @@ Atbalsta formātus: S01E01, 1x1, 2017.12.31 un 31.12.2017 (Datumu formātos kā 
     <message>
         <location filename="../gui/mainwindow.cpp" line="1039"/>
         <source>qBittorrent was just updated and needs to be restarted for the changes to be effective.</source>
-        <translation>qBittorrent nupat tika atjaunināts un ir nepieciešama pārstartēšana, lai izmaiņas stātos spēkā.</translation>
+        <translation>qBittorrent nupat tika atjaunināts un ir nepieciešams restarts, lai izmaiņas stātos spēkā.</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.cpp" line="1175"/>
@@ -5963,12 +5963,12 @@ Vecākā atļautā: %2.</translation>
     <message>
         <location filename="../gui/optionsdialog.ui" line="440"/>
         <source>Start qBittorrent on Windows start up</source>
-        <translation>Palaist qBittorrent uzreiz pēc Windows ielādes</translation>
+        <translation>Ieslēgt qBittorrent reizē ar Datorsistēmu</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="447"/>
         <source>Show splash screen on start up</source>
-        <translation>Pirms palaišanas parādīt uzplaiksnījuma ekrānu ar qBittorrent logo</translation>
+        <translation>Pirms palaišanas parādīt qBittorrent logo</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="491"/>
@@ -6670,7 +6670,7 @@ Izmantojiet &apos;;&apos; lai atdalītu vairākus vārdus. Varat izmantot viettu
     <message>
         <location filename="../gui/optionsdialog.ui" line="149"/>
         <source>Changing Interface settings requires application restart</source>
-        <translation>Veicot saskarnes iestatījumu izmaiņas nepieciešama programmas pārstartēšana</translation>
+        <translation>Saskarsnes uzstādījumu maiņai nepieciešams programmas restarts</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="266"/>
@@ -6766,7 +6766,7 @@ Izmantojiet &apos;;&apos; lai atdalītu vairākus vārdus. Varat izmantot viettu
     <message>
         <location filename="../gui/optionsdialog.ui" line="1111"/>
         <source>Allocate full file sizes on disk before starting downloads, to minimize fragmentation. Only useful for HDDs.</source>
-        <translation>Izbrīvēt visu nepieciešamo vietu failiem pirms lejupielādes sākšanas, lai mazinātu diska fragmentāciju. Funkcija noderīga tikai HDD diskiem.</translation>
+        <translation>Izbrīvēs pilnu vietu failiem pirms lejupielādes sākšanas, lai mazinātu diska fragmentāciju. Funkcija būtiska tikai HDD diskiem.</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1121"/>
@@ -7140,7 +7140,7 @@ readme[0-9].txt: neatļaus &apos;readme1.txt&apos;, &apos;readme2.txt&apos;, bet
     <message>
         <location filename="../gui/optionsdialog.ui" line="2465"/>
         <source>Start time</source>
-        <translation>Sākuma laiks</translation>
+        <translation>Sākšanas laiks</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="2495"/>
@@ -8730,7 +8730,7 @@ Esošie spraudņi tika atslēgti. </translation>
     <message>
         <location filename="../base/rss/rss_feed.cpp" line="230"/>
         <source>RSS feed at &apos;%1&apos; is successfully downloaded. Starting to parse it.</source>
-        <translation>RSS jaunumu plūsmas &apos;%1&apos; saturs veiksmīgi lejupielādēts. Tiek sākta datu pārstrāde.</translation>
+        <translation>RSS kanāla &apos;%1&apos; saturs veiksmīgi lejupielādēts. Tiek sākta datu pārstrāde.</translation>
     </message>
 </context>
 <context>
@@ -9967,7 +9967,7 @@ Spiediet uz &quot;Meklētāju spraudņi...&quot; pogas, lai kādu uzinstalētu. 
     <message>
         <location filename="../gui/statusbar.cpp" line="173"/>
         <source>qBittorrent needs to be restarted!</source>
-        <translation>qBittorrent ir nepieciešama pārstartēšana!</translation>
+        <translation>qBittorrent ir nepieciešams restarts!</translation>
     </message>
     <message>
         <location filename="../gui/statusbar.cpp" line="193"/>
@@ -10628,7 +10628,7 @@ Lūdzu izvēlieties citu nosaukumu.</translation>
     <message>
         <location filename="../gui/torrentcreatordialog.ui" line="238"/>
         <source>Start seeding immediately</source>
-        <translation>Sākt koplietot uzreiz pēc torrenta izveides</translation>
+        <translation>Sākt koplietošanu uzreiz pēc torrenta izveides</translation>
     </message>
     <message>
         <location filename="../gui/torrentcreatordialog.ui" line="248"/>

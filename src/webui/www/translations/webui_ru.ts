@@ -1661,7 +1661,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source>Use proxy for BitTorrent purposes</source>
-        <translation>Использовать прокси для работы BitTorrent</translation>
+        <translation>Использовать прокси для работы БитТоррента</translation>
     </message>
     <message>
         <source>years</source>

@@ -694,26 +694,6 @@
         <source>Stop All</source>
         <translation type="unfinished" />
     </message>
-    <message>
-        <source>Stop</source>
-        <translation>Pārtraukt</translation>
-    </message>
-    <message>
-        <source>Would you like to stop all torrents?</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>Start All</source>
-        <translation>Palaist visus</translation>
-    </message>
-    <message>
-        <source>Stop All</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>Start</source>
-        <translation>Palaist</translation>
-    </message>
 </context>
 <context>
     <name>OptionsDialog</name>

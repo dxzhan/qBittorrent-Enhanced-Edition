@@ -291,9 +291,6 @@ void AppController::preferencesAction()
     data[u"anonymous_mode"_s] = session->isAnonymousModeEnabled();
     // Max active checking torrents
     data[u"max_active_checking_torrents"_s] = session->maxActiveCheckingTorrents();
-    data[u"auto_update_trackers_enabled"_s] = session->isAutoUpdateTrackersEnabled();
-    data[u"customize_trackers_list_url"_s] = pref->customizeTrackersListUrl();
-    data[u"public_trackers"_s] = session->publicTrackers();
     // Torrent Queueing
     data[u"queueing_enabled"_s] = session->isQueueingSystemEnabled();
     data[u"max_active_downloads"_s] = session->maxActiveDownloads();

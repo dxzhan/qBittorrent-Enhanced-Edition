@@ -2874,18 +2874,6 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
         <source>Status Icon</source>
         <translation type="unfinished" />
     </message>
-    <message>
-        <source>Info Hash v2</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>Incomplete Save Path</source>
-        <translation type="unfinished" />
-    </message>
-    <message>
-        <source>Private</source>
-        <translation>פרטי</translation>
-    </message>
 </context>
 <context>
     <name>TrackerListWidget</name>
@@ -3886,7 +3874,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source>Open description page</source>
-        <translation>פתיחת דף התיאור</translation>
+        <translation>פתח דף תיאור</translation>
     </message>
     <message>
         <source>Download link</source>
@@ -3976,7 +3964,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</source>
     </message>
     <message>
         <source>Open news URL</source>
-        <translation>פתיחת כתובת חדשות</translation>
+        <translation>פתח כתובת חדשות</translation>
     </message>
     <message>
         <source>Rename...</source>

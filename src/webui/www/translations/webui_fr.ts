@@ -2467,7 +2467,7 @@ Utiliser ';' pour diviser plusieurs entrées. Le caractère générique '*' peut
     </message>
     <message>
         <source>Override Save Location</source>
-        <translation>Remplacer l'emplacement de destination</translation>
+        <translation>Remplacer l'emplacement de sauvegarde</translation>
     </message>
     <message>
         <source>Monitored folder</source>
@@ -2475,7 +2475,7 @@ Utiliser ';' pour diviser plusieurs entrées. Le caractère générique '*' peut
     </message>
     <message>
         <source>Default save location</source>
-        <translation>Emplacement de destination par défaut</translation>
+        <translation>Emplacement de sauvegarde par défaut</translation>
     </message>
     <message>
         <source>Other...</source>
@@ -2640,7 +2640,7 @@ Utiliser ';' pour diviser plusieurs entrées. Le caractère générique '*' peut
     </message>
     <message>
         <source>Stalled (0)</source>
-        <translation>Bloqués (0)</translation>
+        <translation>Bloqué (0)</translation>
     </message>
     <message>
         <source>Stalled Uploading (0)</source>
@@ -4281,10 +4281,6 @@ Les formats supportés : S01E01, 1x1, 2017.12.31 et 31.12.2017 (les formats date
     <message>
         <source>Add rule</source>
         <translation>Ajouter une règle</translation>
-    </message>
-    <message>
-        <source>Add Stopped:</source>
-        <translation>Ajouter arrêté :</translation>
     </message>
     <message>
         <source>Add Stopped:</source>

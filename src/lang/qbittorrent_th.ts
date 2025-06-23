@@ -759,7 +759,7 @@
     <message>
         <location filename="../gui/advancedsettings.cpp" line="488"/>
         <source>Resume data storage type (requires restart)</source>
-        <translation>ประเภทการจัดเก็บข้อมูลต่อ (ต้องรีสตาร์ต)</translation>
+        <translation>ประเภทการจัดเก็บข้อมูลต่อ (ต้องรีสตาร์ท)</translation>
     </message>
     <message>
         <location filename="../gui/advancedsettings.cpp" line="506"/>
@@ -2070,7 +2070,7 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
         <translation>ไม่สามารถสร้างโฟลเดอร์งานต่อของทอร์เรนต์: &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="224"/>
+        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="225"/>
         <source>Cannot parse resume data: invalid format</source>
         <translation type="unfinished"></translation>
     </message>
@@ -2111,7 +2111,7 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
         <translation>ไม่สามารถบันทึกข้อมูลการทำงานต่อของทอร์เรนต์ไปที่ &apos;%1&apos;. ข้อผิดพลาด: %2</translation>
     </message>
     <message>
-        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="187"/>
+        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="188"/>
         <source>Couldn&apos;t load torrents queue: %1</source>
         <translation type="unfinished"></translation>
     </message>

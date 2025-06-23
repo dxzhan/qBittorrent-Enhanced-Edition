@@ -776,11 +776,6 @@ void SearchWidget::currentTabChanged(const int index)
     adjustSearchButton();
 }
 
-void SearchWidget::tabMoved(const int from, const int to)
-{
-    m_allTabs.move(from, to);
-}
-
 void SearchWidget::selectMultipleBox([[maybe_unused]] const int index)
 {
     const auto itemText = m_ui->selectPlugin->itemData(m_ui->selectPlugin->currentIndex()).toString();

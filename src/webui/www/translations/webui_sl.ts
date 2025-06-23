@@ -4253,7 +4253,7 @@ Uporabi ';' da razčleniš vnose. Lahko uporbiš nadomestni znak '*'.</translati
         <source>Smart Episode Filter will check the episode number to prevent downloading of duplicates.
 Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also support - as a separator)</source>
         <translation>Pametni filter za epizode bo preveril številko epizode v izogibu prejemanja dvojnikov.
-Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017
+Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017 
 (Formati datume so tudi podprti z "-" kot ločilnikom)</translation>
     </message>
     <message>

@@ -16,7 +16,7 @@
     </message>
     <message>
         <source>Start torrent</source>
-        <translation>Uruchom torrent</translation>
+        <translation>Rozpocznij pobieranie</translation>
     </message>
     <message>
         <source>Skip hash check</source>

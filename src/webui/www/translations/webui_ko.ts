@@ -12,7 +12,7 @@
     <name>AddNewTorrentDialog</name>
     <message>
         <source>Category:</source>
-        <translation>범주 :</translation>
+        <translation>범주:</translation>
     </message>
     <message>
         <source>Start torrent</source>
@@ -24,11 +24,11 @@
     </message>
     <message>
         <source>Torrent Management Mode:</source>
-        <translation>토렌트 관리 모드 :</translation>
+        <translation>토렌트 관리 모드:</translation>
     </message>
     <message>
         <source>Content layout:</source>
-        <translation>내용 배치 :</translation>
+        <translation>내용 배치:</translation>
     </message>
     <message>
         <source>Original</source>
@@ -36,11 +36,11 @@
     </message>
     <message>
         <source>Create subfolder</source>
-        <translation>하위 폴더 만들기</translation>
+        <translation>하위폴더 만들기</translation>
     </message>
     <message>
         <source>Don't create subfolder</source>
-        <translation>하위 폴더 만들지 않기</translation>
+        <translation>하위폴더 만들지 않기</translation>
     </message>
     <message>
         <source>Manual</source>
@@ -60,7 +60,7 @@
     </message>
     <message>
         <source>Stop condition:</source>
-        <translation>중지 조건 :</translation>
+        <translation>중지 조건:</translation>
     </message>
     <message>
         <source>None</source>
@@ -309,7 +309,7 @@
     </message>
     <message>
         <source>Free space: %1</source>
-        <translation>여유 공간 : %1</translation>
+        <translation>여유 공간: %1</translation>
     </message>
     <message>
         <source>Torrent inactivity timer must be greater than 0.</source>
@@ -588,15 +588,15 @@
     </message>
     <message>
         <source>Connection status: Firewalled</source>
-        <translation>연결 상태 : 방화벽</translation>
+        <translation>연결 상태: 방화벽</translation>
     </message>
     <message>
         <source>Connection status: Connected</source>
-        <translation>연결 상태 : 연결됨</translation>
+        <translation>연결 상태: 연결됨</translation>
     </message>
     <message>
         <source>Alternative speed limits: Off</source>
-        <translation>대체 속도 제한 : 끔</translation>
+        <translation>대체 속도 제한: 끔</translation>
     </message>
     <message>
         <source>Download speed icon</source>
@@ -604,7 +604,7 @@
     </message>
     <message>
         <source>Alternative speed limits: On</source>
-        <translation>대체 속도 제한 : 켬</translation>
+        <translation>대체 속도 제한: 켬</translation>
     </message>
     <message>
         <source>Upload speed icon</source>
@@ -612,7 +612,7 @@
     </message>
     <message>
         <source>Connection status: Disconnected</source>
-        <translation>연결 상태 : 끊김</translation>
+        <translation>연결 상태: 끊김</translation>
     </message>
     <message>
         <source>RSS Reader</source>
@@ -743,11 +743,11 @@
     </message>
     <message>
         <source>IP address:</source>
-        <translation>IP 주소 :</translation>
+        <translation>IP 주소:</translation>
     </message>
     <message>
         <source>Server domains:</source>
-        <translation>서버 도메인 :</translation>
+        <translation>서버 도메인:</translation>
     </message>
     <message>
         <source>Use HTTPS instead of HTTP</source>
@@ -755,7 +755,7 @@
     </message>
     <message>
         <source>Bypass authentication for clients on localhost</source>
-        <translation>로컬 호스트에서 클라이언트에 대한 인증 우회하기</translation>
+        <translation>localhost의 클라이언트에 대한 인증 우회</translation>
     </message>
     <message>
         <source>Bypass authentication for clients in whitelisted IP subnets</source>
@@ -771,11 +771,11 @@
     </message>
     <message>
         <source>Copy .torrent files to:</source>
-        <translation>.torrent 파일 복사 위치 :</translation>
+        <translation>.torrent 파일 복사 위치:</translation>
     </message>
     <message>
         <source>Copy .torrent files for finished downloads to:</source>
-        <translation>내려받기가 완료된 .torrent 파일 복사 위치 :</translation>
+        <translation>내려받기가 완료된 .torrent 파일 복사 위치:</translation>
     </message>
     <message>
         <source>Pre-allocate disk space for all files</source>
@@ -787,11 +787,11 @@
     </message>
     <message>
         <source>Automatically add torrents from:</source>
-        <translation>토렌트를 자동 추가할 경로 :</translation>
+        <translation>토렌트를 자동 추가할 경로:</translation>
     </message>
     <message>
         <source>SMTP server:</source>
-        <translation>SMTP 서버 :</translation>
+        <translation>SMTP 서버:</translation>
     </message>
     <message>
         <source>This server requires a secure connection (SSL)</source>
@@ -803,11 +803,11 @@
     </message>
     <message>
         <source>Username:</source>
-        <translation>사용자 이름 :</translation>
+        <translation>사용자 이름:</translation>
     </message>
     <message>
         <source>Password:</source>
-        <translation>암호 :</translation>
+        <translation>암호:</translation>
     </message>
     <message>
         <source>TCP and μTP</source>
@@ -819,7 +819,7 @@
     </message>
     <message>
         <source>Port used for incoming connections:</source>
-        <translation>수신 연결에 사용되는 포트 :</translation>
+        <translation>수신 연결에 사용되는 포트:</translation>
     </message>
     <message>
         <source>Use UPnP / NAT-PMP port forwarding from my router</source>
@@ -831,19 +831,19 @@
     </message>
     <message>
         <source>Maximum number of connections per torrent:</source>
-        <translation>토렌트당 최대 연결 :</translation>
+        <translation>토렌트당 최대 연결:</translation>
     </message>
     <message>
         <source>Global maximum number of connections:</source>
-        <translation>전역 최대 연결 :</translation>
+        <translation>전역 최대 연결:</translation>
     </message>
     <message>
         <source>Maximum number of upload slots per torrent:</source>
-        <translation>토렌트당 최대 올려주기 슬롯 :</translation>
+        <translation>토렌트당 최대 올려주기 슬롯:</translation>
     </message>
     <message>
         <source>Global maximum number of upload slots:</source>
-        <translation>전역 최대 올려주기 슬롯 :</translation>
+        <translation>전역 최대 올려주기 슬롯:</translation>
     </message>
     <message>
         <source>Proxy Server</source>
@@ -851,7 +851,7 @@
     </message>
     <message>
         <source>Type:</source>
-        <translation>유형 :</translation>
+        <translation>유형:</translation>
     </message>
     <message>
         <source>SOCKS4</source>
@@ -867,11 +867,11 @@
     </message>
     <message>
         <source>Host:</source>
-        <translation>호스트 :</translation>
+        <translation>호스트:</translation>
     </message>
     <message>
         <source>Port:</source>
-        <translation>포트 :</translation>
+        <translation>포트:</translation>
     </message>
     <message>
         <source>Use proxy for peer connections</source>
@@ -895,11 +895,11 @@
     </message>
     <message>
         <source>Upload:</source>
-        <translation>올려주기 :</translation>
+        <translation>올려주기:</translation>
     </message>
     <message>
         <source>Download:</source>
-        <translation>내려받기 :</translation>
+        <translation>내려받기:</translation>
     </message>
     <message>
         <source>Alternative Rate Limits</source>
@@ -908,16 +908,16 @@
     <message>
         <source>From:</source>
         <extracomment>from (time1 to time2)</extracomment>
-        <translation>발신 :</translation>
+        <translation>발신:</translation>
     </message>
     <message>
         <source>To:</source>
         <extracomment>time1 to time2</extracomment>
-        <translation>수신 :</translation>
+        <translation>수신:</translation>
     </message>
     <message>
         <source>When:</source>
-        <translation>시기 :</translation>
+        <translation>언제:</translation>
     </message>
     <message>
         <source>Every day</source>
@@ -961,7 +961,7 @@
     </message>
     <message>
         <source>Encryption mode:</source>
-        <translation>암호화 모드 :</translation>
+        <translation>암호화 모드:</translation>
     </message>
     <message>
         <source>Require encryption</source>
@@ -977,15 +977,15 @@
     </message>
     <message>
         <source>Maximum active downloads:</source>
-        <translation>최대 활성 내려받기 수 :</translation>
+        <translation>최대 내려받기:</translation>
     </message>
     <message>
         <source>Maximum active uploads:</source>
-        <translation>최대 활성 올려주기 수 :</translation>
+        <translation>최대 올려주기:</translation>
     </message>
     <message>
         <source>Maximum active torrents:</source>
-        <translation>최대 활성 토렌트 수 :</translation>
+        <translation>최대 활성 토렌트:</translation>
     </message>
     <message>
         <source>Do not count slow torrents in these limits</source>

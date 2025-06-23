@@ -213,19 +213,19 @@
     </message>
     <message>
         <source>Unable to log in, qBittorrent is probably unreachable.</source>
-        <translation>Tizimga kirib bo‘lmayapti, qBittorrent dasturini ochib bo‘lmaydi.</translation>
+        <translation type="vanished">Tizimga kirib bo‘lmayapti, qBittorrent dasturini ochib bo‘lmaydi.</translation>
     </message>
     <message>
         <source>Invalid Username or Password.</source>
-        <translation>Foydalanuvchi ismi yoki parol noto‘g‘ri.</translation>
+        <translation type="vanished">Foydalanuvchi ismi yoki parol noto‘g‘ri.</translation>
     </message>
     <message>
         <source>Password</source>
-        <translation>Parol</translation>
+        <translation type="vanished">Parol</translation>
     </message>
     <message>
         <source>Login</source>
-        <translation>Kirish</translation>
+        <translation type="vanished">Kirish</translation>
     </message>
     <message>
         <source>Original authors</source>

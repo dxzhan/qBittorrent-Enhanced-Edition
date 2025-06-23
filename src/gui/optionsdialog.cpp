@@ -1079,7 +1079,6 @@ void OptionsDialog::saveSpeedTabOptions() const
 void OptionsDialog::loadBittorrentTabOptions()
 {
     const auto *session = BitTorrent::Session::instance();
-    const auto *pref = Preferences::instance();
 
     m_ui->checkDHT->setChecked(session->isDHTEnabled());
     m_ui->checkPeX->setChecked(session->isPeXEnabled());
@@ -1158,11 +1157,6 @@ void OptionsDialog::loadBittorrentTabOptions()
 
     m_ui->checkEnableAddTrackers->setChecked(session->isAddTrackersEnabled());
     m_ui->textTrackers->setPlainText(session->additionalTrackers());
-    m_ui->checkAutoUpdateTrackers->setChecked(session->isAutoUpdateTrackersEnabled());
-    m_ui->textCustomizeTrackersListUrl->setText(pref->customizeTrackersListUrl());
-    m_ui->textPublicTrackers->setPlainText(session->publicTrackers());
-    connect(m_ui->checkAutoUpdateTrackers, &QGroupBox::toggled, this, &ThisType::enableApplyButton);
-    connect(m_ui->textCustomizeTrackersListUrl, &QLineEdit::textChanged, this, &ThisType::enableApplyButton);
 
     m_ui->checkAddTrackersFromURL->setChecked(session->isAddTrackersFromURLEnabled());
     m_ui->textTrackersURL->setText(session->additionalTrackersURL());
@@ -1209,7 +1203,6 @@ void OptionsDialog::loadBittorrentTabOptions()
 void OptionsDialog::saveBittorrentTabOptions() const
 {
     auto *session = BitTorrent::Session::instance();
-    auto *pref = Preferences::instance();
 
     session->setDHTEnabled(isDHTEnabled());
     session->setPeXEnabled(m_ui->checkPeX->isChecked());
@@ -2126,24 +2119,4 @@ void OptionsDialog::on_IPSubnetWhitelistButton_clicked()
     dialog->setAttribute(Qt::WA_DeleteOnClose);
     connect(dialog, &QDialog::accepted, this, &OptionsDialog::enableApplyButton);
     dialog->open();
-}
-
-void OptionsDialog::on_fetchButton_clicked()
-{
-    Net::DownloadHandler *m_fetchHandler = Net::DownloadManager::instance()->download(Net::DownloadRequest(Preferences::instance()->customizeTrackersListUrl()), Preferences::instance()->useProxyForGeneralPurposes());
-    connect(m_fetchHandler, &Net::DownloadHandler::finished, this, &OptionsDialog::handlePublicTrackersListChanged);
-}
-
-void OptionsDialog::handlePublicTrackersListChanged(const Net::DownloadResult &result)
-{
-    switch (result.status) {
-        case Net::DownloadStatus::Success:
-            BitTorrent::Session::instance()->setPublicTrackers(QString::fromUtf8(result.data.data()));
-            m_ui->textPublicTrackers->setPlainText(QString::fromUtf8(result.data.data()));
-            m_ui->fetchButton->setEnabled(false);
-            m_ui->fetchButton->setText(u"Fetched!"_s);
-            break;
-        default:
-            m_ui->textPublicTrackers->setPlainText(u"Refetch failed. Reason: "_s + result.errorString);
-    }
 }

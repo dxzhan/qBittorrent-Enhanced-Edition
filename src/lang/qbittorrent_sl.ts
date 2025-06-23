@@ -49,7 +49,7 @@
     <message>
         <location filename="../gui/aboutdialog.ui" line="163"/>
         <source>Original author</source>
-        <translation>Prvotni avtor</translation>
+        <translation>Originalni avtor</translation>
     </message>
     <message>
         <location filename="../gui/aboutdialog.ui" line="190"/>
@@ -286,7 +286,7 @@
     <message>
         <location filename="../gui/addnewtorrentdialog.ui" line="404"/>
         <source>Info hash v1:</source>
-        <translation>Informativna zgoščena vrednost, v1:</translation>
+        <translation>Razpršilo v1:</translation>
     </message>
     <message>
         <location filename="../gui/addnewtorrentdialog.ui" line="384"/>
@@ -306,7 +306,7 @@
     <message>
         <location filename="../gui/addnewtorrentdialog.ui" line="74"/>
         <source>Torrent Management Mode:</source>
-        <translation>Način upravljanja torrenta:</translation>
+        <translation>Način Upravljanja Torrenta:</translation>
     </message>
     <message>
         <location filename="../gui/addnewtorrentdialog.ui" line="81"/>
@@ -331,7 +331,7 @@
     <message>
         <location filename="../gui/addnewtorrentdialog.ui" line="314"/>
         <source>Do not delete .torrent file</source>
-        <translation>Ne izbriši datoteke .torrent</translation>
+        <translation>Ne izbriši .torrent datoteke</translation>
     </message>
     <message>
         <location filename="../gui/addnewtorrentdialog.ui" line="297"/>
@@ -346,7 +346,7 @@
     <message>
         <location filename="../gui/addnewtorrentdialog.ui" line="418"/>
         <source>Info hash v2:</source>
-        <translation>Informativna zgoščena vrednost, v2:</translation>
+        <translation>Razpršilo v2:</translation>
     </message>
     <message>
         <location filename="../gui/addnewtorrentdialog.ui" line="507"/>
@@ -393,7 +393,7 @@
     <message>
         <location filename="../gui/addnewtorrentdialog.cpp" line="522"/>
         <source>Retrieving metadata...</source>
-        <translation>Pridobivanje metapodatkov ...</translation>
+        <translation>Pridobivam podatke...</translation>
     </message>
     <message>
         <location filename="../gui/addnewtorrentdialog.cpp" line="304"/>
@@ -466,12 +466,12 @@
     <message>
         <location filename="../gui/addnewtorrentdialog.cpp" line="858"/>
         <source>Parsing metadata...</source>
-        <translation>Razčlenjevanje metapodatkov ...</translation>
+        <translation>Razpoznavanje podatkov...</translation>
     </message>
     <message>
         <location filename="../gui/addnewtorrentdialog.cpp" line="862"/>
         <source>Metadata retrieval complete</source>
-        <translation>Pridobivanje metapodatkov dokončano</translation>
+        <translation>Pridobivanje podatkov končano</translation>
     </message>
 </context>
 <context>
@@ -1121,7 +1121,7 @@
     <message>
         <location filename="../gui/advancedsettings.cpp" line="779"/>
         <source>Resolve peer host names</source>
-        <translation>Razrešuj imena gostiteljev soležnikov</translation>
+        <translation>Razreši host imena soležnikov</translation>
     </message>
     <message>
         <location filename="../gui/advancedsettings.cpp" line="806"/>
@@ -1359,7 +1359,7 @@
     <message>
         <location filename="../gui/advancedsettings.cpp" line="803"/>
         <source>Optional IP address to bind to</source>
-        <translation>Izbiren naslov IP za povezavo</translation>
+        <translation>Izbiren IP naslov za povezavo</translation>
     </message>
     <message>
         <location filename="../gui/advancedsettings.cpp" line="819"/>
@@ -1416,7 +1416,7 @@
     <message>
         <location filename="../app/application.cpp" line="325"/>
         <source>Using config directory: %1</source>
-        <translation>Uporabljena mapa za nastavitve: %1</translation>
+        <translation>Uporabljen imenik za nastavitve: %1</translation>
     </message>
     <message>
         <location filename="../app/application.cpp" line="688"/>
@@ -1640,7 +1640,7 @@ Razlog: %2</translation>
     <message>
         <location filename="../base/asyncfilestorage.cpp" line="59"/>
         <source>Could not create directory &apos;%1&apos;.</source>
-        <translation>Mape &quot;%1&quot; ni bilo mogoče ustvariti.</translation>
+        <translation>Imenika &quot;%1&quot; ni bilo mogoče ustvariti.</translation>
     </message>
 </context>
 <context>
@@ -1755,7 +1755,7 @@ Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017
     <message>
         <location filename="../gui/rss/automatedrssdownloader.ui" line="374"/>
         <source>Matching RSS Articles</source>
-        <translation>Ujemajoči članki RSS</translation>
+        <translation>Ujemajoči RSS članki</translation>
     </message>
     <message>
         <location filename="../gui/rss/automatedrssdownloader.ui" line="402"/>
@@ -1893,7 +1893,7 @@ Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017
     <message>
         <location filename="../gui/rss/automatedrssdownloader.cpp" line="429"/>
         <source>Export RSS rules</source>
-        <translation>Izvozi pravila RSS</translation>
+        <translation>Izvozi RSS pravila</translation>
     </message>
     <message>
         <location filename="../gui/rss/automatedrssdownloader.cpp" line="456"/>
@@ -1908,7 +1908,7 @@ Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017
     <message>
         <location filename="../gui/rss/automatedrssdownloader.cpp" line="465"/>
         <source>Import RSS rules</source>
-        <translation>Uvozi pravila RSS</translation>
+        <translation>Uvozi RSS pravila</translation>
     </message>
     <message>
         <location filename="../gui/rss/automatedrssdownloader.cpp" line="494"/>
@@ -1938,7 +1938,7 @@ Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017
     <message>
         <location filename="../gui/rss/automatedrssdownloader.cpp" line="525"/>
         <source>Clear downloaded episodes...</source>
-        <translation>Počisti prenesene epizode ...</translation>
+        <translation>Počisti prenesene epizode...</translation>
     </message>
     <message>
         <location filename="../gui/rss/automatedrssdownloader.cpp" line="541"/>
@@ -1958,7 +1958,7 @@ Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017
     <message>
         <location filename="../gui/rss/automatedrssdownloader.cpp" line="570"/>
         <source>Are you sure you want to clear the list of downloaded episodes for the selected rule?</source>
-        <translation>Ali ste prepričani, da želite izprazniti seznam prenesenih epizod za izbrano pravilo?</translation>
+        <translation>Ali ste prepričani da želite počistiti seznam prenesenih epizod za izbrano pravilo?</translation>
     </message>
     <message>
         <location filename="../gui/rss/automatedrssdownloader.cpp" line="684"/>
@@ -2034,7 +2034,7 @@ Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017
     <message>
         <location filename="../gui/banlistoptionsdialog.ui" line="14"/>
         <source>List of banned IP addresses</source>
-        <translation>Seznam izločenih naslovov IP</translation>
+        <translation>Seznam izločenih IP naslovov</translation>
     </message>
     <message>
         <location filename="../gui/banlistoptionsdialog.ui" line="80"/>
@@ -2055,7 +2055,7 @@ Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017
     <message>
         <location filename="../gui/banlistoptionsdialog.cpp" line="97"/>
         <source>The entered IP address is invalid.</source>
-        <translation>Vneseni naslov IP je neveljaven.</translation>
+        <translation>Vnesen IP naslov je neveljaven.</translation>
     </message>
     <message>
         <location filename="../gui/banlistoptionsdialog.cpp" line="109"/>
@@ -2071,7 +2071,7 @@ Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017
         <translation>Ne morem ustvariti mape za nadaljevanje torrenta: &quot;%1&quot;</translation>
     </message>
     <message>
-        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="224"/>
+        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="225"/>
         <source>Cannot parse resume data: invalid format</source>
         <translation>Podatkov o nadaljevanju ni mogoče razčleniti: neveljavna oblika</translation>
     </message>
@@ -2112,7 +2112,7 @@ Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017
         <translation>Podatkov o nadaljevanju torrenta ni bilo mogoče shraniti v &apos;%1&apos;. Napaka: %2.</translation>
     </message>
     <message>
-        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="187"/>
+        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="188"/>
         <source>Couldn&apos;t load torrents queue: %1</source>
         <translation>Čakalne vrste torrentov ni bilo mogoče naložiti: %1</translation>
     </message>
@@ -3024,7 +3024,7 @@ Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017
     <message>
         <location filename="../gui/transferlistfilters/categoryfiltermodel.cpp" line="440"/>
         <source>Uncategorized</source>
-        <translation>Nekategorizirani</translation>
+        <translation>Ne kategorizirani</translation>
     </message>
 </context>
 <context>
@@ -3190,12 +3190,12 @@ Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017
     <message>
         <location filename="../gui/downloadfromurldialog.ui" line="25"/>
         <source>Add torrent links</source>
-        <translation>Dodaj povezave do torrentov</translation>
+        <translation>Dodaj torrent povezave</translation>
     </message>
     <message>
         <location filename="../gui/downloadfromurldialog.ui" line="47"/>
         <source>One link per line (HTTP links, Magnet links and info-hashes are supported)</source>
-        <translation>Ena povezava na vrstico (podprte so povezave HTTP, magnetne povezave in info-šifre)</translation>
+        <translation>Ena povezava na vrstico (povezave HTTP, magnetne povezave in info-šifre so podprte)</translation>
     </message>
     <message>
         <location filename="../gui/downloadfromurldialog.cpp" line="68"/>
@@ -3251,7 +3251,7 @@ Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017
     <message>
         <location filename="../gui/executionlogwidget.cpp" line="99"/>
         <source>Clear</source>
-        <translation>Izprazni</translation>
+        <translation>Počisti</translation>
     </message>
 </context>
 <context>
@@ -3424,12 +3424,12 @@ Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017
     <message>
         <location filename="../base/net/geoipdatabase.cpp" line="232"/>
         <source>Metadata error: &apos;%1&apos; entry not found.</source>
-        <translation>Napaka metapodatkov: &apos;%1&apos; ni mogoče najti.</translation>
+        <translation>Napaka meta podatkov: &apos;%1&apos; ni mogoče najti.</translation>
     </message>
     <message>
         <location filename="../base/net/geoipdatabase.cpp" line="233"/>
         <source>Metadata error: &apos;%1&apos; entry has invalid type.</source>
-        <translation>Napaka metapodatkov: &apos;%1&apos; je neveljavne vrste.</translation>
+        <translation>Napaka meta podatkov: &apos;%1&apos; je neveljavne vrste.</translation>
     </message>
     <message>
         <location filename="../base/net/geoipdatabase.cpp" line="243"/>
@@ -3811,7 +3811,7 @@ Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017
     <message>
         <location filename="../gui/mainwindow.ui" line="240"/>
         <source>Bottom of Queue</source>
-        <translation>Na dno čakalne vrste</translation>
+        <translation>Dno čakalne vrste</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.ui" line="243"/>
@@ -3821,7 +3821,7 @@ Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017
     <message>
         <location filename="../gui/mainwindow.ui" line="251"/>
         <source>Top of Queue</source>
-        <translation>Na vrh čakalne vrste</translation>
+        <translation>Vrh čakalne vrste</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.ui" line="254"/>
@@ -3831,12 +3831,12 @@ Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017
     <message>
         <location filename="../gui/mainwindow.ui" line="262"/>
         <source>Move Down Queue</source>
-        <translation>Premakni dol v vrsti</translation>
+        <translation>Premakni  dol v vrsti</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.ui" line="265"/>
         <source>Move down in the queue</source>
-        <translation>Premakni dol v čakalni vrsti</translation>
+        <translation>Premakni na dno čakalne vrste</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.ui" line="273"/>
@@ -3856,12 +3856,12 @@ Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017
     <message>
         <location filename="../gui/mainwindow.ui" line="379"/>
         <source>&amp;Suspend System</source>
-        <translation>Preklopi v stanje &amp;pripravljenosti</translation>
+        <translation>Stanje &amp;pripravljenost</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.ui" line="387"/>
         <source>&amp;Hibernate System</source>
-        <translation>Preklopi v stanje &amp;mirovanja</translation>
+        <translation>Stanje &amp;mirovanje</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.ui" line="418"/>
@@ -3928,7 +3928,7 @@ Podprti formati: S01E01, 1x1, 2017.12.31 and 31.12.2017
     <message>
         <location filename="../gui/mainwindow.ui" line="217"/>
         <source>Add Torrent &amp;Link...</source>
-        <translation>Dodaj &amp;povezavo do torrenta ...</translation>
+        <translation>Dodaj torrent &amp;povezavo</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.ui" line="363"/>
@@ -4309,12 +4309,12 @@ Najnižja podprta različica: %2.</translation>
     <message>
         <location filename="../gui/mainwindow.cpp" line="1301"/>
         <source>Open Torrent Files</source>
-        <translation>Odpiranje datotek s torrenti</translation>
+        <translation>Odpri datoteke torrent</translation>
     </message>
     <message>
         <location filename="../gui/mainwindow.cpp" line="1302"/>
         <source>Torrent Files</source>
-        <translation>Datoteke s torrenti</translation>
+        <translation>Torrent datoteke</translation>
     </message>
 </context>
 <context>
@@ -4539,13 +4539,13 @@ Najnižja podprta različica: %2.</translation>
         <location filename="../base/net/geoipmanager.cpp" line="96"/>
         <location filename="../base/net/geoipmanager.cpp" line="451"/>
         <source>IP geolocation database loaded. Type: %1. Build time: %2.</source>
-        <translation>Podatkovna zbirka geolokacij naslovov IP je naložena. Vrsta: %1. Čas izgradnje: %2.</translation>
+        <translation>Podatkovna zbirka geolokacij IP naslovov je naložena. Vrsta: %1. Čas izgradnje: %2.</translation>
     </message>
     <message>
         <location filename="../base/net/geoipmanager.cpp" line="102"/>
         <location filename="../base/net/geoipmanager.cpp" line="477"/>
         <source>Couldn&apos;t load IP geolocation database. Reason: %1</source>
-        <translation>Podatkovne baze geolokacij naslovov IP ni mogoče naložiti. Razlog: %1</translation>
+        <translation>Ni možno naložiti podatkovne baze geolokacij IP naslovov. Razlog: %1</translation>
     </message>
     <message>
         <location filename="../base/net/geoipmanager.cpp" line="154"/>
@@ -5570,22 +5570,22 @@ Najnižja podprta različica: %2.</translation>
     <message>
         <location filename="../base/net/geoipmanager.cpp" line="431"/>
         <source>Couldn&apos;t download IP geolocation database file. Reason: %1</source>
-        <translation>Datoteke podatkovne zbirke geolokacij naslovov IP ni bilo mogoče prejeti. Razlog: %1</translation>
+        <translation>Datoteke podatkovne zbirke geolokacij IP naslovov ni bilo mogoče prejeti. Razlog: %1</translation>
     </message>
     <message>
         <location filename="../base/net/geoipmanager.cpp" line="439"/>
         <source>Could not decompress IP geolocation database file.</source>
-        <translation>Datoteke podatkovne zbirke geolokacij naslovov IP ni bilo mogoče razširiti.</translation>
+        <translation>Datoteke podatkovne zbirke geolokacij IP naslovov ni bilo mogoče razširiti.</translation>
     </message>
     <message>
         <location filename="../base/net/geoipmanager.cpp" line="466"/>
         <source>Couldn&apos;t save downloaded IP geolocation database file. Reason: %1</source>
-        <translation>Datoteke podatkovne zbirke geolokacij naslovov IP ni bilo mogoče shraniti. Razlog: %1</translation>
+        <translation>Datoteke podatkovne zbirke geolokacij IP naslovov ni bilo mogoče shraniti. Razlog: %1</translation>
     </message>
     <message>
         <location filename="../base/net/geoipmanager.cpp" line="462"/>
         <source>Successfully updated IP geolocation database.</source>
-        <translation>Podatkovna zbirka geolokacij naslovov IP uspešno posodobljena.</translation>
+        <translation>Podatkovna zbirka geolokacij IP naslovov uspešno posodobljena .</translation>
     </message>
     <message>
         <location filename="../base/net/geoipmanager.cpp" line="373"/>
@@ -5932,7 +5932,7 @@ Najnižja podprta različica: %2.</translation>
     <message>
         <location filename="../gui/optionsdialog.ui" line="333"/>
         <source>Downloading torrents:</source>
-        <translation>Na torrente v prejemanju:</translation>
+        <translation>Med prejemanjem torrentov:</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="349"/>
@@ -5949,7 +5949,7 @@ Najnižja podprta različica: %2.</translation>
     <message>
         <location filename="../gui/optionsdialog.ui" line="385"/>
         <source>Completed torrents:</source>
-        <translation>Na dokončane torrente:</translation>
+        <translation>Končani torrenti:</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="424"/>
@@ -5964,7 +5964,7 @@ Najnižja podprta različica: %2.</translation>
     <message>
         <location filename="../gui/optionsdialog.ui" line="440"/>
         <source>Start qBittorrent on Windows start up</source>
-        <translation>Zaženi qBittorrent ob zagonu sistema Windows</translation>
+        <translation>Zaženi qBittorrent ob zagonu Windowsov</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="447"/>
@@ -6055,7 +6055,7 @@ Najnižja podprta različica: %2.</translation>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1518"/>
         <source>Email notification &amp;upon download completion</source>
-        <translation>Ob &amp;zaključku prejema pošlji obvestilo po e-pošti</translation>
+        <translation>Pošlji e-poštno obvestilo ob &amp;zaključku prejema</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1622"/>
@@ -6140,7 +6140,7 @@ Najnižja podprta različica: %2.</translation>
     <message>
         <location filename="../gui/optionsdialog.ui" line="2453"/>
         <source>Schedule &amp;the use of alternative rate limits</source>
-        <translation>Načrtuj uporabo nadomestnih omejitev hi&amp;trosti</translation>
+        <translation>Načrtujte uporabo nadomestnih omejitev hi&amp;trosti</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="2468"/>
@@ -6206,7 +6206,7 @@ Onemogoči šifriranje: poveži se samo s soležniki brez šifriranja protokola<
     <message>
         <location filename="../gui/optionsdialog.ui" line="3372"/>
         <source>Enable fetching RSS feeds</source>
-        <translation>Omogoči pridobivanje virov RSS</translation>
+        <translation>Omogoči pridobivanje RSS virov</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="3381"/>
@@ -6304,7 +6304,7 @@ Onemogoči šifriranje: poveži se samo s soležniki brez šifriranja protokola<
     <message>
         <location filename="../gui/optionsdialog.ui" line="3459"/>
         <source>RSS Torrent Auto Downloader</source>
-        <translation>Samodejni prejemnik torrentov RSS</translation>
+        <translation>Samodejni prejemnik RSS torrentov</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="3465"/>
@@ -6339,7 +6339,7 @@ Onemogoči šifriranje: poveži se samo s soležniki brez šifriranja protokola<
     <message>
         <location filename="../gui/optionsdialog.ui" line="3586"/>
         <source>IP address:</source>
-        <translation>Naslov IP:</translation>
+        <translation>IP naslov:</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="3593"/>
@@ -6489,7 +6489,7 @@ Uporabi &apos;;&apos; da razčleniš vnose. Lahko uporbiš nadomestni znak &apos
         <location filename="../gui/optionsdialog.ui" line="553"/>
         <location filename="../gui/optionsdialog.cpp" line="297"/>
         <source>Normal</source>
-        <translation>običajno</translation>
+        <translation>Normalen</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="589"/>
@@ -6534,7 +6534,7 @@ Uporabi &apos;;&apos; da razčleniš vnose. Lahko uporbiš nadomestni znak &apos
     <message>
         <location filename="../gui/optionsdialog.ui" line="765"/>
         <source>Delete backup logs older than:</source>
-        <translation>Izbriši varnostne kopije dnevnikov, starejše od:</translation>
+        <translation>Izbriši varnostne kopije dnevnikov starejše od:</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="825"/>
@@ -6559,7 +6559,7 @@ Uporabi &apos;;&apos; da razčleniš vnose. Lahko uporbiš nadomestni znak &apos
     <message>
         <location filename="../gui/optionsdialog.ui" line="1071"/>
         <source>Also delete .torrent files whose addition was cancelled</source>
-        <translation>Izbriši tudi datoteke .torrent, katerih dodajanje je bilo preklicano</translation>
+        <translation>Izbriši tudi .torrent datoteke katerih dodajanje je bilo preklicano</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1074"/>
@@ -6579,7 +6579,7 @@ Uporabi &apos;;&apos; da razčleniš vnose. Lahko uporbiš nadomestni znak &apos
     <message>
         <location filename="../gui/optionsdialog.ui" line="1153"/>
         <source>Default Torrent Management Mode:</source>
-        <translation>Privzeti način upravljanja torrentov:</translation>
+        <translation>Privzet Način Upravljanja Torrentov:</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1170"/>
@@ -6594,7 +6594,7 @@ Uporabi &apos;;&apos; da razčleniš vnose. Lahko uporbiš nadomestni znak &apos
     <message>
         <location filename="../gui/optionsdialog.ui" line="1198"/>
         <source>When Torrent Category changed:</source>
-        <translation>Ko se spremeni kategorija torrenta:</translation>
+        <translation>Ko je kategorija torrenta spremenjena:</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1208"/>
@@ -6604,7 +6604,7 @@ Uporabi &apos;;&apos; da razčleniš vnose. Lahko uporbiš nadomestni znak &apos
     <message>
         <location filename="../gui/optionsdialog.ui" line="1213"/>
         <source>Switch torrent to Manual Mode</source>
-        <translation>Preklopi torrent na ročni način</translation>
+        <translation>Preklopi torrent na Ročni Način</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1249"/>
@@ -6616,7 +6616,7 @@ Uporabi &apos;;&apos; da razčleniš vnose. Lahko uporbiš nadomestni znak &apos
         <location filename="../gui/optionsdialog.ui" line="1254"/>
         <location filename="../gui/optionsdialog.ui" line="1295"/>
         <source>Switch affected torrents to Manual Mode</source>
-        <translation>Preklopi dotične torrente na ročni način</translation>
+        <translation>Preklopi dotične torrente na Ročni Način</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1320"/>
@@ -6646,7 +6646,7 @@ Uporabi &apos;;&apos; da razčleniš vnose. Lahko uporbiš nadomestni znak &apos
     <message>
         <location filename="../gui/optionsdialog.ui" line="1059"/>
         <source>De&amp;lete .torrent files afterwards </source>
-        <translation>Po tem izbriši &amp;datoteke .torrent</translation>
+        <translation>Po tem izbriši .torrent &amp;datoteke</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1369"/>
@@ -6777,7 +6777,7 @@ Uporabi &apos;;&apos; da razčleniš vnose. Lahko uporbiš nadomestni znak &apos
     <message>
         <location filename="../gui/optionsdialog.ui" line="1135"/>
         <source>When a torrent is downloaded, offer to add torrents from any .torrent files found inside it</source>
-        <translation>Ko je torrent prejet, ponudi dodajanje torrentov iz katerekoli datoteke .torrent, najdene znotraj njega</translation>
+        <translation>Ko je torrent prenesen, ponudi dodajanje torrentov od katere koli .torrent datoteke najdene znotraj tega prenosa.</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1138"/>
@@ -7075,7 +7075,7 @@ readme[0-9].txt: filter &apos;readme1.txt&apos;, &apos;readme2.txt&apos; but not
     <message>
         <location filename="../gui/optionsdialog.ui" line="2237"/>
         <source>Manually banned IP addresses...</source>
-        <translation>Ročno izobčeni naslovi IP ...</translation>
+        <translation>Ročno izločeni IP naslovi...</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="2244"/>
@@ -7118,7 +7118,7 @@ readme[0-9].txt: filter &apos;readme1.txt&apos;, &apos;readme2.txt&apos; but not
         <location filename="../gui/optionsdialog.ui" line="2350"/>
         <location filename="../gui/optionsdialog.ui" line="2427"/>
         <source>Download:</source>
-        <translation>Prejemanje:</translation>
+        <translation>Prejem:</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="2379"/>
@@ -7387,7 +7387,7 @@ readme[0-9].txt: filter &apos;readme1.txt&apos;, &apos;readme2.txt&apos; but not
     <message>
         <location filename="../gui/optionsdialog.cpp" line="584"/>
         <source>By enabling these options, you can &lt;strong&gt;irrevocably lose&lt;/strong&gt; your .torrent files!</source>
-        <translation>Z omogočanjem teh možnosti lahko &lt;strong&gt;nepovratno izgubite&lt;/strong&gt; svoje datoteke .torrent!</translation>
+        <translation>Z omogočanjem teh možnosti lahko &lt;strong&gt;nepreklicno izgubite&lt;/strong&gt; vaše .torrent datoteke!</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.cpp" line="591"/>
@@ -7397,7 +7397,7 @@ readme[0-9].txt: filter &apos;readme1.txt&apos;, &apos;readme2.txt&apos; but not
     <message>
         <location filename="../gui/optionsdialog.cpp" line="254"/>
         <source>Select qBittorrent UI Theme file</source>
-        <translation>Izberi datoteko s temo vmesnika qBittorrent</translation>
+        <translation>Izberi datoteko za izgled vmesnika qBittorrent (*.qbtheme)</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.cpp" line="1312"/>
@@ -7487,7 +7487,7 @@ readme[0-9].txt: filter &apos;readme1.txt&apos;, &apos;readme2.txt&apos; but not
     <message>
         <location filename="../gui/optionsdialog.cpp" line="677"/>
         <source>Tip: Encapsulate parameter with quotation marks to avoid text being cut off at whitespace (e.g., &quot;%N&quot;)</source>
-        <translation>Namig: Da se izognete izgubi besedila za prvim presledkom, postavite parameter med narekovaje (npr. &quot;%N&quot;)</translation>
+        <translation>Namig: Postavi parameter med narekovaje da se izogneš prelomu teksta na presledku (npr., &quot;%N&quot;)</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.cpp" line="742"/>
@@ -8018,7 +8018,7 @@ readme[0-9].txt: filter &apos;readme1.txt&apos;, &apos;readme2.txt&apos; but not
     <message>
         <location filename="../gui/properties/piecesbar.cpp" line="310"/>
         <source>Wait until metadata become available to see detailed information</source>
-        <translation>Za ogled podrobnejših podatkov počakajte, da postanejo dostopni metapodatki</translation>
+        <translation>Za ogled podrobnejših informacij počakajte, da podatki postanejo dostopni</translation>
     </message>
     <message>
         <location filename="../gui/properties/piecesbar.cpp" line="312"/>
@@ -8132,7 +8132,7 @@ Tisti vtičniki so bili onemogočeni.</translation>
         <location filename="../gui/search/pluginselectdialog.cpp" line="463"/>
         <location filename="../gui/search/pluginselectdialog.cpp" line="495"/>
         <source>Search plugin update</source>
-        <translation>Preveri posodobitve vtičnika</translation>
+        <translation>Preveri za posodobitvami vtičnika</translation>
     </message>
     <message>
         <location filename="../gui/search/pluginselectdialog.cpp" line="341"/>
@@ -8413,7 +8413,7 @@ Tisti vtičniki so bili onemogočeni.</translation>
     <message>
         <location filename="../gui/properties/propertieswidget.ui" line="349"/>
         <source>Download Speed:</source>
-        <translation>Hitrost prejemanja:</translation>
+        <translation>Hitrost prejema:</translation>
     </message>
     <message>
         <location filename="../gui/properties/propertieswidget.ui" line="378"/>
@@ -8453,12 +8453,12 @@ Tisti vtičniki so bili onemogočeni.</translation>
     <message>
         <location filename="../gui/properties/propertieswidget.ui" line="866"/>
         <source>Info Hash v1:</source>
-        <translation>Informativna zgoščena vrednost, v1:</translation>
+        <translation>Razpršilo v1:</translation>
     </message>
     <message>
         <location filename="../gui/properties/propertieswidget.ui" line="898"/>
         <source>Info Hash v2:</source>
-        <translation>Informativna zgoščena vrednost, v2:</translation>
+        <translation>Razpršilo v2:</translation>
     </message>
     <message>
         <location filename="../gui/properties/propertieswidget.ui" line="965"/>
@@ -8478,7 +8478,7 @@ Tisti vtičniki so bili onemogočeni.</translation>
     <message>
         <location filename="../gui/properties/propertieswidget.ui" line="523"/>
         <source>Share Ratio:</source>
-        <translation>Razmerje izmenjave:</translation>
+        <translation>Deli razmerje:</translation>
     </message>
     <message>
         <location filename="../gui/properties/propertieswidget.ui" line="552"/>
@@ -8514,7 +8514,7 @@ Tisti vtičniki so bili onemogočeni.</translation>
     <message>
         <location filename="../gui/properties/propertieswidget.ui" line="718"/>
         <source>Created By:</source>
-        <translation>Ustvaril/-a:</translation>
+        <translation>Ustvarjeno od:</translation>
     </message>
     <message>
         <location filename="../gui/properties/propertieswidget.ui" line="747"/>
@@ -8556,7 +8556,7 @@ Tisti vtičniki so bili onemogočeni.</translation>
         <location filename="../gui/properties/propertieswidget.cpp" line="408"/>
         <location filename="../gui/properties/propertieswidget.cpp" line="411"/>
         <source>%1 (%2 this session)</source>
-        <translation>%1 (%2 to sejo)</translation>
+        <translation>%1(%2 to sejo)</translation>
     </message>
     <message>
         <location filename="../gui/properties/propertieswidget.cpp" line="323"/>
@@ -8585,21 +8585,21 @@ Tisti vtičniki so bili onemogočeni.</translation>
         <location filename="../gui/properties/propertieswidget.cpp" line="431"/>
         <source>%1 (%2 max)</source>
         <comment>%1 and %2 are numbers, e.g. 3 (10 max)</comment>
-        <translation>%1 (največ %2)</translation>
+        <translation>%1(%2 max)</translation>
     </message>
     <message>
         <location filename="../gui/properties/propertieswidget.cpp" line="447"/>
         <location filename="../gui/properties/propertieswidget.cpp" line="451"/>
         <source>%1 (%2 total)</source>
         <comment>%1 and %2 are numbers, e.g. 3 (10 total)</comment>
-        <translation>%1 (skupno %2)</translation>
+        <translation>%1(%2 skupno)</translation>
     </message>
     <message>
         <location filename="../gui/properties/propertieswidget.cpp" line="457"/>
         <location filename="../gui/properties/propertieswidget.cpp" line="462"/>
         <source>%1 (%2 avg.)</source>
         <comment>%1 and %2 are speed rates, e.g. 200KiB/s (100KiB/s avg.)</comment>
-        <translation>%1 (povpr. %2)</translation>
+        <translation>%1(%2 povpr.)</translation>
     </message>
     <message>
         <location filename="../gui/properties/propertieswidget.cpp" line="609"/>
@@ -8746,7 +8746,7 @@ Tisti vtičniki so bili onemogočeni.</translation>
     <message>
         <location filename="../base/rss/feed_serializer.cpp" line="109"/>
         <source>Couldn&apos;t load RSS article &apos;%1#%2&apos;. Invalid data format.</source>
-        <translation>Članka RSS &apos;%1#%2&apos; ni bilo mogoče naložiti. Neveljavna oblika zapisa podatkov.</translation>
+        <translation>RSS članka &apos;%1#%2&apos; ni bilo mogoče naložiti. Neveljaven zapis podatkov.</translation>
     </message>
 </context>
 <context>
@@ -8794,7 +8794,7 @@ Tisti vtičniki so bili onemogočeni.</translation>
         <location filename="../base/rss/rss_session.cpp" line="207"/>
         <location filename="../base/rss/rss_session.cpp" line="244"/>
         <source>Item doesn&apos;t exist: %1.</source>
-        <translation>Predmet ne obstaja: %1.</translation>
+        <translation>Predmet ne obsaja: %1.</translation>
     </message>
     <message>
         <location filename="../base/rss/rss_session.cpp" line="223"/>
@@ -8849,12 +8849,12 @@ Tisti vtičniki so bili onemogočeni.</translation>
     <message>
         <location filename="../base/rss/rss_session.cpp" line="413"/>
         <source>Incorrect RSS Item path: %1.</source>
-        <translation>Nepravilna pot predmeta RSS: %1.</translation>
+        <translation>Nepravilna pot RSS predmeta: %1.</translation>
     </message>
     <message>
         <location filename="../base/rss/rss_session.cpp" line="416"/>
         <source>RSS item with given path already exists: %1.</source>
-        <translation>Predmet RSS z dano potjo že obstaja: %1.</translation>
+        <translation>RSS predmet z dano potjo že obstaja: %1.</translation>
     </message>
     <message>
         <location filename="../base/rss/rss_session.cpp" line="421"/>
@@ -8872,7 +8872,7 @@ Tisti vtičniki so bili onemogočeni.</translation>
     <message>
         <location filename="../gui/rss/rsswidget.ui" line="31"/>
         <source>Fetching of RSS feeds is disabled now! You can enable it in application settings.</source>
-        <translation>Pridobivanje virov RSS je zdaj onemogočeno! Omogočite ga lahko v nastavitvah aplikacije.</translation>
+        <translation>Pridobivanje RSS virov je zdaj onemogočeno! Omgočite ga lahko v nastavitvah aplikacije.</translation>
     </message>
     <message>
         <location filename="../gui/rss/rsswidget.ui" line="43"/>
@@ -9301,7 +9301,7 @@ Tisti vtičniki so bili onemogočeni.</translation>
     <message>
         <location filename="../base/search/searchpluginmanager.cpp" line="256"/>
         <source>A more recent version of this plugin is already installed.</source>
-        <translation>Že je nameščena novejša različica tega vtičnika.</translation>
+        <translation>Novejša različica tega vstavka je že nameščena.</translation>
     </message>
     <message>
         <location filename="../base/search/searchpluginmanager.cpp" line="280"/>
@@ -9312,7 +9312,7 @@ Tisti vtičniki so bili onemogočeni.</translation>
         <location filename="../base/search/searchpluginmanager.cpp" line="288"/>
         <location filename="../base/search/searchpluginmanager.cpp" line="292"/>
         <source>Plugin is not supported.</source>
-        <translation>Vtičnik ni podprt.</translation>
+        <translation>Vstavek ni podprt.</translation>
     </message>
     <message>
         <location filename="../base/search/searchpluginmanager.cpp" line="300"/>
@@ -9373,7 +9373,7 @@ Tisti vtičniki so bili onemogočeni.</translation>
         <location filename="../base/search/searchpluginmanager.cpp" line="477"/>
         <location filename="../base/search/searchpluginmanager.cpp" line="479"/>
         <source>Failed to download the plugin file. %1</source>
-        <translation>Vtičnika ni bilo mogoče prenesti. %1</translation>
+        <translation>Prenos vstavka je spodletel. %1</translation>
     </message>
     <message>
         <location filename="../base/search/searchpluginmanager.cpp" line="613"/>
@@ -9388,7 +9388,7 @@ Tisti vtičniki so bili onemogočeni.</translation>
     <message>
         <location filename="../base/search/searchpluginmanager.cpp" line="661"/>
         <source>Search plugin &apos;%1&apos; contains invalid version string (&apos;%2&apos;)</source>
-        <translation>Vtičnik za iskanje &apos;%1&apos; vsebuje neveljaven niz različice (&apos;%2&apos;)</translation>
+        <translation>Vstavek iskanja &apos;%1&apos; vsebuje neveljaven niz različice (&apos;%2&apos;)</translation>
     </message>
 </context>
 <context>
@@ -9403,13 +9403,13 @@ Tisti vtičniki so bili onemogočeni.</translation>
         <location filename="../gui/search/searchwidget.ui" line="86"/>
         <source>There aren&apos;t any search plugins installed.
 Click the &quot;Search plugins...&quot; button at the bottom right of the window to install some.</source>
-        <translation>Ni nameščenih vtičnikov za iskanje.
-Za namestitev kliknite gumb &quot;Vtičniki za iskanje ...&quot; spodaj desno.</translation>
+        <translation>Ni nameščenih vstavkov iskanja.
+Klikni na gumb &quot;Vstavki iskanja ...&quot; spodaj desno da jih namestite.</translation>
     </message>
     <message>
         <location filename="../gui/search/searchwidget.ui" line="142"/>
         <source>Search plugins...</source>
-        <translation>Vtičniki za iskanje ...</translation>
+        <translation>Vstavki iskanja ...</translation>
     </message>
     <message>
         <location filename="../gui/search/searchwidget.cpp" line="355"/>
@@ -9436,7 +9436,7 @@ Za namestitev kliknite gumb &quot;Vtičniki za iskanje ...&quot; spodaj desno.</
     <message>
         <location filename="../gui/search/searchwidget.cpp" line="581"/>
         <source>All plugins</source>
-        <translation>Vsi vtičniki</translation>
+        <translation>Vsi vstavki</translation>
     </message>
     <message>
         <location filename="../gui/search/searchwidget.cpp" line="580"/>
@@ -10169,7 +10169,7 @@ Za namestitev kliknite gumb &quot;Vtičniki za iskanje ...&quot; spodaj desno.</
     <message>
         <location filename="../gui/transferlistfilters/tagfiltermodel.cpp" line="116"/>
         <source>Untagged</source>
-        <translation>Brez oznak</translation>
+        <translation>Neoznačeno</translation>
     </message>
 </context>
 <context>
@@ -11624,7 +11624,7 @@ Prosimo da izberete drugo ime in poizkusite znova.</translation>
         <location filename="../gui/transferlistmodel.cpp" line="165"/>
         <source>Seeds</source>
         <comment>i.e. full sources (often untranslated)</comment>
-        <translation>Semen</translation>
+        <translation>Semena</translation>
     </message>
     <message>
         <location filename="../gui/transferlistmodel.cpp" line="166"/>
@@ -11704,7 +11704,7 @@ Prosimo da izberete drugo ime in poizkusite znova.</translation>
         <location filename="../gui/transferlistmodel.cpp" line="179"/>
         <source>Downloaded</source>
         <comment>Amount of data downloaded (e.g. in MB)</comment>
-        <translation>Prejeto</translation>
+        <translation>Prenešeno</translation>
     </message>
     <message>
         <location filename="../gui/transferlistmodel.cpp" line="180"/>
@@ -11798,13 +11798,13 @@ Prosimo da izberete drugo ime in poizkusite znova.</translation>
         <location filename="../gui/transferlistmodel.cpp" line="193"/>
         <source>Info Hash v1</source>
         <comment>i.e: torrent info hash v1</comment>
-        <translation>Informativna zgoščena vrednost, v1</translation>
+        <translation>Informativno zgoščeno vrednost, v1</translation>
     </message>
     <message>
         <location filename="../gui/transferlistmodel.cpp" line="194"/>
         <source>Info Hash v2</source>
         <comment>i.e: torrent info hash v2</comment>
-        <translation>Informativna zgoščena vrednost, v2</translation>
+        <translation>Informativno zgoščeno vrednost, v2</translation>
     </message>
     <message>
         <location filename="../gui/transferlistmodel.cpp" line="195"/>
@@ -12591,7 +12591,7 @@ Prosimo da izberete drugo ime in poizkusite znova.</translation>
         <location filename="../base/utils/misc.cpp" line="262"/>
         <source>%1y %2d</source>
         <comment>e.g: 2 years 10 days</comment>
-        <translation>%1 let %2 dni</translation>
+        <translation>%1y %2d</translation>
     </message>
     <message>
         <location filename="../base/utils/misc.cpp" line="109"/>

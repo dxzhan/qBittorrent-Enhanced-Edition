@@ -443,22 +443,6 @@
         <source>Add web seeds</source>
         <translation type="unfinished" />
     </message>
-    <message>
-        <source>Password</source>
-        <translation>Parool</translation>
-    </message>
-    <message>
-        <source>Username</source>
-        <translation>Kasutajanimi</translation>
-    </message>
-    <message>
-        <source>Invalid Username or Password.</source>
-        <translation>Sobimatu Kasutajanimi või Parool</translation>
-    </message>
-    <message>
-        <source>Login</source>
-        <translation>Logi sisse</translation>
-    </message>
 </context>
 <context>
     <name>MainWindow</name>

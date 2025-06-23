@@ -2070,7 +2070,7 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
         <translation>无法建立 Torrent 恢复文件夹：“%1”</translation>
     </message>
     <message>
-        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="224"/>
+        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="225"/>
         <source>Cannot parse resume data: invalid format</source>
         <translation>无法解析恢复数据：无效格式</translation>
     </message>
@@ -2111,7 +2111,7 @@ Supports the formats: S01E01, 1x1, 2017.12.31 and 31.12.2017 (Date formats also 
         <translation>无法将 Torrent 恢复数据保存到 “%1”。错误：%2</translation>
     </message>
     <message>
-        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="187"/>
+        <location filename="../base/bittorrent/bencoderesumedatastorage.cpp" line="188"/>
         <source>Couldn&apos;t load torrents queue: %1</source>
         <translation>无法加载 Torrent 队列：%1</translation>
     </message>
@@ -5931,7 +5931,7 @@ Minimum requirement: %2.</source>
     <message>
         <location filename="../gui/optionsdialog.ui" line="333"/>
         <source>Downloading torrents:</source>
-        <translation>正在下载的 torrent：</translation>
+        <translation>正在下载 torrent：</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="349"/>
@@ -5983,12 +5983,12 @@ Minimum requirement: %2.</source>
     <message>
         <location filename="../gui/optionsdialog.ui" line="642"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;To set qBittorrent as default program for .torrent files and/or Magnet links&lt;br/&gt;you can use &lt;span style=&quot; font-weight:600;&quot;&gt;Default Programs&lt;/span&gt; dialog from &lt;span style=&quot; font-weight:600;&quot;&gt;Control Panel&lt;/span&gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;你可以使用&lt;span style=&quot; font-weight:600;&quot;&gt;控制面板&lt;/span&gt;里的&lt;span style=&quot; font-weight:600;&quot;&gt;默认程序&lt;/span&gt;对话框来设置 qBittorrent 为打开 .torrent 文件和/或磁力链接的默认程序。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;你可以使用&lt;span style=&quot; font-weight:600;&quot;&gt;控制面板&lt;/span&gt;里的&lt;span style=&quot; font-weight:600;&quot;&gt;默认程序&lt;/span&gt;对话框来设置 qBittorrent为打开 .torrent 文件和/或磁力链接的默认程序。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="732"/>
         <source> KiB</source>
-        <translation> KiB</translation>
+        <translation>KiB</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="917"/>
@@ -6029,7 +6029,7 @@ Minimum requirement: %2.</source>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1033"/>
         <source>Merge trackers to existing torrent</source>
-        <translation>合并 tracker 到现有 torrent</translation>
+        <translation>合并 trackers 到现有 torrent</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1128"/>
@@ -6228,7 +6228,7 @@ Disable encryption: Only connect to peers without protocol encryption</source>
         <location filename="../gui/optionsdialog.ui" line="3388"/>
         <source> min</source>
         <extracomment>minutes</extracomment>
-        <translation> 分钟</translation>
+        <translation>分钟</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="3009"/>
@@ -6445,7 +6445,7 @@ Use &apos;;&apos; to split multiple entries. Can use wildcard &apos;*&apos;.</so
     <message>
         <location filename="../gui/optionsdialog.ui" line="138"/>
         <source>Interface</source>
-        <translation>界面</translation>
+        <translation>接口</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="156"/>
@@ -6609,7 +6609,7 @@ Use &apos;;&apos; to split multiple entries. Can use wildcard &apos;*&apos;.</so
         <location filename="../gui/optionsdialog.ui" line="1249"/>
         <location filename="../gui/optionsdialog.ui" line="1290"/>
         <source>Relocate affected torrents</source>
-        <translation>移动受影响的 torrent</translation>
+        <translation>移动影响的 torrent</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1254"/>
@@ -6771,7 +6771,7 @@ Use &apos;;&apos; to split multiple entries. Can use wildcard &apos;*&apos;.</so
     <message>
         <location filename="../gui/optionsdialog.ui" line="1121"/>
         <source>Append .!qB extension to incomplete files</source>
-        <translation>为不完整的文件添加扩展名 &quot;.!qB&quot;</translation>
+        <translation>为不完整的文件添加扩展名 .!qB</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1135"/>
@@ -6851,7 +6851,7 @@ Manual: Various torrent properties (e.g. save path) must be assigned manually</s
     <message>
         <location filename="../gui/optionsdialog.ui" line="1043"/>
         <source>Ask for merging trackers when torrent is being added manually</source>
-        <translation>手动添加 torrent 时询问是否合并 tracker</translation>
+        <translation>手动添加 torrent 时询问是否合并 trackers</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1349"/>
@@ -6927,7 +6927,7 @@ readme[0-9].txt：过滤 “readme1.txt”、“readme2.txt” 但不过滤 “r
     <message>
         <location filename="../gui/optionsdialog.ui" line="1570"/>
         <source>This server requires a secure connection (SSL)</source>
-        <translation>该服务器需要安全连接（SSL）</translation>
+        <translation>该服务器需要安全链接（SSL）</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1577"/>
@@ -6999,7 +6999,7 @@ readme[0-9].txt：过滤 “readme1.txt”、“readme2.txt” 但不过滤 “r
     <message>
         <location filename="../gui/optionsdialog.ui" line="1877"/>
         <source>Maximum number of connections per torrent:</source>
-        <translation>每个 torrent 最大连接数：</translation>
+        <translation>每 torrent 最大连接数：</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1838"/>
@@ -7009,7 +7009,7 @@ readme[0-9].txt：过滤 “readme1.txt”、“readme2.txt” 但不过滤 “r
     <message>
         <location filename="../gui/optionsdialog.ui" line="1917"/>
         <source>Maximum number of upload slots per torrent:</source>
-        <translation>每个 torrent 上传窗口数上限：</translation>
+        <translation>每个 Torrent 上传窗口数上限：</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="1900"/>
@@ -7087,7 +7087,7 @@ readme[0-9].txt：过滤 “readme1.txt”、“readme2.txt” 但不过滤 “r
     <message>
         <location filename="../gui/optionsdialog.ui" line="2237"/>
         <source>Manually banned IP addresses...</source>
-        <translation>手动封禁 IP 地址...</translation>
+        <translation>手动屏蔽 IP 地址...</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="2244"/>
@@ -7118,7 +7118,7 @@ readme[0-9].txt：过滤 “readme1.txt”、“readme2.txt” 但不过滤 “r
         <location filename="../gui/optionsdialog.ui" line="2928"/>
         <location filename="../gui/optionsdialog.ui" line="2964"/>
         <source> KiB/s</source>
-        <translation> KiB/s</translation>
+        <translation>KiB/s</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="2311"/>
@@ -7284,7 +7284,7 @@ readme[0-9].txt：过滤 “readme1.txt”、“readme2.txt” 但不过滤 “r
         <location filename="../gui/optionsdialog.ui" line="3821"/>
         <source> sec</source>
         <extracomment>seconds</extracomment>
-        <translation> 秒</translation>
+        <translation>秒</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.ui" line="2980"/>
@@ -7499,7 +7499,7 @@ readme[0-9].txt：过滤 “readme1.txt”、“readme2.txt” 但不过滤 “r
     <message>
         <location filename="../gui/optionsdialog.cpp" line="677"/>
         <source>Tip: Encapsulate parameter with quotation marks to avoid text being cut off at whitespace (e.g., &quot;%N&quot;)</source>
-        <translation>提示：使用引号将参数括起以防止文本被空白符分割（例如：&quot;%N&quot;）</translation>
+        <translation>提示：使用引号将参数扩起以防止文本被空白符分割（例如：&quot;%N&quot;）</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.cpp" line="742"/>
@@ -7640,7 +7640,7 @@ readme[0-9].txt：过滤 “readme1.txt”、“readme2.txt” 但不过滤 “r
     <message>
         <location filename="../gui/optionsdialog.cpp" line="676"/>
         <source>%K: Torrent ID (either sha-1 info hash for v1 torrent or truncated sha-256 info hash for v2/hybrid torrent)</source>
-        <translation>%K：Torrent ID（v1 Torrent 的 SHA-1 信息哈希值，或 v2/混合 Torrent 的截断 SHA-256 信息哈希值）</translation>
+        <translation>%K：Torrent ID（v1 Torrent 的 sha-1 信息哈希值，或 v2/混合 Torrent 的截断 sha-256 信息哈希值）</translation>
     </message>
     <message>
         <location filename="../gui/optionsdialog.cpp" line="342"/>
@@ -8526,7 +8526,7 @@ Those plugins were disabled.</source>
     <message>
         <location filename="../gui/properties/propertieswidget.ui" line="718"/>
         <source>Created By:</source>
-        <translation>创建者：</translation>
+        <translation>创建：</translation>
     </message>
     <message>
         <location filename="../gui/properties/propertieswidget.ui" line="747"/>
@@ -11176,8 +11176,8 @@ Please choose a different name and try again.</source>
 - Below will show the common subset of trackers of the selected torrents.</source>
         <translation>每行一个 tracker URL.
 
-- 您可以通过插入空行将 tracker 分成不同的组。
-- 所有同一组的 tracker 归属于同一层级。
+- 您可以通过插入空行将 trackers 分成不同的组。
+- 所有同一组的 trackers 归属于同一层级。
 - 第一组会成为层级 0，下一组会成为层级 1，以此类推。
 - 每组下面都会显示选中的 torrent 的 tracker 子集。</translation>
     </message>

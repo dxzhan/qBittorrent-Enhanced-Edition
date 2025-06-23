@@ -9,15 +9,20 @@ prepare_ssl() {
   fi
 
   echo "OpenSSL version ${openssl_ver}"
-  if [ ! -f "/usr/src/openssl-${openssl_ver}/.unpack_ok" ]; then
-    openssl_latest_url="https://github.com/openssl/openssl/archive/refs/tags/${openssl_filename}"
-    if [ "${USE_CHINA_MIRROR}" = "1" ]; then
-      openssl_latest_url="https://ghp.ci/${openssl_latest_url}"
+  if [ ! -d "/usr/src/openssl-${openssl_ver}" ]; then
+    mkdir -p "/usr/src/openssl-${openssl_ver}/"
+    if [ -f "/usr/src/openssl-${openssl_ver}.tar.gz" ]; then
+        tar -zxf /usr/src/openssl-${openssl_ver}.tar.gz --strip-components=1 -C "/usr/src/openssl-${openssl_ver}/"
+        touch "/usr/src/openssl-${openssl_ver}/.unpack_ok"
+    else
+        openssl_latest_url="https://github.com/openssl/openssl/archive/refs/tags/${openssl_filename}"
+        if [ "${USE_CHINA_MIRROR}" = "1" ]; then
+            openssl_latest_url="https://ghp.ci/${openssl_latest_url}"
+        fi
+        retry curl -kSL "${openssl_latest_url}" \| tar -zxf - --strip-components=1 -C "/usr/src/openssl-${openssl_ver}/"
+        touch "/usr/src/openssl-${openssl_ver}/.unpack_ok"
     fi
-    retry curl -kSL "${openssl_latest_url}" \| tar -zxf - --strip-components=1 -C "/usr/src/openssl-${openssl_ver}/"
-    touch "/usr/src/openssl-${openssl_ver}/.unpack_ok"
   fi
-
   cd "/usr/src/openssl-${openssl_ver}/"
   if [ -n "${CROSS_HOST}" ]; then
     ./Configure -static no-tests --openssldir=/etc/ssl --cross-compile-prefix="${CROSS_HOST}-" --prefix="${CROSS_PREFIX}" "${OPENSSL_COMPILER}"
