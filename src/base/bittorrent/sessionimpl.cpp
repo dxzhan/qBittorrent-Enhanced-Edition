@@ -4121,8 +4121,10 @@ void SessionImpl::populateExcludedFileNamesRegExpList()
 
     for (const QString &str : excludedNames)
     {
-        const QString pattern = QRegularExpression::wildcardToRegularExpression(str);
-        const QRegularExpression re {pattern, QRegularExpression::CaseInsensitiveOption};
+        //const QString pattern = QRegularExpression::wildcardToRegularExpression(str);
+        //const QRegularExpression re {pattern, QRegularExpression::CaseInsensitiveOption};
+        // 支持更广泛的过滤正则表达式
+        const QRegularExpression re {str, QRegularExpression::CaseInsensitiveOption};
         m_excludedFileNamesRegExpList.append(re);
     }
 }
