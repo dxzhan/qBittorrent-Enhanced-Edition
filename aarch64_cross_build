@@ -2,17 +2,17 @@
 export ARCH="aarch64-linux-musl"
 export USE_CHINA_MIRROR="1"
 export USE_ZLIB_NG="1"
-export boost_ver="1.88.0"
+export boost_ver="1.89.0"
 #export boost_ver="1.87.0"
-#export qt_major_ver="6.9"
-#export qt_ver="6.9.0"
-export qt_major_ver="6.8"
-export qt_ver="6.8.3"
+export qt_major_ver="6.10"
+export qt_ver="6.10.1"
+#export qt_major_ver="6.8"
+#export qt_ver="6.8.3"
 #export cmake_latest_ver="4.0.3"
 export cmake_latest_ver="3.31.8"
-export ninja_ver="v1.12.1"
-export openssl_ver="3.5.0"
-export zlib_ng_latest_tag="2.2.4"
+export ninja_ver="v1.13.1"
+export openssl_ver="3.6.0"
+export zlib_ng_latest_tag="2.2.5"
 
 curdir="$(git rev-parse --show-toplevel)"
 echo "${curdir}"
@@ -63,5 +63,6 @@ docker run -it \
 
 # in docker run command
 # echo "140.82.116.3 github.com" >> /etc/hosts
+# /build/.github/workflows/cross_build.sh
 # cd /build/.github/workflows
 # ./cross_build

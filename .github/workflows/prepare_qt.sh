@@ -22,20 +22,22 @@ prepare_qt() {
   if [ -n "${CROSS_HOST}" ]; then
     if [ ! -f "/usr/src/qt-host/${qt_ver}/gcc_64/bin/qt.conf" ]; then
         pipx install aqtinstall
-        if [ "${USE_CHINA_MIRROR}" = "1" ]; then
-            retry "${HOME}/.local/bin/aqt" install-qt -b ${mirror_base_url} -O /usr/src/qt-host linux desktop "${qt_ver}" --archives qtbase qttools icu
-        else
+        #if [ "${USE_CHINA_MIRROR}" = "1" ]; then
+        #    retry "${HOME}/.local/bin/aqt" install-qt -b ${mirror_base_url} -O /usr/src/qt-host linux desktop "${qt_ver}" --archives qtbase qttools icu
+        #else
             retry "${HOME}/.local/bin/aqt" install-qt -O /usr/src/qt-host linux desktop "${qt_ver}" --archives qtbase qttools icu
-        fi
+        #fi
     fi
   fi
   if [ ! -f "/usr/src/qtbase-${qt_ver}/.unpack_ok" ]; then
-    if [ -f "qtbase-everywhere-src-${qt_ver}.tar.xz" ]; then
-        tar -Jxf qtbase-everywhere-src-${qt_ver}.tar.xz -C "/usr/src/qtbase-${qt_ver}" --strip-components 1
+    if [ -f "/usr/src/qtbase-everywhere-src-${qt_ver}.tar.xz" ]; then
+        tar -Jxf /usr/src/qtbase-everywhere-src-${qt_ver}.tar.xz -C "/usr/src/qtbase-${qt_ver}" --strip-components 1
         touch "/usr/src/qtbase-${qt_ver}/.unpack_ok"
     else
         qtbase_url="${mirror_base_url}/${qt_major_ver}/${qt_ver}/submodules/qtbase-everywhere-src-${qt_ver}.tar.xz"
-        retry curl -kSL "${qtbase_url}" \| tar Jxf - -C "/usr/src/qtbase-${qt_ver}" --strip-components 1
+        #retry curl -kSL "${qtbase_url}" \| tar Jxf - -C "/usr/src/qtbase-${qt_ver}" --strip-components 1
+        retry curl -ksSLo "/usr/src/qtbase-everywhere-src-${qt_ver}.tar.xz" "${qtbase_url}"
+        tar -Jxf "/usr/src/qtbase-everywhere-src-${qt_ver}.tar.xz" -C "/usr/src/qtbase-${qt_ver}" --strip-components 1
         touch "/usr/src/qtbase-${qt_ver}/.unpack_ok"
     fi
   fi
@@ -97,12 +99,14 @@ prepare_qt() {
     export LD_LIBRARY_PATH="${QT_BASE_DIR}/lib:${LD_LIBRARY_PATH}"
     export PATH="${QT_BASE_DIR}/bin:${PATH}"
     if [ ! -f "/usr/src/qtsvg-${qt_ver}/.unpack_ok" ]; then
-        if [ -f "qtsvg-everywhere-src-${qt_ver}.tar.xz" ]; then
-            tar -Jxf qtsvg-everywhere-src-${qt_ver}.tar.xz -C "/usr/src/qtsvg-${qt_ver}" --strip-components 1
+        if [ -f "/usr/src/qtsvg-everywhere-src-${qt_ver}.tar.xz" ]; then
+            tar -Jxf /usr/src/qtsvg-everywhere-src-${qt_ver}.tar.xz -C "/usr/src/qtsvg-${qt_ver}" --strip-components 1
             touch "/usr/src/qtsvg-${qt_ver}/.unpack_ok"
         else
-            qtsvg_url="https://download.qt.io/official_releases/qt/${qt_major_ver}/${qt_ver}/submodules/qtsvg-everywhere-src-${qt_ver}.tar.xz"
-            retry curl -kSL --compressed "${qtsvg_url}" \| tar Jxf - -C "/usr/src/qtsvg-${qt_ver}" --strip-components 1
+            qtsvg_url="${mirror_base_url}/${qt_major_ver}/${qt_ver}/submodules/qtsvg-everywhere-src-${qt_ver}.tar.xz"
+            #retry curl -kSL --compressed "${qtsvg_url}" \| tar Jxf - -C "/usr/src/qtsvg-${qt_ver}" --strip-components 1
+            retry curl -ksSLo "/usr/src/qtsvg-everywhere-src-${qt_ver}.tar.xz" "${qtsvg_url}"
+            tar -Jxf "/usr/src/qtsvg-everywhere-src-${qt_ver}.tar.xz" -C "/usr/src/qtsvg-${qt_ver}" --strip-components 1
             touch "/usr/src/qtsvg-${qt_ver}/.unpack_ok"
         fi
     fi
@@ -112,12 +116,14 @@ prepare_qt() {
     cmake --build . --parallel
     cmake --install .
     if [ ! -f "/usr/src/qttools-${qt_ver}/.unpack_ok" ]; then
-        if [ -f "qttools-everywhere-src-${qt_ver}.tar.xz" ]; then
-            tar -Jxf qttools-everywhere-src-${qt_ver}.tar.xz -C "/usr/src/qttools-${qt_ver}" --strip-components 1
+        if [ -f "/usr/src/qttools-everywhere-src-${qt_ver}.tar.xz" ]; then
+            tar -Jxf /usr/src/qttools-everywhere-src-${qt_ver}.tar.xz -C "/usr/src/qttools-${qt_ver}" --strip-components 1
             touch "/usr/src/qttools-${qt_ver}/.unpack_ok"
         else
-            qttools_url="https://download.qt.io/official_releases/qt/${qt_major_ver}/${qt_ver}/submodules/qttools-everywhere-src-${qt_ver}.tar.xz"
-            retry curl -kSL --compressed "${qttools_url}" \| tar Jxf - -C "/usr/src/qttools-${qt_ver}" --strip-components 1
+            qttools_url="${mirror_base_url}/${qt_major_ver}/${qt_ver}/submodules/qttools-everywhere-src-${qt_ver}.tar.xz"
+            #retry curl -kSL --compressed "${qttools_url}" \| tar Jxf - -C "/usr/src/qttools-${qt_ver}" --strip-components 1
+            retry curl -ksSLo "/usr/src/qttools-everywhere-src-${qt_ver}.tar.xz" "${qttools_url}"
+            tar -Jxf "/usr/src/qttools-everywhere-src-${qt_ver}.tar.xz" -C "/usr/src/qttools-${qt_ver}" --strip-components 1
             touch "/usr/src/qttools-${qt_ver}/.unpack_ok"
         fi
     fi
@@ -130,12 +136,12 @@ prepare_qt() {
     # Remove qt-wayland until next release: https://bugreports.qt.io/browse/QTBUG-104318
     # qt-wayland
     if [ ! -f "/usr/src/qtwayland-${qt_ver}/.unpack_ok" ]; then
-        if [ -f "qtwayland-everywhere-src-${qt_ver}.tar.xz" ]; then
-            tar -Jxf qtwayland-everywhere-src-${qt_ver}.tar.xz -C "/usr/src/qtwayland-${qt_ver}" --strip-components 1
-        else
-            qtwayland_url="https://download.qt.io/official_releases/qt/${qt_major_ver}/${qt_ver}/submodules/qtwayland-everywhere-src-${qt_ver}.tar.xz"
-            retry curl -kSL --compressed "${qtwayland_url}" \| tar Jxf - -C "/usr/src/qtwayland-${qt_ver}" --strip-components 1
+        if [ ! -f "/usr/src/qtwayland-everywhere-src-${qt_ver}.tar.xz" ]; then
+            qtwayland_url="${mirror_base_url}/${qt_major_ver}/${qt_ver}/submodules/qtwayland-everywhere-src-${qt_ver}.tar.xz"
+            #retry curl -kSL --compressed "${qtwayland_url}" \| tar Jxf - -C "/usr/src/qtwayland-${qt_ver}" --strip-components 1
+            retry curl -ksSLo "/usr/src/qtwayland-everywhere-src-${qt_ver}.tar.xz" "${qtwayland_url}"
         fi
+        tar -Jxf "/usr/src/qtwayland-everywhere-src-${qt_ver}.tar.xz" -C "/usr/src/qtwayland-${qt_ver}" --strip-components 1
         touch "/usr/src/qtwayland-${qt_ver}/.unpack_ok"
     fi
     cd "/usr/src/qtwayland-${qt_ver}"
