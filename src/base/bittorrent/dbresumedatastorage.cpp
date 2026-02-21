@@ -71,6 +71,7 @@ namespace
 
     const QString DB_TABLE_META = u"meta"_s;
     const QString DB_TABLE_TORRENTS = u"torrents"_s;
+    const QString DB_TABLE_TORRENT_HISTORIES = u"torrent_histories"_s;
 
     const QString META_VERSION = u"version"_s;
 
@@ -149,6 +150,11 @@ namespace
     const Column DB_COLUMN_RESUMEDATA = makeColumn(u"libtorrent_resume_data"_s);
     const Column DB_COLUMN_METADATA = makeColumn(u"metadata"_s);
     const Column DB_COLUMN_VALUE = makeColumn(u"value"_s);
+
+    const Column DB_COLUMN_MAGNET = makeColumn(u"magnet"_s);
+    const Column DB_COLUMN_CREATE_TIME = makeColumn(u"create_time"_s);
+    const Column DB_COLUMN_UPDATE_TIME = makeColumn(u"update_time"_s);
+    const Column DB_COLUMN_DELETE_FLAG = makeColumn(u"delete_flag"_s);
 
     template <typename LTStr>
     QString fromLTString(const LTStr &str)
@@ -487,6 +493,63 @@ void BitTorrent::DBResumeDataStorage::createDB() const
         const QString createTorrentsQueuePositionIndexQuery = u"CREATE INDEX %1 ON %2 (%3)"_s
                 .arg(quoted(torrentsQueuePositionIndexName), quoted(DB_TABLE_TORRENTS), quoted(DB_COLUMN_QUEUE_POSITION.name));
         if (!query.exec(createTorrentsQueuePositionIndexQuery))
+            throw RuntimeError(query.lastError().text());
+
+        const QStringList tableTorrentHistoriesItems = {
+            makeColumnDefinition(DB_COLUMN_ID, u"INTEGER PRIMARY KEY"_s),
+            makeColumnDefinition(DB_COLUMN_TORRENT_ID, u"BLOB NOT NULL UNIQUE"_s),
+            makeColumnDefinition(DB_COLUMN_QUEUE_POSITION, u"INTEGER NOT NULL DEFAULT -1"_s),
+            makeColumnDefinition(DB_COLUMN_NAME, u"TEXT"_s),
+            makeColumnDefinition(DB_COLUMN_CATEGORY, u"TEXT"_s),
+            makeColumnDefinition(DB_COLUMN_TAGS, u"TEXT"_s),
+            makeColumnDefinition(DB_COLUMN_TARGET_SAVE_PATH, u"TEXT"_s),
+            makeColumnDefinition(DB_COLUMN_DOWNLOAD_PATH, u"TEXT"_s),
+            makeColumnDefinition(DB_COLUMN_CONTENT_LAYOUT, u"TEXT NOT NULL"_s),
+            makeColumnDefinition(DB_COLUMN_RATIO_LIMIT, u"INTEGER NOT NULL"_s),
+            makeColumnDefinition(DB_COLUMN_SEEDING_TIME_LIMIT, u"INTEGER NOT NULL"_s),
+            makeColumnDefinition(DB_COLUMN_INACTIVE_SEEDING_TIME_LIMIT, u"INTEGER NOT NULL"_s),
+            makeColumnDefinition(DB_COLUMN_SHARE_LIMIT_ACTION, u"TEXT NOT NULL DEFAULT `Default`"_s),
+            makeColumnDefinition(DB_COLUMN_HAS_OUTER_PIECES_PRIORITY, u"INTEGER NOT NULL"_s),
+            makeColumnDefinition(DB_COLUMN_HAS_SEED_STATUS, u"INTEGER NOT NULL"_s),
+            makeColumnDefinition(DB_COLUMN_OPERATING_MODE, u"TEXT NOT NULL"_s),
+            makeColumnDefinition(DB_COLUMN_STOPPED, u"INTEGER NOT NULL"_s),
+            makeColumnDefinition(DB_COLUMN_STOP_CONDITION, u"TEXT NOT NULL DEFAULT `None`"_s),
+            makeColumnDefinition(DB_COLUMN_SSL_CERTIFICATE, u"TEXT"_s),
+            makeColumnDefinition(DB_COLUMN_SSL_PRIVATE_KEY, u"TEXT"_s),
+            makeColumnDefinition(DB_COLUMN_SSL_DH_PARAMS, u"TEXT"_s),
+            makeColumnDefinition(DB_COLUMN_RESUMEDATA, u"BLOB NOT NULL"_s),
+            makeColumnDefinition(DB_COLUMN_METADATA, u"BLOB"_s),
+            makeColumnDefinition(DB_COLUMN_MAGNET, u"TEXT"_s),
+            makeColumnDefinition(DB_COLUMN_DELETE_FLAG, u"INTEGER NOT NULL DEFAULT 0"_s),
+            makeColumnDefinition(DB_COLUMN_CREATE_TIME, u"INTEGER NOT NULL"_s),
+            makeColumnDefinition(DB_COLUMN_UPDATE_TIME, u"INTEGER NOT NULL"_s),
+        };
+        const QString createTableTorrentHistoriesQuery = makeCreateTableStatement(DB_TABLE_TORRENT_HISTORIES, tableTorrentHistoriesItems);
+        if (!query.exec(createTableTorrentHistoriesQuery))
+            throw RuntimeError(query.lastError().text());
+
+        if (!query.exec(u"CREATE INDEX %1 ON %2 (%3)"_s
+                .arg(quoted(u"%1_%2_INDEX"_s.arg(DB_TABLE_TORRENT_HISTORIES, DB_COLUMN_NAME.name)), quoted(DB_TABLE_TORRENT_HISTORIES), quoted(DB_COLUMN_NAME.name))))
+            throw RuntimeError(query.lastError().text());
+
+        if (!query.exec(u"CREATE INDEX %1 ON %2 (%3)"_s
+                .arg(quoted(u"%1_%2_INDEX"_s.arg(DB_TABLE_TORRENT_HISTORIES, DB_COLUMN_CATEGORY.name)), quoted(DB_TABLE_TORRENT_HISTORIES), quoted(DB_COLUMN_CATEGORY.name))))
+            throw RuntimeError(query.lastError().text());
+
+        if (!query.exec(u"CREATE INDEX %1 ON %2 (%3)"_s
+                .arg(quoted(u"%1_%2_INDEX"_s.arg(DB_TABLE_TORRENT_HISTORIES, DB_COLUMN_TAGS.name)), quoted(DB_TABLE_TORRENT_HISTORIES), quoted(DB_COLUMN_TAGS.name))))
+            throw RuntimeError(query.lastError().text());
+
+        if (!query.exec(u"CREATE INDEX %1 ON %2 (%3)"_s
+                .arg(quoted(u"%1_%2_INDEX"_s.arg(DB_TABLE_TORRENT_HISTORIES, DB_COLUMN_MAGNET.name)), quoted(DB_TABLE_TORRENT_HISTORIES), quoted(DB_COLUMN_MAGNET.name))))
+            throw RuntimeError(query.lastError().text());
+
+        if (!query.exec(u"CREATE INDEX %1 ON %2 (%3)"_s
+                .arg(quoted(u"%1_%2_INDEX"_s.arg(DB_TABLE_TORRENT_HISTORIES, DB_COLUMN_DELETE_FLAG.name)), quoted(DB_TABLE_TORRENT_HISTORIES), quoted(DB_COLUMN_DELETE_FLAG.name))))
+            throw RuntimeError(query.lastError().text());
+
+        if (!query.exec(u"CREATE INDEX %1 ON %2 (%3)"_s
+                .arg(quoted(u"%1_%2_INDEX"_s.arg(DB_TABLE_TORRENT_HISTORIES, DB_COLUMN_CREATE_TIME.name)), quoted(DB_TABLE_TORRENT_HISTORIES), quoted(DB_COLUMN_CREATE_TIME.name))))
             throw RuntimeError(query.lastError().text());
 
         if (!db.commit())

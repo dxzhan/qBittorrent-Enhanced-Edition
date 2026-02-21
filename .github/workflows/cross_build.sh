@@ -11,6 +11,7 @@
 set -o pipefail
 
 # match qt version prefix. E.g 5 --> 5.15.2, 5.12 --> 5.12.10
+export DEBUG=${DEBUG:0}
 export QT_VER_PREFIX="6"
 export LIBTORRENT_BRANCH="RC_2_0"
 export DEBIAN_FRONTEND=noninteractive
@@ -49,10 +50,18 @@ apt update
 apt install -y \
   software-properties-common \
   apt-transport-https \
+  build-essential \
+  cmake \
+  ninja-build \
+  libssl-dev \
+  libxkbcommon-x11-dev \
+  libxcb-cursor-dev \
+  zlib1g-dev \
   jq \
   curl \
   git \
   make \
+  gcc \
   g++ \
   unzip \
   zip \
@@ -108,7 +117,7 @@ case "${TARGET_HOST}" in
 *)
   TARGET_HOST=Linux
   apt install -y "qemu-user-static"
-  if [ x"${TARGET_ARCH}" = xi686 ]; then
+  if [ "${TARGET_ARCH}" = "i686" ]; then
     RUNNER_CHECKER="qemu-i386-static"
   else
     RUNNER_CHECKER="qemu-${TARGET_ARCH}-static"
@@ -121,18 +130,18 @@ export PKG_CONFIG_PATH="${CROSS_PREFIX}/opt/qt/lib/pkgconfig:${CROSS_PREFIX}/lib
 SELF_DIR="$(dirname "$(readlink -f "${0}")")"
 mkdir -p "/usr/src"
 
-prepare_cmake
-prepare_ninja
-prepare_zlib
-prepare_sqlite3
-prepare_ssl
-prepare_boost
-prepare_qt
-prepare_libtorrent
+# prepare_cmake
+# prepare_ninja
+#  prepare_zlib
+#  prepare_sqlite3
+#  prepare_ssl
+#  prepare_boost
+# prepare_qt
+# prepare_libtorrent
 build_qbittorrent
 
 # check
-"${RUNNER_CHECKER}" /tmp/qbittorrent-nox* --version 2>/dev/null
+#"${RUNNER_CHECKER}" /tmp/qbittorrent-nox* --version 2>/dev/null
 
 # archive qbittorrent
-zip -j9v "${SELF_DIR}/qbittorrent-enhanced-nox_${CROSS_HOST}_static.zip" /tmp/qbittorrent-nox*
+#zip -j9v "${SELF_DIR}/qbittorrent-enhanced-nox_${CROSS_HOST}_static.zip" /tmp/qbittorrent-nox*

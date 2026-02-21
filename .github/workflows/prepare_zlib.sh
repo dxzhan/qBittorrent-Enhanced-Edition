@@ -17,7 +17,7 @@ prepare_zlib() {
       retry curl -ksSL "${zlib_ng_latest_url}" \| tar -zxf - --strip-components=1 -C "/usr/src/zlib-ng-${zlib_ng_latest_tag}/"
       touch "/usr/src/zlib-ng-${zlib_ng_latest_tag}/.unpack_ok"
     fi
-    cd "/usr/src/zlib-ng-${zlib_ng_latest_tag}/"
+    cd /usr/src/zlib-ng-${zlib_ng_latest_tag}/
     rm -fr build
     cmake -B build \
       -G Ninja \

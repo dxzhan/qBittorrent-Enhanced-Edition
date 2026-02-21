@@ -3,13 +3,13 @@
 prepare_qt() {
   mirror_base_url="https://download.qt.io/official_releases/qt"
   if [ "${USE_CHINA_MIRROR}" = "1" ]; then
-    mirror_base_url="https://mirrors.aliyun.com/qt/archive/qt"
+    mirror_base_url="https://mirrors.aliyun.com/qt"
   fi
   if [ -z "${qt_major_ver}" ]; then
-    qt_major_ver="$(retry curl -ksSL --compressed ${mirror_base_url}/ \| sed -nr "'s@.*href=\"([0-9]+(\.[0-9]+)*)/\".*@\1@p'" \| grep \"^${QT_VER_PREFIX}\" \| head -1)"
+    qt_major_ver="$(retry curl -ksSL --compressed ${mirror_base_url}/archive/qt/ \| sed -nr "'s@.*href=\"([0-9]+(\.[0-9]+)*)/\".*@\1@p'" \| grep \"^${QT_VER_PREFIX}\" \| head -1)"
   fi
   if [ -z "${qt_ver}" ]; then
-    qt_ver="$(retry curl -ksSL --compressed ${mirror_base_url}/${qt_major_ver}/ \| sed -nr "'s@.*href=\"([0-9]+(\.[0-9]+)*)/\".*@\1@p'" \| grep \"^${QT_VER_PREFIX}\" \| head -1)"
+    qt_ver="$(retry curl -ksSL --compressed ${mirror_base_url}/${qt_major_ver}/archive/qt/ \| sed -nr "'s@.*href=\"([0-9]+(\.[0-9]+)*)/\".*@\1@p'" \| grep \"^${QT_VER_PREFIX}\" \| head -1)"
   fi
 
   echo "Using qt version: ${qt_ver}"
@@ -20,28 +20,34 @@ prepare_qt() {
   fi
 
   if [ -n "${CROSS_HOST}" ]; then
-    if [ ! -f "/usr/src/qt-host/${qt_ver}/gcc_64/bin/qt.conf" ]; then
-        pipx install aqtinstall
-        #if [ "${USE_CHINA_MIRROR}" = "1" ]; then
-        #    retry "${HOME}/.local/bin/aqt" install-qt -b ${mirror_base_url} -O /usr/src/qt-host linux desktop "${qt_ver}" --archives qtbase qttools icu
-        #else
+    #if [ ! -f "/usr/src/qt-host/${qt_ver}/gcc_64/bin/qt.conf" ]; then
+        #python -m pip install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple --upgrade pip
+        #pip config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple https://mirrors.aliyun.com/pypi/simple/
+        #pip config set install.trusted-host mirrors.tuna.tsinghua.edu.cn mirrors.aliyun.com
+        pipx install -i https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple aqtinstall
+        pipx ensurepath
+        pipx completions
+        eval "$(register-python-argcomplete pipx)"
+        if [ "${USE_CHINA_MIRROR}" = "1" ]; then
+             retry "${HOME}/.local/bin/aqt" install-qt -b ${mirror_base_url} -O /usr/src/qt-host linux desktop "${qt_ver}" --archives qtbase qttools icu
+        else
             retry "${HOME}/.local/bin/aqt" install-qt -O /usr/src/qt-host linux desktop "${qt_ver}" --archives qtbase qttools icu
-        #fi
-    fi
+        fi
+    #fi
   fi
   if [ ! -f "/usr/src/qtbase-${qt_ver}/.unpack_ok" ]; then
     if [ -f "/usr/src/qtbase-everywhere-src-${qt_ver}.tar.xz" ]; then
         tar -Jxf /usr/src/qtbase-everywhere-src-${qt_ver}.tar.xz -C "/usr/src/qtbase-${qt_ver}" --strip-components 1
         touch "/usr/src/qtbase-${qt_ver}/.unpack_ok"
     else
-        qtbase_url="${mirror_base_url}/${qt_major_ver}/${qt_ver}/submodules/qtbase-everywhere-src-${qt_ver}.tar.xz"
+        qtbase_url="${mirror_base_url}/archive/qt/${qt_major_ver}/${qt_ver}/submodules/qtbase-everywhere-src-${qt_ver}.tar.xz"
         #retry curl -kSL "${qtbase_url}" \| tar Jxf - -C "/usr/src/qtbase-${qt_ver}" --strip-components 1
         retry curl -ksSLo "/usr/src/qtbase-everywhere-src-${qt_ver}.tar.xz" "${qtbase_url}"
         tar -Jxf "/usr/src/qtbase-everywhere-src-${qt_ver}.tar.xz" -C "/usr/src/qtbase-${qt_ver}" --strip-components 1
         touch "/usr/src/qtbase-${qt_ver}/.unpack_ok"
     fi
   fi
-  cd "/usr/src/qtbase-${qt_ver}"
+  cd /usr/src/qtbase-${qt_ver}
   rm -fr CMakeCache.txt CMakeFiles
   if [ -n "${CROSS_HOST}" ]; then
     if [ "${TARGET_HOST}" = "Windows" ]; then
@@ -54,7 +60,7 @@ prepare_qt() {
     -qt-host-path "/usr/src/qt-host/${qt_ver}/gcc_64/" \
     -release \
     -static \
-    -c++std c++17 \
+    -c++std c++20 \
     -optimize-size \
     -openssl \
     -openssl-linked \
@@ -73,7 +79,10 @@ prepare_qt() {
     -DCMAKE_SYSTEM_PROCESSOR="${TARGET_ARCH}" \
     -DCMAKE_C_COMPILER="${CROSS_HOST}-gcc" \
     -DCMAKE_SYSROOT="${CROSS_PREFIX}" \
-    -DCMAKE_CXX_COMPILER="${CROSS_HOST}-g++"
+    -DCMAKE_CXX_COMPILER="${CROSS_HOST}-g++" \
+    -DFEATURE_cxx20=ON \
+    -DFEATURE_cxx2b=ON \
+    -DFEATURE_cxx2c=ON
   else
   ./configure \
     -ltcg \
@@ -103,14 +112,14 @@ prepare_qt() {
             tar -Jxf /usr/src/qtsvg-everywhere-src-${qt_ver}.tar.xz -C "/usr/src/qtsvg-${qt_ver}" --strip-components 1
             touch "/usr/src/qtsvg-${qt_ver}/.unpack_ok"
         else
-            qtsvg_url="${mirror_base_url}/${qt_major_ver}/${qt_ver}/submodules/qtsvg-everywhere-src-${qt_ver}.tar.xz"
+            qtsvg_url="${mirror_base_url}/archive/qt/${qt_major_ver}/${qt_ver}/submodules/qtsvg-everywhere-src-${qt_ver}.tar.xz"
             #retry curl -kSL --compressed "${qtsvg_url}" \| tar Jxf - -C "/usr/src/qtsvg-${qt_ver}" --strip-components 1
             retry curl -ksSLo "/usr/src/qtsvg-everywhere-src-${qt_ver}.tar.xz" "${qtsvg_url}"
             tar -Jxf "/usr/src/qtsvg-everywhere-src-${qt_ver}.tar.xz" -C "/usr/src/qtsvg-${qt_ver}" --strip-components 1
             touch "/usr/src/qtsvg-${qt_ver}/.unpack_ok"
         fi
     fi
-    cd "/usr/src/qtsvg-${qt_ver}"
+    cd /usr/src/qtsvg-${qt_ver}
     rm -fr CMakeCache.txt
     "${QT_BASE_DIR}/bin/qt-configure-module" .
     cmake --build . --parallel
@@ -120,14 +129,14 @@ prepare_qt() {
             tar -Jxf /usr/src/qttools-everywhere-src-${qt_ver}.tar.xz -C "/usr/src/qttools-${qt_ver}" --strip-components 1
             touch "/usr/src/qttools-${qt_ver}/.unpack_ok"
         else
-            qttools_url="${mirror_base_url}/${qt_major_ver}/${qt_ver}/submodules/qttools-everywhere-src-${qt_ver}.tar.xz"
+            qttools_url="${mirror_base_url}/archive/qt/${qt_major_ver}/${qt_ver}/submodules/qttools-everywhere-src-${qt_ver}.tar.xz"
             #retry curl -kSL --compressed "${qttools_url}" \| tar Jxf - -C "/usr/src/qttools-${qt_ver}" --strip-components 1
             retry curl -ksSLo "/usr/src/qttools-everywhere-src-${qt_ver}.tar.xz" "${qttools_url}"
             tar -Jxf "/usr/src/qttools-everywhere-src-${qt_ver}.tar.xz" -C "/usr/src/qttools-${qt_ver}" --strip-components 1
             touch "/usr/src/qttools-${qt_ver}/.unpack_ok"
         fi
     fi
-    cd "/usr/src/qttools-${qt_ver}"
+    cd /usr/src/qttools-${qt_ver}
     rm -fr CMakeCache.txt
     "${QT_BASE_DIR}/bin/qt-configure-module" .
     cmake --build . --parallel
@@ -137,14 +146,14 @@ prepare_qt() {
     # qt-wayland
     if [ ! -f "/usr/src/qtwayland-${qt_ver}/.unpack_ok" ]; then
         if [ ! -f "/usr/src/qtwayland-everywhere-src-${qt_ver}.tar.xz" ]; then
-            qtwayland_url="${mirror_base_url}/${qt_major_ver}/${qt_ver}/submodules/qtwayland-everywhere-src-${qt_ver}.tar.xz"
+            qtwayland_url="${mirror_base_url}/archive/qt/${qt_major_ver}/${qt_ver}/submodules/qtwayland-everywhere-src-${qt_ver}.tar.xz"
             #retry curl -kSL --compressed "${qtwayland_url}" \| tar Jxf - -C "/usr/src/qtwayland-${qt_ver}" --strip-components 1
             retry curl -ksSLo "/usr/src/qtwayland-everywhere-src-${qt_ver}.tar.xz" "${qtwayland_url}"
         fi
         tar -Jxf "/usr/src/qtwayland-everywhere-src-${qt_ver}.tar.xz" -C "/usr/src/qtwayland-${qt_ver}" --strip-components 1
         touch "/usr/src/qtwayland-${qt_ver}/.unpack_ok"
     fi
-    cd "/usr/src/qtwayland-${qt_ver}"
+    cd /usr/src/qtwayland-${qt_ver}
     rm -fr CMakeCache.txt
     "${QT_BASE_DIR}/bin/qt-configure-module" .
     cmake --build . --parallel
